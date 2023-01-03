@@ -1,0 +1,68 @@
+
+*{
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+.howContainer{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-top: 100px;
+    gap: 50px;
+}
+.heading{
+    width: 100%;
+    max-width: 1300px;
+}
+.heading>h1{
+    float: left;
+    font-size: 28px;
+}
+
+
+.howButtons{
+    width: 100%;
+    max-width: 1300px;
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    gap: 20px;
+}
+.howButtons>span{
+    position: relative;
+}
+.howButtons>span>button{
+    padding: 30px 30px;
+    width: 280px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 400;
+    font-size: 18px;
+    color: white;
+    background: linear-gradient(to right, #e0394d, #93291e);
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.howButtons>span>button:hover{
+    background:rgb(255, 255, 255);
+    color:#93291e
+}
+.howButtons>span>.faNumber{
+    background-color: rgb(0, 0, 0);
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    border-radius: 50%;
+    left: -10px;
+    top:28px;
+    color: white;
+    font-size: 10px;
+}
+
+h1{
+    font-size: 20px;
+}
