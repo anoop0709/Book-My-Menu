@@ -12,7 +12,7 @@
     flex-wrap: wrap;
     margin-top: 100px;
     gap: 50px;
-    margin-bottom: 50px;
+   
 }
 .heading{
     width: 100%;
@@ -32,6 +32,7 @@
     overflow-x: scroll;
     scroll-behavior: smooth;
     margin-bottom: 10px;
+    padding: 5px;
 
 }
 .popularWrapper::-webkit-scrollbar{
@@ -86,4 +87,19 @@
     color:white;
     padding: 5px;
     border-radius: 4px;
+}
+
+
+
+
+@media screen and (min-width:360px) and (max-width:765px){
+    .popularWrapper{
+        min-width: 100%;
+    }
+    .popular{
+        min-width: 100%
+    }
+    .popular>img{
+        min-width: 100%
+    }
 }

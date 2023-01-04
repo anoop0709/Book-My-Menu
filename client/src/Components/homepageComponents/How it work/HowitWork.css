@@ -11,7 +11,8 @@
     align-items: center;
     flex-direction: column;
     flex-wrap: wrap;
-    margin-top: 100px;
+   position: relative;
+   margin-top: 450px;
     gap: 50px;
 }
 .heading{
@@ -65,4 +66,13 @@
 
 h1{
     font-size: 20px;
+}
+
+
+
+
+@media screen and (min-width:360px) and (max-width:765px) {
+    .howContainer{
+        display: none;
+    }
 }

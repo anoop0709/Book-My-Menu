@@ -7,12 +7,12 @@
     height: max-content;
     display: flex;
     justify-content: center;
+    
 }
 .headerWrapper{
     width: 100%;
-    max-width: 1300px;
     height: 300px;
-    background:url("../../images/steak.jpeg");
+    background:url("../../../images/steak.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
@@ -77,4 +77,31 @@
 .headerHeadings>p{
     font-size: 18px;
     color: rgb(219, 219, 219);
+}
+
+
+
+@media screen and (min-width:360px) and (max-width:765px){
+    .headerContainer{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .headerWrapper{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: none;
+    }
+    .headerHeadings{
+        display: none;
+    }
+    .headerWrapper>button{
+        display: none;
+    }
+    .inpContainer{
+       display: none;
+    }
 }

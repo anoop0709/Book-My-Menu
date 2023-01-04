@@ -7,17 +7,19 @@
     display: flex;
     justify-content: center;
     height: 100px;
+    
 }
 .navWrapper{
     width: 100%;
-    max-width: 1300px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: #ffff;
 }
 .logo{
-    height: 350px;
-    width: 350px;
+    height: 150px;
+    width: 250px;
+    cursor: pointer;
 }
 .navItems{
 display: flex;
@@ -28,10 +30,26 @@ margin-right: 60px;
 .navButtons{
     border: none;
     background-color: #4158D0;
-    background: #c32817;
+    background: #000000;
     color:white;
     padding: 5px;
     margin-left: 20px;
     border-radius: 5px;
     cursor: pointer;
+}
+
+@media screen and (min-width:360px) and (max-width:765px) {
+    .navWrapper{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+       
+    }
+    .logo{
+        width: 250px;
+        height: 250px;
+
+    }
+    
 }

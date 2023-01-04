@@ -1,5 +1,5 @@
 import "./Popular.css"
-import res1 from "../../images/legourmand.jpg"
+import res1 from "../../../images/legourmand.jpg"
 
 function Popular() {
     return (
