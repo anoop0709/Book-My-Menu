@@ -16,10 +16,19 @@
     align-items: center;
     background: #ffff;
 }
+
+.navWrapper>h1{
+    font-weight: 900;
+    font-size: 40px;
+    margin-left: 40px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
 .logo{
-    height: 150px;
-    width: 250px;
+    height: 200px;
+    width: 300px;
     cursor: pointer;
+    color:#000000;
+    z-index:1;
 }
 .navItems{
 display: flex;

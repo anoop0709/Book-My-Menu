@@ -3,27 +3,81 @@ import Navbar from '../../Components/homepageComponents/Navbar/Navbar';
 import Footer from '../../Components/homepageComponents/Footer/Footer';
 import Person1 from '../../images/person1.webp'
 import { useState } from "react";
+import Inputfield from "../../Components/signupcomponent/inputComponent/Inputfield";
 
 
-const intialData = {
-    Firstname: "",
-    Lastname:"",
-    Email:"",
-    Phonenumber:"",
-    Password:"",
-    Confirmpassword:""
-}
+
 function Signin() {
-const [formData,setFormData] = useState(intialData);
+
+const [values,setValues] = useState({
+    firstname: "",
+    lastname:"",
+    email:"",
+    phonenumber:"",
+    password:"",
+    confirmpassword:""
+});
+const inputs = [
+    {
+        id:"1",
+        type:"text",
+        name:"firstname",
+        placeholder:"First Name",
+        errMessage:"First name should be 3-24 characters and shouldn't be used any special charcters",
+        label:"First Name"
+    },
+    {
+        id:"2",
+        type:"text",
+        name:"lastname",
+        placeholder:"Last Name",
+        errMessage:"Last name should be 3-24 characters and shouldn't be used any special characters",
+        label:"Last Name"
+    },
+    {
+        id:"3",
+        type:"email",
+        name:"email",
+        placeholder:"Email",
+        errMessage:"Should be a valid email",
+        label:"Email"
+    },
+    {
+        id:"4",
+        type:"number",
+        name:"phonenumber",
+        placeholder:"Phone Number",
+        errMessage:"Should be 10 digits",
+        label:"Phone Number"
+    },
+    {
+        id:"5",
+        type:"password",
+        name:"password",
+        placeholder:"Password",
+        errMessage:"Password should be 8-20 characters and include atleast 1 letter,1number and 1 special character",
+        label:"Password"
+    },
+    {
+        id:"6",
+        type:"password",
+        name:"confirmpassword",
+        placeholder:"Confirm password",
+        errMessage:"Confirm password not match",
+        label:"Confirm Password"
+    }
+]
+
     const handleSubmit = (e)=>{
         e.preventDefault();
-        console.log(formData);
+       
     }
 
-    const handleChange = (e)=>{
-        setFormData({...formData,[e.target.name]:e.target.value})
-
+    const onChange = (e)=>{
+        setValues({...values,[e.target.name]:e.target.value})
     }
+
+    console.log(values);
     return (
         <div>
             <Navbar />
@@ -36,30 +90,11 @@ const [formData,setFormData] = useState(intialData);
                         </div>
                         <div className="signInform">
                             <form onSubmit={handleSubmit}>
-                                <div className="inputField">
-                                    <label htmlFor="firstname">First Name</label>
-                                    <input type="text" name="Firstname" onChange={handleChange}/>
-                                </div>
-                                <div className="inputField">
-                                    <label htmlFor="firstname">Last Name</label>
-                                    <input type="text" name="Lastname" onChange={handleChange}/>
-                                </div>
-                                <div className="inputField">
-                                    <label htmlFor="firstname">Email</label>
-                                    <input type="email" name="Email" onChange={handleChange}/>
-                                </div>
-                                <div className="inputField">
-                                    <label htmlFor="firstname">Phone Number</label>
-                                    <input type="text" name="Phonenumber" onChange={handleChange}/>
-                                </div>
-                                <div className="inputField">
-                                    <label htmlFor="firstname">Password</label>
-                                    <input type="password" name="Password" onChange={handleChange} />
-                                </div>
-                                <div className="inputField">
-                                    <label htmlFor="firstname">Confirm Password</label>
-                                    <input type="password" name="Confirmpassword" onChange={handleChange} />
-                                </div>
+                                {inputs.map((input)=>(
+                                    <Inputfield key={input.id} {...input}  onChange={onChange}/>
+
+                                ))}
+                               
                                 <div className="formBtn">
                                     <button type="submit"> Register</button>
                                 </div>

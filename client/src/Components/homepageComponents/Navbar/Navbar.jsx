@@ -1,5 +1,4 @@
 import "./Navbar.css"
-import logo from "../../../images/Book My Menu (3).jpeg"
 import { useNavigate } from "react-router"
 
 function Navbar() {
@@ -17,7 +16,8 @@ const homePage = ()=>{
     <div>
       <div className="navContainer">
           <div className="navWrapper">
-              <img src={logo} className="logo" onClick ={homePage} alt="Book My Menu"/>
+            <h1 onClick ={homePage}>Book My Menu</h1>
+              {/* <img src={logo} className="logo" onClick ={homePage} alt="Book My Menu"/> */}
               <div className="navItems">
                   <button className="navButtons" onClick={handleSignIn}>Register</button>
                   <button className="navButtons" onClick={handleLogin}>Login</button>

@@ -49,36 +49,21 @@
     padding: 10px;
    
 }
-.inputField{
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    padding: 18px;
 
-}
 .signInform>p{
     font-size: 18px;
     font-weight: 500;
     margin-top: 10px;
     margin-bottom: 20px;
 }
-.inputField>label{
-    font-size: 18px;
-    font-weight: 500;
-    margin-bottom: 5px;
-}
+
 .signInform>p>span{
     color:red;
     padding-left: 10px;
     font-size: 20px;
     cursor: pointer;
 }
-.inputField>input{
-    width: 300px;
-    outline: none;
-    padding: 10px;
-    
-}
+
 .formBtn{
     width: 100%;
     padding: 20px;

@@ -1,0 +1,24 @@
+.inputField{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 10px;
+
+}
+.inputField>label{
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+.inputField>input{
+    width: 300px;
+    outline: none;
+    padding: 10px;
+    
+}
+.inputField>span{
+    width: 300px;
+    padding: 1px;
+    font-size: 14px;
+    color: red;
+}
