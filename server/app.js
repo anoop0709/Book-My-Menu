@@ -10,6 +10,7 @@ import Vendor from "./Routes/vendorRoutes.js";
 
 
 const app = express();
+app.use(express.json())
 dotenv.config();
 app.use(cors());
 app.use(bodyparser.json({limit:"30mb",extended:"true"}))

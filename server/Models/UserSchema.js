@@ -1,17 +1,17 @@
 import mongoose from 'mongoose';
 import { stringify } from 'urlencode';
-import bcrypt from 'bcrypt'
-import { isEmail } from 'validator';
+import bcrypt from 'bcrypt';
+
 
 
 
 const userSchema = new mongoose.Schema({
 
-    fname:{
+    firstname:{
         type:String,
         required:[true,'please enter your  First name']
     },
-    lname:{
+    lastname:{
         type:String,
         required:[true,'please enter your  Last name']
     },
@@ -20,14 +20,14 @@ const userSchema = new mongoose.Schema({
         required:[true,'please enter your Email'],
         unique:true,
         tolowecase:true,
-        validate:[isEmail,'please enter a valid email'],
+       
     },
     password:{
         type:String,
         required:[true,'please enter a password'],
         minlength:[6,'min length is 6 character']
     },
-    phone:{
+    phonenumber:{
         type:Number,
         required:[true,'please enter a phonenumber'],
     
