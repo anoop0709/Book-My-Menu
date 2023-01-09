@@ -11,7 +11,6 @@ import { signUp } from "../../actions/signup";
 
 
 function Signin() {
-
 const [values,setValues] = useState({
     firstname: "",
     lastname:"",
@@ -90,12 +89,16 @@ const inputs = [
 
     const handleSubmit = (e)=>{
         e.preventDefault();
+        console.log(values);
         dispatch(signUp(values,Navigate))
     }
 
     const onChange = (e)=>{
         setValues({...values,[e.target.name]:e.target.value})
     }
+    const handleLogIn = ()=>{
+        Navigate('/login')
+      }
 
     console.log(values);
     return (
@@ -121,14 +124,13 @@ const inputs = [
                                 
                             </form>
                             <p>Already Have an Account? 
-                                    <span>Login</span>
+                                    <span onClick ={handleLogIn}>Login</span>
                                 </p>
 
                         </div>
                     </div>
                 </div>
             </div>
-            <Footer />
 
         </div>
     )

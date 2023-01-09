@@ -56,28 +56,6 @@ const userSchema = new mongoose.Schema({
 }) 
 
 
-userSchema.statics.login = async function (email,password) {
-    const user = await this.findOne({email:email});
-    
-    if(user){
-        if(user.isVerified == true){
-        const auth = await bcrypt.compare(password,user.password);
-        console.log(auth);
-        if(auth){
-            if(user.isBlocked == false){
-                
-                return user;
-            }
-           throw Error('Your account is blocked');
-        }
-        throw Error('Incorrect password');
-    }
-    throw Error('User not verified');
-}
-    throw Error('User not registered');
-    
-}
-
 const User = mongoose.model('users',userSchema);
 
 export default User;
