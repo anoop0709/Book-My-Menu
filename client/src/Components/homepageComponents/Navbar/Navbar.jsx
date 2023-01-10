@@ -26,6 +26,9 @@ const logout = ()=>{
   setUser(null);
 
 }
+const settings = ()=>{
+  Navigate('/settings');
+}
 
 const Navigate = useNavigate();
 const handleSignIn = ()=>{
@@ -46,9 +49,7 @@ const homePage = ()=>{
               
                 { user ? (
                   <div className="navItems">
-                  <button className="navButtons">{user.user}</button>
-                  <button className="navButtons" onClick={logout}>LogOut</button>
-                   <ProfilePop/>
+                   <ProfilePop user={user} logout ={logout} settings ={settings}/>
                   </div>
                   ) : (
                   <div className="navItems">

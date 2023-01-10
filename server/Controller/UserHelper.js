@@ -24,8 +24,9 @@ export const userSignup = async (req,res)=>{
 
         const User = await USER.create({firstname,lastname,email,phonenumber,password});
         const user = User.firstname + " " + User.lastname;
+        const Email = User.email;
         const Token = jwt.sign({email:user.email,id:user._id},JWT_SECRET_KEY,{expiresIn:"1h"});
-        res.json({user,Token});
+        res.json({user,Token,Email});
     } catch (error) {
         console.log(error);
         
@@ -42,8 +43,9 @@ export const userSignin = async (req,res)=>{
           const iscorrectPassword =   await bcrypt.compare(password,User.password);
           if(iscorrectPassword){
             const user = User.firstname + " " + User.lastname;
+            const Email = User.email;
             const Token = jwt.sign({email:User.email,id:User._id},JWT_SECRET_KEY,{expiresIn:"1h"});
-            res.json({user,Token});
+            res.json({user,Token,Email});
           }
         }
     } catch(error) {
