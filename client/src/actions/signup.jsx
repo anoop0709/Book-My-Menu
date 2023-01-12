@@ -1,4 +1,5 @@
-import * as api from "../Api/index"
+import * as api from "../Api/Userapi"
+import * as Api from "../Api/Adminapi"
 
 
 export const signUp = (formData,Navigate) => async (dispatch)=>{
@@ -23,3 +24,25 @@ export const logIn  = (formData,Navigate) => async (dispatch)=>{
     }
 }
 
+export const adminLogin = (formData,Navigate) => async (dispatch)=>{
+    try {
+        const {data} = await Api.AdminLogin(formData);
+        console.log(data);
+        dispatch({type:'ADMINAUTH',payload:data});
+        Navigate("/adminhome");
+    } catch (error) {
+        console.log(error.message);
+        dispatch({type:'ADMINLOGINERROR',payload:error.message})
+    }
+}
+
+export const adminsignUp = (formData,Navigate) => async (dispatch)=>{
+    try {
+        const {data} = await Api.AdminSignup(formData);
+        dispatch({type:'ADMINAUTH',payload:data});
+        Navigate('/')
+    } catch (error) {
+        console.log(error);
+        // dispatch({type:'ADMINLOGINERROR',payload:error.message})
+    }
+}

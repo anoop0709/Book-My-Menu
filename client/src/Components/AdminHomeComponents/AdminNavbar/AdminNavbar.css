@@ -1,0 +1,36 @@
+.container{
+    position: absolute;
+    right:20px;
+    top:50px;
+    width: 500px;
+}
+.wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navItems{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navbtns{
+    width: 100%;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    gap: 20px;
+
+}
+.navButtons{
+    border: none;
+    background-color: #4158D0;
+    background: #000000;
+    color:white;
+    padding: 5px;
+    margin-left: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}

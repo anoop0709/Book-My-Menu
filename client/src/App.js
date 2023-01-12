@@ -2,7 +2,9 @@ import {BrowserRouter,Routes,Route} from "react-router-dom";
 import Home from "./Pages/Home/Home"
 import Login from "./Pages/Login/Login";
 import Signin from "./Pages/SignIn/Signin";
+import AdminLogin from "./Pages/AdminLogin/AdminLogin";
 import AdminHome from "./Pages/AdminHome/AdminHome"
+import AdminProtectedPages from "./AdminProtectedPages";
 
 function App() {
   return (
@@ -12,7 +14,11 @@ function App() {
         <Route exact path = "/" element={<Home/>}/>
         <Route path = "/signin" element={<Signin/>}/>
         <Route path = "/login" element={<Login/>}/>
-        <Route path = "/admin" element={<AdminHome/>}/>
+        <Route path = "/admin" element={<AdminLogin/>}/>
+        <Route element={<AdminProtectedPages/>}>
+        <Route path = "/adminhome" element={<AdminHome/>}/>
+        </Route>
+        
       </Routes>
       </BrowserRouter>
     </div>

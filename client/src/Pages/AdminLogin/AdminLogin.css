@@ -1,0 +1,7 @@
+.h1txt{
+    position: absolute;
+   left: 50%;
+   transform:translateX(-50%);
+   top: 100px;
+
+}

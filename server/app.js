@@ -17,12 +17,10 @@ import session from 'express-session';
 const app = express();
 app.use(express.json())
 dotenv.config();
-const {MONGO_DB} = process.env;
+const { MONGO_DB } = process.env;
 app.use(cors());
-app.use(bodyparser.json({limit:"30mb",extended:"true"}))
-app.use(bodyparser.urlencoded({limit:"30mb",extended:"true"}));
 app.use(express.json())
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(noCache());
 app.use(fileupload());
@@ -30,16 +28,27 @@ app.use(fileupload());
 
 
 console.log(MONGO_DB);
-mongoose.connect(MONGO_DB).then((result)=>{
+mongoose.connect(MONGO_DB).then((result) => {
     app.listen(3001);
     console.log("db connected")
-    }).catch((err)=>{
+}).catch((err) => {
     console.log(err.message);
-    })
-    mongoose.set('strictQuery',false);
+})
+mongoose.set('strictQuery', false);
 
 
 
-    app.use('/',User);
-    app.use('/admin',Admin);
-    app.use('/vendor',Vendor);
+app.use('/', User);
+app.use('/admin', Admin);
+app.use('/vendor', Vendor);
+
+const errorHandler = (err, req, res, next) => {
+    console.log(23456765467876);
+    const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
+    res.status(statusCode);
+    res.json({
+        message: err.message,
+        stack: err.stack,
+    });
+}
+app.use(errorHandler);

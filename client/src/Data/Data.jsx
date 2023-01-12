@@ -45,7 +45,7 @@ import {
   // Analytics Cards Data
   export const cardsData = [
     {
-      title: "Sales",
+      title: "Total Vendors",
       color: {
         backGround: "linear-gradient(180deg, #bb67ff 0%, #c484f3 100%)",
         boxShadow: "0px 10px 20px 0px #e0c6f5",
@@ -55,7 +55,7 @@ import {
       png: UilUsdSquare,
       series: [
         {
-          name: "Sales",
+          name: "Total Vendors",
           data: [31, 40, 28, 51, 42, 109, 100],
         },
       ],
@@ -77,7 +77,7 @@ import {
       ],
     },
     {
-      title: "Expenses",
+      title: "Total Users",
       color: {
         backGround:
           "linear-gradient(rgb(248, 212, 154) -146.42%, rgb(255 202 113) -46.42%)",
@@ -88,7 +88,7 @@ import {
       png: UilClipboardAlt,
       series: [
         {
-          name: "Expenses",
+          name: "Total Users",
           data: [10, 25, 15, 30, 12, 15, 20],
         },
       ],

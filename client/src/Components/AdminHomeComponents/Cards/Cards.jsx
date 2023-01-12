@@ -6,7 +6,7 @@ function Cards() {
   return (
     <div className="Cards">
       {cardsData.map((card,id)=>{
-           {console.log(card.png)}
+          
           return(
              
               <div className="parentContainer" key={id}>

@@ -2,10 +2,13 @@
 import axios from "axios";
 const API = axios.create({baseURL:"http://localhost:3001"});
 API.interceptors.request.use((req)=>{
+    //const user = localStorage.getItem('profile')
+    
     if(localStorage.getItem('profile')){
-        req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).Token}`;
-        
+        req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).Token}`
     }
+        
+    
     return req;
 
 })
@@ -13,3 +16,5 @@ API.interceptors.request.use((req)=>{
 
 export const userLogin = (FormData)=> API.post('/signin',FormData);
 export const userSignup = (FormData)=> API.post('/signup',FormData);
+
+

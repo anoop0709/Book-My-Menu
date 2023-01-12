@@ -48,11 +48,11 @@ const homePage = ()=>{
               {/* <img src={logo} className="logo" onClick ={homePage} alt="Book My Menu"/> */}
               
                 { user ? (
-                  <div className="navItems">
+                  <div className="navItem">
                    <ProfilePop user={user} logout ={logout} settings ={settings}/>
                   </div>
                   ) : (
-                  <div className="navItems">
+                  <div className="navItem">
                   <button className="navButtons" onClick={handleSignIn}>Register</button>
                   <button className="navButtons" onClick={handleLogin}>Login</button>
                   </div>

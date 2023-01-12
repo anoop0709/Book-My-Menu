@@ -6,7 +6,7 @@ import {motion} from "framer-motion"
 
 function CompactCard({props,setExpanded}) {
   const Png = props.png;
-  console.log(Png);
+ 
     return(
       <motion.div className="CompactCard" 
       style={{

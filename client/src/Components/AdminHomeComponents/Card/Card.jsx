@@ -6,7 +6,7 @@ import ExpandedCard from "../ExpandedCard/ExpandedCard"
 
 
 function Card(props) {
-  console.log(props);
+
 const [expanded,setExpanded] = useState(false)
 
   return (

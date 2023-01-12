@@ -12,9 +12,9 @@ function Home() {
     <div>
       <div className="fixedheader">
         <Navbar/>
-        <Header/>
+        
       </div>
-   
+    <Header/>
     <HowitWork/>
     <RestaurantAndEvents/>
     <Popular/>
