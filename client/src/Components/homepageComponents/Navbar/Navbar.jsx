@@ -1,20 +1,17 @@
 import "./Navbar.css"
-import { useNavigate,useLocation, Link } from "react-router-dom"
+import { useNavigate,useLocation } from "react-router-dom"
 import { useEffect, useState } from "react";
 import {useDispatch} from "react-redux";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
-import { faGear } from "@fortawesome/free-solid-svg-icons";
 import ProfilePop from "../profilepopup/ProfilePop";
 
 function Navbar() {
  const [user,setUser]= useState(JSON.parse(localStorage.getItem('profile')));
 const Location = useLocation();
 const dispatch = useDispatch();
-
+const Navigate = useNavigate();
 useEffect(()=>{
-  let token;
-  if(user){
-   token = user.token;
+ 
+  if(user?.Token){
    Navigate('/')
   }
   setUser(JSON.parse(localStorage.getItem('profile')))
@@ -30,7 +27,7 @@ const settings = ()=>{
   Navigate('/settings');
 }
 
-const Navigate = useNavigate();
+
 const handleSignIn = ()=>{
   Navigate('/signin')
 }

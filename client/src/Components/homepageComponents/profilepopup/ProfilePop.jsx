@@ -17,7 +17,7 @@ function ProfilePop(props) {
           <div className="card">
             <div className="card-body">
               <div id="circle-avatar" className="text-center mx-auto mb-4">
-                <span>{props.user.user[0]}</span>
+                {/* <span>{props?.user.user[0]}</span> */}
               </div>
               <div className="textContainer">
                   <div className="textWrapper">

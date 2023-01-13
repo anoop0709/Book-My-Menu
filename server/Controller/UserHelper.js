@@ -1,56 +1,60 @@
-import USER  from "../Models/UserSchema.js"
-import bcrypt from  "bcrypt";
+import USER from "../Models/UserSchema.js"
+import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 dotenv.config();
 const { JWT_SECRET_KEY } = process.env;
 
 
-export const homePage = async (req,res)=>{
-try {
-    res.send("hello")
-} catch (err) {
-    console.log(err);
-}
-}
-
-export const userSignup = async (req,res)=>{
+export const homePage = async (req, res) => {
     try {
-        let {firstname,lastname,email,phonenumber,password} = req.body;
+        res.send("hello")
+    } catch (err) {
+        console.log(err);
+    }
+}
 
-        const existingUser = await USER.findOne({email});
-        if(existingUser) res.json("User already Registered");
-        password = await bcrypt.hash(password,10);
+export const userSignup = async (req, res) => {
+    try {
+        let { firstname, lastname, email, phonenumber, password } = req.body;
 
-        const User = await USER.create({firstname,lastname,email,phonenumber,password});
+        const existingUser = await USER.findOne({ email });
+        if (existingUser) throw "User already Registered";
+        password = await bcrypt.hash(password, 10);
+
+        const User = await USER.create({ firstname, lastname, email, phonenumber, password });
         const user = User.firstname + " " + User.lastname;
         const Email = User.email;
-        const Token = jwt.sign({email:user.email,id:user._id},JWT_SECRET_KEY,{expiresIn:"1h"});
-        res.json({user,Token,Email});
+        const Token = jwt.sign({ email: user.email, id: user._id }, JWT_SECRET_KEY, { expiresIn: "1h" });
+       return  res.json({ user, Token, Email });
     } catch (error) {
         console.log(error);
-        
+        return res.status(401).send(error)
     }
 }
 
-export const userSignin = async (req,res)=>{
+export const userSignin = async (req, res, next) => {
     try {
         console.log(req.body);
-        const {email,password} = req.body;
-        const User = await USER.findOne({email});
+        const { email, password } = req.body;
+        const User = await USER.findOne({ email });
         console.log(User);
-        if(User){
-          const iscorrectPassword =   await bcrypt.compare(password,User.password);
-          if(iscorrectPassword){
-            const user = User.firstname + " " + User.lastname;
-            const Email = User.email;
-            const Token = jwt.sign({email:User.email,id:User._id},JWT_SECRET_KEY,{expiresIn:"1h"});
-            res.json({user,Token,Email});
-          }
-        }
-    } catch(error) {
-        console.log(error);
-        res.status(500).json("something went wrong");
-    }
+            if (User) {
+                const iscorrectPassword = await bcrypt.compare(password, User.password);
+                    if (iscorrectPassword) {
+                        const user = User.firstname + " " + User.lastname;
+                        const Email = User.email;
+                        const Token = jwt.sign({ email: User.email, id: User._id }, JWT_SECRET_KEY, { expiresIn: "1h" });
+                      return  res.json({ user, Token, Email });
+                    }
+                    throw "Incorrect password"
+                    
+            }
+            throw "User not found"
+           
+    }catch (error) {
+    console.log(error);
+   return res.status(401).send(error)
+}
 }
 

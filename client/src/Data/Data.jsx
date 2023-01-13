@@ -26,7 +26,7 @@ import {
     },
     {
       icon: UilClipboardAlt,
-      heading: "Orders",
+      heading: "Bookings",
     },
     {
       icon: UilUsersAlt,
@@ -34,7 +34,7 @@ import {
     },
     {
       icon: UilPackage,
-      heading: 'Products'
+      heading: 'Vendors'
     },
     {
       icon: UilChart,

@@ -17,10 +17,12 @@ export const logIn  = (formData,Navigate) => async (dispatch)=>{
     try{
         console.log(formData);
         const {data} = await api.userLogin(formData);
+        console.log(data);
         dispatch({type:'AUTH',payload:data});
-        Navigate('/')
-    }catch(err){
-        console.log(err);
+        if(data) Navigate('/');
+    }catch(error){
+       console.log(error);
+        dispatch({type:'USERLOGINERROR',payload:error})
     }
 }
 
@@ -39,10 +41,11 @@ export const adminLogin = (formData,Navigate) => async (dispatch)=>{
 export const adminsignUp = (formData,Navigate) => async (dispatch)=>{
     try {
         const {data} = await Api.AdminSignup(formData);
+        console.log(data);
         dispatch({type:'ADMINAUTH',payload:data});
-        Navigate('/')
+        Navigate('/adminhome')
     } catch (error) {
         console.log(error);
-        // dispatch({type:'ADMINLOGINERROR',payload:error.message})
+        dispatch({type:'ADMINLOGINERROR',payload:error.message})
     }
 }

@@ -5,10 +5,9 @@ export const AdminAuthReducer = (state ={authData:null,error:null},action)=>{
             localStorage.setItem('admin',JSON.stringify({...action.payload}))
             return {...state,authData:action.payload};
         case "ADMINLOGOUT":
-            localStorage.clear();
+            localStorage.removeItem('admin');
             return {...state,authData:null};
         case "ADMINLOGINERROR":
-            
             return {...state,error:action.payload}
 
         default:

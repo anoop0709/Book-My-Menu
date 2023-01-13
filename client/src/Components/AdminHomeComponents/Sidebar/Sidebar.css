@@ -1,11 +1,11 @@
 .sidebar {
     display: flex;
     flex-direction: column;
-    position: relative;
-    padding-top: 4rem;
+    position: fixed;
+    padding-top: 1rem;
     transition: all 300ms ease;
     height: 100vh;
-    
+    z-index: 20;
 }
   /* logo */
   .bars{
@@ -42,8 +42,10 @@
     margin-left: 2rem;
     position: relative;
     transition: all 300ms ease;
-    border-radius: 0.7rem;
+    border-radius: 0.4rem;
     font-size: 14px;
+    width: max-content;
+    padding-right: 20px;
   }
   
   .menuItem:hover {

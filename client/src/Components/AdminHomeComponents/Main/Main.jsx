@@ -9,6 +9,8 @@ function Main() {
        <h1>Dashboard</h1>
        <Cards/>
        <Popular/>
+       <Popular/>
+       <Popular/>
    </div>
   )
 }
