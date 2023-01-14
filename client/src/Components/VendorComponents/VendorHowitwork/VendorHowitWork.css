@@ -1,0 +1,44 @@
+.HowItContainer{
+    background-color: rgb(238, 238, 238);
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+.HowItwrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+   
+}
+.HowIt{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   background-color: white;
+   gap: 10px;
+   padding: 50px;
+   border-radius: 10px;
+   -webkit-box-shadow:0px 1px 1px #929292;
+   -moz-box-shadow:0px 1px 1px #929292;
+    box-shadow:0px 2px 2px #929292;
+    border: none;
+}
+.HowIt>.icon{
+    width: 100px;
+    height: 200px;
+    color: #da5442;
+}
+.HowIt>h2 h3{
+    letter-spacing: 1.5px;
+    font-weight: 300;
+}
+.HowIt>p{
+    color:rgb(185, 184, 184);
+    font-size: medium;
+    font-weight: 100;
+}

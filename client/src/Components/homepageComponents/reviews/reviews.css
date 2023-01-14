@@ -53,7 +53,7 @@
 .reviewCard>img{
     width:200px;
     height: 200px;
-    object-fit:fill;
+    object-fit:cover;
     border-radius: 5px;
 }
 .reviewText{
@@ -62,7 +62,7 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
-    gap: 20px;
+    gap: 10px;
     color: #da5445;
 }
 .reviewText>h3{
@@ -75,6 +75,7 @@
 }
 .reviewStar>span>.faicon{
     color:#05661a;
+    font-size: small;
 }
 
 

@@ -1,6 +1,6 @@
 import "./Signin.css"
 import Navbar from '../../../Components/homepageComponents/Navbar/Navbar';
-import Person1 from '../../../images/person1.webp'
+import Person2 from '../../../images/person2.jpeg'
 import React, { useState } from "react";
 import Inputfield from "../../../Components/signupcomponent/inputComponent/Inputfield";
 import { useNavigate } from "react-router-dom";
@@ -108,7 +108,7 @@ function Signin() {
                     <div className="signinbox">
 
                         <div className="imgDiv">
-                            <img src={Person1} alt="" />
+                            <img src={Person2} alt="" />
                         </div>
                         <div className="signInform">
                             <form onSubmit={handleSubmit}>

@@ -1,0 +1,45 @@
+.VendorHeroContainer{
+    height: 500px;
+    position: relative;
+}
+.VendorHeroWrapper{
+    height: 500px;
+}
+.imgDiv{
+height: 500px;
+}
+.imgdiv>img{
+    height: 500px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.HeroText{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    gap: 30px;
+    bottom: 4rem;
+    right: 2rem;
+}
+.HeroHeading{
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #097a54;
+}
+span{
+    font-size: 1.5rem;
+    color: #da5442;
+    font-weight: 500;
+}
+.HeroText>button{
+    padding: 5px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
