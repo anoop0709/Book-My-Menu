@@ -1,11 +1,13 @@
 .HowItContainer{
-    background-color: rgb(238, 238, 238);
-    height: 500px;
+    background-color: rgb(246, 246, 246);
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
     margin-top: 100px;
     margin-bottom: 100px;
+    gap: 30px;
+    padding: 50px;
 }
 .HowItwrapper{
     display: flex;
@@ -40,5 +42,5 @@
 .HowIt>p{
     color:rgb(185, 184, 184);
     font-size: medium;
-    font-weight: 100;
+    font-weight: 500;
 }

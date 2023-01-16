@@ -6,7 +6,7 @@ import Popular from '../../homepageComponents/PopularRestaurant/Popular'
 function Main() {
   return (
    <div className="MainDash">
-       <h1>Dashboard</h1>
+       
        <Cards/>
        <Popular/>
        <Popular/>

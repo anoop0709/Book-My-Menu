@@ -7,6 +7,7 @@ import AdminHome from "./Pages/admin/AdminHome/AdminHome"
 import AdminProtectedPages from "./AdminProtectedPages";
 import CreateAdmin from "./Pages/admin/CreateAdmin/CreateAdmin"
 import Vendorhome from "./Pages/Vendors/Vendorhome/Vendorhome";
+import VendorSignUp from "./Pages/Vendors/VendorSignUp/VendorSignUp";
 
 function App() {
   return (
@@ -29,6 +30,8 @@ function App() {
 
         {/* vendor routes */}
         <Route path="/vendor" element={<Vendorhome/>}/>
+        <Route path="/vendorSignup" element={<VendorSignUp/>}/>
+        
         
       </Routes>
       </BrowserRouter>

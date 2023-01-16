@@ -15,7 +15,7 @@ function Footer() {
               <div className="footerList">
                   <ul>
                       <li className="listItem">Bussiness with us</li>
-                      <li className="listItem">Carrier</li>
+                      <li className="listItem">Careers</li>
                       <li className="listItem">Investors</li>
                   </ul>
               </div>

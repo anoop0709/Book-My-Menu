@@ -6,6 +6,7 @@
     transition: all 300ms ease;
     height: 100vh;
     z-index: 20;
+    width: min-content;
 }
   /* logo */
   .bars{
@@ -22,7 +23,7 @@
     flex-direction: column;
     height: 4%;
   }
-  .logo > span {
+  .logo>span {
     color: var(--pink);
   }
   
@@ -33,6 +34,7 @@
     display: flex;
     flex-direction: column;
     gap: 4rem;
+    width: min-content;
   }
   .menuItem {
     display: flex;
@@ -43,9 +45,13 @@
     position: relative;
     transition: all 300ms ease;
     border-radius: 0.4rem;
-    font-size: 14px;
+    font-size: 10px;
     width: max-content;
-    padding-right: 20px;
+    padding-right: 30px;
+  }
+  .menuItem>div>span{
+    font-size: medium;
+   margin-left: 20px;
   }
   
   .menuItem:hover {
@@ -56,7 +62,7 @@
   
   .active {
     background: var(--activeItem);
-    margin-left: 0;
+    margin-left: 1px;
     
   }
   .active::before {

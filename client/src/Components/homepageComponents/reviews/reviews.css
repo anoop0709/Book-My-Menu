@@ -1,8 +1,4 @@
-*{
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-    
-}
+
 
 .reviewContainer{
     width: 100%;
@@ -10,9 +6,9 @@
     justify-content:center;
     align-items: center;
     flex-wrap: wrap;
-    margin-top: 100px;
-    gap: 50px;
-    margin-bottom: 50px;
+    margin-top: 50px;
+    padding: 100px;
+    background: rgb(236, 235, 235);
 }
 .heading{
     width: 100%;
@@ -24,13 +20,13 @@
 }
 .reviewWrapper{
     width: 100%;
-    max-width: 1300px;
+    max-width: 1060px;
     height: 300px;
     display: flex;
     justify-content:space-between;
     padding: 5px;
     align-items: center;
-    gap: 20px;
+    gap: 8px;
     overflow-x: scroll;
     scroll-behavior: smooth;
     margin-bottom: 10px;
@@ -39,7 +35,7 @@
     display: none;
 }
 .reviewCard{
-    width: 600px;
+    width: 560px;
     height: 210px;
     display: flex;
     justify-content: center;
@@ -48,6 +44,7 @@
     padding: 5px;
     gap: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background: white;
 
 }
 .reviewCard>img{
@@ -72,10 +69,12 @@
     display: flex;
     justify-content:space-between;
     align-items: center;
+   
 }
 .reviewStar>span>.faicon{
     color:#05661a;
     font-size: small;
+   
 }
 
 

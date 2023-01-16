@@ -9,8 +9,8 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: rgb(68, 67, 67);
-    padding: 10px;
+    background-color: rgb(17, 15, 15);
+    padding: 50px;
     gap: 20px;
 }
 .footerContainer>.copyright{

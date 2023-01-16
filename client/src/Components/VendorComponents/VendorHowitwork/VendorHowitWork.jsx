@@ -6,6 +6,7 @@ import "./VendorHowitWork.css";
 function VendorHowitWork() {
   return (
     <div className="HowItContainer">
+        <h1>How it's Work ?</h1>
         <div className="HowItwrapper">
             <div className="HowIt">
                 <FontAwesomeIcon icon={faUser} className="icon"/>

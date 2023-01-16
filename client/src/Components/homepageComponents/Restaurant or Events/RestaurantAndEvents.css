@@ -11,10 +11,10 @@
     flex-direction: column;
     flex-wrap: wrap;
     gap: 50px;
-    margin-top: 100px;
+    margin-top: 50px;
     position: relative;
     background: rgb(236, 235, 235);
-    padding: 20px;
+    padding: 80px;
 }
 .heading{
     width: 100%;

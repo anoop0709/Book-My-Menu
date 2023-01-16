@@ -1,0 +1,57 @@
+.WhyusContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    padding: 50px;
+}
+.WhyText{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+.WhyText>p{
+   color:gray;
+   width: 65%;
+   font-size:18px;
+   line-height: 30px;
+}
+.WhyusWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+.WhyCard{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px;
+    border:none;
+    border-radius: 5px;
+    -webkit-box-shadow:0px 1px 1px #929292;
+    -moz-box-shadow:0px 1px 1px #929292;
+     box-shadow:0px 1px 1px #929292;
+
+}
+.WhyIcon{
+    font-size: 35px;
+    color: #da5442;
+}
+.text{
+    gap: 20px;
+    padding: 5px;
+}
+.text>h3{
+    color: #da5442;
+    padding-bottom: 10px;
+}
+.text>p{
+    color:gray
+}
