@@ -1,0 +1,34 @@
+.successContainer{
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.sucessWrapper{
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+gap: 20px;
+padding: 20px;
+}
+.success{
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 30px;
+padding: 30px;
+}
+.sucessWrapper>.icon{
+    width: 60px;
+    height: 60px;
+    color:green;
+
+}
+.sucessWrapper>h1{
+font-weight:bolder;
+color:green;
+}
+.sucessWrapper>p{
+font-size: 18px;
+color:gray
+}

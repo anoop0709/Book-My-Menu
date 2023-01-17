@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import Inputfield from '../../../signupcomponent/inputComponent/Inputfield'
+import validator from "validator"
 
-function RestaurantInfo({formData,setFormData}) {
+function RestaurantInfo({ formData, setFormData,page,setPage }) {
 
-   
+    const [err, setErr] = useState(false);
+    const { restaurantname, address, location, typeofcusine, seatingcapacity, openinghours,closinghours, images } = { ...formData }
 
     const inputs = [
         {
@@ -15,8 +17,8 @@ function RestaurantInfo({formData,setFormData}) {
             label: "Restaurant Name",
             required: "true",
             pattern: "^[A-Za-z0-9_ ]*{3,16}$",
-            value:formData.restaurantname
-            
+            value: formData.restaurantname
+
         },
         {
             id: "8",
@@ -27,8 +29,8 @@ function RestaurantInfo({formData,setFormData}) {
             label: "Address Name",
             required: "true",
             pattern: "^[A-Za-z0-9_ ]*{3,16}$",
-            value:formData.address
-            
+            value: formData.address
+
         },
         {
             id: "9",
@@ -39,8 +41,8 @@ function RestaurantInfo({formData,setFormData}) {
             label: "Location",
             required: "true",
             pattern: "^[A-Za-z0-9_ ]*{3,16}$",
-            value:formData.location
-            
+            value: formData.location
+
         },
         {
             id: "10",
@@ -51,8 +53,8 @@ function RestaurantInfo({formData,setFormData}) {
             label: "Type of cusine",
             required: "true",
             pattern: "^[a-zA-Z0-9_ ]*{3,16}$",
-            value:formData.typeofcusine
-            
+            value: formData.typeofcusine
+
         },
         {
             id: "11",
@@ -63,8 +65,8 @@ function RestaurantInfo({formData,setFormData}) {
             label: "Seating capacity",
             required: "true",
             pattern: "^[0-9]{1}$",
-            value:formData.seatingcapacity
-            
+            value: formData.seatingcapacity
+
         },
         {
             id: "12",
@@ -74,34 +76,88 @@ function RestaurantInfo({formData,setFormData}) {
             errMessage: "Time required",
             label: "Opening Hours",
             required: "true",
-            value:formData.openinghours
-            
+            value: formData.openinghours
+
         },
         {
             id: "13",
+            type: "time",
+            name: "closinghours",
+            placeholder: "closing hours",
+            errMessage: "Time required",
+            label: "Closing Hours",
+            required: "true",
+            value: formData.closinghours
+
+        },
+        {
+            id: "14",
             type: "file",
-            name: "image",
+            name: "images",
             placeholder: "Upload Image",
             errMessage: "Please upload images",
             label: "Restaurant Images",
             required: "true",
-            value:formData.images,
-            multiple:"true"
+            value: formData.images,
+            multiple:"multiple"
         }
     ]
     const onChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
-       }
-  return (
-    <div className="signinbox">
-    <div className="signInform">
-        {inputs.map((input) => (
-            <Inputfield key={input.id} {...input} onChange={onChange}  />
-            
-        ))}   
-        </div>
-    </div>
-  )
+        if (inputs.map(input => input.errMessage)) {
+            setErr(true)
+            console.log("error");
+        } else {
+            setErr(false)
+        }
+    }
+
+
+    const Next = () => {
+        if (validator.isEmpty(restaurantname) ||
+            validator.isEmpty(address) ||
+            validator.isEmpty(location) ||
+            validator.isEmpty(typeofcusine) ||
+            validator.isEmpty(seatingcapacity) ||
+            validator.isEmpty(openinghours) ||
+            validator.isEmpty(closinghours) ||
+            validator.isEmpty(images)) {
+            console.log("empty");
+            return setErr(true)
+
+        } else {
+            setErr(false)
+            setPage(currpage => currpage + 1)
+
+        }
+
+
+    }
+    const Prev = () => {
+
+        setPage((currpage) => currpage - 1)
+
+    }
+    return (
+        <>
+            <div>{err &&
+                <p style={{ color: "red", marginBottom: "30px", textAlign: "center" }}>All fields must be filled with valid details</p>}
+            </div>
+            <div className="signinbox">
+                <div className="signInform">
+                    {inputs.map((input) => (
+                        <Inputfield key={input.id} {...input} onChange={onChange} />
+
+                    ))}
+
+                    <div className="formFooter">
+                    <button disabled={page == 0} onClick={Prev}>Prev</button>
+                        <button onClick={Next}>Next</button>
+                    </div>
+                </div>
+            </div>
+        </>
+    )
 }
 
 export default RestaurantInfo

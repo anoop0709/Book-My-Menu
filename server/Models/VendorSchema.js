@@ -1,11 +1,7 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 
-
-
-
-const userSchema = new mongoose.Schema({
-
+const vendorSchema = new mongoose.Schema({
     firstname:{
         type:String,
         required:[true,'please enter your  First name']
@@ -21,40 +17,27 @@ const userSchema = new mongoose.Schema({
         tolowecase:true,
        
     },
-    password:{
-        type:String,
-        required:[true,'please enter a password'],
-        minlength:[6,'min length is 6 character']
-    },
     phonenumber:{
         type:Number,
         required:[true,'please enter a phonenumber'],
     
         minlength:[10,'please enter a valid phonenumber']
     },
-    address:{
-        type:Array,
+    password:{
+        type:String,
+        required:[true,'please enter a password'],
+        minlength:[6,'min length is 6 character']
     },
     isBlocked:{
         type:Boolean,
         default:false
     },
-    isVerified:{
+    isApproved:{
         type:Boolean,
         default:false
-
     },
-    cart:{
-        type:Array
-    },
-    whislist:{
-        type:Array
+})
 
-    }
+const Vendor = mongoose.model('vendors',vendorSchema);
 
-}) 
-
-
-const User = mongoose.model('users',userSchema);
-
-export default User;
+export default Vendor;

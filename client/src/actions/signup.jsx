@@ -1,5 +1,6 @@
 import * as api from "../Api/Userapi"
 import * as Api from "../Api/Adminapi"
+import * as aPi from "../Api/Vendorapi"
 
 
 export const signUp = (formData,Navigate) => async (dispatch)=>{
@@ -47,5 +48,34 @@ export const adminsignUp = (formData,Navigate) => async (dispatch)=>{
     } catch (error) {
         console.log(error);
         dispatch({type:'ADMINLOGINERROR',payload:error.message})
+    }
+}
+
+
+export const vendorSignup = (formData,Navigate) => async (dispatch)=>{
+    try{
+        const {data} = await aPi.VendorSignUp(formData);
+        if(data){
+           setTimeout(()=>{
+               Navigate('/vendor')
+
+           },20000)
+        }
+     }catch(error){
+        console.log(error);
+        dispatch({type:'VENDORLOGINERROR',payload:error.message})
+    }
+}
+
+export const vendorLogin = (formData,Navigate) => async (dispatch)=>{
+    try {
+        const {data} = await aPi.VendorLogIn(formData);
+        if(data){
+            dispatch({type:"VENDORAUTH",payload:data})
+            Navigate('/vendor')
+        }
+    } catch (error) {
+        console.log(error);
+        dispatch({type:'VENDORLOGINERROR',payload:error.message})
     }
 }

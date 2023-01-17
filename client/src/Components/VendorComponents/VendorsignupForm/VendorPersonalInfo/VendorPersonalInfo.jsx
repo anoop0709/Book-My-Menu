@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Inputfield from '../../../signupcomponent/inputComponent/Inputfield'
+import validator from "validator";
+import "./VendorPersonalInfo.css"
 
-function VendorPersonalInfo({formData, setFormData,setErr}) {
-   
-    
+function VendorPersonalInfo({ formData, setFormData,setPage,}) {
+    const [err, setErr] = useState(false);
+    const { firstname, lastname, email, phonenumber, password, confirmpassword } = { ...formData }
     const inputs = [
         {
             id: "1",
@@ -13,9 +15,9 @@ function VendorPersonalInfo({formData, setFormData,setErr}) {
             errMessage: "First name should be 3-16 characters and shouldn't be used any special charcters",
             label: "First Name",
             required: "true",
-            pattern: "^[A-Za-z0-9]{3,16}$",
-            value:formData.firstname
-            
+            pattern: "^[A-Za-z0-9_]*{3,16}$",
+            value: formData.firstname
+
         },
         {
             id: "2",
@@ -25,9 +27,9 @@ function VendorPersonalInfo({formData, setFormData,setErr}) {
             errMessage: "Last name should be 3-16 characters and shouldn't be used any special characters",
             label: "Last Name",
             required: "true",
-            pattern: "^[A-Za-z0-9]{3,16}$",
-            value:formData.lastname
-          
+            pattern: "^[A-Za-z0-9_]*{3,16}$",
+            value: formData.lastname
+
         },
         {
             id: "3",
@@ -38,7 +40,7 @@ function VendorPersonalInfo({formData, setFormData,setErr}) {
             label: "Email",
             required: "true",
             pattern: "^[a-zA-Z0-9.! #$%&'*+/=? ^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$",
-            value:formData.email
+            value: formData.email
 
         },
         {
@@ -50,7 +52,7 @@ function VendorPersonalInfo({formData, setFormData,setErr}) {
             label: "Phone Number",
             required: "true",
             pattern: "^[0-9]{10,10}$",
-            value:formData.phonenumber,
+            value: formData.phonenumber,
         },
         {
             id: "5",
@@ -61,8 +63,8 @@ function VendorPersonalInfo({formData, setFormData,setErr}) {
             label: "Password",
             required: "true",
             pattern: "^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+*!=])(?=.*[0-9]).*$",
-            value:formData.password
-     
+            value: formData.password
+
 
         },
         {
@@ -74,36 +76,66 @@ function VendorPersonalInfo({formData, setFormData,setErr}) {
             label: "Confirm Password",
             required: "true",
             pattern: formData.password,
-            value:formData.confirmpassword
-  
+            value: formData.confirmpassword
+
         }
     ]
-   
+
 
     const onChange = (e) => {
-        
-            setFormData({ ...formData, [e.target.name]: e.target.value })
-            inputs.map((input=>{
-                input.errMessage && setErr(true)
-            }))
+
+        setFormData({ ...formData, [e.target.name]: e.target.value })
+        if (inputs.map(input => input.errMessage)) {
+            setErr(true)
+            console.log("error");
+        } else {
+            setErr(false)
         }
-        
-    
+
+    }
+    const Next = () => {
+        if (validator.isEmpty(firstname) ||
+            validator.isEmpty(lastname) ||
+            validator.isEmpty(email) ||
+            validator.isEmpty(phonenumber) ||
+            validator.isEmpty(password) ||
+            validator.isEmpty(confirmpassword)) {
+            console.log("empty");
+            return setErr(true)
+
+        } else {
+
+            setPage(currpage => currpage + 1)
+            setErr(false)
+        }
+
+
+    }
+
+
 
     return (
-  
-     
-        <div className="signinbox">
-        <div className="signInform">
-            {inputs.map((input) => (
-                <Inputfield key={input.id} {...input} onChange={onChange} />
-
-            ))}
+        <>
+            <div>{err &&
+             <p style={{ color: "red", marginBottom: "30px", textAlign: "center" }}>All fields must be filled with valid details</p>}
             </div>
-        </div>
-      
-      
-    
+            <div className="signinbox">
+
+                <div className="signInform">
+                    {inputs.map((input) => (
+                        <Inputfield key={input.id} {...input} onChange={onChange} />
+
+                    ))}
+                    <div className="formFooter">
+                        <button onClick={Next}>Next</button>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </>
+
     )
 }
 

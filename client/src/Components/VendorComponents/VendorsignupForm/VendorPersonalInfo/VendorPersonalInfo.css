@@ -1,0 +1,25 @@
+.formFooter{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 20px;
+    gap: 80px;
+    width: 100%;
+    
+ 
+}
+.formFooter>button{
+    padding: 10px 25px;
+    border:none;
+    border-radius: 5px;
+    background-color: black;
+    color:white;
+    font-size: 18px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
