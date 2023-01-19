@@ -1,0 +1,36 @@
+.Container{
+    top: 50%;
+    left: 50%;
+    width: 75%;
+    transform: translate(-50%,-50%);
+    z-index: 9;
+    position: relative;
+    margin-top: 150px;
+    
+    
+}
+.Btn{
+padding:5px 10px;
+border:none;
+border-radius: 5px;
+background-color: rgb(0, 0, 0);
+color:white;
+font-size: 16px;
+cursor: pointer;
+}
+.unblock{
+    background-color: red;
+    color:white
+}
+.inpsearch{
+    padding: 10px;
+    width: 25%;
+    margin: 20px;
+}
+.rdt_Table{
+    padding: 20px;
+    
+}
+.rdt_TableRow{
+    padding: 20px;
+}

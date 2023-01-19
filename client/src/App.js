@@ -8,6 +8,8 @@ import AdminProtectedPages from "./AdminProtectedPages";
 import CreateAdmin from "./Pages/admin/CreateAdmin/CreateAdmin"
 import Vendorhome from "./Pages/Vendors/Vendorhome/Vendorhome";
 import VendorSignUp from "./Pages/Vendors/VendorSignUp/VendorSignUp";
+import VendorLogin from "./Pages/Vendors/VendorLogin/VendorLogin";
+import Main from "./Pages/admin/DashBoard/Main";
 
 function App() {
   return (
@@ -25,12 +27,15 @@ function App() {
         <Route element={<AdminProtectedPages/>}>
         <Route path = "/adminhome" element={<AdminHome/>}/>
         <Route path="/createadmin" element={<CreateAdmin/>}/>
+        <Route path="/admindashboard" element={<Main/>}/>
+
         </Route>
 
 
         {/* vendor routes */}
         <Route path="/vendor" element={<Vendorhome/>}/>
         <Route path="/vendorSignup" element={<VendorSignUp/>}/>
+        <Route path="/vendorLogin" element={<VendorLogin/>}/>
         
         
       </Routes>

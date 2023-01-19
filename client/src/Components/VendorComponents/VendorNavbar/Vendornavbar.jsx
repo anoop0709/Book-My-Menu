@@ -14,6 +14,10 @@ function Vendornavbar() {
 
     }, [Location]);
 
+
+    const Vendorlogin = ()=>{
+        navigate('/vendorLogin')
+    }
     function Register() {
         console.log("clicked signup");
         navigate('/vendorSignup')
@@ -45,7 +49,7 @@ function Vendornavbar() {
                     ) : (
                         <div className="vendorNavBtns">
                             <button onClick={Register}>Register</button>
-                            <button>Log In</button>
+                            <button onClick={Vendorlogin}>Log In</button>
                         </div>
                     )}
                 </div>

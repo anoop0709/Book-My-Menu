@@ -1,7 +1,7 @@
 import React from 'react'
 import './Main.css'
-import Cards from '../Cards/Cards'
-import Popular from '../../homepageComponents/PopularRestaurant/Popular'
+import Cards from '../../../Components/AdminHomeComponents/Cards/Cards'
+import Popular from '../../../Components/homepageComponents/PopularRestaurant/Popular'
 
 function Main() {
   return (

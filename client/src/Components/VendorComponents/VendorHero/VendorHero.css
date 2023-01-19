@@ -30,7 +30,7 @@ height: 600px;
     font-weight: 700;
     color: #097a54;
 }
-span{
+.HeroText>span{
     font-size: 1.5rem;
     color: #da5442;
     font-weight: 500;

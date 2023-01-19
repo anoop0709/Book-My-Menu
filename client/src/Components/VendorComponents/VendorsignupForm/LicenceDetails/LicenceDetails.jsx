@@ -3,7 +3,7 @@ import Inputfield from '../../../signupcomponent/inputComponent/Inputfield'
 import validator from "validator"
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import {vendorSignup} from "../../../../actions/signup"
+import {vendorSignup} from "../../../../actions/VendorActions"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import "./LicenceDetails.css"

@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import Inputfield from "../../../Components/signupcomponent/inputComponent/Inputfield";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { signUp } from "../../../actions/signup";
+import { signUp } from "../../../actions/UserActions";
 
 
 

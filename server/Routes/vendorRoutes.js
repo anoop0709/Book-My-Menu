@@ -4,7 +4,7 @@ const router = express.Router();
 
 
 router.post('/vendorSignup',vendorRegister)
-router.post('vendorLogin',vendorLogin)
+router.post('/vendorLogin',vendorLogin)
 
 
 

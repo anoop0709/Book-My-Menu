@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import "./CreateAdmin.css";
 import { useNavigate } from "react-router-dom"
-import { adminsignUp } from "../../../actions/signup"
+import { adminsignUp } from "../../../actions/AdminActions"
 import { useDispatch } from 'react-redux';
 import Inputfield from "../../../Components/signupcomponent/inputComponent/Inputfield"
 import {useSelector} from "react-redux"

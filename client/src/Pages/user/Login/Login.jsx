@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import Inputfield from "../../../Components/signupcomponent/inputComponent/Inputfield";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { logIn } from '../../../actions/signup';
+import { logIn } from '../../../actions/UserActions';
 
 function Login() {
 
@@ -73,8 +73,8 @@ function Login() {
               </div>
 
                 {Error && (
-                  <div style={{ border: '2px solid red', borderRadius: '5px', marginBottom: '20px' }}>
-                    <p style={{ color: 'red', margin: '5px' }}>Wrong Email address or Password</p>
+                  <div style={{ marginBottom: '20px' }}>
+                    <p style={{ color: 'red', margin: '5px' }}>{Error}</p>
                   </div>
                 )}
                 {inputs.map((input) => (

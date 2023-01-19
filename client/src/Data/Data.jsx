@@ -35,11 +35,7 @@ import {
     {
       icon: UilPackage,
       heading: 'Vendors'
-    },
-    {
-      icon: UilChart,
-      heading: 'Analytics'
-    },
+    }
   ];
   
   // Analytics Cards Data

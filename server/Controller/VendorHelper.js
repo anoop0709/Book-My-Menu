@@ -24,7 +24,7 @@ export const vendorRegister = async (req, res) => {
 
     } catch (error) {
         console.log(error);
-        return res.status(401).send(error);
+        return res.status(401).send(error.message);
     }
 }
 
@@ -51,6 +51,6 @@ export const vendorLogin = async (req, res) => {
         throw new Error("Vendor not Registered")
     } catch (error) {
         console.log(error.message);
-        return res.status(401).send(error);
+        return res.status(401).send(error.message);
     }
 }

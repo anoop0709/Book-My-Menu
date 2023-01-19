@@ -3,15 +3,19 @@ import './Sidebar.css';
 import {SidebarData} from '../../../Data/Data';
 import {UilSignOutAlt} from "@iconscout/react-unicons"
 import { useNavigate } from 'react-router';
+import { useDispatch } from 'react-redux';
 
-function Sidebar() {
+function Sidebar({setPages}) {
+  
     const Navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const [selected,setSelected] = useState(0);
     
     const home = ()=>{
       Navigate('/adminhome')
     }
+  
   return (
     <div>
       <div className="sidebar">
@@ -25,7 +29,7 @@ function Sidebar() {
               {SidebarData.map((item,index)=>(
                    <div className={selected===index ? 'menuItem active' : 'menuItem'}
                     key={index} onClick={()=>setSelected(index)}>
-                   <div>
+                   <div onClick={()=>setPages(item.heading)}>
                      <item.icon/>
                      <span>{item.heading}</span>
                    </div>

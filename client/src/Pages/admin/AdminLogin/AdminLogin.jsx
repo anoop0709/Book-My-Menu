@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import Inputfield from "../../../Components/signupcomponent/inputComponent/Inputfield";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { adminLogin } from "../../../actions/signup"
+import { adminLogin } from "../../../actions/AdminActions"
 import { useSelector } from "react-redux";
 
 function AdminLogin() {
@@ -49,6 +49,7 @@ function AdminLogin() {
     e.preventDefault();
     dispatch(adminLogin(adminlogvalues, Navigate));
   }
+  
   console.log(adminlogvalues);
   return (
 
@@ -69,8 +70,8 @@ function AdminLogin() {
                 <h1>ADMIN LOGIN</h1>
               </div>
               {Error && (
-                <div style={{ border: '2px solid red', borderRadius: '5px', marginBottom: '20px' }}>
-                  <p style={{ color: 'red', margin: '5px' }}>Wrong Email address or Password</p>
+                <div style={{  marginBottom: '20px' }}>
+                  <p style={{ color: 'red', margin: '5px' }}>{Error}</p>
                 </div>
               )}
               <form onSubmit={handleSubmit}>
