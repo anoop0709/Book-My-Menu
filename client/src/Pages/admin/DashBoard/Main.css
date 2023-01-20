@@ -8,7 +8,7 @@
     z-index: 1;
     position: absolute;
     top: 20%;
-    left: 20%;
+    left: 15%;
    right: 50px;
 }
 .MainDash::-webkit-scrollbar{

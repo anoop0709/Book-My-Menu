@@ -9,11 +9,16 @@ function Sidebar({setPages}) {
   
     const Navigate = useNavigate();
     const dispatch = useDispatch();
+ 
 
     const [selected,setSelected] = useState(0);
     
     const home = ()=>{
       Navigate('/adminhome')
+    }
+    const logout = ()=>{
+      dispatch({type:"ADMINLOGOUT"})
+       Navigate("/admin");
     }
   
   return (
@@ -38,9 +43,9 @@ function Sidebar({setPages}) {
                 
               ))}
              <div className="menuItem">
-                <div>
+                <div onClick={logout}>
                   <UilSignOutAlt/>
-                 
+                  <span>Log Out</span>
                 </div>
                
             </div>

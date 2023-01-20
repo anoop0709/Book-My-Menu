@@ -3,7 +3,7 @@ import {
     UilClipboardAlt,
     UilUsersAlt,
     UilPackage,
-    UilChart,
+    UilKeyholeCircle
    
   } from "@iconscout/react-unicons";
   
@@ -35,6 +35,10 @@ import {
     {
       icon: UilPackage,
       heading: 'Vendors'
+    },
+    {
+      icon: UilKeyholeCircle,
+      heading: 'Approve Vendors'
     }
   ];
   

@@ -39,9 +39,9 @@
   .menuItem {
     display: flex;
     align-items: center;
-    gap: 3rem;
+    gap: 1rem;
     height: 2.5rem;
-    margin-left: 2rem;
+    margin-left: 1.5rem;
     position: relative;
     transition: all 300ms ease;
     border-radius: 0.4rem;
@@ -50,8 +50,9 @@
     padding-right: 30px;
   }
   .menuItem>div>span{
-    font-size: medium;
-   margin-left: 20px;
+    font-size: 16px;
+    font-weight: bold;
+   margin-left: 10px;
   }
   
   .menuItem:hover {

@@ -15,7 +15,7 @@ function RestaurantInfo({ formData, setFormData,page,setPage }) {
             placeholder: "Restaurant Name",
             errMessage: "Restaurant name should be 3-16 characters and shouldn't be used any special charcters",
             label: "Restaurant Name",
-            required: "true",
+            required: true,
             pattern: "^[A-Za-z0-9_ ]*{3,16}$",
             value: formData.restaurantname
 
@@ -27,7 +27,7 @@ function RestaurantInfo({ formData, setFormData,page,setPage }) {
             placeholder: "Address",
             errMessage: "Address should be 3-16 characters and shouldn't be used any special charcters",
             label: "Address Name",
-            required: "true",
+            required: true,
             pattern: "^[A-Za-z0-9_ ]*{3,16}$",
             value: formData.address
 
@@ -39,7 +39,7 @@ function RestaurantInfo({ formData, setFormData,page,setPage }) {
             placeholder: "Location",
             errMessage: "Location should be 3-16 characters and shouldn't be used any special charcters",
             label: "Location",
-            required: "true",
+            required: true,
             pattern: "^[A-Za-z0-9_ ]*{3,16}$",
             value: formData.location
 
@@ -51,7 +51,7 @@ function RestaurantInfo({ formData, setFormData,page,setPage }) {
             placeholder: "Type of cusine",
             errMessage: "Type of cusine should be 3-16 characters and shouldn't be used any special charcters",
             label: "Type of cusine",
-            required: "true",
+            required: true,
             pattern: "^[a-zA-Z0-9_ ]*{3,16}$",
             value: formData.typeofcusine
 
@@ -63,7 +63,7 @@ function RestaurantInfo({ formData, setFormData,page,setPage }) {
             placeholder: "Seating capacity",
             errMessage: "minimum 1 number required",
             label: "Seating capacity",
-            required: "true",
+            required: true,
             pattern: "^[0-9]{1}$",
             value: formData.seatingcapacity
 
@@ -75,7 +75,7 @@ function RestaurantInfo({ formData, setFormData,page,setPage }) {
             placeholder: "opening hours",
             errMessage: "Time required",
             label: "Opening Hours",
-            required: "true",
+            required: true,
             value: formData.openinghours
 
         },
@@ -86,7 +86,7 @@ function RestaurantInfo({ formData, setFormData,page,setPage }) {
             placeholder: "closing hours",
             errMessage: "Time required",
             label: "Closing Hours",
-            required: "true",
+            required: true,
             value: formData.closinghours
 
         },
@@ -97,13 +97,16 @@ function RestaurantInfo({ formData, setFormData,page,setPage }) {
             placeholder: "Upload Image",
             errMessage: "Please upload images",
             label: "Restaurant Images",
-            required: "true",
+            required: true,
             value: formData.images,
             multiple:"multiple"
         }
     ]
     const onChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value })
+
+       e.target.type === "file" ?  setFormData({ ...formData, [e.target.name]: e.target.files }) :
+           setFormData({ ...formData, [e.target.name]: e.target.value })
+       
         if (inputs.map(input => input.errMessage)) {
             setErr(true)
             console.log("error");
@@ -146,7 +149,8 @@ function RestaurantInfo({ formData, setFormData,page,setPage }) {
             <div className="signinbox">
                 <div className="signInform">
                     {inputs.map((input) => (
-                        <Inputfield key={input.id} {...input} onChange={onChange} />
+                      
+                        <Inputfield key={input.id}  {...input} onChange={onChange} />
 
                     ))}
 

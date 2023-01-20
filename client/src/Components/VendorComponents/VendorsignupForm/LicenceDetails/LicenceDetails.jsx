@@ -89,7 +89,7 @@ function LicenceDetails({ formData, setFormData, setPage, page }) {
         {submited ? (
             
            <div className="successContainer">
-               <div className="sucessWrapper">
+               <div className="successWrapper">
                    <div className="success">
                    <FontAwesomeIcon icon={faCheckCircle} className="icon"/>
                    <h1>Success</h1>

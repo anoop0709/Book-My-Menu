@@ -3,7 +3,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 }
-.sucessWrapper{
+.successWrapper{
 display: flex;
 justify-content: center;
 align-items: center;
@@ -18,17 +18,17 @@ justify-content: center;
 gap: 30px;
 padding: 30px;
 }
-.sucessWrapper>.icon{
+.success>.icon{
     width: 60px;
     height: 60px;
     color:green;
 
 }
-.sucessWrapper>h1{
+.success>h1{
 font-weight:bolder;
 color:green;
 }
-.sucessWrapper>p{
+.successWrapper>p{
 font-size: 18px;
 color:gray
 }

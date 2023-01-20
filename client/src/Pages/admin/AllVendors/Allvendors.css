@@ -1,0 +1,11 @@
+.approved{
+    background-color: green;
+    color: white;
+}
+.approvebtn{
+    display: flex;
+    justify-content:flex-end;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+}

@@ -5,21 +5,27 @@ import Main from '../DashBoard/Main'
 import Sidebar from '../../../Components/AdminHomeComponents/Sidebar/Sidebar'
 import './AdminHome.css'
 import Allusers from '../AllUsers/Allusers'
-import { useDispatch, useSelector } from 'react-redux'
-import {getAllusers} from "../../../actions/AdminActions"
+import { useDispatch} from 'react-redux'
+import {getAllusers,getAllvendors,newVendors,allrestaurant} from "../../../actions/AdminActions"
 import Allvendors from '../AllVendors/Allvendors'
+import ApproveVendors from '../ApproveVendors/ApproveVendors'
 function AdminHome() {
 
 const dispatch = useDispatch();
   const [pages,setPages] = useState("Dashboard")
   console.log(pages);
   const admin = JSON.parse(localStorage.getItem('admin'))
-  const Navigate = useNavigate()
+  const Navigate = useNavigate();
+
+
   useEffect(() => {
     if (!admin?.Token) {
       Navigate('/admin')
     }
       dispatch(getAllusers())
+      dispatch(getAllvendors())
+      dispatch(newVendors())
+      dispatch(allrestaurant())
 
   },[])
   return (
@@ -31,6 +37,7 @@ const dispatch = useDispatch();
         {pages == "Dashboard" && <Main/>}
         {pages == "Customers" && <Allusers/>}
         {pages == "Vendors" && <Allvendors/>}
+        {pages == "Approve Vendors" && <ApproveVendors/>}
       </div>
     </div>
   )

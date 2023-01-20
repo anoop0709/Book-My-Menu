@@ -8,8 +8,8 @@ import WhyUs from '../../../Components/VendorComponents/Vendorwhyus/WhyUs'
 
 function Vendorhome() {
   return (
-    <div className="vendorContainer">
-        <div className="vendorWrapper">
+    <div>
+        <div>
             <Vendornavbar/>
             <VendorHero/>
             <VendorDocumentSection/>
