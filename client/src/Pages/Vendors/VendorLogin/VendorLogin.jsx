@@ -1,6 +1,6 @@
 
 import Person2 from '../../../images/person2.jpeg'
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Inputfield from "../../../Components/signupcomponent/inputComponent/Inputfield";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -40,6 +40,8 @@ function VendorLogin() {
         pattern: "^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+*!=])(?=.*[0-9]).*$"
       }
     ]
+    
+
     const onChange = (e) => {
       setInputvalues({ ...inpvalues, [e.target.name]: e.target.value })
     }
@@ -73,8 +75,8 @@ function VendorLogin() {
                 </div>
   
                   {Error && (
-                    <div style={{ marginBottom: '20px' }}>
-                      <p style={{ color: 'red', margin: '5px' }}>{Error}</p>
+                    <div style={{ marginBottom: '20px', maxWidth:"350px"}}>
+                      <p style={{ color: 'red', margin: '5px',maxWidth:"350px" }}>{Error}</p>
                     </div>
                   )}
                   {inputs.map((input) => (

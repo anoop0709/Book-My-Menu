@@ -2,12 +2,13 @@ import * as aPi from "../Api/Vendorapi"
 
 export const vendorSignup = (formData,Navigate) => async (dispatch)=>{
     try{
+        console.log(formData);
         const {data} = await aPi.VendorSignUp(formData);
         if(data){
            setTimeout(()=>{
                Navigate('/vendor')
 
-           },20000)
+           },2000)
         }
      }catch(error){
         console.log(error);

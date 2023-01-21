@@ -1,29 +1,16 @@
 
 
+body #app {
+  border: 3px solid #e3e3e3;
+  border-radius: 4px;
+  padding: 20px;
+}
 
-
- .card {
+body #app .card {
   width: 250px;
-  position: absolute;
-  top: 50px;
-  right: 0px;
-  background-color:rgb(194, 60, 60);
-  padding: 10px;
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  
 }
-.card-body{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 20px;
-}
-  #circle-avatar {
+
+body #app #circle-avatar {
   display: -ms-grid;
   display: grid;
   width: 100px;
@@ -33,31 +20,8 @@
   place-items: center;
 }
 
-  #circle-avatar span {
+body #app #circle-avatar span {
   font-size: 48px;
   font-weight: bold;
-}
- .list-group {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-
-
-}
-.textContainer{
- display: flex;
- justify-content: center;
- align-items: center;
-
-
-}
-.textWrapper{
-  display: flex;
- justify-content: center;
- align-items: center;
- flex-direction: column;
- gap: 10px;
 }
 /*# sourceMappingURL=profilePop.css.map */

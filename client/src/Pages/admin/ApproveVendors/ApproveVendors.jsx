@@ -7,11 +7,13 @@ function ApproveVendors() {
     const newVendors = useSelector((state) => { return state.NewVendors.authData })
     const Restaurants = useSelector((state) => { return state.AllRestaurants.authData })
     const dispatch = useDispatch();
+    console.log(newVendors.length);
 
     return (
         <div className="vendorContainer">
             <div className="vendorWrapper">
-                {
+                {  newVendors.length != 0 ? (
+                
                     newVendors.map((newVendor) => (
 
                         <div className="vendorRow" key={newVendor._id}>
@@ -115,7 +117,14 @@ function ApproveVendors() {
 
                         </div>
                     ))
-                }
+                ):(
+                    <div className="vendorText">
+                        <h1>No documents to Show .......</h1>
+
+                    </div>
+                
+                )
+            }
             </div>
 
         </div>

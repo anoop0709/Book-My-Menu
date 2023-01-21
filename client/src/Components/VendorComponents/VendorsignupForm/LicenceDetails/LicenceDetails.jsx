@@ -2,13 +2,14 @@ import React, { useState } from 'react'
 import Inputfield from '../../../signupcomponent/inputComponent/Inputfield'
 import validator from "validator"
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {vendorSignup} from "../../../../actions/VendorActions"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import "./LicenceDetails.css"
 
 function LicenceDetails({ formData, setFormData, setPage, page }) {
+    const Error = useSelector((state)=>{return state.VendorAuthReducer.error});
     const [err, setErr] = useState(false);
     const [submited,setSubmited] = useState(false);
     const { pancard, fssai, gst } = { ...formData }
@@ -70,7 +71,10 @@ function LicenceDetails({ formData, setFormData, setPage, page }) {
             console.log("empty");
             return setErr(true)
 
-        } else {
+        }else if(Error){
+            return setErr(true)
+
+        }else {
             setErr(false)
            dispatch(vendorSignup(formData,Navigate));
            setSubmited(true);
@@ -86,6 +90,7 @@ function LicenceDetails({ formData, setFormData, setPage, page }) {
     }
     return (
         <div>
+            
         {submited ? (
             
            <div className="successContainer">
@@ -96,12 +101,18 @@ function LicenceDetails({ formData, setFormData, setPage, page }) {
                    </div>
                    <p>Thank you for registering with us and we will verify your details and approve your account shortly</p>
                    <p>we will send you an email Notification once your account approved</p>
+                   <button className="homebtn" onClick={()=>{Navigate("/vendor")}}>Back to Home</button>
                </div>
 
            </div>
         ):(
        <>
             <div>
+            {Error && (
+                    <div style={{ marginBottom: '20px' }}>
+                      <p style={{ color: 'red', margin: '5px' }}>{Error}</p>
+                    </div>
+                  )}
             {err && <p style={{ color: "red", marginBottom: "30px", textAlign: "center" }}>All fields must be filled with valid details</p>}
             </div>
             <div className="signinbox">

@@ -54,7 +54,7 @@ function AdminLogin() {
   return (
 
 
-    <div>
+    <>
 
       <div className="signInContainer" >
         <div className="signInWrapper">
@@ -93,7 +93,7 @@ function AdminLogin() {
 
 
 
-    </div>
+    </>
   )
 }
 

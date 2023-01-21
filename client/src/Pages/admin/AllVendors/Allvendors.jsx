@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { blockVendor, unblockVendor } from "../../../actions/AdminActions"
 import DataTable from "react-data-table-component"
 import "./Allvendors.css"
-import Popup from "reactjs-popup";
+
 
 function Allvendors() {
     const customStyles = {
@@ -99,7 +99,7 @@ function Allvendors() {
     }, [search])
 
     return (
-        <div className="vendorContainer">
+        <div className="allvendorContainer">
            
 
         

@@ -4,7 +4,7 @@ import Vendornavbar from '../../VendorNavbar/Vendornavbar';
 import LicenceDetails from '../LicenceDetails/LicenceDetails';
 import RestaurantInfo from '../RestaurantInfo/RestaurantInfo';
 import VendorPersonalInfo from '../VendorPersonalInfo/VendorPersonalInfo';
-import validator from "validator";
+
 
 function VendorMainForm() {
    
@@ -29,7 +29,6 @@ function VendorMainForm() {
         gst: ""
 
     })
-
 
     
     const PageTitle = ["Personal Info", "Restaurant Details", "Licence Details"];

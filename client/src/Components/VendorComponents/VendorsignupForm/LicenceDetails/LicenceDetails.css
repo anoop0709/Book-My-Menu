@@ -32,3 +32,11 @@ color:green;
 font-size: 18px;
 color:gray
 }
+.homebtn{
+    padding:5 10px;
+    border-radius: 2px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+}

@@ -1,6 +1,9 @@
-import './Footer.css'
+import './Footer.css';
+import {useNavigate} from "react-router-dom"
+
 
 function Footer() {
+  const Navigate = useNavigate()
   return (
     <div>
       <div className="footerContainer">
@@ -14,7 +17,7 @@ function Footer() {
               </div>
               <div className="footerList">
                   <ul>
-                      <li className="listItem">Bussiness with us</li>
+                      <li className="listItem" onClick={()=>Navigate('/vendor')}>Bussiness with us</li>
                       <li className="listItem">Careers</li>
                       <li className="listItem">Investors</li>
                   </ul>

@@ -19,7 +19,6 @@ function Vendornavbar() {
         navigate('/vendorLogin')
     }
     function Register() {
-        console.log("clicked signup");
         navigate('/vendorSignup')
     }
 
@@ -43,7 +42,7 @@ function Vendornavbar() {
                     </div>
                     {vendor ? (
                         <div className="vendorNavBtns">
-                            <button>{vendor.fullname}</button>
+                            <button>{vendor.fullName}</button>
                             <button onClick={logout}>Log out</button>
                         </div>
                     ) : (

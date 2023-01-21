@@ -1,7 +1,12 @@
 import React from 'react'
 import "./VendorHero.css"
 import fullPallette from "../../../images/theenchantedplate.jpg"
+import { useNavigate } from 'react-router'
 function VendorHero() {
+const navigate = useNavigate()
+  function Register() {
+    navigate('/vendorSignup')
+}
   return (
     <div className="VendorHeroContainer">
       <div className="VendorHeroWrapper">
@@ -12,7 +17,7 @@ function VendorHero() {
                       Be Our Partner
                   </p>
                   <span>Register to start Business with us</span>
-                  <button>Register</button>
+                  <button onClick={Register}>Register</button>
               </div>
           </div>
       </div>

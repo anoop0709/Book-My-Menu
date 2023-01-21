@@ -11,7 +11,8 @@ export const vendorRegister = async (req, res) => {
         console.log(req.body);
         const { firstname, lastname, email, phonenumber } = req.body;
         let { password } = req.body;
-        const { restaurantname, address, location, typeofcusine, seatingcapacity, openinghours, closinghours, images, pancard, fssai, gst } = req.body;
+        const { restaurantname, address, location, typeofcusine, seatingcapacity, openinghours, closinghours,images, pancard, fssai, gst } = req.body;
+        console.log(images);
         const vendor = await VENDOR.findOne({ email });
         if (vendor) {
             throw new Error("Vendor is already registered");
@@ -19,7 +20,7 @@ export const vendorRegister = async (req, res) => {
             password = await bcrypt.hash(password, 10);
             const Vendor = await VENDOR.create({ firstname, lastname, email, phonenumber, password });
             const vendorId = Vendor._id;
-            const Restaurant = await RESTAURANT.create({ restaurantname, address, location, typeofcusine, seatingcapacity, openinghours, closinghours, images, pancard, fssai, gst, vendorId });
+            await RESTAURANT.create({ restaurantname, address, location, typeofcusine, seatingcapacity, openinghours, closinghours, images, pancard, fssai, gst, vendorId });
         }
 
     } catch (error) {
@@ -32,17 +33,23 @@ export const vendorLogin = async (req, res) => {
     try {
         console.log(req.body);
         const { email, password } = req.body;
-        const Vendor = await VENDOR.findOne({ email });
+        const Vendor = await VENDOR.findOne({email});
         if (Vendor) {
+            console.log(123);
             const iscorrectPassword = await bcrypt.compare(password, Vendor.password)
             if (iscorrectPassword) {
+                console.log(456);
                 const isApproved = Vendor.isApproved;
                 if (isApproved) {
-                    const fullName = Vendor.firstname + " " + Vendor.lastname;
-                    const Email = Vendor.email;
-                    const Token = jwt.sign({ email: Email, id: Vendor._id }, JWT_SECRET_KEY, { expiresIn: "1h" });
-                    res.json({ Restaurant, fullName, email, Token })
-
+                    const isBlocked = Vendor.isBlocked
+                    console.log(789);
+                    if(!isBlocked){
+                        const fullName = Vendor.firstname + " " + Vendor.lastname;
+                        const Email = Vendor.email;
+                        const Token = jwt.sign({ email: Email, id: Vendor._id }, JWT_SECRET_KEY, { expiresIn: "1h" });
+                        res.json({fullName,email,Token})
+                    }
+                    throw new Error("Your Account is Blocked please contact the Customer care");
                 }
                 throw new Error("Your Account is not Approved");
             }

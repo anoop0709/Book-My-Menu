@@ -92,7 +92,7 @@ function Allusers() {
     }, [search])
 
     return (
-        <div className="vendorContainer">
+        <div className="alluserContainer">
 
             <DataTable
 

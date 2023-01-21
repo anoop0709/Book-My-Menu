@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Inputfield from '../../../signupcomponent/inputComponent/Inputfield'
 import validator from "validator"
+import "./RestaurantInfo.css"
 
 function RestaurantInfo({ formData, setFormData,page,setPage }) {
 
@@ -90,22 +91,36 @@ function RestaurantInfo({ formData, setFormData,page,setPage }) {
             value: formData.closinghours
 
         },
-        {
-            id: "14",
-            type: "file",
-            name: "images",
-            placeholder: "Upload Image",
-            errMessage: "Please upload images",
-            label: "Restaurant Images",
-            required: true,
-            value: formData.images,
-            multiple:"multiple"
-        }
+        // {
+        //     id: "14",
+        //     type: "file",
+        //     name: "images",
+        //     placeholder: "Upload Image",
+        //     errMessage: "Please upload images",
+        //     label: "Restaurant Images",
+        //     required: true,
+        //     value: formData.images,
+        //     multiple:"multiple"
+        // }
     ]
-    const onChange = (e) => {
+    let uploadedImages = [];
 
-       e.target.type === "file" ?  setFormData({ ...formData, [e.target.name]: e.target.files }) :
-           setFormData({ ...formData, [e.target.name]: e.target.value })
+    // const imageChange = (e) =>{
+       
+    //     uploadedImages.push(e.target.files)
+    // }
+
+    const imageUpload  = (e)=>{
+       console.log(e.target.files);
+        setFormData({...formData, [e.target.name]:e.target.files })
+
+    }
+   
+
+
+    const onChange = (e) => {
+        
+           setFormData({ ...formData, [e.target.name]: e.target.value})
        
         if (inputs.map(input => input.errMessage)) {
             setErr(true)
@@ -123,8 +138,8 @@ function RestaurantInfo({ formData, setFormData,page,setPage }) {
             validator.isEmpty(typeofcusine) ||
             validator.isEmpty(seatingcapacity) ||
             validator.isEmpty(openinghours) ||
-            validator.isEmpty(closinghours) ||
-            validator.isEmpty(images)) {
+            validator.isEmpty(closinghours) 
+            ) {
             console.log("empty");
             return setErr(true)
 
@@ -153,6 +168,11 @@ function RestaurantInfo({ formData, setFormData,page,setPage }) {
                         <Inputfield key={input.id}  {...input} onChange={onChange} />
 
                     ))}
+                    <div className="imageupload">
+                    <label>Restaurant Images</label>
+                    <input type="file" name="images" placeholder="upload images" required multiple onChange={imageUpload}/>
+                    </div>
+                   
 
                     <div className="formFooter">
                     <button disabled={page == 0} onClick={Prev}>Prev</button>

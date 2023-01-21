@@ -148,12 +148,12 @@ export const getAllRestaurant = async (req, res) => {
         console.log(error);
     }
 }
-export const VerifyPayment = async (req,res) =>{
+export const VerifyPayment = async (req, res) => {
     try {
         const vendorId = req.params.id;
-        await VENDOR.findOneAndUpdate({_id:vendorId},{$set:{isApproved:true}},{new:true});
+        await VENDOR.findOneAndUpdate({ _id: vendorId }, { $set: { isApproved: true } }, { new: true });
         const newVendors = await VENDOR.find({ isApproved: false });
-        res.status(200).json(newVendors);       
+        res.status(200).json(newVendors);
     } catch (error) {
         console.log(error);
     }
