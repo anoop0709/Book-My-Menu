@@ -9,7 +9,6 @@ import VendorPersonalInfo from '../VendorPersonalInfo/VendorPersonalInfo';
 function VendorMainForm() {
    
     const [page, setPage] = useState(0);
-    // const [images,setImages] = useState([]);
     const [data, setData] = useState({
         firstname: "",
         lastname: "",
@@ -60,7 +59,7 @@ function VendorMainForm() {
                         <div className="bar" style={{ width: page == 0 ? "33.3%" : page == 1 ? "66.6%" : "100%" }}></div>
                     </div>
                     <div className="formHeading">
-                        <h1>{PageTitle[page]}</h1>
+                        <h4>{PageTitle[page]}</h4>
                     </div>
                     <div className="formBody">
                         {PageDisplay()}

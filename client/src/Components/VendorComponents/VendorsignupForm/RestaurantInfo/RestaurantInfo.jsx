@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Inputfield from '../../../signupcomponent/inputComponent/Inputfield'
 import validator from "validator"
 import "./RestaurantInfo.css"
@@ -6,6 +6,7 @@ import {ProgressBar} from "react-bootstrap"
 import axios from 'axios'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import { faDeleteLeft } from '@fortawesome/free-solid-svg-icons'
+import {sha256} from "crypto-hash"
 
 function RestaurantInfo({ data, setData, page, setPage }) {
 
@@ -16,6 +17,8 @@ function RestaurantInfo({ data, setData, page, setPage }) {
     const reset = () => {
         ref.current.value = "";
       };
+
+     
 
     const { restaurantname, address, location, typeofcusine, seatingcapacity, openinghours, closinghours } = { ...data }
 
@@ -38,7 +41,7 @@ function RestaurantInfo({ data, setData, page, setPage }) {
             name: "address",
             placeholder: "Address",
             errMessage: "Address should be 3-16 characters and shouldn't be used any special charcters",
-            label: "Address Name",
+            label: "Address",
             required: true,
             pattern: "^[A-Za-z0-9_ ]*{3,16}$",
             value: data.address
@@ -116,37 +119,54 @@ function RestaurantInfo({ data, setData, page, setPage }) {
     ]
     const [uploadedImages, setUploadedimages] = useState([]);
     const [uploaded, setUploaded] = useState(null);
+    useEffect(()=>{
+
+    },[filename,uploadedImages])
 
     const uploadImage = () => {
-
         const formData = new FormData();
         formData.append("file", image);
         formData.append("upload_preset", "aeqoy5zx")
         formData.append("cloud_name", "dbr213dju")
-        console.log(image.name);
-        setFilename((prevState)=> [...prevState,image.name])
+        console.log(image.name);      
         reset();
-
         axios.post("https://api.cloudinary.com/v1_1/dbr213dju/image/upload", formData, {
 
             onUploadProgress: (data) => {
                 setUploaded(Math.round((data.loaded / data.total) * 100));
-
             }
         }).then((res) => res.data)
             .then((data) => {
-                console.log(data.url);
+                console.log(data);
                 setUploadedimages((prevState) => [...prevState, data.url])
                 setUploaded(null)
+                setFilename((prevState)=> [...prevState,data])
             }).catch((err) => {
                 console.log(err);
             })
     }
+    const deleteImage = async (data)=>{
+        const public_id = data.public_id;
+        const url = data.url;
+        const formData = new FormData();
+        const timestamp = new Date().getTime()
+        const string = `public_id=${public_id}&timestamp=${timestamp}Tkt6z54x3Wg8wS0dpnzre520JGY`
+        const signature = await sha256(string)
+        formData.append("public_id",public_id)
+        formData.append("signature",signature)
+        formData.append("api_key",574128436553534)
+        formData.append("timestamp",timestamp)
+        const res = await axios.post("https://api.cloudinary.com/v1_1/dbr213dju//image/destroy", formData);
+        console.log(res);
+        setFilename((prevState)=>prevState.filter((data)=> data.public_id !== public_id))
+        setUploadedimages((prevState) =>prevState.filter((data)=>data.url !== url))
+
+     
+    }
+
 
     const onChange = (e) => {
-
         setData({ ...data, [e.target.name]: e.target.value })
-
         if (inputs.map(input => input.errMessage)) {
             setErr(true)
             console.log("error");
@@ -205,8 +225,7 @@ function RestaurantInfo({ data, setData, page, setPage }) {
                                     role="progressbar"
                                     className="progress-bar"
                                     style={{ width: `${uploaded}%` }}
-                                    label=  {`${uploaded}%`}
-                                    
+                                    label=  {`${uploaded}%`}                                 
                                 />
                                
                             </div>
@@ -216,10 +235,10 @@ function RestaurantInfo({ data, setData, page, setPage }) {
                     }
 
                     {
-                       filename.map((name)=>(
-                           <div className="imageName">
-                               <p>{name}</p>
-                               <FontAwesomeIcon className="dele" icon={faDeleteLeft}/>
+                       filename.map((data)=>(
+                           <div className="imageName" key={data.public_id}>
+                               <p>{data.original_filename}</p>
+                               <FontAwesomeIcon className="dele" icon={faDeleteLeft} onClick={()=>deleteImage(data)}/>
 
                            </div>
 
