@@ -3,9 +3,9 @@ import Inputfield from '../../../signupcomponent/inputComponent/Inputfield'
 import validator from "validator";
 import "./VendorPersonalInfo.css"
 
-function VendorPersonalInfo({ formData, setFormData,setPage,}) {
+function VendorPersonalInfo({ data, setData,setPage,}) {
     const [err, setErr] = useState(false);
-    const { firstname, lastname, email, phonenumber, password, confirmpassword } = { ...formData }
+    const { firstname, lastname, email, phonenumber, password, confirmpassword } = { ...data }
     const inputs = [
         {
             id: "1",
@@ -16,7 +16,7 @@ function VendorPersonalInfo({ formData, setFormData,setPage,}) {
             label: "First Name",
             required: "true",
             pattern: "^[A-Za-z0-9_]*{3,16}$",
-            value: formData.firstname
+            value: data.firstname
 
         },
         {
@@ -28,7 +28,7 @@ function VendorPersonalInfo({ formData, setFormData,setPage,}) {
             label: "Last Name",
             required: "true",
             pattern: "^[A-Za-z0-9_]*{3,16}$",
-            value: formData.lastname
+            value: data.lastname
 
         },
         {
@@ -40,7 +40,7 @@ function VendorPersonalInfo({ formData, setFormData,setPage,}) {
             label: "Email",
             required: "true",
             pattern: "^[a-zA-Z0-9.! #$%&'*+/=? ^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$",
-            value: formData.email
+            value: data.email
 
         },
         {
@@ -52,7 +52,7 @@ function VendorPersonalInfo({ formData, setFormData,setPage,}) {
             label: "Phone Number",
             required: "true",
             pattern: "^[0-9]{10,10}$",
-            value: formData.phonenumber,
+            value: data.phonenumber,
         },
         {
             id: "5",
@@ -63,7 +63,7 @@ function VendorPersonalInfo({ formData, setFormData,setPage,}) {
             label: "Password",
             required: "true",
             pattern: "^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+*!=])(?=.*[0-9]).*$",
-            value: formData.password
+            value: data.password
 
 
         },
@@ -75,8 +75,8 @@ function VendorPersonalInfo({ formData, setFormData,setPage,}) {
             errMessage: "Confirm password not match",
             label: "Confirm Password",
             required: "true",
-            pattern: formData.password,
-            value: formData.confirmpassword
+            pattern: data.password,
+            value: data.confirmpassword
 
         }
     ]
@@ -84,7 +84,7 @@ function VendorPersonalInfo({ formData, setFormData,setPage,}) {
 
     const onChange = (e) => {
 
-        setFormData({ ...formData, [e.target.name]: e.target.value })
+        setData({ ...data, [e.target.name]: e.target.value })
         if (inputs.map(input => input.errMessage)) {
             setErr(true)
             console.log("error");

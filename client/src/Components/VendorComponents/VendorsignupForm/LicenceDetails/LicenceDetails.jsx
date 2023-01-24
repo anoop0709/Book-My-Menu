@@ -8,11 +8,11 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import "./LicenceDetails.css"
 
-function LicenceDetails({ formData, setFormData, setPage, page }) {
+function LicenceDetails({ data, setData, setPage, page }) {
     const Error = useSelector((state)=>{return state.VendorAuthReducer.error});
     const [err, setErr] = useState(false);
     const [submited,setSubmited] = useState(false);
-    const { pancard, fssai, gst } = { ...formData }
+    const { pancard, fssai, gst } = { ...data }
     const Navigate = useNavigate();
     const dispatch = useDispatch();
     const inputs = [
@@ -25,7 +25,7 @@ function LicenceDetails({ formData, setFormData, setPage, page }) {
             label: "Pancard Number",
             required: "true",
             pattern: "^[A-Za-z0-9]{10,10}$",
-            value: formData.pancard
+            value: data.pancard
 
         },
         {
@@ -37,7 +37,7 @@ function LicenceDetails({ formData, setFormData, setPage, page }) {
             label: "Fssai Number",
             required: "true",
             pattern: "^[A-Za-z0-9]{14}$",
-            value: formData.fssai
+            value: data.fssai
 
         },
         {
@@ -49,13 +49,13 @@ function LicenceDetails({ formData, setFormData, setPage, page }) {
             label: "GST Number",
             required: "true",
             pattern: "^[A-Za-z0-9]{14}$",
-            value: formData.gst
+            value: data.gst
 
         },
     ]
 
     const onChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value })
+        setData({ ...data, [e.target.name]: e.target.value })
         if (inputs.map(input => input.errMessage)) {
             setErr(true)
             console.log("error");
@@ -76,7 +76,8 @@ function LicenceDetails({ formData, setFormData, setPage, page }) {
 
         }else {
             setErr(false)
-           dispatch(vendorSignup(formData,Navigate));
+            console.log(data);
+           dispatch(vendorSignup(data,Navigate));
            setSubmited(true);
 
         }

@@ -10,6 +10,7 @@ import Vendorhome from "./Pages/Vendors/Vendorhome/Vendorhome";
 import VendorSignUp from "./Pages/Vendors/VendorSignUp/VendorSignUp";
 import VendorLogin from "./Pages/Vendors/VendorLogin/VendorLogin";
 import Main from "./Pages/admin/DashBoard/Main";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (

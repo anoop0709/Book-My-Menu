@@ -1,12 +1,23 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Inputfield from '../../../signupcomponent/inputComponent/Inputfield'
 import validator from "validator"
 import "./RestaurantInfo.css"
+import {ProgressBar} from "react-bootstrap"
+import axios from 'axios'
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import { faDeleteLeft } from '@fortawesome/free-solid-svg-icons'
 
-function RestaurantInfo({ formData, setFormData,page,setPage }) {
+function RestaurantInfo({ data, setData, page, setPage }) {
 
     const [err, setErr] = useState(false);
-    const { restaurantname, address, location, typeofcusine, seatingcapacity, openinghours,closinghours, images } = { ...formData }
+    const [image, setImage] = useState("");
+    const [filename,setFilename] = useState([]);
+    const ref = useRef();
+    const reset = () => {
+        ref.current.value = "";
+      };
+
+    const { restaurantname, address, location, typeofcusine, seatingcapacity, openinghours, closinghours } = { ...data }
 
     const inputs = [
         {
@@ -18,7 +29,7 @@ function RestaurantInfo({ formData, setFormData,page,setPage }) {
             label: "Restaurant Name",
             required: true,
             pattern: "^[A-Za-z0-9_ ]*{3,16}$",
-            value: formData.restaurantname
+            value: data.restaurantname
 
         },
         {
@@ -30,7 +41,7 @@ function RestaurantInfo({ formData, setFormData,page,setPage }) {
             label: "Address Name",
             required: true,
             pattern: "^[A-Za-z0-9_ ]*{3,16}$",
-            value: formData.address
+            value: data.address
 
         },
         {
@@ -42,7 +53,7 @@ function RestaurantInfo({ formData, setFormData,page,setPage }) {
             label: "Location",
             required: true,
             pattern: "^[A-Za-z0-9_ ]*{3,16}$",
-            value: formData.location
+            value: data.location
 
         },
         {
@@ -54,7 +65,7 @@ function RestaurantInfo({ formData, setFormData,page,setPage }) {
             label: "Type of cusine",
             required: true,
             pattern: "^[a-zA-Z0-9_ ]*{3,16}$",
-            value: formData.typeofcusine
+            value: data.typeofcusine
 
         },
         {
@@ -66,7 +77,7 @@ function RestaurantInfo({ formData, setFormData,page,setPage }) {
             label: "Seating capacity",
             required: true,
             pattern: "^[0-9]{1}$",
-            value: formData.seatingcapacity
+            value: data.seatingcapacity
 
         },
         {
@@ -77,7 +88,7 @@ function RestaurantInfo({ formData, setFormData,page,setPage }) {
             errMessage: "Time required",
             label: "Opening Hours",
             required: true,
-            value: formData.openinghours
+            value: data.openinghours
 
         },
         {
@@ -88,7 +99,7 @@ function RestaurantInfo({ formData, setFormData,page,setPage }) {
             errMessage: "Time required",
             label: "Closing Hours",
             required: true,
-            value: formData.closinghours
+            value: data.closinghours
 
         },
         // {
@@ -103,25 +114,39 @@ function RestaurantInfo({ formData, setFormData,page,setPage }) {
         //     multiple:"multiple"
         // }
     ]
-    let uploadedImages = [];
+    const [uploadedImages, setUploadedimages] = useState([]);
+    const [uploaded, setUploaded] = useState(null);
 
-    // const imageChange = (e) =>{
-       
-    //     uploadedImages.push(e.target.files)
-    // }
+    const uploadImage = () => {
 
-    const imageUpload  = (e)=>{
-       console.log(e.target.files);
-        setFormData({...formData, [e.target.name]:e.target.files })
+        const formData = new FormData();
+        formData.append("file", image);
+        formData.append("upload_preset", "aeqoy5zx")
+        formData.append("cloud_name", "dbr213dju")
+        console.log(image.name);
+        setFilename((prevState)=> [...prevState,image.name])
+        reset();
 
+        axios.post("https://api.cloudinary.com/v1_1/dbr213dju/image/upload", formData, {
+
+            onUploadProgress: (data) => {
+                setUploaded(Math.round((data.loaded / data.total) * 100));
+
+            }
+        }).then((res) => res.data)
+            .then((data) => {
+                console.log(data.url);
+                setUploadedimages((prevState) => [...prevState, data.url])
+                setUploaded(null)
+            }).catch((err) => {
+                console.log(err);
+            })
     }
-   
-
 
     const onChange = (e) => {
-        
-           setFormData({ ...formData, [e.target.name]: e.target.value})
-       
+
+        setData({ ...data, [e.target.name]: e.target.value })
+
         if (inputs.map(input => input.errMessage)) {
             setErr(true)
             console.log("error");
@@ -138,18 +163,18 @@ function RestaurantInfo({ formData, setFormData,page,setPage }) {
             validator.isEmpty(typeofcusine) ||
             validator.isEmpty(seatingcapacity) ||
             validator.isEmpty(openinghours) ||
-            validator.isEmpty(closinghours) 
-            ) {
+            validator.isEmpty(closinghours)
+        ) {
             console.log("empty");
             return setErr(true)
 
         } else {
             setErr(false)
+            setData({ ...data, images: uploadedImages })
             setPage(currpage => currpage + 1)
 
+
         }
-
-
     }
     const Prev = () => {
 
@@ -164,18 +189,52 @@ function RestaurantInfo({ formData, setFormData,page,setPage }) {
             <div className="signinbox">
                 <div className="signInform">
                     {inputs.map((input) => (
-                      
+
                         <Inputfield key={input.id}  {...input} onChange={onChange} />
 
                     ))}
+
+                    {
+                        uploaded && (
+                            <div className="progress mt-2">
+                                <ProgressBar
+                                    animated
+                                    aria-valuenow={uploaded}
+                                    aria-valuemin="0"
+                                    aria-valuemax="100"
+                                    role="progressbar"
+                                    className="progress-bar"
+                                    style={{ width: `${uploaded}%` }}
+                                    label=  {`${uploaded}%`}
+                                    
+                                />
+                               
+                            </div>
+                        )
+
+
+                    }
+
+                    {
+                       filename.map((name)=>(
+                           <div className="imageName">
+                               <p>{name}</p>
+                               <FontAwesomeIcon className="dele" icon={faDeleteLeft}/>
+
+                           </div>
+
+                       ))
+                    }
                     <div className="imageupload">
-                    <label>Restaurant Images</label>
-                    <input type="file" name="images" placeholder="upload images" required multiple onChange={imageUpload}/>
+                        <label>Restaurant Images</label>
+                        <input type="file" name="images" ref={ref} placeholder="upload images" required onChange={(e) => setImage(e.target.files[0])} />
+                        <button className="uploadImage" onClick={uploadImage}>Upload</button>
+
                     </div>
-                   
+
 
                     <div className="formFooter">
-                    <button disabled={page == 0} onClick={Prev}>Prev</button>
+                        <button disabled={page == 0} onClick={Prev}>Prev</button>
                         <button onClick={Next}>Next</button>
                     </div>
                 </div>

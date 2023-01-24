@@ -9,7 +9,8 @@ import VendorPersonalInfo from '../VendorPersonalInfo/VendorPersonalInfo';
 function VendorMainForm() {
    
     const [page, setPage] = useState(0);
-    const [formData, setFormData] = useState({
+    // const [images,setImages] = useState([]);
+    const [data, setData] = useState({
         firstname: "",
         lastname: "",
         email: "",
@@ -23,7 +24,7 @@ function VendorMainForm() {
         seatingcapacity: "",
         openinghours: "",
         closinghours:"",
-        images: [],
+        images:[],
         pancard: "",
         fssai: "",
         gst: ""
@@ -34,9 +35,9 @@ function VendorMainForm() {
     const PageTitle = ["Personal Info", "Restaurant Details", "Licence Details"];
 
     const PageDisplay = () => {
-        if (page == 0) {return <VendorPersonalInfo formData={formData} setFormData={setFormData} setPage={setPage}/>}
-        else if (page == 1) {return <RestaurantInfo formData={formData} setFormData={setFormData} setPage={setPage} page={page}/>}
-        else {return <LicenceDetails formData={formData} setFormData={setFormData} setPage={setPage} page={page}/>}
+        if (page == 0) {return <VendorPersonalInfo data={data} setData={setData} setPage={setPage}/>}
+        else if (page == 1) {return <RestaurantInfo data={data} setData={setData} setPage={setPage} page={page}/>}
+        else {return <LicenceDetails data={data} setData={setData} setPage={setPage} page={page}/>}
 
 
     };

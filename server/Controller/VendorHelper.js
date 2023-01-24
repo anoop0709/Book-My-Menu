@@ -3,15 +3,19 @@ import RESTAURANT from "../Models/RestaurantSchema.js"
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import fs from "express-fileupload"
 dotenv.config();
 const { JWT_SECRET_KEY } = process.env;
 
 export const vendorRegister = async (req, res) => {
     try {
-        console.log(req.body);
+        console.log(req.body.images);
         const { firstname, lastname, email, phonenumber } = req.body;
         let { password } = req.body;
-        const { restaurantname, address, location, typeofcusine, seatingcapacity, openinghours, closinghours,images, pancard, fssai, gst } = req.body;
+        
+     
+        const { restaurantname, address, location, typeofcusine, seatingcapacity, openinghours, closinghours, pancard, fssai, gst } = req.body;
+       let images = req.body.images;
         console.log(images);
         const vendor = await VENDOR.findOne({ email });
         if (vendor) {
