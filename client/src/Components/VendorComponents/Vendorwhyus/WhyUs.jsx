@@ -8,7 +8,7 @@ function WhyUs() {
     <div className="WhyusContainer">
         <div className="WhyText">
 
-        <h1>Why Should you Partner with Book My Menu ?</h1>
+        <h3>Why Should you Partner with Book My Menu ?</h3>
         <p>Book My Menu enables you to get 60% more revenue, 10x new customers and boost your brand 
             visibility by providing insights to improve your business.</p>
         </div>

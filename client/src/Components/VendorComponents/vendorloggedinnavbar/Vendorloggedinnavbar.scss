@@ -1,12 +1,11 @@
 $secondaryColor :#FF79DA;
 $mainColor:#9356DC;
 $backgroundColor:rgb(240, 237, 237);
+$shadowStyle:0px 1px 2px 0px rgba(0,0,0,0.75);
 @mixin flexBox {
     margin: 0px;
     display: flex;
     align-items: center;
-    padding: 10px;
-    gap: 20px;
 }
 @mixin buttonStyle {
     cursor: pointer;
@@ -14,13 +13,19 @@ $backgroundColor:rgb(240, 237, 237);
     border: none;
     border-radius: 5px;
     padding: 5px 10px;
+    color: white;
 }
 @mixin hoverEffect{
-    color: $secondaryColor;
+    color: $mainColor;
     cursor: pointer;
     background-color: $backgroundColor;
-    padding: 5px 10px;
     border-radius: 5px;
+    padding: 5px 10px;
+}
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 .vendornavbarContainer{
     width: 100%;
@@ -29,25 +34,38 @@ $backgroundColor:rgb(240, 237, 237);
 }
 .vendornavbarWrapper{
     width: 100%;
+    padding: 10px;
     justify-content: space-between;
-    @include flexBox();     
+    box-shadow: $shadowStyle;
+    @include flexBox(); 
+}
+.vendorLogo{
+    color:$mainColor;
+    cursor: pointer;
 }
 .vendornavbaritems{
     @include flexBox();
-    justify-content: center;   
+    justify-content:space-between;  
 }
 .navListItems{
     @include flexBox();
-    justify-content: center; 
+    justify-content: space-between;
+    gap: 40px;
     & .Item{
-        list-style: none;
+        @include flexBox();
+        justify-content: center;
+        cursor: pointer;
     }
-        & .Item:hover{
-            @include hoverEffect();
+        & .Active{
+            @include flexBox();
+            justify-content: center;
+            @include hoverEffect();       
         }
+       
 }
 .vendorName{
     @include flexBox();
+    gap: 50px;
     justify-content: center;
     & button{
      @include buttonStyle();

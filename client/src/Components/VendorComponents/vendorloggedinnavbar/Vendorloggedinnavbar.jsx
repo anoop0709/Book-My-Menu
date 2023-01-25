@@ -1,7 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import {useNavigate} from 'react-router-dom'
 import "./Vendorloggedinnavbar.css"
 
-function Vendorloggedinnavbar() {
+function Vendorloggedinnavbar(setPages) {
+  const Navigate = useNavigate()
+  const dispatch = useDispatch();
+ 
+  const logout = ()=>{
+    dispatch({type:"VENDORLOGOUT"})
+    Navigate('/vendor')
+  }
+  const [active, setActive] = useState(0)
+  const navMenu = ['MY RESTAURANT', 'BOOKINGS', 'SALES REPORT', 'ACCOUNT']
   return (
     <div className="vendornavbarContainer">
       <div className="vendornavbarWrapper">
@@ -10,28 +21,23 @@ function Vendorloggedinnavbar() {
           <h5>Vendor</h5>
         </div>
         <div className="vendornavbaritems">
-          <ul className="navListItems">
-            <li className="Item">
-              MY RESTAURANT
-            </li>
-            <li className="Item">
-             BOOKINGS
-            </li>
-            <li className="Item">
-             SALES REPORT
-            </li>
-            <li className="Item">
-             ACCOUNT
-            </li>
-          </ul>
+          <div className="navListItems">
+            {navMenu.map((item, index) => (
+              <div className={active === index ? "Item Active" : "Item"} key={index} onClick={() => setActive(index)}>
+                <div onClick={()=>setPages(item)}>
+                  {item}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
         <div className="vendorName">
           <p>vendor name</p>
-          <button>logout</button>
+          <button onClick={logout}>Log out</button>
         </div>
       </div>
-        
-     
+
+
     </div>
   )
 }

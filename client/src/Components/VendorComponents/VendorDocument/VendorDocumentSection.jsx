@@ -7,11 +7,11 @@ function VendorDocumentSection() {
     
   return (
     <div className="DocumentContainer">
-        <h1>Documents Needed for Registration</h1>
+        <h3>Documents Needed for Registration</h3>
         <div className="DocumentWrapper">
             <div className="DocumentDiv">
                 <div className="DocumentHeaderText">
-                    <h1>Get started with Online Booking</h1>
+                    <h3>Get started with Online Booking</h3>
                     <p>Please keep the documents ready for a smooth signup</p>
                 </div>
                 <div className="DocumentList">

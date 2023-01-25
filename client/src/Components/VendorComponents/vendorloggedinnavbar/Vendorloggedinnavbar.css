@@ -1,3 +1,10 @@
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 .vendornavbarContainer {
   width: 100%;
   -webkit-box-pack: justify;
@@ -10,15 +17,16 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 10px;
-  gap: 20px;
 }
 
 .vendornavbarWrapper {
   width: 100%;
+  padding: 10px;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.75);
+          box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.75);
   margin: 0px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -26,8 +34,11 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 10px;
-  gap: 20px;
+}
+
+.vendorLogo {
+  color: #9356DC;
+  cursor: pointer;
 }
 
 .vendornavbaritems {
@@ -38,11 +49,9 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 10px;
-  gap: 20px;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .navListItems {
@@ -53,23 +62,42 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 10px;
-  gap: 20px;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 40px;
 }
 
 .navListItems .Item {
-  list-style: none;
+  margin: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
 }
 
-.navListItems .Item:hover {
-  color: #FF79DA;
+.navListItems .Active {
+  margin: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #9356DC;
   cursor: pointer;
   background-color: #f0eded;
-  padding: 5px 10px;
   border-radius: 5px;
+  padding: 5px 10px;
 }
 
 .vendorName {
@@ -80,8 +108,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 10px;
-  gap: 20px;
+  gap: 50px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -93,6 +120,7 @@
   border: none;
   border-radius: 5px;
   padding: 5px 10px;
+  color: white;
 }
 
 .vendorName p {

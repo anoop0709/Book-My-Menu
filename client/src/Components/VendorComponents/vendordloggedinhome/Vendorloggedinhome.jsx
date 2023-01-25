@@ -6,6 +6,7 @@ function Vendorloggedinhome() {
   return (
     <div className="vendorHomeContainer">
      <Vendorloggedinnavbar/>
+
       
     </div>
   )
