@@ -13,7 +13,6 @@ function VendorPersonalInfo({ data, setData,setPage,}) {
             name: "firstname",
             placeholder: "First Name",
             errMessage: "First name should be 3-16 characters and shouldn't be used any special charcters",
-            label: "First Name",
             required: "true",
             pattern: "^[A-Za-z0-9_]*{3,16}$",
             value: data.firstname
@@ -25,7 +24,6 @@ function VendorPersonalInfo({ data, setData,setPage,}) {
             name: "lastname",
             placeholder: "Last Name",
             errMessage: "Last name should be 3-16 characters and shouldn't be used any special characters",
-            label: "Last Name",
             required: "true",
             pattern: "^[A-Za-z0-9_]*{3,16}$",
             value: data.lastname
@@ -37,7 +35,6 @@ function VendorPersonalInfo({ data, setData,setPage,}) {
             name: "email",
             placeholder: "Email",
             errMessage: "Should be a valid email",
-            label: "Email",
             required: "true",
             pattern: "^[a-zA-Z0-9.! #$%&'*+/=? ^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$",
             value: data.email
@@ -49,7 +46,6 @@ function VendorPersonalInfo({ data, setData,setPage,}) {
             name: "phonenumber",
             placeholder: "Phone Number",
             errMessage: "Should be 10 digits",
-            label: "Phone Number",
             required: "true",
             pattern: "^[0-9]{10,10}$",
             value: data.phonenumber,
@@ -60,7 +56,6 @@ function VendorPersonalInfo({ data, setData,setPage,}) {
             name: "password",
             placeholder: "Password",
             errMessage: "Password should be 8-20 characters and include atleast 1 uppercase,1 lowercase,1number and 1 special character",
-            label: "Password",
             required: "true",
             pattern: "^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+*!=])(?=.*[0-9]).*$",
             value: data.password
@@ -73,7 +68,6 @@ function VendorPersonalInfo({ data, setData,setPage,}) {
             name: "confirmpassword",
             placeholder: "Confirm password",
             errMessage: "Confirm password not match",
-            label: "Confirm Password",
             required: "true",
             pattern: data.password,
             value: data.confirmpassword

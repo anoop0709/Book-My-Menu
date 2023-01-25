@@ -16,9 +16,7 @@ function RestaurantInfo({ data, setData, page, setPage }) {
     const ref = useRef();
     const reset = () => {
         ref.current.value = "";
-      };
-
-     
+      };   
 
     const { restaurantname, address, location, typeofcusine, seatingcapacity, openinghours, closinghours } = { ...data }
 
@@ -29,7 +27,6 @@ function RestaurantInfo({ data, setData, page, setPage }) {
             name: "restaurantname",
             placeholder: "Restaurant Name",
             errMessage: "Restaurant name should be 3-16 characters and shouldn't be used any special charcters",
-            label: "Restaurant Name",
             required: true,
             pattern: "^[A-Za-z0-9_ ]*{3,16}$",
             value: data.restaurantname
@@ -41,7 +38,6 @@ function RestaurantInfo({ data, setData, page, setPage }) {
             name: "address",
             placeholder: "Address",
             errMessage: "Address should be 3-16 characters and shouldn't be used any special charcters",
-            label: "Address",
             required: true,
             pattern: "^[A-Za-z0-9_ ]*{3,16}$",
             value: data.address
@@ -53,7 +49,6 @@ function RestaurantInfo({ data, setData, page, setPage }) {
             name: "location",
             placeholder: "Location",
             errMessage: "Location should be 3-16 characters and shouldn't be used any special charcters",
-            label: "Location",
             required: true,
             pattern: "^[A-Za-z0-9_ ]*{3,16}$",
             value: data.location
@@ -65,7 +60,6 @@ function RestaurantInfo({ data, setData, page, setPage }) {
             name: "typeofcusine",
             placeholder: "Type of cusine",
             errMessage: "Type of cusine should be 3-16 characters and shouldn't be used any special charcters",
-            label: "Type of cusine",
             required: true,
             pattern: "^[a-zA-Z0-9_ ]*{3,16}$",
             value: data.typeofcusine
@@ -77,7 +71,6 @@ function RestaurantInfo({ data, setData, page, setPage }) {
             name: "seatingcapacity",
             placeholder: "Seating capacity",
             errMessage: "minimum 1 number required",
-            label: "Seating capacity",
             required: true,
             pattern: "^[0-9]{1}$",
             value: data.seatingcapacity
@@ -89,7 +82,6 @@ function RestaurantInfo({ data, setData, page, setPage }) {
             name: "openinghours",
             placeholder: "opening hours",
             errMessage: "Time required",
-            label: "Opening Hours",
             required: true,
             value: data.openinghours
 
@@ -100,22 +92,10 @@ function RestaurantInfo({ data, setData, page, setPage }) {
             name: "closinghours",
             placeholder: "closing hours",
             errMessage: "Time required",
-            label: "Closing Hours",
             required: true,
             value: data.closinghours
 
         },
-        // {
-        //     id: "14",
-        //     type: "file",
-        //     name: "images",
-        //     placeholder: "Upload Image",
-        //     errMessage: "Please upload images",
-        //     label: "Restaurant Images",
-        //     required: true,
-        //     value: formData.images,
-        //     multiple:"multiple"
-        // }
     ]
     const [uploadedImages, setUploadedimages] = useState([]);
     const [uploaded, setUploaded] = useState(null);
@@ -244,8 +224,9 @@ function RestaurantInfo({ data, setData, page, setPage }) {
 
                        ))
                     }
+                     <label className="mt-2 mb-2">Restaurant Images</label>
                     <div className="imageupload">
-                        <label>Restaurant Images</label>
+                       
                         <input type="file" name="images" ref={ref} placeholder="upload images" required onChange={(e) => setImage(e.target.files[0])} />
                         <button className="uploadImage" onClick={uploadImage}>Upload</button>
 

@@ -18,6 +18,7 @@
     "axios": "^1.2.2",
     "bootstrap": "^5.2.3",
     "crypto-hash": "^2.0.1",
+    "dotenv": "^16.0.3",
     "framer-motion": "^8.3.3",
     "i": "^0.3.7",
     "install": "^0.13.0",

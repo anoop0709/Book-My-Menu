@@ -27,7 +27,7 @@ const dispatch = useDispatch();
       dispatch(newVendors())
       dispatch(allrestaurant())
 
-  },[])
+  },[pages])
   return (
     <div className="App">
       <div className="AppGlass">

@@ -19,7 +19,7 @@ function ApproveVendors() {
                         <div className="vendorRow" key={newVendor._id}>
                             <div className="Details">
                                 <div className="cardHeading">
-                                    <h4>Personal Details</h4>
+                                    <h5>Personal Details</h5>
                                 </div>
                                 <div className="cardBody">
                                     <table>
@@ -51,7 +51,7 @@ function ApproveVendors() {
                                 <>
                                     <div className="Details" >
                                         <div className="cardHeading">
-                                            <h4>Restaurant Details</h4>
+                                            <h5>Restaurant Details</h5>
                                         </div>
                                         <div className="cardBody">
                                             <table>
@@ -89,7 +89,7 @@ function ApproveVendors() {
 
                                     <div className="Details">
                                         <div className="cardHeading">
-                                            <h4>Restaurant Licence Details</h4>
+                                            <h5>Restaurant Licence Details</h5>
                                         </div>
                                         <div className="cardBody">
                                             <table>
@@ -112,14 +112,13 @@ function ApproveVendors() {
                                 </>
                                  ) ))}
                             <div className="approveBtn">
-                                <button className="Btn" onClick={()=>{dispatch(verifyVendor(newVendor._id))}}> Approve Vendor</button>
+                                <button className="btnApproval" onClick={()=>{dispatch(verifyVendor(newVendor._id))}}> Approve Vendor</button>
                             </div>
-
                         </div>
                     ))
                 ):(
                     <div className="vendorText">
-                        <h1>No documents to Show .......</h1>
+                        <h6>No documents to Show .......</h6>
 
                     </div>
                 

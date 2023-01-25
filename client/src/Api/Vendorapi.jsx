@@ -10,5 +10,5 @@ aPi.interceptors.request.use((req) => {
 })
 
 
-export const VendorSignUp = (FormData) => aPi.post('/vendor/vendorSignup', FormData);
-export const VendorLogIn = (FormData) => aPi.post('/vendor/vendorLogin', FormData);
+export const VendorSignUp = (FormData) => aPi.post('/vendor/vendor_Signup', FormData);
+export const VendorLogIn = (FormData) => aPi.post('/vendor/vendor_Login', FormData);

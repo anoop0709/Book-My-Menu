@@ -1,7 +1,7 @@
 .imageupload{
     display: flex;
-    justify-content:flex-start;
-    align-items:flex-start;
+    justify-content:flex-end;
+    align-items:flex-end;
     flex-direction: column;
     gap: 10px;
     margin: 5px;

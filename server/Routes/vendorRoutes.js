@@ -1,10 +1,10 @@
 import express from "express";
-import {vendorRegister,vendorLogin}  from "../Controller/VendorHelper.js";
+import {vendor_Register,vendor_Login}  from "../Controller/VendorHelper.js";
 const router = express.Router();
 
 
-router.post('/vendorSignup',vendorRegister)
-router.post('/vendorLogin',vendorLogin)
+router.post('/vendor_Signup',vendor_Register)
+router.post('/vendor_Login',vendor_Login)
 
 
 

@@ -1,0 +1,59 @@
+$secondaryColor :#FF79DA;
+$mainColor:#9356DC;
+$backgroundColor:rgb(240, 237, 237);
+@mixin flexBox {
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    gap: 20px;
+}
+@mixin buttonStyle {
+    cursor: pointer;
+    background-color: $mainColor;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+@mixin hoverEffect{
+    color: $secondaryColor;
+    cursor: pointer;
+    background-color: $backgroundColor;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.vendornavbarContainer{
+    width: 100%;
+    justify-content: space-between;
+    @include flexBox();
+}
+.vendornavbarWrapper{
+    width: 100%;
+    justify-content: space-between;
+    @include flexBox();     
+}
+.vendornavbaritems{
+    @include flexBox();
+    justify-content: center;   
+}
+.navListItems{
+    @include flexBox();
+    justify-content: center; 
+    & .Item{
+        list-style: none;
+    }
+        & .Item:hover{
+            @include hoverEffect();
+        }
+}
+.vendorName{
+    @include flexBox();
+    justify-content: center;
+    & button{
+     @include buttonStyle();
+    }
+    & p{
+        margin: 0px;
+    }
+}
+

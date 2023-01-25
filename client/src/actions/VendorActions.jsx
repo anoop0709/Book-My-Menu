@@ -23,7 +23,7 @@ export const vendorLogin = (formData,Navigate) => async (dispatch)=>{
         console.log(data);
         if(data){
             dispatch({type:"VENDORAUTH",payload:data})
-            Navigate('/vendor')
+            Navigate('/vendordashborad')
         }
     } catch (error) {
         console.log(error.response.data);

@@ -5,12 +5,14 @@ import Signin from "./Pages/user/SignIn/Signin";
 import AdminLogin from "./Pages/admin/AdminLogin/AdminLogin";
 import AdminHome from "./Pages/admin/AdminHome/AdminHome"
 import AdminProtectedPages from "./AdminProtectedPages";
+import VendorProtectedPages from "./VendorProtectedPage";
 import CreateAdmin from "./Pages/admin/CreateAdmin/CreateAdmin"
 import Vendorhome from "./Pages/Vendors/Vendorhome/Vendorhome";
 import VendorSignUp from "./Pages/Vendors/VendorSignUp/VendorSignUp";
 import VendorLogin from "./Pages/Vendors/VendorLogin/VendorLogin";
 import Main from "./Pages/admin/DashBoard/Main";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Vendordashboard from "./Pages/Vendors/vendorDashBoard/Vendordashboard";
 
 function App() {
   return (
@@ -37,6 +39,10 @@ function App() {
         <Route path="/vendor" element={<Vendorhome/>}/>
         <Route path="/vendorSignup" element={<VendorSignUp/>}/>
         <Route path="/vendorLogin" element={<VendorLogin/>}/>
+        <Route element={<VendorProtectedPages/>}>
+          <Route path="/vendordashborad" element={<Vendordashboard/>}/>
+        </Route>
+        
         
         
       </Routes>

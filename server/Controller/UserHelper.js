@@ -14,7 +14,7 @@ export const homePage = async (req, res) => {
     }
 }
 
-export const userSignup = async (req, res) => {
+export const user_Signup = async (req, res) => {
     try {
         let { firstname, lastname, email, phonenumber, password } = req.body;
 
@@ -33,7 +33,7 @@ export const userSignup = async (req, res) => {
     }
 }
 
-export const userSignin = async (req, res, next) => {
+export const user_Signin = async (req, res, next) => {
     try {
         console.log(req.body);
         const { email, password } = req.body;

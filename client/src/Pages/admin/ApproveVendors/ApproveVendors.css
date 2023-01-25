@@ -35,7 +35,7 @@
     
 }
 .cardHeading{
-    background-color:red;
+    background-color:rgb(0, 0, 0);
     color: white;
     padding: 10px;
     border-radius: 5px;
@@ -69,6 +69,14 @@ td{
     position: absolute;
     bottom: 30px;
     right:30px;
+}
+.btnApproval{
+background-color: red;
+border: none;
+border-radius: 5px;
+padding: 5px 10px;
+cursor: pointer;
+color: white;
 }
 .vendorText{
     width: 100%;
