@@ -1,0 +1,58 @@
+$secondaryColor :#FF79DA;
+$mainColor:#9356DC;
+$backgroundColor:rgb(236, 234, 234);
+$shadowStyle:0px 1px 1px 0px rgba(0, 0, 0, 0.5);
+@mixin flexBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;  
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px;
+
+}
+@mixin Input {
+    padding: 5px;
+    width: 300px;
+    outline: none;
+    border: 0.5px solid black;
+    border-radius: 5px;
+}
+@mixin buttonStyle {
+    cursor: pointer;
+    background-color: $mainColor;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: white;
+}
+.StarterContainer{
+    @include flexBox();
+    flex-direction: column
+}
+.StarterWrapper{
+    @include flexBox();
+    max-width: 80%;
+    margin-top: 30px;
+    background-color: $backgroundColor;
+}
+.Starter{
+    @include flexBox();
+   
+    & form {
+        @include flexBox();
+        & input{
+           @include Input();
+        }
+        & button{
+            @include buttonStyle();
+        }
+    }
+}
+.starterList{
+    @include flexBox();
+    max-width: 80%;
+    margin-top: 10px;
+    background-color: $backgroundColor;
+}

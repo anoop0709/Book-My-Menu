@@ -1,0 +1,107 @@
+.StarterContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 30px;
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.StarterWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 30px;
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px;
+  max-width: 80%;
+  margin-top: 30px;
+  background-color: #eceaea;
+}
+
+.Starter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 30px;
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.Starter form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 30px;
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.Starter form input {
+  padding: 5px;
+  width: 300px;
+  outline: none;
+  border: 0.5px solid black;
+  border-radius: 5px;
+}
+
+.Starter form button {
+  cursor: pointer;
+  background-color: #9356DC;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: white;
+}
+
+.starterList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 30px;
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px;
+  max-width: 80%;
+  margin-top: 10px;
+  background-color: #eceaea;
+}
+/*# sourceMappingURL=starter.css.map */

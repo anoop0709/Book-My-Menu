@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import "./Vendorloggedinnavbar.css"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import { faBell } from '@fortawesome/free-solid-svg-icons'
 
-function Vendorloggedinnavbar(setPages) {
+function Vendorloggedinnavbar({setPages}) {
+  const [vendor,setVendor] = useState(JSON.parse(localStorage.getItem('vendor')).fullName);
+  console.log(vendor);
   const Navigate = useNavigate()
   const dispatch = useDispatch();
- 
   const logout = ()=>{
     dispatch({type:"VENDORLOGOUT"})
     Navigate('/vendor')
@@ -32,12 +35,11 @@ function Vendorloggedinnavbar(setPages) {
           </div>
         </div>
         <div className="vendorName">
-          <p>vendor name</p>
+          <FontAwesomeIcon icon={faBell}/>
+          <p>{`Hi, ${vendor}`}</p>
           <button onClick={logout}>Log out</button>
         </div>
       </div>
-
-
     </div>
   )
 }

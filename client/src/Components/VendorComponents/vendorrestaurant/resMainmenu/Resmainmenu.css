@@ -1,0 +1,59 @@
+.mainMenu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  gap: 30px;
+}
+
+.mainmenuNav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  gap: 30px;
+  width: 100%;
+  padding: 20px;
+}
+
+.mainmenuNav .Item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  gap: 30px;
+  justify-content: center;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.mainmenuNav .Active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  gap: 30px;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  background-color: #9356DC;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+/*# sourceMappingURL=Resmainmenu.css.map */

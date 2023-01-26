@@ -1,0 +1,48 @@
+$secondaryColor :#FF79DA;
+$mainColor:#9356DC;
+$backgroundColor:rgb(219, 216, 216);
+$shadowStyle:0px 1px 1px 0px rgba(0,0,0,0.5);
+@mixin flexBox {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    gap: 30px;   
+}
+@mixin buttonStyle {
+    cursor: pointer;
+    background-color: $mainColor;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: white;
+}
+@mixin hoverEffect{
+    color: white;
+    cursor: pointer;
+    background-color: $mainColor;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.mainMenu{
+    @include flexBox();
+   
+
+}
+.mainmenuNav{
+    @include flexBox();
+    width: 100%;
+    padding: 20px;
+    & .Item{
+        @include flexBox();
+        justify-content: center;
+        cursor: pointer;
+        padding: 5px 10px;
+    }
+        & .Active{
+            @include flexBox();
+            justify-content: center;
+            @include hoverEffect();       
+        }
+  
+}

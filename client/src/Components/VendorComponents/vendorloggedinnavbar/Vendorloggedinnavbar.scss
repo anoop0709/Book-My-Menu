@@ -1,6 +1,6 @@
 $secondaryColor :#FF79DA;
 $mainColor:#9356DC;
-$backgroundColor:rgb(240, 237, 237);
+$backgroundColor:rgb(219, 216, 216);
 $shadowStyle:0px 1px 2px 0px rgba(0,0,0,0.75);
 @mixin flexBox {
     margin: 0px;
@@ -16,9 +16,9 @@ $shadowStyle:0px 1px 2px 0px rgba(0,0,0,0.75);
     color: white;
 }
 @mixin hoverEffect{
-    color: $mainColor;
+    color: white;
     cursor: pointer;
-    background-color: $backgroundColor;
+    background-color: $mainColor;
     border-radius: 5px;
     padding: 5px 10px;
 }

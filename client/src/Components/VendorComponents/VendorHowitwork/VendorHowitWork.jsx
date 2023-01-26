@@ -29,8 +29,7 @@ function VendorHowitWork() {
                 <p>Accept Bookings Online from Your Customers</p>
 
             </div>
-        </div>
-      
+        </div>    
     </div>
   )
 }

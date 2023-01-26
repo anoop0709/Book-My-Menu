@@ -93,9 +93,9 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  color: #9356DC;
+  color: white;
   cursor: pointer;
-  background-color: #f0eded;
+  background-color: #9356DC;
   border-radius: 5px;
   padding: 5px 10px;
 }
