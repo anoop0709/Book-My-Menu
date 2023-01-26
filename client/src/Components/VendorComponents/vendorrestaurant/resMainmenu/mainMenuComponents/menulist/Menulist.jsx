@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getMenu } from '../../../../../../actions/VendorActions'
 import "./Menulist.css"
 import Bevereges from './menulistcomponents/beverages/Beverages'
 import Combos from './menulistcomponents/combos/Combos'
@@ -9,7 +11,13 @@ import Sidedish from './menulistcomponents/sidedish/Sidedish'
 import Starter from './menulistcomponents/starterdish/Starter'
 
 function Menulist() {
-  const [menu,setMenu] = useState("STARTER")
+  const menuList = useSelector((state)=>{return state.Restmenu.authdata});
+  const [vendor,setVendor] = useState(JSON.parse(localStorage.getItem('vendor')).email);
+  const [menu,setMenu] = useState("STARTER");
+  const dispatch = useDispatch();
+  useEffect(()=>{
+    dispatch(getMenu(vendor))
+  },[menu,menuList])
  
   return (
     <div className="resMainconatainer">

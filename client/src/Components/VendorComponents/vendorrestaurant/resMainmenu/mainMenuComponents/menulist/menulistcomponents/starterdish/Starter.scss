@@ -39,17 +39,14 @@ $shadowStyle:0px 1px 1px 0px rgba(0, 0, 0, 0.5);
 }
 .Starter{
     @include flexBox();
-   
-    & form {
-        @include flexBox();
         & input{
            @include Input();
         }
-        & button{
-            @include buttonStyle();
+        & .sbtBtn{
+           @include buttonStyle();
         }
-    }
 }
+
 .starterList{
     @include flexBox();
     max-width: 80%;

@@ -30,3 +30,26 @@ export const vendorLogin = (formData,Navigate) => async (dispatch)=>{
         dispatch({type:'VENDORLOGINERROR',payload:error.response.data})
     }
 }
+
+export const addStarter = (data,email) => async (dispatch)=>{
+    try {
+        const Data = await aPi.AddStarter(data,email);
+        console.log(Data);
+        Data && dispatch({type:"RESTMENU",payload:Data.data.menu})
+        
+    } catch (error) {
+        console.log(error.response.data);
+        dispatch({type:'MENUERROR',payload:error.response.data});
+    }
+}
+export const getMenu = (email) => async (dispatch)=>{
+    try {
+        const Data = await aPi.GetMenu(email);
+        console.log(Data.data.menu);
+        Data && dispatch({type:"RESTMENU",payload:Data.data.menu})
+        
+    } catch (error) {
+        console.log(error.response.data);
+        dispatch({type:'MENUERROR',payload:error.response.data});
+    }
+}

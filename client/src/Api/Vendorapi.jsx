@@ -12,3 +12,5 @@ aPi.interceptors.request.use((req) => {
 
 export const VendorSignUp = (FormData) => aPi.post('/vendor/vendor_Signup', FormData);
 export const VendorLogIn = (FormData) => aPi.post('/vendor/vendor_Login', FormData);
+export const AddStarter = (data,email) => aPi.post(`/vendor/add_starter/${email}`,data);
+export const GetMenu = (email) => aPi.get(`/vendor/get_menu/${email}`);

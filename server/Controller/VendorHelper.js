@@ -1,5 +1,6 @@
 import VENDOR from "../Models/VendorSchema.js"
 import RESTAURANT from "../Models/RestaurantSchema.js"
+import MENU from "../Models/RestaurantMenuSchema.js"
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
@@ -42,6 +43,7 @@ export const vendor_Register = async (req, res) => {
             const Vendor = await VENDOR.create({ firstname, lastname, email, phonenumber, password });
             const vendorId = Vendor._id;
             await RESTAURANT.create({ restaurantname, address, location, typeofcusine, seatingcapacity, openinghours, closinghours, images, pancard, fssai, gst, vendorId });
+            await MENU.create({vendorId})
             mailTransporter.sendMail(details, (error) => {
                 if (error) {
                     console.log(error);
@@ -89,3 +91,40 @@ export const vendor_Login = async (req, res) => {
         return res.status(401).send(error.message);
     }
 }
+
+export const get_Menu = async (req,res)=>{
+    try {
+        const vendorEmail = req.params.email;
+        console.log(vendorEmail);
+        const vendor = await VENDOR.findOne({email:vendorEmail});
+        console.log(vendor);
+        const menu = await MENU.findOne({vendorId:vendor._id});
+        console.log(menu);
+        res.status(200).json({menu});
+        
+    } catch (error) {
+        console.log(error);
+        res.status(401).send(error.message)
+    }
+}
+
+export const add_Starter = async (req,res) => {
+    try {
+        let starter = {};
+        starter = req.body;
+        console.log(starter);
+        const vendorEmail = req.params.email;
+        console.log(vendorEmail);
+        const vendor = await VENDOR.findOne({email:vendorEmail});
+         await MENU.findOneAndUpdate({vendorId:vendor._id},{$push:{starter:starter}});
+         const menu = await MENU.findOne({vendorId:vendor._id})
+        console.log(menu);
+        res.status(200).json({menu})
+        
+    } catch (error) {
+        console.log(error);
+        res.status(401).send(error.message)
+    }
+
+}
+
