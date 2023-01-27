@@ -30,6 +30,17 @@ export const vendorLogin = (formData,Navigate) => async (dispatch)=>{
         dispatch({type:'VENDORLOGINERROR',payload:error.response.data})
     }
 }
+export const getMenu = (email) => async (dispatch)=>{
+    try {
+        const Data = await aPi.GetMenu(email);
+        console.log(Data.data.menu);
+        Data && dispatch({type:"RESTMENU",payload:Data.data.menu})
+        
+    } catch (error) {
+        console.log(error.response.data);
+        dispatch({type:'MENUERROR',payload:error.response.data});
+    }
+}
 
 export const addStarter = (data,email) => async (dispatch)=>{
     try {
@@ -42,11 +53,55 @@ export const addStarter = (data,email) => async (dispatch)=>{
         dispatch({type:'MENUERROR',payload:error.response.data});
     }
 }
-export const getMenu = (email) => async (dispatch)=>{
+export const editStarter = ({data,index,email}) => async (dispatch)=>{
     try {
-        const Data = await aPi.GetMenu(email);
-        console.log(Data.data.menu);
+        const Data = await aPi.EditStarter({data,index,email});
+        console.log(Data);
+        Data && dispatch({type:"RESTMENU",payload:Data.data.Menu});
+    } catch (error) {
+        console.log(error.response.data);
+        dispatch({type:'MENUERROR',payload:error.response.data});
+    }
+}
+
+export const deleDish = ({index,email,item}) => async (dispatch)=>{
+    try {
+        const Data = await aPi.DeleDish({index,email,item})
+        console.log(Data);
+        Data && dispatch({type:"RESTMENU",payload:Data.data.Menu});
+        
+    } catch (error) {
+        console.log(error.response.data);
+        dispatch({type:'MENUERROR',payload:error.response.data});
+    }
+}
+export const addSidedish = (data,email) => async (dispatch)=>{
+    try {
+        const Data = await aPi.AddSidedish(data,email);
+        console.log(Data);
         Data && dispatch({type:"RESTMENU",payload:Data.data.menu})
+        
+    } catch (error) {
+        console.log(error.response.data);
+        dispatch({type:'MENUERROR',payload:error.response.data});
+    }
+}
+export const editSidedish = ({data,index,email}) => async (dispatch)=>{
+    try {
+        const Data = await aPi.EditSidedish({data,index,email});
+        console.log(Data);
+        Data && dispatch({type:"RESTMENU",payload:Data.data.Menu});
+    } catch (error) {
+        console.log(error.response.data);
+        dispatch({type:'MENUERROR',payload:error.response.data});
+    }
+}
+
+export const deleSidedish = ({index,email,item}) => async (dispatch)=>{
+    try {
+        const Data = await aPi.DeleSidedish({index,email,item})
+        console.log(Data);
+        Data && dispatch({type:"RESTMENU",payload:Data.data.Menu});
         
     } catch (error) {
         console.log(error.response.data);

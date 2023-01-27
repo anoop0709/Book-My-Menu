@@ -10,7 +10,6 @@ $shadowStyle:0px 1px 1px 0px rgba(0, 0, 0, 0.5);
     width: 100%;
     border-radius: 10px;
     padding: 10px;
-
 }
 @mixin Input {
     padding: 5px;
@@ -29,7 +28,7 @@ $shadowStyle:0px 1px 1px 0px rgba(0, 0, 0, 0.5);
 }
 .StarterContainer{
     @include flexBox();
-    flex-direction: column
+    flex-direction: column;
 }
 .StarterWrapper{
     @include flexBox();
@@ -46,10 +45,6 @@ $shadowStyle:0px 1px 1px 0px rgba(0, 0, 0, 0.5);
            @include buttonStyle();
         }
 }
+   
 
-.starterList{
-    @include flexBox();
-    max-width: 80%;
-    margin-top: 10px;
-    background-color: $backgroundColor;
-}
+
