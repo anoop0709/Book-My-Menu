@@ -76,7 +76,7 @@ export const vendor_Login = async (req, res) => {
                     if (!isBlocked) {
                         const fullName = Vendor.firstname + " " + Vendor.lastname;
                         const Email = Vendor.email;
-                        const Token = jwt.sign({ email: Email, id: Vendor._id }, JWT_SECRET_KEY, { expiresIn: "1h" });
+                        const Token = jwt.sign({ email: Email, id: Vendor._id }, JWT_SECRET_KEY);
                         return res.json({ fullName, email, Token })
                     }
                     throw new Error("Your Account is Blocked please contact the Customer care");
@@ -108,15 +108,16 @@ export const get_Menu = async (req, res) => {
     }
 }
 
-export const add_Starter = async (req, res) => {
+export const add_Dish = async (req, res) => {
     try {
-        let starter = {};
-        starter = req.body;
-        console.log(starter);
+        let obj = {};
+        obj = req.body.data;
+        const collectionName = req.body.collectionName;
+        let update = { $push: {} };
+        update.$push[collectionName] = obj;
         const vendorEmail = req.params.email;
         const vendor = await VENDOR.findOne({ email: vendorEmail });
-        await MENU.findOneAndUpdate({ vendorId: vendor._id }, { $push: { starter: starter } });
-        const menu = await MENU.findOne({ vendorId: vendor._id })
+        const menu = await MENU.findOneAndUpdate({ vendorId: vendor._id }, update, { new: true });
         console.log(menu);
         res.status(200).json({ menu })
 
@@ -127,109 +128,48 @@ export const add_Starter = async (req, res) => {
 
 }
 
-export const edit_Starter = async (req, res) => {
+export const edit_Dish = async (req, res) => {
     try {
         let obj = {};
         const vendorEmail = req.body.email;
         const index = req.body.index;
+        const collectionName = req.body.collectionName;
         obj = req.body.data
-        console.log(obj);
+        let update = { $set: {} };
+        update.$set[`${collectionName}.${index}`] = obj;
+        console.log(obj, update);
         console.log(req.body);
         const vendor = await VENDOR.findOne({ email: vendorEmail });
-        const menu = await MENU.findOne({ vendorId: vendor._id });
-        menu.starter[index] = obj;
-        await menu.save();
-        const Menu = await MENU.findOne({ vendorId: vendor._id })
-        console.log(Menu);
-        res.status(200).json({ Menu })
-
-    } catch (error) {
-        console.log(error);
-    }
-}
-export const dele_Starter = async (req,res)=>{
-    try {
-        let obj = {};
-        const vendorEmail = req.body.email;
-        const index = req.body.index;
-        obj = req.body.data
-        console.log(obj);
-        console.log(req.body);
-        const vendor = await VENDOR.findOne({ email: vendorEmail });
-        const menu = await MENU.findOne({ vendorId: vendor._id });
-        const newStarter = menu.starter.filter((item,idx)=>{
-            if(idx !== index){
-                return item;
-            }
-        })
-        await menu.updateOne({starter:newStarter});
-        await menu.save();
-        const Menu = await MENU.findOne({ vendorId: vendor._id })
-        console.log(Menu);
-        res.status(200).json({ Menu })
-        
-    } catch (error) {
-        console.log(error);
-    }
-}
-export const add_Sidedish = async (req, res) => {
-    try {
-        let sidedish = {};
-        sidedish = req.body;
-        const vendorEmail = req.params.email;
-        const vendor = await VENDOR.findOne({ email: vendorEmail });
-        await MENU.findOneAndUpdate({ vendorId: vendor._id }, { $push: { sidedish: sidedish } });
-        const menu = await MENU.findOne({ vendorId: vendor._id })
+        const menu = await MENU.findOneAndUpdate({ vendorId: vendor._id }, update, { new: true });
         console.log(menu);
         res.status(200).json({ menu })
-
-    } catch (error) {
-        console.log(error);
-        res.status(401).send(error.message)
-    }
-
-}
-export const edit_Sidedish = async (req, res) => {
-    try {
-        let obj = {};
-        const vendorEmail = req.body.email;
-        const index = req.body.index;
-        obj = req.body.data
-        console.log(obj);
-        console.log(req.body);
-        const vendor = await VENDOR.findOne({ email: vendorEmail });
-        const menu = await MENU.findOne({ vendorId: vendor._id });
-        menu.sidedish[index] = obj;
-        await menu.save();
-        const Menu = await MENU.findOne({ vendorId: vendor._id })
-        console.log(Menu);
-        res.status(200).json({ Menu })
-
     } catch (error) {
         console.log(error);
     }
 }
-export const dele_Sidedish = async (req,res)=>{
+export const dele_Dish = async (req, res) => {
     try {
         let obj = {};
         const vendorEmail = req.body.email;
         const index = req.body.index;
-        obj = req.body.data
+        const collectionName = req.body.collectionName;
+        obj = req.body.item
         console.log(obj);
         console.log(req.body);
         const vendor = await VENDOR.findOne({ email: vendorEmail });
         const menu = await MENU.findOne({ vendorId: vendor._id });
-        const newSidedish = menu.sidedish.filter((item,idx)=>{
-            if(idx !== index){
+        console.log(menu);
+
+        const newList = menu[`${collectionName}`].filter((item, idx) => {
+            if (idx !== index) {
                 return item;
             }
         })
-        await menu.updateOne({sidedish:newSidedish});
+        await menu.updateOne({ [`${collectionName}`]: newList });
         await menu.save();
         const Menu = await MENU.findOne({ vendorId: vendor._id })
         console.log(Menu);
         res.status(200).json({ Menu })
-        
     } catch (error) {
         console.log(error);
     }

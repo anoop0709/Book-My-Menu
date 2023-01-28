@@ -2,12 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getMenu } from '../../../../../../actions/VendorActions'
 import "./Menulist.css"
-import Bevereges from './menulistcomponents/beverages/Beverages'
-import Combos from './menulistcomponents/combos/Combos'
-import Dessert from './menulistcomponents/dessert/Dessert'
-import Maindish from './menulistcomponents/maindish/Maindish'
+
 import MenulistComponents from './menulistcomponents/MenulistComponents'
-import Sidedish from './menulistcomponents/sidedish/Sidedish'
+
 import Starter from './menulistcomponents/starterdish/Starter'
 
 function Menulist() {
@@ -18,7 +15,8 @@ function Menulist() {
   useEffect(()=>{
     dispatch(getMenu(vendor))
   },[menu,menuList])
- 
+ const collectionName = ['starter','sidedish','maindish','dessert','combos','beverages']
+ console.log(collectionName[0]);
   return (
     <div className="resMainconatainer">
     <div className="resMainwrapper">
@@ -26,12 +24,12 @@ function Menulist() {
         <div className="menulist-items">
           <MenulistComponents setMenu = {setMenu}/>
         </div>
-          {menu === "STARTER" && <Starter/>}
-          {menu === "SIDE DISH" && <Sidedish/>}
-          {menu === "MAIN DISH" && <Maindish/>}
-          {menu === "DESSERT" && <Dessert/>}
-          {menu === "COMBOS" && <Combos/>}
-          {menu === "BEVERAGES" && <Bevereges/>}
+          {menu === "STARTER" && <Starter collectionName = {collectionName[0]}/>}
+          {menu === "SIDE DISH" && <Starter collectionName = {collectionName[1]}/>}
+          {menu === "MAIN DISH" && <Starter collectionName = {collectionName[2]}/>}
+          {menu === "DESSERT" && <Starter collectionName = {collectionName[3]}/>}
+          {menu === "COMBOS" && <Starter collectionName = {collectionName[4]}/>}
+          {menu === "BEVERAGES" && <Starter collectionName = {collectionName[5]}/>}
         </div>
       </div>
     </div>

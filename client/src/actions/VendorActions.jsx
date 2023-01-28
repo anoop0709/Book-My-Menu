@@ -42,9 +42,9 @@ export const getMenu = (email) => async (dispatch)=>{
     }
 }
 
-export const addStarter = (data,email) => async (dispatch)=>{
+export const addDish = ({data,email,collectionName}) => async (dispatch)=>{
     try {
-        const Data = await aPi.AddStarter(data,email);
+        const Data = await aPi.AddDish({data,email,collectionName});
         console.log(Data);
         Data && dispatch({type:"RESTMENU",payload:Data.data.menu})
         
@@ -53,53 +53,20 @@ export const addStarter = (data,email) => async (dispatch)=>{
         dispatch({type:'MENUERROR',payload:error.response.data});
     }
 }
-export const editStarter = ({data,index,email}) => async (dispatch)=>{
+export const editDish = ({data,index,email,collectionName}) => async (dispatch)=>{
     try {
-        const Data = await aPi.EditStarter({data,index,email});
+        const Data = await aPi.EditDish({data,index,email,collectionName});
         console.log(Data);
-        Data && dispatch({type:"RESTMENU",payload:Data.data.Menu});
+        Data && dispatch({type:"RESTMENU",payload:Data.data.menu});
     } catch (error) {
         console.log(error.response.data);
         dispatch({type:'MENUERROR',payload:error.response.data});
     }
 }
 
-export const deleDish = ({index,email,item}) => async (dispatch)=>{
+export const deleDish = ({index,email,item,collectionName}) => async (dispatch)=>{
     try {
-        const Data = await aPi.DeleDish({index,email,item})
-        console.log(Data);
-        Data && dispatch({type:"RESTMENU",payload:Data.data.Menu});
-        
-    } catch (error) {
-        console.log(error.response.data);
-        dispatch({type:'MENUERROR',payload:error.response.data});
-    }
-}
-export const addSidedish = (data,email) => async (dispatch)=>{
-    try {
-        const Data = await aPi.AddSidedish(data,email);
-        console.log(Data);
-        Data && dispatch({type:"RESTMENU",payload:Data.data.menu})
-        
-    } catch (error) {
-        console.log(error.response.data);
-        dispatch({type:'MENUERROR',payload:error.response.data});
-    }
-}
-export const editSidedish = ({data,index,email}) => async (dispatch)=>{
-    try {
-        const Data = await aPi.EditSidedish({data,index,email});
-        console.log(Data);
-        Data && dispatch({type:"RESTMENU",payload:Data.data.Menu});
-    } catch (error) {
-        console.log(error.response.data);
-        dispatch({type:'MENUERROR',payload:error.response.data});
-    }
-}
-
-export const deleSidedish = ({index,email,item}) => async (dispatch)=>{
-    try {
-        const Data = await aPi.DeleSidedish({index,email,item})
+        const Data = await aPi.DeleDish({index,email,item,collectionName})
         console.log(Data);
         Data && dispatch({type:"RESTMENU",payload:Data.data.Menu});
         

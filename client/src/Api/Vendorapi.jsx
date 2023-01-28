@@ -14,10 +14,7 @@ export const VendorSignUp = (FormData) => aPi.post('/vendor/vendor_Signup', Form
 export const VendorLogIn = (FormData) => aPi.post('/vendor/vendor_Login', FormData);
 export const GetMenu = (email) => aPi.get(`/vendor/get_menu/${email}`);
 
-export const AddStarter = (data,email) => aPi.post(`/vendor/add_starter/${email}`,data);
-export const EditStarter = ({data,index,email}) => aPi.post('/vendor/edit_starter',{data,index,email});
-export const DeleDish = ({index,email,item}) => aPi.post('/vendor/dele_starter',{index,email,item});
+export const AddDish = ({data,email,collectionName}) => aPi.post(`/vendor/add_dish/${email}`,{data,collectionName});
+export const EditDish = ({data,index,email,collectionName}) => aPi.post('/vendor/edit_dish',{data,index,email,collectionName});
+export const DeleDish = ({index,email,item,collectionName}) => aPi.post('/vendor/dele_dish',{index,email,item,collectionName});
 
-export const AddSidedish = (data,email) => aPi.post(`/vendor/add_sidedish/${email}`,data);
-export const EditSidedish = ({data,index,email}) => aPi.post(`/vendor/edit_sidedish`,{data,index,email});
-export const DeleSidedish = ({index,email,item}) => aPi.post(`/vendor/dele_sidedish`,{index,email,item});

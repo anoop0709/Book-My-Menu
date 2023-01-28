@@ -1,7 +1,7 @@
 
 import './AdminLogin.css'
 import Person2 from '../../../images/person1.webp'
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Inputfield from "../../../Components/signupcomponent/inputComponent/Inputfield";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -13,9 +13,15 @@ function AdminLogin() {
     console.log(state.AdminAuthReducer.error);
     return state.AdminAuthReducer.error;
   });
-
   const dispatch = useDispatch();
   const Navigate = useNavigate();
+  useEffect(() => {
+      let isAuth = JSON.parse(localStorage.getItem('admin'))?.Token;
+      if(isAuth && isAuth !== null) {
+          Navigate("/adminhome");
+      }
+  },[]);
+ 
   const [adminlogvalues, setAdminlogvalues] = useState({
     email: "",
     password: ""

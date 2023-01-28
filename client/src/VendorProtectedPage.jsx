@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Navigate, Outlet } from 'react-router';
 
 function VendorProtectedPage() {
   
-         const [vendor,setVendor]= useState(JSON.parse(localStorage.getItem('vendor')));
+  const vendor= JSON.parse(localStorage.getItem('vendor'))?.Token;
   return vendor ? <Outlet/> : <Navigate to="/vendor"/>    
-
-  
 }
 
 export default VendorProtectedPage

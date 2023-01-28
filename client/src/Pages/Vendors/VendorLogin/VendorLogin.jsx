@@ -9,10 +9,19 @@ import Vendornavbar from '../../../Components/VendorComponents/VendorNavbar/Vend
 
 
 function VendorLogin() {
+  const  isAuth = JSON.parse(localStorage.getItem('vendor'))?.Token;
+  const dispatch = useDispatch();
+  const Navigate = useNavigate();
+    useEffect(() => {  
+        if(isAuth && isAuth !== null) {
+            Navigate("/vendordashborad");
+        }
+    },[]);
+
+
     const Error = useSelector((state) => { return state.VendorAuthReducer.error });
     console.log(Error)
-    const dispatch = useDispatch();
-    const Navigate = useNavigate();
+   
     const [inpvalues, setInputvalues] = useState({
       email: "",
       password: ""

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addStarter, editStarter  , deleDish } from '../../../../../../../../actions/VendorActions';
+import { addDish, editDish  , deleDish } from '../../../../../../../../actions/VendorActions';
 import "./Starter.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -9,7 +9,9 @@ import Modal from 'react-bootstrap/Modal';
 
 
 
-function Starter() {
+function Starter({collectionName}) {
+  console.log(collectionName)
+  
   const dispatch = useDispatch();
   const [show, setShow] = useState(true);
   const [index, setIndex] = useState(null);
@@ -18,9 +20,9 @@ function Starter() {
   const menuList = useSelector((state) => { return state.Restmenu.authData });
   const [email, setEmail] = useState(JSON.parse(localStorage.getItem('vendor')).email);
   const [item, setItem] = useState("")
-  const [itemName, setItemname] = useState(item.itemName);
-  const [itemDescription, setItemdescription] = useState(item.itemDescription);
-  const [itemPrice, setItemprice] = useState(item.itemPrice);
+  const [itemName, setItemname] = useState("");
+  const [itemDescription, setItemdescription] = useState("");
+  const [itemPrice, setItemprice] = useState("");
   const [data, setData] = useState({
     itemName: "",
     itemDescription: "",
@@ -39,7 +41,7 @@ function Starter() {
 
   const handleClose = () => setShow(false);
   const deleteDish = (idx)=>{
-    const Item = menuList?.starter?.filter((item, index) => {
+    const Item = menuList?.[`${collectionName}`]?.filter((item, index) => {
       if (index === idx) return item;
     })
     setIndex(idx);
@@ -47,8 +49,8 @@ function Starter() {
     setDeledata(true);
     setItem(Item);
   }
-  const editDish = (idx) => {
-    const Item = menuList?.starter?.filter((item, index) => {
+  const editdish = (idx) => {
+    const Item = menuList?.[`${collectionName}`]?.filter((item, index) => {
       if (index === idx) return item;
     })
     setItem(Item)
@@ -74,19 +76,28 @@ function Starter() {
 
   const AddStarter = () => {
     console.log(data);
-    dispatch(addStarter(data, email));
+    dispatch(addDish({data,email,collectionName}));
     setData({ itemName: "", itemDescription: "", itemPrice: "" })
   }
   const handleSaveChanges = () => {
     console.log(editedData);
     const data = {itemName,itemDescription, itemPrice}
     console.log(itemName, itemDescription, itemPrice);
-    dispatch(editStarter({data,index,email}));
+    dispatch(editDish({data,index,email,collectionName}));
     setEditeddata({ itemName: "", itemDescription: "", itemPrice: "" });
+    setItemname("");
+    setItemdescription("");
+    setItemprice("")
+    setItem("")
     setShow(false)
   }
   const delItem = ()=>{
-    dispatch(deleDish({index,email,item}))
+    dispatch(deleDish({index,email,item,collectionName}))
+    setItem("")
+    setItemname("");
+    setItemdescription("");
+    setItemprice("")
+    setItem("")
     setShow(false)
   }
   return (
@@ -97,7 +108,7 @@ function Starter() {
         <Modal.Header closeButton>
           <Modal.Title>DELETE ITEM</Modal.Title>
         </Modal.Header>
-        <Modal.Body>{`Delete ${item[0].itemName} ?`}</Modal.Body>
+        <Modal.Body>{`Delete ${item[0]?.itemName} ?`}</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
@@ -151,7 +162,7 @@ function Starter() {
             <input name="itemName" type="text" placeholder="Dish name" onChange={onChange} value={data.itemName} />
             <input name="itemDescription" type="text" placeholder="Description" onChange={onChange} value={data.itemDescription} />
             <input name="itemPrice" type="number" placeholder="price" onChange={onChange} value={data.itemPrice} />
-            <button onClick={AddStarter} className="sbtBtn">ADD STARTER</button>
+            <button onClick={AddStarter} className="sbtBtn">{`Add ${collectionName}`}</button>
           </div>
         </div>
 
@@ -169,13 +180,13 @@ function Starter() {
           </thead>
           <tbody>
             {
-              menuList?.starter?.map((item, index) => (
+              menuList?.[`${collectionName}`]?.map((item, index) => (
                 <tr key={index}>
                   <td >{index + 1}</td>
                   <td>{item.itemName}</td>
                   <td>{item.itemDescription}</td>
                   <td>{item.itemPrice}</td>
-                  <td ><FontAwesomeIcon icon={faEdit} onClick={() => { editDish(index) }} /></td>
+                  <td ><FontAwesomeIcon icon={faEdit} onClick={() => { editdish(index) }} /></td>
                   <td ><FontAwesomeIcon icon={faTrash} onClick={() => { deleteDish(index) }} /></td>
 
                 </tr>
