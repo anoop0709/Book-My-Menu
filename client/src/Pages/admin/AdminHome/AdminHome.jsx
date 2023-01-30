@@ -27,17 +27,17 @@ const dispatch = useDispatch();
       dispatch(newVendors())
       dispatch(allrestaurant())
 
-  },[pages])
+  },[])
   return (
     <div className="App">
       <div className="AppGlass">
         <Sidebar setPages={setPages}/>
         <AdminNavbar />
       
-        {pages == "Dashboard" && <Main/>}
-        {pages == "Customers" && <Allusers/>}
-        {pages == "Vendors" && <Allvendors/>}
-        {pages == "Approve Vendors" && <ApproveVendors/>}
+        {pages === "Dashboard" && <Main/>}
+        {pages === "Customers" && <Allusers/>}
+        {pages === "Vendors" && <Allvendors/>}
+        {pages === "Approve Vendors" && <ApproveVendors/>}
       </div>
     </div>
   )

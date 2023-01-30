@@ -13,6 +13,7 @@ import VendorLogin from "./Pages/Vendors/VendorLogin/VendorLogin";
 import Main from "./Pages/admin/DashBoard/Main";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Vendordashboard from "./Pages/Vendors/vendorDashBoard/Vendordashboard";
+import Otp from "./Pages/otp/Otp";
 
 function App() {
   return (

@@ -1,5 +1,5 @@
 import './Login.css'
-import Navbar from '../../../Components/homepageComponents/Navbar/Navbar';
+import Navbar from '../../../Components/userhomepageComponents/Navbar/Navbar';
 import Person2 from '../../../images/person2.jpeg'
 import React, { useState } from "react";
 import Inputfield from "../../../Components/signupcomponent/inputComponent/Inputfield";
@@ -69,7 +69,7 @@ function Login() {
             <div className="signInform">
               <form onSubmit={handleSubmit}>
               <div className="h1txt">
-                <h1>USER LOGIN</h1>
+                <h3>USER LOGIN</h3>
               </div>
 
                 {Error && (

@@ -2,17 +2,25 @@
     /* padding-top: 1rem; */
     display: flex;
     flex-direction: column;
-    justify-content:space-evenly;
+    justify-content:center;
+    align-items: center;
     overflow: scroll;
     scroll-behavior: smooth;
     z-index: 1;
     position: absolute;
     top: 20%;
-    left: 15%;
-   right: 50px;
+    left: 20%;
+   box-sizing: border-box;
 }
 .MainDash::-webkit-scrollbar{
     display: none;
+}
+.dashWrapper{
+    display: flex;
+    flex-direction: column;
+    max-width: 1300px;
+  
+
 }
 
 @media screen and (max-width: 1200px) {

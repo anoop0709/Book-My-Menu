@@ -1,10 +1,10 @@
-import Footer from "../../../Components/homepageComponents/Footer/Footer"
-import Header from "../../../Components/homepageComponents/Header/Header"
-import HowitWork from "../../../Components/homepageComponents/How it work/HowitWork"
-import Navbar from "../../../Components/homepageComponents/Navbar/Navbar"
-import Popular from "../../../Components/homepageComponents/PopularRestaurant/Popular"
-import RestaurantAndEvents from "../../../Components/homepageComponents/Restaurant or Events/RestaurantAndEvents"
-import Reviews from "../../../Components/homepageComponents/reviews/reviews"
+import Footer from "../../../Components/userhomepageComponents/Footer/Footer"
+import Header from "../../../Components/userhomepageComponents/Header/Header"
+import HowitWork from "../../../Components/userhomepageComponents/How it work/HowitWork"
+import Navbar from "../../../Components/userhomepageComponents/Navbar/Navbar"
+import Popular from "../../../Components/userhomepageComponents/PopularRestaurant/Popular"
+import RestaurantAndEvents from "../../../Components/userhomepageComponents/Restaurant or Events/RestaurantAndEvents"
+import Reviews from "../../../Components/userhomepageComponents/reviews/reviews"
 import "./Home.css"
 
 function Home() {
@@ -15,8 +15,8 @@ function Home() {
         
       </div>
     <Header/>
-    <HowitWork/>
     <RestaurantAndEvents/>
+    <HowitWork/>
     <Popular/>
     <Reviews/>
     <Footer/>

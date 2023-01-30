@@ -15,6 +15,14 @@ export const vendorSignup = (formData,Navigate) => async (dispatch)=>{
         dispatch({type:'VENDORLOGINERROR',payload:error.response.data})
     }
 }
+export const vendorOtpVerification = (otp,email) => async (dispatch)=>{
+    try {
+        console.log(otp,email);
+        await aPi.VendorOtp(otp,email);
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 export const vendorLogin = (formData,Navigate) => async (dispatch)=>{
     try {

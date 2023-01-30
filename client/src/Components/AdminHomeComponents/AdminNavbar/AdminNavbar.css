@@ -25,9 +25,12 @@
     display: flex;
     justify-content:flex-end;
     align-items: center;
-    gap: 20px;
+    gap: 30px;
     margin-right: 30px;
 
+}
+.navbtns>p{
+    margin: 0;
 }
 .navButtons{
     border: none;

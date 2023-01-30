@@ -5,7 +5,7 @@ import Inputfield from "../../../Components/signupcomponent/inputComponent/Input
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {vendorLogin} from "../../../actions/VendorActions";
-import Vendornavbar from '../../../Components/VendorComponents/VendorNavbar/Vendornavbar';
+import Vendornavbar from '../../../Components/VendorComponents/vendorLoggedoutHomepage/VendorNavbar/Vendornavbar';
 
 
 function VendorLogin() {

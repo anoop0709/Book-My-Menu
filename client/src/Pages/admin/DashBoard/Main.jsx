@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react'
 import './Main.css'
 import Cards from '../../../Components/AdminHomeComponents/Cards/Cards'
-import Popular from '../../../Components/homepageComponents/PopularRestaurant/Popular'
-import Sidebar from '../../../Components/AdminHomeComponents/Sidebar/Sidebar'
-import AdminNavbar from '../../../Components/AdminHomeComponents/AdminNavbar/AdminNavbar'
+import Popular from '../../../Components/userhomepageComponents/PopularRestaurant/Popular'
 import { useNavigate } from 'react-router'
 
 function Main() {
@@ -18,10 +16,10 @@ function Main() {
   })
   return (
    <div className="MainDash">
+     <div className="dashWrapper">
        <Cards/>
        <Popular/>
-       <Popular/>
-       <Popular/>
+     </div>
    </div>
   )
 }

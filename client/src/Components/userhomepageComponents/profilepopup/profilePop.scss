@@ -1,0 +1,71 @@
+
+      
+    
+ 
+   
+    
+    
+     
+      .card {
+        width: 350px;
+        height: 400px;
+        overflow: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top:40px;
+      & .card-body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      
+  
+      #circle-avatar {
+        display: grid;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: #ffbd30;
+        place-items: center;
+  
+       & span {
+          font-size: 48px;
+          font-weight: bold;
+        }
+      }
+    
+    & .textContainer{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      & .textWrapper{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 20px;
+
+        & .textWrapper>h5{
+          width: 100%;
+          color:#ffbd30; 
+        }
+        & .buttondiv{
+          display: flex;
+          align-items:center;
+          justify-content: center;
+        }
+      }
+    }
+  }
+}
+
+  
+  
+       
+  
+  

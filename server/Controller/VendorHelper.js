@@ -9,10 +9,20 @@ dotenv.config();
 const { JWT_SECRET_KEY } = process.env;
 
 
+const randomOtp = ()=>{
+  return  Math.floor(1000 + Math.random() * 9000);
+
+}
+
+
 
 export const vendor_Register = async (req, res) => {
     try {
-        console.log(req.body.images);
+        const otp = randomOtp();
+        let otpObj = {
+            email:req.body.email,
+            otp : otp
+        }
         const { firstname, lastname, email, phonenumber } = req.body;
         let { password } = req.body;
         const mailTransporter = nodeMailer.createTransport({
@@ -24,6 +34,13 @@ export const vendor_Register = async (req, res) => {
                 pass: process.env.SMTPpassword
             },
         })
+
+        const Otpdetails = {
+            from: "frombookmymenu@gmail.com",
+            to: email,
+            subject: "Vendor Account Registration",
+            text: `Thank you for registering with BOOK MY MENU, Please verify your email with this OTP ${otp}`
+        }
         const details = {
             from: "frombookmymenu@gmail.com",
             to: email,

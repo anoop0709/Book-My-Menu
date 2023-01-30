@@ -1,0 +1,96 @@
+.otpcontainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.otpwrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20px;
+  width: 400px;
+  height: 300px;
+  border: 1px solid #acacac;
+  border-radius: 5px;
+  -webkit-box-shadow: 1px 1px 1px 0.5px #bebebe;
+          box-shadow: 1px 1px 1px 0.5px #bebebe;
+  padding: 20px;
+}
+
+.inpFields {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.inpField {
+  text-align: center;
+  padding: 2px;
+  width: 40px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 0.5px solid #2c2c79;
+  outline: none;
+}
+
+.iconDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.iconDiv .icon {
+  width: 80px;
+  height: 80px;
+  color: #2c2c79;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.iconDiv .lock {
+  position: absolute;
+  color: white;
+  font-size: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+/*# sourceMappingURL=Otp.css.map */

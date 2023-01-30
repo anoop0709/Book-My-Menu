@@ -1,6 +1,6 @@
 import React from 'react'
 import "./Vendordashboard.css"
-import VendorDashHome from "../../../Components/VendorComponents/vendordloggedinhome/Vendorloggedinhome";
+import VendorDashHome from "../../../Components/VendorComponents/vendorloggedinhome/Vendorloggedinhome";
 
 function Vendordashboard() {
 

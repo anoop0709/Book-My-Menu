@@ -1,0 +1,58 @@
+
+@mixin  Dispaly {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+}
+
+.otpcontainer{
+    @include Dispaly();
+    width: 100%;
+    height: 100vh;
+}
+.otpwrapper{
+  @include Dispaly();
+  flex-direction: column;
+  gap: 20px;
+  width: 400px;
+  height: 300px;
+  border: 1px solid rgb(172, 172, 172);
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px 0.5px rgb(190, 190, 190);
+  padding: 20px;
+}
+.inpFields{
+    @include Dispaly();
+    
+   
+}
+.inpField{
+    text-align: center;
+    padding: 2px;
+    width: 40px;
+   margin: 10px;
+   border-radius: 5px;
+   border: 0.5px solid rgb(44, 44, 121);
+   outline: none;
+}
+.iconDiv{
+    @include Dispaly();
+
+.icon{
+width: 80px;
+height: 80px;
+color: rgb(44, 44, 121);
+position: relative;
+@include Dispaly()
+
+
+}
+.lock{
+    position: absolute;
+    color: white;
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+}

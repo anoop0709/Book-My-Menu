@@ -1,8 +1,10 @@
+import { faBell, faUser } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react'
 import "./AdminNavbar.css"
 
 function AdminNavbar() {
-    const [admin,setAdmin] = useState(JSON.parse(localStorage.getItem('admin')).Admin);
+    const [admin,setAdmin] = useState(JSON.parse(localStorage.getItem('admin'))?.Email);
 
 
   return (
@@ -10,8 +12,9 @@ function AdminNavbar() {
        <div className="wrapper">
            <div className="navItems">
                <div className="navbtns">
-                      
-                           <h5>{admin}</h5>
+                   <FontAwesomeIcon icon={faUser}/>
+                  <FontAwesomeIcon icon={faBell}/>
+                  <p>{admin}</p>
                </div>
            </div>
        </div>

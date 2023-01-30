@@ -1,22 +1,26 @@
 import "./Signin.css"
-import Navbar from '../../../Components/homepageComponents/Navbar/Navbar';
+import Navbar from '../../../Components/userhomepageComponents/Navbar/Navbar';
 import Person2 from '../../../images/person2.jpeg'
 import React, { useState } from "react";
 import Inputfield from "../../../Components/signupcomponent/inputComponent/Inputfield";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { signUp } from "../../../actions/UserActions";
+import Otp from "../../otp/Otp";
 
 
 
 function Signin() {
+    const [otpPage,setOtppage] = useState(false)
+    const user = 'user';
     const [values, setValues] = useState({
         firstname: "",
         lastname: "",
         email: "",
         phonenumber: "",
         password: "",
-        confirmpassword: ""
+        confirmpassword: "",
+        otp:""
     });
     const Navigate = useNavigate();
     const dispatch = useDispatch();
@@ -89,7 +93,8 @@ function Signin() {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(values);
-        dispatch(signUp(values, Navigate))
+        dispatch(signUp(values, Navigate));
+        setOtppage(true);   
     }
 
     const onChange = (e) => {
@@ -98,12 +103,13 @@ function Signin() {
     const handleLogIn = () => {
         Navigate('/login')
     }
-
     console.log(values);
     return (
         <div>
             <Navbar />
-            <div className="signInContainer">
+            {otpPage ? (<Otp values={values} setValues={setValues} user={user}/>):(
+
+                <div className="signInContainer">
                 <div className="signInWrapper">
                     <div className="signinbox">
 
@@ -113,13 +119,13 @@ function Signin() {
                         <div className="signInform">
                             <form onSubmit={handleSubmit}>
                                 <div className="h1txt">
-                                    <h1>USER SIGNUP</h1>
+                                    <h3>USER SIGNUP</h3>
                                 </div>
 
                                 {inputs.map((input) => (
                                     <Inputfield key={input.id} {...input} onChange={onChange} />
-
-                                ))}
+                                    
+                                    ))}
 
                                 <div className="formBtn">
                                     <button type="submit"> Register</button>
@@ -134,7 +140,9 @@ function Signin() {
                     </div>
                 </div>
             </div>
+)
 
+}
         </div>
     )
 }

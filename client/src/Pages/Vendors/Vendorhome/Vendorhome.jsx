@@ -1,10 +1,10 @@
 import React from 'react'
-import Footer from '../../../Components/homepageComponents/Footer/Footer'
-import VendorDocumentSection from '../../../Components/VendorComponents/VendorDocument/VendorDocumentSection'
-import VendorHero from '../../../Components/VendorComponents/VendorHero/VendorHero'
-import VendorHowitWork from '../../../Components/VendorComponents/VendorHowitwork/VendorHowitWork'
-import Vendornavbar from '../../../Components/VendorComponents/VendorNavbar/Vendornavbar'
-import WhyUs from '../../../Components/VendorComponents/Vendorwhyus/WhyUs'
+import Footer from '../../../Components/userhomepageComponents/Footer/Footer'
+import VendorDocumentSection from '../../../Components/VendorComponents/vendorLoggedoutHomepage/VendorDocument/VendorDocumentSection'
+import VendorHero from '../../../Components/VendorComponents/vendorLoggedoutHomepage/VendorHero/VendorHero'
+import VendorHowitWork from '../../../Components/VendorComponents/vendorLoggedoutHomepage/VendorHowitwork/VendorHowitWork'
+import Vendornavbar from '../../../Components/VendorComponents/vendorLoggedoutHomepage/VendorNavbar/Vendornavbar'
+import WhyUs from '../../../Components/VendorComponents/vendorLoggedoutHomepage/Vendorwhyus/WhyUs'
 
 function Vendorhome() {
   return (

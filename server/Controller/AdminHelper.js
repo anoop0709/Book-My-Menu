@@ -21,8 +21,9 @@ export const admin_Login = async (req, res) => {
             console.log(ispassword);
             if (ispassword) {
                 const Admin = admin.fullname;
+                const Email = admin.email
                 const Token = jwt.sign({ email: admin.email, id: admin._id }, JWT_SECRET_KEY, { expiresIn: "1h" });
-                return res.json({ Admin, Token })
+                return res.json({ Admin, Token ,Email})
             }
             throw new Error("Invalid Password")
         }
