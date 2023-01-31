@@ -4,7 +4,7 @@ import HowitWork from "../../../Components/userhomepageComponents/How it work/Ho
 import Navbar from "../../../Components/userhomepageComponents/Navbar/Navbar"
 import Popular from "../../../Components/userhomepageComponents/PopularRestaurant/Popular"
 import RestaurantAndEvents from "../../../Components/userhomepageComponents/Restaurant or Events/RestaurantAndEvents"
-import Reviews from "../../../Components/userhomepageComponents/reviews/reviews"
+import Reviews from "../../../Components/userhomepageComponents/reviews/Reviews"
 import "./Home.css"
 
 function Home() {

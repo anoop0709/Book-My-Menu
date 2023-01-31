@@ -13,6 +13,6 @@ API.interceptors.request.use((req)=>{
 
 export const userLogin = (FormData)=>  API.post('/signin',FormData);
 export const userSignup = (FormData)=> API.post('/signup',FormData);
-export const UserOtp = (email,otp) => API.post('/otp_verify',{email,otp})
+
 
 

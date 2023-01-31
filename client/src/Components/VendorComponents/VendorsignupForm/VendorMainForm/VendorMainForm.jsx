@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import "./VendorMainForm.css";
 import Vendornavbar from '../../vendorLoggedoutHomepage/VendorNavbar/Vendornavbar';
-import LicenceDetails from '../LicenceDetails/LicenceDetails';
-import RestaurantInfo from '../RestaurantInfo/RestaurantInfo';
-import VendorPersonalInfo from '../VendorPersonalInfo/VendorPersonalInfo';
+import LicenceDetails from './LicenceDetails/LicenceDetails';
+import RestaurantInfo from './RestaurantInfo/RestaurantInfo';
+import VendorPersonalInfo from './VendorPersonalInfo/VendorPersonalInfo';
 
 
 function VendorMainForm() {

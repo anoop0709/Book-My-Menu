@@ -42,14 +42,12 @@ const homePage = ()=>{
       <div className="navContainer">
           <div className="navWrapper">
             <h1 onClick ={homePage}>Book My Menu</h1>
-              {/* <img src={logo} className="logo" onClick ={homePage} alt="Book My Menu"/> */}
-              
                 { user ? (
                   <div className="Navitems">
                    <ProfilePop user={user} logout ={logout} settings ={settings}/>
                   </div>
                   ) : (
-                  <div className="navItem">
+                  <div className="Navitems">
                   <button className="navButtons" onClick={handleSignIn}>Register</button>
                   <button className="navButtons" onClick={handleLogin}>Login</button>
                   </div>

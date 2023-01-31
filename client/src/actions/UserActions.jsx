@@ -18,14 +18,6 @@ export const signUp = (formData,Navigate) => async (dispatch)=>{
     }
 }
 
-export const userOtpVerification = (otp,email) => async (dispatch)=>{
-    try {
-        console.log(otp,email);
-        await api.UserOtp(otp,email);
-    } catch (error) {
-        console.log(error);
-    }
-}
 
 export const logIn  = (formData,Navigate) => async (dispatch)=>{
     try{

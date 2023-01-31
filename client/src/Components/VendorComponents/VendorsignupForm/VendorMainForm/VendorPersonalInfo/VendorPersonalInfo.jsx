@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Inputfield from '../../../signupcomponent/inputComponent/Inputfield'
+import Inputfield from '../../../../signupcomponent/inputComponent/Inputfield'
 import validator from "validator";
 import "./VendorPersonalInfo.css"
 

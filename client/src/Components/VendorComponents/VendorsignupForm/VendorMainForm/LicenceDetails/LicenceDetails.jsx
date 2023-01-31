@@ -1,18 +1,20 @@
 import React, { useState } from 'react'
-import Inputfield from '../../../signupcomponent/inputComponent/Inputfield'
+import Inputfield from '../../../../signupcomponent/inputComponent/Inputfield'
 import validator from "validator"
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { vendorSignup } from "../../../../actions/VendorActions"
+import { vendorSignup } from "../../../../../actions/VendorActions"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import "./LicenceDetails.css";
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Toast from 'react-bootstrap/Toast';
-
+import Otp from "../../../../../Pages/otp/Otp"
 
 function LicenceDetails({ data, setData, setPage, page }) {
+    const [otpPage, setOtppage] = useState(false);
+    const user = "vendor";
     const Error = useSelector((state) => { return state.VendorAuthReducer.error });
     const [err, setErr] = useState(false);
     const [showtoast, setShowtoast] = useState(false)
@@ -79,32 +81,27 @@ function LicenceDetails({ data, setData, setPage, page }) {
             setErr(false)
             console.log(data);
             dispatch(vendorSignup(data, Navigate));
-            setSubmited(true);
-            setShowtoast(true)
-
+            setOtppage(true);
         }
     }
     const Prev = () => {
         setPage((currpage) => currpage - 1)
     }
     return (
-        <div>
-            {
-                showtoast && (
-                    <Row style={{ position:"absolute", top: "20px", right: "10px", width:"700px"}}>
-                        <Col xs={6} l={8}>
-                            <Toast onClose={() => setShowtoast(false)} show={showtoast} delay={3000} autohide bg="success">
-                                <Toast.Header>
-
-                                    <strong className="me-auto">Email Notification....</strong>
-                                </Toast.Header>
-                                <Toast.Body>Please check your Email!</Toast.Body>
-                            </Toast>
-                        </Col>
-                    </Row>
-                )
-            }
-            {submited ? (
+        <>
+        { showtoast && (
+            <Row style={{ position: "absolute", top: "20px", right: "10px", width: "700px" }}>
+                <Col xs={6} l={8}>
+                    <Toast onClose={() => setShowtoast(false)} show={showtoast} delay={3000} autohide bg="success">
+                        <Toast.Header>
+                            <strong className="me-auto">Email Notification Send....</strong>
+                        </Toast.Header>
+                        <Toast.Body>Please check your Email!</Toast.Body>
+                    </Toast>
+                </Col>
+            </Row>
+        )}
+            {submited && (
 
                 <div className="successContainer">
                     <div className="successWrapper">
@@ -118,7 +115,9 @@ function LicenceDetails({ data, setData, setPage, page }) {
                     </div>
 
                 </div>
-            ) : (
+            )}
+            {otpPage ? (<Otp user={user} setShowtoast={setShowtoast} data={data} setSubmited={setSubmited} setOtppage={setOtppage}/>) : (
+
                 <>
                     <div>
                         {Error && (
@@ -131,7 +130,7 @@ function LicenceDetails({ data, setData, setPage, page }) {
                     <div className="signinbox">
                         <div className="signInform">
                             {inputs.map((input) => (
-                                <Inputfield key={input.id} {...input} onChange={onChange}/>
+                                <Inputfield key={input.id} {...input} onChange={onChange} />
 
                             ))}
                             <div className="formFooter">
@@ -142,8 +141,9 @@ function LicenceDetails({ data, setData, setPage, page }) {
                     </div>
                 </>
             )}
-        </div>
+        </>
     )
+   
 }
 
 export default LicenceDetails

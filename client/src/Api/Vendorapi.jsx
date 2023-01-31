@@ -11,9 +11,10 @@ aPi.interceptors.request.use((req) => {
 
 
 export const VendorSignUp = (FormData) => aPi.post('/vendor/vendor_Signup', FormData);
-export const VendorOtp = (email,otp) => aPi.post('/vendor/verify_otp',{email,otp});
 export const VendorLogIn = (FormData) => aPi.post('/vendor/vendor_Login', FormData);
 export const GetMenu = (email) => aPi.get(`/vendor/get_menu/${email}`);
+export const GetRestDetails = (email) => aPi.get(`/vendor/get_single_Resturant/${email}`);
+export const DeleteRestImage = (email,image,index) => aPi.get(`/vendor/dele_rest_image/${email}/${index}`,image)
 
 
 export const AddDish = ({data,email,collectionName}) => aPi.post(`/vendor/add_dish/${email}`,{data,collectionName});

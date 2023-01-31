@@ -5,31 +5,32 @@ import "./Menulist.css"
 
 import MenulistComponents from './menulistcomponents/MenulistComponents'
 
-import Starter from './menulistcomponents/starterdish/Dish'
+import Dish from './menulistcomponents/starterdish/Dish'
 
 function Menulist() {
   const menuList = useSelector((state)=>{return state.Restmenu.authdata});
   const [vendor,setVendor] = useState(JSON.parse(localStorage.getItem('vendor')).email);
-  const [menu,setMenu] = useState("STARTER");
+  const [menu,setMenu] = useState("starter");
   const dispatch = useDispatch();
   useEffect(()=>{
     dispatch(getMenu(vendor))
   },[menu,menuList])
- const collectionName = ['starter','sidedish','maindish','dessert','combos','beverages']
- console.log(collectionName[0]);
+ const collectionNames = ['starter','sidedish','maindish','dessert','combos','beverages']
+ const tabNames = ["STARTER","SIDE DISH","MAIN DISH","DESSERT","COMBOS","BEVERAGES"]
+ 
   return (
     <div className="resMainconatainer">
     <div className="resMainwrapper">
       <div className="resMainmenu">
         <div className="menulist-items">
-          <MenulistComponents setMenu = {setMenu}/>
+          <MenulistComponents setMenu = {setMenu} tabNames={tabNames}/>
         </div>
-          {menu === "STARTER" && <Starter collectionName = {collectionName[0]}/>}
-          {menu === "SIDE DISH" && <Starter collectionName = {collectionName[1]}/>}
-          {menu === "MAIN DISH" && <Starter collectionName = {collectionName[2]}/>}
-          {menu === "DESSERT" && <Starter collectionName = {collectionName[3]}/>}
-          {menu === "COMBOS" && <Starter collectionName = {collectionName[4]}/>}
-          {menu === "BEVERAGES" && <Starter collectionName = {collectionName[5]}/>}
+        {
+          collectionNames.map((Name,index)=>(
+            menu === Name && <Dish collectionName = {Name} key={index} />
+
+          ))
+        }
         </div>
       </div>
     </div>

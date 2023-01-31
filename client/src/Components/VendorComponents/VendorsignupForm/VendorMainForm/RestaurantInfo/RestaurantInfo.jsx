@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
-import Inputfield from '../../../signupcomponent/inputComponent/Inputfield'
+import Inputfield from '../../../../signupcomponent/inputComponent/Inputfield'
 import validator from "validator"
 import "./RestaurantInfo.css"
 import {ProgressBar} from "react-bootstrap"
 import axios from 'axios'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
-import { faDeleteLeft } from '@fortawesome/free-solid-svg-icons'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import {sha256} from "crypto-hash"
 
 function RestaurantInfo({ data, setData, page, setPage }) {
@@ -172,14 +172,10 @@ function RestaurantInfo({ data, setData, page, setPage }) {
             setErr(false)
             setData({ ...data, images: uploadedImages })
             setPage(currpage => currpage + 1)
-
-
         }
     }
     const Prev = () => {
-
         setPage((currpage) => currpage - 1)
-
     }
     return (
         <>
@@ -218,7 +214,7 @@ function RestaurantInfo({ data, setData, page, setPage }) {
                        filename.map((data)=>(
                            <div className="imageName" key={data.public_id}>
                                <p>{data.original_filename}</p>
-                               <FontAwesomeIcon className="dele" icon={faDeleteLeft} onClick={()=>deleteImage(data)}/>
+                               <FontAwesomeIcon className="dele" icon={faTrash} onClick={()=>deleteImage(data)}/>
 
                            </div>
 

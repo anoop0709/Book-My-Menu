@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
-import "./MenulistComponents.css"
 
-function MenulistComponents({setMenu,tabNames}) {
+function EditImageComponent({setMenu,Imagetabs}) {
+  
     const [selected,setSelected] = useState(0)
-    const mainMenu = ['starter','sidedish','maindish','dessert','combos','beverages']
+    const imageMenu = ['all images','add image']
   return (
     <div className="mainMenu">
     <div className="mainmenuNav">
-      {mainMenu.map((menu,index)=>(
+      {imageMenu.map((menu,index)=>(
                 <div className={selected === index ? "Item Active" : "Item"} key={index} onClick={() => setSelected(index)}>
                 <div onClick={()=>setMenu(menu)}>
-                  {tabNames[index]} 
+                  {Imagetabs[index]} 
                 </div>
               </div>
             ))}
@@ -18,5 +18,7 @@ function MenulistComponents({setMenu,tabNames}) {
     </div>
   )
 }
+  
 
-export default MenulistComponents
+
+export default EditImageComponent

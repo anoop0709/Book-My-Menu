@@ -4,70 +4,42 @@ import MENU from "../Models/RestaurantMenuSchema.js"
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
-import nodeMailer from "nodemailer"
+import { MailSender } from "../Middleware/mailSender.js"
+import { otpMailGenerator } from "../Middleware/OtpGenerator.js"
 dotenv.config();
 const { JWT_SECRET_KEY } = process.env;
+let obj = {};
 
 
-const randomOtp = ()=>{
-  return  Math.floor(1000 + Math.random() * 9000);
-
-}
 
 
 
 export const vendor_Register = async (req, res) => {
     try {
-        const otp = randomOtp();
-        let otpObj = {
-            email:req.body.email,
-            otp : otp
-        }
         const { firstname, lastname, email, phonenumber } = req.body;
+        const { restaurantname, address, location, typeofcusine, seatingcapacity, openinghours, closinghours, pancard, fssai, gst, otp } = req.body;
         let { password } = req.body;
-        const mailTransporter = nodeMailer.createTransport({
-            host: "smtp.gmail.com",
-            port: 587,
-            secure: false,
-            auth: {
-                user: process.env.EmailId,
-                pass: process.env.SMTPpassword
-            },
-        })
-
-        const Otpdetails = {
-            from: "frombookmymenu@gmail.com",
-            to: email,
-            subject: "Vendor Account Registration",
-            text: `Thank you for registering with BOOK MY MENU, Please verify your email with this OTP ${otp}`
-        }
-        const details = {
-            from: "frombookmymenu@gmail.com",
-            to: email,
-            subject: "Vendor Account Registration",
-            text: " Thank you for registering with BOOK MY MENU, we will verify your account and send you a email notification once approved."
-        }
-
-
-        const { restaurantname, address, location, typeofcusine, seatingcapacity, openinghours, closinghours, pancard, fssai, gst } = req.body;
         let images = req.body.images;
-        console.log(images);
         const vendor = await VENDOR.findOne({ email });
         if (vendor) {
             throw new Error("Vendor is already registered");
-        } else {
-            password = await bcrypt.hash(password, 10);
-            const Vendor = await VENDOR.create({ firstname, lastname, email, phonenumber, password });
-            const vendorId = Vendor._id;
-            await RESTAURANT.create({ restaurantname, address, location, typeofcusine, seatingcapacity, openinghours, closinghours, images, pancard, fssai, gst, vendorId });
-            await MENU.create({ vendorId })
-            mailTransporter.sendMail(details, (error) => {
-                if (error) {
-                    console.log(error);
-                } else {
-                    console.log("mail send succesfully");
-                }
-            })
+        }
+        if (!otp) {
+           const newOtp = await otpMailGenerator(email);
+            obj[email] = newOtp;
+            return res.status(200).json("otp sent")
+        }
+            if (otp) {
+                if (otp === obj[email]) {
+                    password = await bcrypt.hash(password, 10);
+                    const Vendor = await VENDOR.create({ firstname, lastname, email, phonenumber, password });
+                    const vendorId = Vendor._id;
+                    await RESTAURANT.create({ restaurantname, address, location, typeofcusine, seatingcapacity, openinghours, closinghours, images, pancard, fssai, gst, vendorId });
+                    await MENU.create({ vendorId });
+                    MailSender(email);
+                    return res.status(200).json("waiting for approval")
+                
+            }
         }
 
     } catch (error) {
@@ -75,6 +47,7 @@ export const vendor_Register = async (req, res) => {
         return res.status(401).send(error.message);
     }
 }
+
 
 export const vendor_Login = async (req, res) => {
     try {
@@ -106,6 +79,35 @@ export const vendor_Login = async (req, res) => {
     } catch (error) {
         console.log(error.message);
         return res.status(401).send(error.message);
+    }
+}
+export const get_single_restaurant = async (req,res) => {
+    try {
+        const email = req.params.email;
+        const Vendor = await VENDOR.findOne({email});
+        const vendorId = Vendor._id;
+        const Restaurant = await RESTAURANT.findOne({vendorId:vendorId});
+        console.log(Restaurant);
+        return res.status(200).json(Restaurant);
+        
+    } catch (error) {
+        console.log(error);
+        return res.status(400).json(error.message);
+    }
+}
+export const dele_Rest_Image = async (req,res) => {
+    try {
+        const email = req.params.email;
+        const index = req.params.index;
+        const image = req.body.image;
+        console.log(email,index, image);
+        const Vendor = await VENDOR.findOne({email});
+        const vendorId = Vendor._id;
+        const Restaurant = await RESTAURANT.findOne({vendorId:vendorId});
+        
+
+    } catch (error) {
+        
     }
 }
 

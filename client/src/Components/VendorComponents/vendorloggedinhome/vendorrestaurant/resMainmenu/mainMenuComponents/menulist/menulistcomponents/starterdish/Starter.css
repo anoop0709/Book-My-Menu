@@ -18,7 +18,101 @@
           flex-direction: column;
 }
 
-.StarterWrapper {
+.StarterContainer table {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 30px;
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-width: 80%;
+  margin-top: 30px;
+}
+
+.StarterContainer table thead {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  background-color: #2e2e2e;
+  color: white;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.StarterContainer table thead tr {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  gap: 30px;
+}
+
+.StarterContainer table thead tr th {
+  width: 100%;
+}
+
+.StarterContainer table tbody {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  background-color: #444444;
+  color: white;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.StarterContainer table tbody tr {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  -webkit-box-pack: ce;
+      -ms-flex-pack: ce;
+          justify-content: ce;
+  gap: 30px;
+}
+
+.StarterContainer table tbody tr td {
+  width: 100%;
+}
+
+.StarterContainer .StarterWrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -37,7 +131,7 @@
   background-color: #eceaea;
 }
 
-.Starter {
+.StarterContainer .Starter {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -53,7 +147,7 @@
   padding: 10px;
 }
 
-.Starter input {
+.StarterContainer .Starter input {
   padding: 5px;
   width: 300px;
   outline: none;
@@ -61,12 +155,64 @@
   border-radius: 5px;
 }
 
-.Starter .sbtBtn {
+.StarterContainer .Starter .sbtBtn {
   cursor: pointer;
   background-color: #9356DC;
   border: none;
   border-radius: 5px;
   padding: 5px 10px;
   color: white;
+}
+
+.modalInp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 30px;
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.modalInp .inp {
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  gap: 50px;
+}
+
+.modalInp .inp label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.modalInp .inp input {
+  padding: 5px;
+  border-radius: 5px;
+  border: 0.5px solid #9356DC;
 }
 /*# sourceMappingURL=Starter.css.map */

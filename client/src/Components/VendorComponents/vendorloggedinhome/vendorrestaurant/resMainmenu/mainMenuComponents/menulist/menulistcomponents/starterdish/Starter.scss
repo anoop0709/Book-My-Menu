@@ -29,6 +29,53 @@ $shadowStyle:0px 1px 1px 0px rgba(0, 0, 0, 0.5);
 .StarterContainer{
     @include flexBox();
     flex-direction: column;
+    & table{
+        @include flexBox();
+        flex-direction: column;
+        max-width: 80%;
+        margin-top: 30px;
+       & thead {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        background-color: rgb(46, 46, 46);
+        color: white;
+        padding: 20px;
+        border-radius: 5px;
+        & tr {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 30px;
+            & th{
+                width: 100%;
+            }
+        }
+    }
+    & tbody{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        background-color: rgb(68, 68, 68);
+        color: white;
+        padding: 20px;
+        border-radius: 5px;
+        & tr {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: ce;
+            gap: 30px;
+            & td{
+                width: 100%;
+            }
+        }
+    }
 }
 .StarterWrapper{
     @include flexBox();
@@ -46,5 +93,29 @@ $shadowStyle:0px 1px 1px 0px rgba(0, 0, 0, 0.5);
         }
 }
    
+}
 
 
+.modalInp{
+    @include flexBox();
+    flex-direction: column;
+    & .inp{
+        width: 90%;
+       display: flex;
+       align-items:flex-end;
+       justify-content:flex-end;
+       gap: 50px;
+       & label{
+           display: flex;
+           justify-content: end;
+           align-items: flex-end;
+       }
+       & input{
+           padding: 5px;
+           border-radius: 5px;
+           border: 0.5px solid $mainColor;
+       }
+
+
+    }
+}

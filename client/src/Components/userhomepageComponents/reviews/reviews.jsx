@@ -3,17 +3,29 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import Person1 from '../../../images/person1.webp';
 import Person2 from '../../../images/person2.jpeg';
+import {motion} from "framer-motion"
+import { useEffect, useRef } from 'react';
+import { useState } from 'react';
 
-function reviews() {
+function Reviews() {
+    const [width,setWidth] = useState(0)
+
+    const courosel = useRef();
+
+    useEffect(()=>{
+        console.log(courosel.current.scrollWidth,courosel.current.offsetWidth);
+        setWidth(courosel.current.scrollWidth - courosel.current.offsetWidth)
+
+    },[]);
     return (
         <div>
-            <div className="reviewContainer">
+            <motion.div className="reviewContainer">
                 <div className="heading">
                     <h1>Popular Reviews</h1>
 
                 </div>
-                <div className="reviewWrapper">
-                    <div className="reviewCard">
+                <motion.div className="reviewWrapper" ref={courosel} style={{left:-width}} >
+                    <motion.div className="reviewCard" >
                         <img src={Person1} alt="" />
                         <div className="reviewText">
                         
@@ -33,7 +45,7 @@ function reviews() {
                         </div>
                         </div>
                        
-                    </div>
+                    </motion.div>
                     <div className="reviewCard">
                         <img src={Person2} alt="" />
                         <div className="reviewText">
@@ -97,10 +109,10 @@ function reviews() {
                         </div>
                        
                     </div>
-                </div>
-            </div>
+                </motion.div>
+            </motion.div>
         </div>
     )
 }
 
-export default reviews
+export default Reviews

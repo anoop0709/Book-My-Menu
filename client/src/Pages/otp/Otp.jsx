@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom"
 import { signUp } from "../../actions/UserActions"
 import { vendorSignup } from "../../actions/VendorActions"
 
-function Otp({ user, values, setValues, data, setData }) {
+function Otp({ user, values, data, setShowtoast, setSubmited , setOtppage}) {
   let currentOtpField = null;
   const inputRef = useRef(null);
   const arr = new Array(4).fill("");
@@ -35,32 +35,30 @@ function Otp({ user, values, setValues, data, setData }) {
   useEffect(() => {
     inputRef.current?.focus();
   }, [activeIndex])
-  console.log(otp);
-
 
   const submitOtp = () => {
-    console.log(2323232323);
-    console.log(otp);
     let otp_str = '';
     otp.forEach((el) => {
-      otp_str+=el
+      otp_str += el;
     })
-    let OTP = otp.toString()
-    console.log(OTP);
     if (user == 'user') {
-      // setValues((prevState) => { prevState, '78' })
       values.otp = Number(otp_str)
       console.log(values)
       dispatch(signUp(values, Navigate))
     };
     if (user === 'vendor') {
-      setData({ ...data, otp: otp })
+      data.otp = Number(otp_str)
       dispatch(vendorSignup(data, Navigate))
+      setOtppage(false);
+      setSubmited(true);
+      setShowtoast(true);
+     
     }
 
   }
 
   return (
+    
     <div className="otpcontainer">
       <div className="otpwrapper">
         <h4>OTP</h4>

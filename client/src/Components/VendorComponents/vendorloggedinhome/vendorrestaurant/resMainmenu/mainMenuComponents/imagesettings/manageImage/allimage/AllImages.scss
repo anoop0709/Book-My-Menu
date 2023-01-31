@@ -1,0 +1,49 @@
+@mixin flexbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.restImagecontainer{
+    @include flexbox();
+ 
+   background-color: white;
+
+}
+.restImagewrapper{
+    @include flexbox();
+    flex-wrap: wrap;
+    gap: 50px;
+    margin-top: 100px;
+}
+.iamgecontainer{
+    flex-direction: column;
+    width:400px;
+    height: 300px;
+    border-radius: 10px;
+    gap: 30px;
+    background-color: black;
+    position: relative;
+    & img{
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 10px ;
+        cursor: pointer;
+       
+    }
+    & img:hover{
+        transform:scale(1.1);
+        & .Deleicon{
+            font-size: xx-large;
+        }
+     }
+    & .Deleicon{
+        font-size: larger;
+       color: rgb(255, 255, 255);
+       position: absolute;
+       top: 20px;
+       right: 20px;
+       cursor: pointer;
+    }
+}

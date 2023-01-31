@@ -124,7 +124,8 @@ export const allrestaurant = ()=> async (dispatch)=>{
         console.log(Restaurants.data);
         dispatch({type:"ALLRESTAURANT",payload:Restaurants.data})
     } catch (error) {
-        
+        console.log(error);
+        dispatch({type:"ALLRESTERROR"})
     }
 }
 

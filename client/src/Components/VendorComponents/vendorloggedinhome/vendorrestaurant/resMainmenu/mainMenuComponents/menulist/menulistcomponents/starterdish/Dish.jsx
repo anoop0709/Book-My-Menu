@@ -9,7 +9,7 @@ import Modal from 'react-bootstrap/Modal';
 
 
 
-function Starter({collectionName}) {
+function Starter({collectionName,tabName}) {
   console.log(collectionName)
   
   const dispatch = useDispatch();
@@ -174,8 +174,8 @@ function Starter({collectionName}) {
               <th scope="col">Starter Dish Name</th>
               <th scope="col">Dish Description</th>
               <th scope="col"> Item Price</th>
-              <th>Edit</th>
-              <th>Delete</th>
+              <th scope="col">Edit</th>
+              <th scope="col">Delete</th>
             </tr>
           </thead>
           <tbody>
