@@ -20,7 +20,7 @@ $shadowStyle:0px 1px 1px 0px rgba(0, 0, 0, 0.5);
 }
 @mixin buttonStyle {
     cursor: pointer;
-    background-color: $mainColor;
+    background-color: black;
     border: none;
     border-radius: 5px;
     padding: 5px 10px;

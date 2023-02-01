@@ -25,20 +25,20 @@ export const vendor_Register = async (req, res) => {
             throw new Error("Vendor is already registered");
         }
         if (!otp) {
-           const newOtp = await otpMailGenerator(email);
+            const newOtp = await otpMailGenerator(email);
             obj[email] = newOtp;
             return res.status(200).json("otp sent")
         }
-            if (otp) {
-                if (otp === obj[email]) {
-                    password = await bcrypt.hash(password, 10);
-                    const Vendor = await VENDOR.create({ firstname, lastname, email, phonenumber, password });
-                    const vendorId = Vendor._id;
-                    await RESTAURANT.create({ restaurantname, address, location, typeofcusine, seatingcapacity, openinghours, closinghours, images, pancard, fssai, gst, vendorId });
-                    await MENU.create({ vendorId });
-                    MailSender(email);
-                    return res.status(200).json("waiting for approval")
-                
+        if (otp) {
+            if (otp === obj[email]) {
+                password = await bcrypt.hash(password, 10);
+                const Vendor = await VENDOR.create({ firstname, lastname, email, phonenumber, password });
+                const vendorId = Vendor._id;
+                await RESTAURANT.create({ restaurantname, address, location, typeofcusine, seatingcapacity, openinghours, closinghours, images, pancard, fssai, gst, vendorId });
+                await MENU.create({ vendorId });
+                MailSender(email);
+                return res.status(200).json("waiting for approval")
+
             }
         }
 
@@ -81,33 +81,69 @@ export const vendor_Login = async (req, res) => {
         return res.status(401).send(error.message);
     }
 }
-export const get_single_restaurant = async (req,res) => {
+export const get_single_restaurant = async (req, res) => {
     try {
         const email = req.params.email;
-        const Vendor = await VENDOR.findOne({email});
+        const Vendor = await VENDOR.findOne({ email });
         const vendorId = Vendor._id;
-        const Restaurant = await RESTAURANT.findOne({vendorId:vendorId});
+        const Restaurant = await RESTAURANT.findOne({ vendorId: vendorId });
         console.log(Restaurant);
         return res.status(200).json(Restaurant);
-        
+
     } catch (error) {
         console.log(error);
         return res.status(400).json(error.message);
     }
 }
-export const dele_Rest_Image = async (req,res) => {
+export const dele_Rest_Image = async (req, res) => {
     try {
         const email = req.params.email;
-        const index = req.params.index;
-        const image = req.body.image;
-        console.log(email,index, image);
-        const Vendor = await VENDOR.findOne({email});
+        let idx = req.params.index;
+        idx = parseInt(idx);
+        const image = req.body;
+        console.log(typeof(idx));
+        console.log(email, idx, image);
+        const Vendor = await VENDOR.findOne({ email });
         const vendorId = Vendor._id;
-        const Restaurant = await RESTAURANT.findOne({vendorId:vendorId});
-        
+        const Restaurant = await RESTAURANT.findOne({ vendorId: vendorId });
+        const newImages = Restaurant.images.filter((img, index) => {
+            if (idx !== index) {return img};
+        })
+        console.log(newImages);
+        await Restaurant.updateOne({ images: newImages });
+        await Restaurant.save();
+        const Rest = await RESTAURANT.findOne({ vendorId: vendorId });
+        console.log(Rest);
+        res.status(200).json(Rest);
 
     } catch (error) {
+        console.log(error);
+        res.status(400).json(error.message);
+    }
+}
+
+export const add_Image = async (req,res)=>{
+    try {
+       
+        console.log(req.body);
+        let image = req.body;
+        const email = req.params.email;
+        console.log(image);
+        const Vendor = await VENDOR.findOne({ email });
+        const vendorId = Vendor._id;
+        const Restaurant = await RESTAURANT.findOne({ vendorId: vendorId });
+        image?.map((img)=>{
+            Restaurant.images.push(img);
+
+        })
+        await Restaurant.save();
+        const Rest = await RESTAURANT.findOne({ vendorId: vendorId });
+        console.log(Rest);
+        res.status(200).json(Rest);
         
+    } catch (error) {
+        console.log(error);
+        res.status(400).json(error.message);
     }
 }
 
@@ -184,6 +220,7 @@ export const dele_Dish = async (req, res) => {
                 return item;
             }
         })
+       
         await menu.updateOne({ [`${collectionName}`]: newList });
         await menu.save();
         const Menu = await MENU.findOne({ vendorId: vendor._id })
@@ -193,3 +230,4 @@ export const dele_Dish = async (req, res) => {
         console.log(error);
     }
 }
+

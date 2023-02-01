@@ -37,7 +37,7 @@ body {
 }
 
 .vendorLogo {
-  color: #9356DC;
+  color: black;
   cursor: pointer;
 }
 
@@ -95,7 +95,7 @@ body {
           justify-content: center;
   color: white;
   cursor: pointer;
-  background-color: #9356DC;
+  background-color: black;
   border-radius: 5px;
   padding: 5px 10px;
 }
@@ -116,7 +116,7 @@ body {
 
 .vendorName button {
   cursor: pointer;
-  background-color: #9356DC;
+  background-color: black;
   border: none;
   border-radius: 5px;
   padding: 5px 10px;

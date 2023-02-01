@@ -14,6 +14,7 @@ function Starter({collectionName,tabName}) {
   
   const dispatch = useDispatch();
   const [show, setShow] = useState(true);
+  const [deleshow, setDeleshow] = useState(true);
   const [index, setIndex] = useState(null);
   const [editData, setEditdata] = useState(false)
   const [deleData,setDeledata] = useState(false)
@@ -39,13 +40,28 @@ function Starter({collectionName,tabName}) {
   useEffect(() => {
   }, [data,show,menuList])
 
-  const handleClose = () => setShow(false);
+  const handleClose = () =>{
+    setEditeddata({ itemName: "", itemDescription: "", itemPrice: "" });
+    setItemname("");
+    setItemdescription("");
+    setItemprice("")
+    setItem("")
+    setDeleshow(false)
+  };
+  const handleEditClose = ()=>{
+    setEditeddata({ itemName: "", itemDescription: "", itemPrice: "" });
+    setItemname("");
+    setItemdescription("");
+    setItemprice("")
+    setItem("")
+    setShow(false)
+  }
   const deleteDish = (idx)=>{
     const Item = menuList?.[`${collectionName}`]?.filter((item, index) => {
       if (index === idx) return item;
     })
     setIndex(idx);
-    setShow(true);
+    setDeleshow(true);
     setDeledata(true);
     setItem(Item);
   }
@@ -104,7 +120,7 @@ function Starter({collectionName,tabName}) {
     <>
     {
       deleData && (
-        <Modal show={show} onHide={handleClose}>
+        <Modal show={deleshow} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>DELETE ITEM</Modal.Title>
         </Modal.Header>
@@ -121,7 +137,7 @@ function Starter({collectionName,tabName}) {
       )
     }
       { editData && (
-        <Modal show={show} onHide={handleClose}>
+        <Modal show={show} onHide={handleEditClose}>
           <Modal.Header closeButton>
             <Modal.Title>EDIT DISH</Modal.Title>
           </Modal.Header>
@@ -144,7 +160,7 @@ function Starter({collectionName,tabName}) {
 
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
+            <Button variant="secondary" onClick={handleEditClose}>
               Close
         </Button>
             <Button variant="primary" onClick={handleSaveChanges}>
@@ -186,8 +202,8 @@ function Starter({collectionName,tabName}) {
                   <td>{item.itemName}</td>
                   <td>{item.itemDescription}</td>
                   <td>{item.itemPrice}</td>
-                  <td ><FontAwesomeIcon icon={faEdit} onClick={() => { editdish(index) }} /></td>
-                  <td ><FontAwesomeIcon icon={faTrash} onClick={() => { deleteDish(index) }} /></td>
+                  <td ><FontAwesomeIcon icon={faEdit} onClick={() => { editdish(index) }} key={index}/></td>
+                  <td ><FontAwesomeIcon icon={faTrash} onClick={() => { deleteDish(index)}} key={index}/></td>
 
                 </tr>
               ))

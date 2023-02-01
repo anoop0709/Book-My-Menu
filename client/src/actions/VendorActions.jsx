@@ -87,11 +87,24 @@ export const deleDish = ({ index, email, item, collectionName }) => async (dispa
 
 export const deleteRestImage = (email,image,index)=> async (dispatch) => {
     try {
+        console.log(email,image,index);
         const ResData = await aPi.DeleteRestImage(email,image,index)
         console.log(ResData.data);
         ResData && dispatch({type:'SINGLERESTAURANT',payload:ResData.data});
     } catch (error) {
 
           dispatch({ type: 'SINGLERESTERROR', payload: error.response.data });
+    }
+}
+
+export const addImage = (images,email)=> async (dispatch) => {
+    try {
+        console.log(images,email);
+        const ResData = await aPi.AddImage(images,email);
+        console.log(ResData.data);
+        ResData && dispatch({type:'SINGLERESTAURANT',payload:ResData.data});
+        
+    } catch (error) {
+        dispatch({ type: 'SINGLERESTERROR', payload: error.response.data });
     }
 }

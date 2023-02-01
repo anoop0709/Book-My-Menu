@@ -9,7 +9,7 @@ $shadowStyle:0px 1px 2px 0px rgba(0,0,0,0.75);
 }
 @mixin buttonStyle {
     cursor: pointer;
-    background-color: $mainColor;
+    background-color: black;
     border: none;
     border-radius: 5px;
     padding: 5px 10px;
@@ -18,7 +18,7 @@ $shadowStyle:0px 1px 2px 0px rgba(0,0,0,0.75);
 @mixin hoverEffect{
     color: white;
     cursor: pointer;
-    background-color: $mainColor;
+    background-color:black;
     border-radius: 5px;
     padding: 5px 10px;
 }
@@ -40,7 +40,7 @@ body{
     @include flexBox(); 
 }
 .vendorLogo{
-    color:$mainColor;
+    color:black;
     cursor: pointer;
 }
 .vendornavbaritems{

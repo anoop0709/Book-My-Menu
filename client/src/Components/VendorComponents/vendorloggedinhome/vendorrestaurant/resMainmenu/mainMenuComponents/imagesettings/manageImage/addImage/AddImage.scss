@@ -1,0 +1,29 @@
+
+@mixin flexBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.imageupload{
+    @include flexBox();
+}
+.image{
+    @include flexBox();
+}
+.imagePreview{
+    @include flexBox();
+    flex-wrap: wrap;
+    & img{
+        width: 200px;
+        height: 200px;
+        border-radius: 10px;
+    }
+}
+.saveBtn{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
