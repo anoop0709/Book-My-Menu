@@ -47,6 +47,24 @@ margin-right: 60px;
     border-radius: 5px;
     cursor: pointer;
 }
+.wishCount{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-right: 20px;
+}
+.wish{
+    text-align: center;
+    position: absolute;
+    padding:2px 5px;
+    border-radius: 50%;
+    background-color: #000000;
+    color:white;
+    font-size: x-small;
+    top: -20px;
+    right: -8px;
+}
 
 @media screen and (min-width:360px) and (max-width:765px) {
     .navWrapper{

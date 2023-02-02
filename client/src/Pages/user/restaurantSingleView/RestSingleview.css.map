@@ -2,8 +2,8 @@
     "version": 3,
     "mappings": "",
     "sources": [
-        "ImageComponent.scss"
+        "RestSingleview.scss"
     ],
     "names": [],
-    "file": "ImageComponent.css"
+    "file": "RestSingleview.css"
 }

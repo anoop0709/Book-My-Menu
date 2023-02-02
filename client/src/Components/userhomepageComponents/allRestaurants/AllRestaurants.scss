@@ -1,0 +1,39 @@
+
+@mixin flexBox {
+    display: flex;
+    align-items: center;
+}
+.inpcontainer{
+    @include flexBox();
+    justify-content: center;
+    width: 100%;
+    background-color: transparent;
+    padding-bottom: 40px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   
+}
+.inpBox{
+    padding: 4px;
+    width: 300px;
+    outline: none;
+    border-radius: 2px;
+    border: 0.5px solid black;
+}
+ .faIcon{
+    color:#ffffff;
+    background-color: rgb(80, 79, 79);
+    padding: 9px;
+    border-radius:  0 5px 5px 0;
+    border:none;
+    outline: none;    
+}
+ .Location{
+    border-radius:   5px 0 0 5px;
+}
+.allRestcontainer{
+    display: flex;
+    align-items: flex-start;
+    justify-content:space-between;
+    width: 100%;
+   
+}

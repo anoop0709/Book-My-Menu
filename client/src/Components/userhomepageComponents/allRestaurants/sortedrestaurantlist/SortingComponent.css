@@ -1,0 +1,121 @@
+.allRestwrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 20px;
+  padding: 60px 50px;
+  width: 100%;
+}
+
+.allRestwrapper .restcard {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #ffffff;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 400px;
+  height: 400px;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+          box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.allRestwrapper .restcard .iconsForRest {
+  position: absolute;
+  width: 100%;
+  padding: 20px;
+  top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.allRestwrapper .restcard .iconsForRest .icons {
+  color: #ffffff;
+  font-size: x-large;
+}
+
+.allRestwrapper .restcard .iconsForRest .iconfav {
+  color: brown;
+  font-size: x-large;
+}
+
+.allRestwrapper .restcard .restText {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 10px;
+  padding: 20px;
+}
+
+.allRestwrapper .restcard .restText h3 {
+  margin: 0;
+  color: #a32f2f;
+}
+
+.allRestwrapper .restcard .restText h6 {
+  color: #9b9b9b;
+}
+
+.allRestwrapper .restcard .restText span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
+}
+
+.allRestwrapper .restcard .restText .Faicon {
+  color: #bd8222;
+  font-size: large;
+}
+
+.allRestwrapper img {
+  height: 260px;
+  width: 400px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px 10px 0 0;
+  position: relative;
+}
+/*# sourceMappingURL=SortingComponent.css.map */

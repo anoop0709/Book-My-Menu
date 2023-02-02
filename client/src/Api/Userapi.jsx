@@ -13,6 +13,9 @@ API.interceptors.request.use((req)=>{
 
 export const userLogin = (FormData)=>  API.post('/signin',FormData);
 export const userSignup = (FormData)=> API.post('/signup',FormData);
+export const userInfo = (id)=> API.get(`/user_info/${id}`)
+export const addtoWishlist = (id,fav)=> API.post(`/add_to_wishlist/${id}/${fav}`);
+export const deletefromWishlist = (id,fav)=> API.post(`/dele_from_wishlist/${id}/${fav}`);
 
 
 

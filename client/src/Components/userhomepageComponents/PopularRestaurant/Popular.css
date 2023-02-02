@@ -66,6 +66,7 @@
     padding: 10px;
 }
 .popularText>h3{
+    color: rgb(163, 47, 47);
     font-weight: 800;
     font-size: 20px;
 }

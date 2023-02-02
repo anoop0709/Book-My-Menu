@@ -13,6 +13,8 @@ import VendorLogin from "./Pages/Vendors/VendorLogin/VendorLogin";
 import Main from "./Pages/admin/DashBoard/Main";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Vendordashboard from "./Pages/Vendors/vendorDashBoard/Vendordashboard";
+import AllRestaurants from "./Components/userhomepageComponents/allRestaurants/AllRestaurants";
+import RestSingleview from "./Pages/user/restaurantSingleView/RestSingleview";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
         <Route exact path = "/" element={<Home/>}/>
         <Route path = "/signin" element={<Signin/>}/>
         <Route path = "/login" element={<Login/>}/>
+        <Route path = "/restaurants" element={<AllRestaurants/>}/>
+        <Route path = "/singleview" element = {<RestSingleview/>}/>
 
 
           {/* admin routes */}

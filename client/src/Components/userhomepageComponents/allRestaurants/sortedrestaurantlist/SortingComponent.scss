@@ -1,0 +1,82 @@
+ 
+ 
+ @mixin flexBox {
+    display: flex;
+    align-items: center;
+}
+ .allRestwrapper{
+    @include flexBox();
+    justify-content:flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding:60px 50px;
+    width: 100%;
+
+        & .restcard{
+            @include flexBox();
+            background-color: #ffffff;
+            justify-content: center;
+            flex-direction: column;
+            width: 400px;
+            height: 400px;
+            border-radius: 10px;
+            cursor: pointer;
+            position: relative;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+           
+            & .iconsForRest{
+                position: absolute;
+                width: 100%;
+                padding: 20px;
+                top: 10px;
+                @include flexBox();
+                justify-content: space-between;
+                & .icons{
+                    color: #ffffff;
+                    font-size: x-large;
+                }
+                & .iconfav{
+                    color:brown;
+                    font-size: x-large;
+                }
+            }
+            & .restText{
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-start;
+                flex-direction: column;
+                width: 100%;
+                flex-wrap: wrap;
+                gap: 10px;
+                padding: 20px;
+                & h3{
+                    margin: 0;
+                    color: rgb(163, 47, 47);
+                }
+                & h6{
+                    
+                    color: rgb(155, 155,155);
+                }
+                & span{
+                    @include flexBox();
+                    gap: 20px;
+                }
+                & .Faicon{
+                    color: rgb(189, 130, 34);
+                    font-size: large;
+                }
+            }
+          }
+    
+        
+    
+    
+    & img{
+        height: 260px;
+        width: 400px;
+        object-fit:cover;
+        border-radius:10px 10px 0 0;
+        position: relative;
+    }
+    
+ }

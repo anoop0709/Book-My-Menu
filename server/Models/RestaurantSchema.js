@@ -15,6 +15,7 @@ const restaurantSchema = new mongoose.Schema({
     },
     typeofcusine:{
         type:String,
+        uppercase:true,
         required:true
     },
     seatingcapacity:{
@@ -48,6 +49,9 @@ const restaurantSchema = new mongoose.Schema({
     gst:{
         type:String,
         required:true
+    },
+    rating:{
+        type:Number,
     },
     vendorId:{
         type:ObjectId,
