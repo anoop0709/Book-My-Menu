@@ -17,18 +17,11 @@ function Navbar() {
   userInfo?.wishlist.map((_) => {
     return count += 1;
   })
-  // useEffect(() => {
-
-  //   if (user?.Token) {
-      
-  //     Navigate('/')
-  //   }
-   
-  // }, [Location]);
+  
   useEffect(()=>{
     if (user?.Token) {
       
-    dispatch(get_user_info(user.userId))
+    dispatch(get_user_info(user.userId,Navigate))
     }
   },[user])
 

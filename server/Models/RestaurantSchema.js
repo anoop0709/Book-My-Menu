@@ -51,7 +51,19 @@ const restaurantSchema = new mongoose.Schema({
         required:true
     },
     rating:{
-        type:Number,
+        type:Array,
+    },
+    description:{
+        type:String,
+        required:true,
+    },
+    menutype:{
+        type:String,
+        uppercase:true,
+        required:true
+    },
+    review:{
+        type:Array,
     },
     vendorId:{
         type:ObjectId,

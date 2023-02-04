@@ -30,7 +30,7 @@ function Vendornavbar() {
     // }
 
     return (
-        <div className="vendorNavContainer">
+        <div className="vendorNavcontainer">
             <div className="vendorNavWrapper">
                 <div className="vendorNavItems" >
                     <div className="logo" onClick={HomePage}>

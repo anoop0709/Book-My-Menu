@@ -32,8 +32,8 @@
 }
 .imgDiv{
     border-radius: 5px;
-    width: 500px;
-    height: 100%;
+    max-width: 500px;
+    max-height: 100%;
 }
 .imgDiv>img{
     width: 100%;

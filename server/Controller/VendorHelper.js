@@ -17,7 +17,7 @@ let obj = {};
 export const vendor_Register = async (req, res) => {
     try {
         const { firstname, lastname, email, phonenumber } = req.body;
-        const { restaurantname, address, location, typeofcusine, seatingcapacity, openinghours, closinghours, pancard, fssai, gst, otp } = req.body;
+        const { restaurantname, address, location, typeofcusine, seatingcapacity, openinghours, closinghours,description,menutype, pancard, fssai, gst, otp } = req.body;
         let { password } = req.body;
         let images = req.body.images;
         const vendor = await VENDOR.findOne({ email });
@@ -34,7 +34,7 @@ export const vendor_Register = async (req, res) => {
                 password = await bcrypt.hash(password, 10);
                 const Vendor = await VENDOR.create({ firstname, lastname, email, phonenumber, password });
                 const vendorId = Vendor._id;
-                await RESTAURANT.create({ restaurantname, address, location, typeofcusine, seatingcapacity, openinghours, closinghours, images, pancard, fssai, gst, vendorId });
+                await RESTAURANT.create({ restaurantname, address, location, typeofcusine, seatingcapacity, openinghours, closinghours,description,menutype, images, pancard, fssai, gst, vendorId });
                 await MENU.create({ vendorId });
                 MailSender(email);
                 return res.status(200).json("waiting for approval")

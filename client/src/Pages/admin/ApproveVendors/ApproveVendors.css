@@ -1,10 +1,10 @@
-.vendorContainer{
+.vendorcontainer{
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.vendorWrapper{
+.vendorwrapper{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,7 +24,6 @@
     padding: 30px;
     border-radius: 10px;
     position: relative;
-    width: 100%;
 }
 .Details{
     display: flex;

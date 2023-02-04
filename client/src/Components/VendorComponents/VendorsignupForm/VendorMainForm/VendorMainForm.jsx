@@ -23,6 +23,8 @@ function VendorMainForm() {
         seatingcapacity: "",
         openinghours: "",
         closinghours:"",
+        description:"",
+        menutype:"",
         images:[],
         pancard: "",
         fssai: "",

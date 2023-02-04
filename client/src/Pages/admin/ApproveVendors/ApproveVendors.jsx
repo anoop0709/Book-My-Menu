@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import "./ApproveVendors.css"
-import {verifyVendor} from "../../../actions/AdminActions"
+import {allrestaurant, verifyVendor} from "../../../actions/AdminActions"
 
 function ApproveVendors() {
     const newVendors = useSelector((state) => { return state.NewVendors.authData })
@@ -9,9 +9,13 @@ function ApproveVendors() {
     const dispatch = useDispatch();
     console.log(newVendors.length);
 
+    useEffect(()=>{
+        dispatch(allrestaurant())
+    },[])
+
     return (
-        <div className="vendorContainer">
-            <div className="vendorWrapper">
+        <div className="vendorcontainer">
+            <div className="vendorwrapper">
                 {  newVendors.length != 0 ? (
                 
                     newVendors.map((newVendor) => (

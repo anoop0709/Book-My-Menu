@@ -1,0 +1,97 @@
+@mixin flexbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.singleviewContainer{
+    @include flexbox();
+    margin-top: 50px;
+    flex-direction: column;
+    width: 100%;
+    & .singleviewWrapper{
+        max-width: 80%;
+        padding: 20px;
+        gap: 50px;
+        @include flexbox();
+        flex-direction: column;
+        & .imageCourosel{
+            @include flexbox();
+             width: 700px;
+             height: 400px;
+             border-radius: 10px;
+             & img{
+                width: 700px;
+                height: 400px;
+                border-radius: 10px;
+                object-fit: cover;
+             }
+        }
+        & .imageGridcontainer{
+            @include flexbox();
+            width: 700px;
+            height: auto;
+            
+            & .imgrow{
+                @include flexbox();
+                width: 700px;
+                height: auto;
+                gap: 20px;
+                & img{
+                    width: 200px;
+                    height: 200px;
+                    border-radius: 10px;
+                    object-fit: cover;
+                 }
+            }
+        }
+        & .detailsContainer{
+            border: 1px solid brown;
+            padding: 20px;
+            width: 700px;
+            border-radius: 10px;
+            & .headingdiv{
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-start;
+                flex-direction: column;
+                & h3{
+                    color: brown;
+                }
+                & p{
+                    color:gray;
+                    & span{
+                        color: green; 
+                        font-size: large;
+                        font-weight: bolder;      
+                    }
+                    & span:nth-child(2){
+                        margin-left: 30px;
+                        padding: 5px;
+                        background-color: green;
+                        color:white;
+                        border-radius: 5px;
+
+                    }
+
+                }
+            }
+        }
+        & .datePickbtn{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-top: 20px;
+           gap: 20px;
+            & button{
+                padding: 5px 10px;
+                background-color: brown;
+                color: white;
+                border:none;
+                border-radius: 5px;
+            }
+        }
+
+    }
+}

@@ -24,7 +24,7 @@ function Sidebar({setPages}) {
   return (
     <div>
       <div className="sidebar">
-          <div className="logo">
+          <div className="Logo">
           <h1 onClick={home}>Book My Menu
           </h1>
           <span>Admin</span>

@@ -1,1 +1,165 @@
-/* No CSS *//*# sourceMappingURL=RestSingleview.css.map */
+.singleviewContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 50px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+
+.singleviewContainer .singleviewWrapper {
+  max-width: 80%;
+  padding: 20px;
+  gap: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.singleviewContainer .singleviewWrapper .imageCourosel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 700px;
+  height: 400px;
+  border-radius: 10px;
+}
+
+.singleviewContainer .singleviewWrapper .imageCourosel img {
+  width: 700px;
+  height: 400px;
+  border-radius: 10px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.singleviewContainer .singleviewWrapper .imageGridcontainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 700px;
+  height: auto;
+}
+
+.singleviewContainer .singleviewWrapper .imageGridcontainer .imgrow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 700px;
+  height: auto;
+  gap: 20px;
+}
+
+.singleviewContainer .singleviewWrapper .imageGridcontainer .imgrow img {
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.singleviewContainer .singleviewWrapper .detailsContainer {
+  border: 1px solid brown;
+  padding: 20px;
+  width: 700px;
+  border-radius: 10px;
+}
+
+.singleviewContainer .singleviewWrapper .detailsContainer .headingdiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.singleviewContainer .singleviewWrapper .detailsContainer .headingdiv h3 {
+  color: brown;
+}
+
+.singleviewContainer .singleviewWrapper .detailsContainer .headingdiv p {
+  color: gray;
+}
+
+.singleviewContainer .singleviewWrapper .detailsContainer .headingdiv p span {
+  color: green;
+  font-size: large;
+  font-weight: bolder;
+}
+
+.singleviewContainer .singleviewWrapper .detailsContainer .headingdiv p span:nth-child(2) {
+  margin-left: 30px;
+  padding: 5px;
+  background-color: green;
+  color: white;
+  border-radius: 5px;
+}
+
+.singleviewContainer .singleviewWrapper .datePickbtn {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding-top: 20px;
+  gap: 20px;
+}
+
+.singleviewContainer .singleviewWrapper .datePickbtn button {
+  padding: 5px 10px;
+  background-color: brown;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+/*# sourceMappingURL=RestSingleview.css.map */

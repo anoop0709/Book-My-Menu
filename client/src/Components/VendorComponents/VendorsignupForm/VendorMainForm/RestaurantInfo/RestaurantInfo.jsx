@@ -96,6 +96,26 @@ function RestaurantInfo({ data, setData, page, setPage }) {
             value: data.closinghours
 
         },
+        {
+            id: "14",
+            type: "text",
+            name: "description",
+            placeholder: "description",
+            errMessage: "please add a description",
+            required: true,
+            value: data.description
+
+        },
+        {
+            id: "15",
+            type: "text",
+            name: "menutype",
+            placeholder: "veg or non-veg",
+            errMessage: "please add a menu type",
+            required: true,
+            value: data.menutype
+
+        },
     ]
     const [uploadedImages, setUploadedimages] = useState([]);
     const [uploaded, setUploaded] = useState(null);

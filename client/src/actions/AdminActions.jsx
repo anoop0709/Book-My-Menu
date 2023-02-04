@@ -1,4 +1,5 @@
 import * as Api from "../Api/Adminapi"
+import {useNavigate} from "react-router-dom"
 
 
 
@@ -9,6 +10,7 @@ import * as Api from "../Api/Adminapi"
 
 export const adminLogin = (formData, Navigate) => async (dispatch) => {
     try {
+        const navigate = useNavigate();
         const { data } = await Api.AdminLogin(formData);
         console.log(data);
         dispatch({ type: 'ADMINAUTH', payload: data });
@@ -121,7 +123,6 @@ export const newVendors = () => async (dispatch) => {
 export const allrestaurant = ()=> async (dispatch)=>{
     try {
         const Restaurants = await Api.getAllRestaurant();
-        console.log(Restaurants.data);
         dispatch({type:"ALLRESTAURANT",payload:Restaurants.data})
     } catch (error) {
         console.log(error);

@@ -41,7 +41,7 @@ $shadowStyle:0px 1px 1px 0px rgba(0, 0, 0, 0.5);
         width: 100%;
         background-color: rgb(46, 46, 46);
         color: white;
-        padding: 20px;
+        padding:20px 100px;
         border-radius: 5px;
         & tr {
             width: 100%;
@@ -59,11 +59,13 @@ $shadowStyle:0px 1px 1px 0px rgba(0, 0, 0, 0.5);
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-direction: column;
         width: 100%;
         background-color: rgb(68, 68, 68);
         color: white;
-        padding: 20px;
+        padding: 100px;
         border-radius: 5px;
+        gap: 20px;
         & tr {
             width: 100%;
             display: flex;
@@ -71,6 +73,8 @@ $shadowStyle:0px 1px 1px 0px rgba(0, 0, 0, 0.5);
             text-align: center;
             justify-content: ce;
             gap: 30px;
+            padding:20px 0px;
+            border-bottom: 1px solid white;
             & td{
                 width: 100%;
             }

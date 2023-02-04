@@ -14,7 +14,7 @@
     display: none;
   }
   
-  .logo {
+  .Logo {
     display: flex;
     height: 5rem;
     font-weight: bold;
@@ -24,7 +24,10 @@
     flex-direction: column;
     height: 4%;
   }
-  .logo>span {
+  .Logo>h1{
+    font-size: xx-large;
+  }
+  .Logo>span {
     color: var(--pink);
   }
   
@@ -81,7 +84,7 @@
     .menuItem>span{
       display: none;
     }
-    .logo{
+    .Logo{
       display: none;
     }
   }
@@ -98,7 +101,7 @@
     .menuItem>span{
       display: block;
     }
-    .logo{
+    .Logo{
       display: flex;
     }
     .menu .menuItem:last-child {

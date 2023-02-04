@@ -1,4 +1,5 @@
 import * as api from "../Api/Userapi"
+import {useNavigate} from "react-router-dom"
 
 
 
@@ -15,6 +16,20 @@ export const signUp = (formData,Navigate) => async (dispatch)=>{
         Navigate('/')
     } catch (error) {
         console.log(error);
+        dispatch({type:'USERLOGINERROR',payload:error.response.data})
+    }
+}
+export const checkExistingUser = ({email}) => async (dispatch) =>{
+    try {
+        console.log(email);
+        const {data} = await api.checkExistingUser({email});
+        if(data){
+            return "null"
+        }
+        
+    } catch (error) {
+        console.log(error);
+        dispatch({type:'USERLOGINERROR',payload:error.response.data})
     }
 }
 
@@ -34,7 +49,7 @@ export const logIn  = (formData,Navigate) => async (dispatch)=>{
 
 
 
-export const get_user_info = (id) => async (dispatch)=>{
+export const get_user_info = (id,Navigate) => async (dispatch)=>{
     try {
         const {data} = await api.userInfo(id);
         dispatch({type:'USER',payload:data})
@@ -42,10 +57,11 @@ export const get_user_info = (id) => async (dispatch)=>{
     } catch (error) {
         console.log(error);
         dispatch({type:'USERERROR',payload:error.response.data})
+        Navigate('/error')
     }
 }
 
-export const add_to_wishlist = (id,fav) => async (dispatch)=>{
+export const add_to_wishlist = (id,fav,Navigate) => async (dispatch)=>{
     try {
        
         const {data} = await api.addtoWishlist(id,fav);
@@ -54,9 +70,10 @@ export const add_to_wishlist = (id,fav) => async (dispatch)=>{
     } catch (error) {
         console.log(error);
         dispatch({type:'USERERROR',payload:error.response.data})
+        Navigate('/error')
     }
 }
-export const delete_from_wishlist = (id,fav) => async (dispatch)=>{
+export const delete_from_wishlist = (id,fav,Navigate) => async (dispatch)=>{
     try {
         console.log(id,fav);
         const {data} = await api.deletefromWishlist(id,fav);
@@ -64,5 +81,6 @@ export const delete_from_wishlist = (id,fav) => async (dispatch)=>{
     } catch (error) {
         console.log(error);
         dispatch({type:'USERERROR',payload:error.response.data})
+        Navigate('/error')
     }
 }

@@ -17,18 +17,38 @@ export const homePage = async (req, res) => {
         console.log(err);
     }
 }
+export const check_Email = async (req,res) => {
+    try {
+        
+        const Email = req.body.email;
+        console.log(req.body);
+        const existingUser = await USER.findOne({email:Email });
+        if (existingUser){ 
+            throw new Error("User already Registered");  
+        }else{
+            res.status(200).json("ok")
+        }
+    } catch (error) {
+        console.log(error);
+        return res.status(401).send(error.message)
+    }
+}
 
 export const user_Signup = async (req, res) => {
     try {
         let { firstname, lastname, email, phonenumber, password, otp } = req.body;
         const existingUser = await USER.findOne({ email });
-        if (existingUser) throw new Error("User already Registered");  
-        if(!otp){
-        
-            const newOtp = await otpMailGenerator(email);
-            obj[email] = newOtp;
-            return res.status(200).json("otp sent")
-           
+        if (existingUser){ 
+            throw new Error("User already Registered");  
+        }else{
+
+            if(!otp){
+                
+                const newOtp = await otpMailGenerator(email);
+                obj[email] = newOtp;
+                return res.status(200).json("otp sent")
+                
+            }
         }
        
 

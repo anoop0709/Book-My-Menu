@@ -24,7 +24,7 @@ function LicenceDetails({ data, setData, setPage, page }) {
     const dispatch = useDispatch();
     const inputs = [
         {
-            id: "15",
+            id: "16",
             type: "text",
             name: "pancard",
             placeholder: "Pancard Number",
@@ -35,7 +35,7 @@ function LicenceDetails({ data, setData, setPage, page }) {
 
         },
         {
-            id: "16",
+            id: "17",
             type: "text",
             name: "fssai",
             placeholder: "Fssai Number",
@@ -46,7 +46,7 @@ function LicenceDetails({ data, setData, setPage, page }) {
 
         },
         {
-            id: "17",
+            id: "18",
             type: "text",
             name: "gst",
             placeholder: "GST Number",
@@ -116,8 +116,8 @@ function LicenceDetails({ data, setData, setPage, page }) {
 
                 </div>
             )}
-            {otpPage ? (<Otp user={user} setShowtoast={setShowtoast} data={data} setSubmited={setSubmited} setOtppage={setOtppage}/>) : (
-
+            {otpPage ? (<Otp user={user} setShowtoast={setShowtoast} data={data} setSubmited={setSubmited} setOtppage={setOtppage}/>) :
+             (
                 <>
                     <div>
                         {Error && (

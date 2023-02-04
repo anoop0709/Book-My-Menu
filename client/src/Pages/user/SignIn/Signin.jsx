@@ -1,17 +1,19 @@
 import "./Signin.css"
 import Navbar from '../../../Components/userhomepageComponents/Navbar/Navbar';
 import Person2 from '../../../images/person2.jpeg'
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Inputfield from "../../../Components/signupcomponent/inputComponent/Inputfield";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { signUp } from "../../../actions/UserActions";
+import { useDispatch, useSelector } from "react-redux";
+import { checkExistingUser, signUp } from "../../../actions/UserActions";
 import Otp from "../../otp/Otp";
 
 
 
 function Signin() {
-    const [otpPage,setOtppage] = useState(false)
+    const [otpPage,setOtppage] = useState(false) 
+    const signuperror = useSelector((state)=>{ return state.AuthReducer.error})
+    const [email,setEmail] = useState("");
     const user = 'user';
     const [values, setValues] = useState({
         firstname: "",
@@ -89,25 +91,44 @@ function Signin() {
             pattern: values.password
         }
     ]
+    
+   
 
-    const handleSubmit = (e) => {
+    const handleSubmit =  (e) => {
         e.preventDefault();
-        console.log(values);
-        dispatch(signUp(values, Navigate));
-        setOtppage(true);   
-    }
+        
+      dispatch(signUp(values, Navigate));  
+      console.log(signuperror);
+        if(!signuperror){
+            setOtppage(true)
+            
+        } 
+    };
+    useEffect(()=>{
+
+        
+    },[signuperror])
 
     const onChange = (e) => {
         setValues({ ...values, [e.target.name]: e.target.value })
+        if(e.target.name === "email"){
+            setEmail(e.target.value)
+        }
+        if(e.target.name === "phonenumber"){
+            console.log(typeof(email));
+            dispatch(checkExistingUser({email}));
+        }
     }
     const handleLogIn = () => {
         Navigate('/login')
     }
-    console.log(values);
     return (
         <div>
             <Navbar />
+           
             {otpPage ? (<Otp values={values} setValues={setValues} user={user}/>):(
+
+                
 
                 <div className="signInContainer">
                 <div className="signInWrapper">
@@ -117,11 +138,13 @@ function Signin() {
                             <img src={Person2} alt="" />
                         </div>
                         <div className="signInform">
+                        
                             <form onSubmit={handleSubmit}>
                                 <div className="h1txt">
                                     <h3>USER SIGNUP</h3>
+                                   
                                 </div>
-
+                                {signuperror && (<div style={{display:"flex",justifyContent:"center"}}><p style={{color:"red", width:"200px",paddingBottom:"10px",right:"30px",marginRight:0}}>{signuperror}</p></div>)}
                                 {inputs.map((input) => (
                                     <Inputfield key={input.id} {...input} onChange={onChange} />
                                     

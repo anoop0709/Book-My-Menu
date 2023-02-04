@@ -43,7 +43,6 @@ function Otp({ user, values, data, setShowtoast, setSubmited , setOtppage}) {
     })
     if (user == 'user') {
       values.otp = Number(otp_str)
-      console.log(values)
       dispatch(signUp(values, Navigate))
     };
     if (user === 'vendor') {

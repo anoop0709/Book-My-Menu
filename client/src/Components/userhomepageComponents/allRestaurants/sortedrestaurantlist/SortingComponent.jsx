@@ -17,7 +17,7 @@ function SortingComponent({ cusine }) {
     const setColor = (id) => {
         if (userId) {
 
-            dispatch(add_to_wishlist(userId, id));
+            dispatch(add_to_wishlist(userId, id,Navigate));
         } else {
             Navigate('/login')
         }
@@ -25,7 +25,7 @@ function SortingComponent({ cusine }) {
     const resetColor = (restid) => {
         if (userId) {
 
-            dispatch(delete_from_wishlist(userId, restid))
+            dispatch(delete_from_wishlist(userId, restid,Navigate))
         }
     }
 
