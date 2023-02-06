@@ -21,28 +21,17 @@ function Vendornavbar() {
 
 
     function HomePage() {
-        console.log(12345);
         navigate('/vendor')
     }
-    // const logout = ()=>{
-    //     dispatch({type:"VENDORLOGOUT"})
-    //     navigate('/vendor')
-    // }
 
     return (
         <div className="vendorNavcontainer">
             <div className="vendorNavWrapper">
                 <div className="vendorNavItems" >
-                    <div className="logo" onClick={HomePage}>
+                    <div className="Logo" onClick={HomePage}>
                         <h1>Book My Menu</h1>
                         <span>For Business</span>
                     </div>
-                    {/* {vendor ? (
-                        <div className="vendorNavBtns">
-                            <button>{vendor.fullName}</button>
-                            <button onClick={logout}>Log out</button>
-                        </div>
-                    ) : ( */}
                         <div className="vendorNavBtns">
                             <button onClick={Register}>Register</button>
                             <button onClick={Vendorlogin}>Log In</button>

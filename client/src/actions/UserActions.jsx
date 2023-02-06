@@ -84,3 +84,13 @@ export const delete_from_wishlist = (id,fav,Navigate) => async (dispatch)=>{
         Navigate('/error')
     }
 }
+export const getrestMenu = (vendorId) => async (dispatch)=>{
+    try {
+        const Data = await api.getRestMenu(vendorId);
+        console.log(Data.data.menu);
+        dispatch({type:'RESTMENU',payload:Data.data.menu });        
+    } catch (error) {
+        console.log(error);
+        dispatch({type:'MENUERROR',payload:error.response.Data})
+    }
+}

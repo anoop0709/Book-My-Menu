@@ -1,4 +1,5 @@
 import USER from "../Models/UserSchema.js"
+import MENU from "../Models/RestaurantMenuSchema.js"
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
@@ -148,4 +149,19 @@ export const dele_from_Wishlist = async (req,res)=>{
         console.log(error);
         return res.status(401).send(error.message)
     }
+}
+
+export const get_Menu = async (req,res)=>{
+    try {
+        const vendorId = req.params.vendorId;
+        console.log(vendorId);
+       const menu = await MENU.findOne({vendorId:vendorId});
+       console.log(menu);
+       res.status(200).json({menu})
+        
+    } catch (error) {
+        console.log(error);
+        return res.status(401).send(error.message)
+    }
+
 }

@@ -34,16 +34,16 @@
     justify-content: center;
     align-items: center;
 }
-.logo{
+.Logo{
     display: flex;
     justify-content: center;
     height: 100%;
 }
-.logo>span{
+.Logo>span{
     font-size: 18px;
     color:#da5442 ;
 }
-.logo>h1{
+.Logo>h1{
     font-size: xx-large;
 }
 .vendorNavBtns>button{

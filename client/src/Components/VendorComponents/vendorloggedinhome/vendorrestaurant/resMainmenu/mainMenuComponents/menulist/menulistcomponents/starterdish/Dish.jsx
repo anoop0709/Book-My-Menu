@@ -32,7 +32,7 @@ function Starter({collectionName,tabName}) {
   const [editedData, setEditeddata] = useState({
     itemName: "",
     itemDescription: "",
-    itemPrice: ""
+    itemPrice:""
   });
 
 

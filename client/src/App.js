@@ -13,7 +13,6 @@ function App() {
         <UserRoutes />
         <AdminRoutes />
         <VendorRoutes />
-       
       </BrowserRouter>
     
   );

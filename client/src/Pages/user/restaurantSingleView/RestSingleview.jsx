@@ -9,7 +9,6 @@ import Footer from '../../../Components/userhomepageComponents/Footer/Footer';
 
 function RestSingleview() {
     const Restaurants = useSelector((state) => { return state.AllRestaurants.authData })
-    console.log(Restaurants);
     const Location = useLocation();
     const [restaurant, setRestaurant] = useState({})
     const [mainImage, setMainimage] = useState();
@@ -20,28 +19,18 @@ function RestSingleview() {
     const viewImage = (idx) => {
         setMainimage(restaurant[0]?.images[idx])
     }
-
-
-    
     useEffect(() => {
         const singleRest = Restaurants?.filter((rest) => {
             if (rest._id == restId) {
                 return rest
             }
         })
-        console.log(singleRest);
         setRestaurant(singleRest);
         setMainimage(restaurant[0]?.images[0])
     }, [Restaurants])
-
-
     useEffect(() => {
         dispatch(allrestaurant());
     }, [])
-
- 
-
-    console.log(mainImage);
     return (
         <>
             <Navbar />
@@ -54,7 +43,6 @@ function RestSingleview() {
                         <div className="imgrow">
                             {restaurant[0]?.images.map((images, index) => (
                                 <img src={images} alt="" key={index} onClick={() => viewImage(index)} />
-
                             ))}
                         </div>
                     </div>
@@ -74,7 +62,7 @@ function RestSingleview() {
                         </div>
                     </div>
                     <div className="datePickbtn">
-                        <button onClick={()=>{Navigate('/menu')}}>VIEW MENU</button>
+                        <button onClick={()=>{Navigate('/menu',{state:{restaurant:restaurant}})}}>VIEW MENU</button>
                         <button>CHECK AVAILABILITY</button>
                     </div>
 

@@ -22,6 +22,10 @@ const restaurantMenuSchema = new mongoose.Schema({
     vendorId:{
         type:ObjectId,
         ref:'Vendors'
+    },
+    restaurantId:{
+        type:ObjectId,
+        ref:'Restaurants'
     }
 })
 const ResturantMenu = mongoose.model('restaurantmenu',restaurantMenuSchema);

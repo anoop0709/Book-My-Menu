@@ -1,1 +1,218 @@
-/* No CSS *//*# sourceMappingURL=Menu.css.map */
+.menuContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 50px;
+}
+
+.menuContainer .image {
+  width: 80%;
+  height: 300px;
+}
+
+.menuContainer .image img {
+  width: 100%;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+}
+
+.menuContainer .menuwrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  gap: 30px;
+  margin-top: 50px;
+  width: 80%;
+}
+
+.menuContainer .menuwrapper .menuItemsdiv {
+  border: 1px solid black;
+  padding: 20px;
+  border-radius: 10px;
+  -webkit-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
+}
+
+.menuContainer .menuwrapper .menuItemsdiv .dishList {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f1f1f1;
+  margin: 15px;
+}
+
+.menuContainer .menuwrapper .menuItemsdiv .dishList h1 {
+  font-size: x-large;
+  margin: 0;
+  color: #23742a;
+  margin-bottom: 20px;
+}
+
+.menuContainer .menuwrapper .menuItemsdiv .dishList .line {
+  width: 100px;
+  border-bottom: 3px solid brown;
+  margin-bottom: 20px;
+}
+
+.menuContainer .menuwrapper .menuItemsdiv .dishList .dishMenu table tbody tr {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: white;
+  padding: 5px 15px;
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.menuContainer .menuwrapper .menuItemsdiv .dishList .dishMenu table tbody tr .text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-height: -webkit-fit-content;
+  max-height: -moz-fit-content;
+  max-height: fit-content;
+}
+
+.menuContainer .menuwrapper .menuItemsdiv .dishList .dishMenu table tbody tr .text :nth-child(1) {
+  color: brown;
+  font-size: 18px;
+}
+
+.menuContainer .menuwrapper .menuItemsdiv .dishList .dishMenu table tbody tr .text :nth-child(2) {
+  font-size: 16px;
+  color: #aaaaaa;
+}
+
+.menuContainer .menuwrapper .menuItemsdiv .dishList .dishMenu table tbody tr td {
+  font-size: 1.4rem;
+  padding: 0;
+}
+
+.menuContainer .menuwrapper .menuItemsdiv .dishList .dishMenu table tbody tr :nth-child(2) {
+  color: brown;
+}
+
+.menuContainer .menuwrapper .menuItemsdiv .dishList .dishMenu table tbody tr :nth-child(2) span {
+  padding: 20px;
+}
+
+.menuContainer .menuwrapper .menuItemsdiv .dishList .dishMenu table tbody tr :nth-child(2) span .tickIcon {
+  color: green;
+}
+
+.menuContainer .menuwrapper .selectedMenu {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 20px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 20px;
+}
+
+.menuContainer .menuwrapper .selectedMenu .MenuItems {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 30px;
+  width: 100%;
+  border-bottom: 1px solid #000;
+}
+
+.menuContainer .menuwrapper .selectedMenu .MenuItems .listMenu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+}
+
+.menuContainer .menuwrapper .selectedMenu .MenuItems .listMenu p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.menuContainer .menuwrapper .selectedMenu .MenuItems .listMenu .iconTrash {
+  color: brown;
+}
+
+.menuContainer .menuwrapper .selectedMenu .total {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 20px;
+}
+
+.menuContainer .menuwrapper .selectedMenu .total h5 h6 {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+/*# sourceMappingURL=Menu.css.map */

@@ -16,6 +16,7 @@ export const userSignup = (FormData)=> API.post('/signup',FormData);
 export const userInfo = (id)=> API.get(`/user_info/${id}`)
 export const addtoWishlist = (id,fav)=> API.post(`/add_to_wishlist/${id}/${fav}`);
 export const deletefromWishlist = (id,fav)=> API.post(`/dele_from_wishlist/${id}/${fav}`);
-export const checkExistingUser = ({email}) => API.post('/check_email',{email})
+export const checkExistingUser = ({email}) => API.post('/check_email',{email});
+export const getRestMenu = (vendorId) => API.post(`/get_menu/${vendorId}`)
 
 

@@ -12,14 +12,13 @@ function UserRoutes() {
   return (
     <Routes>
     {/* user routes */}
-    <Route exact path = "/" element={<Home/>}/>
-    <Route exact path = ""  element={<Home/>}/>
+    <Route exact path = "/" exact element={<Home/>}/>
+    <Route exact path = "" exact element={<Home/>}/>
     <Route path = "/signin"  element={<Signin/>}/>
     <Route path = "/login"  element={<Login/>}/>
     <Route path = "/restaurants" element={<AllRestaurants/>}/>
     <Route path = "/singleview"  element = {<RestSingleview/>}/>
-    <Route path = "/menu"  element = {<Menu/>}/>
-    <Route path='*' element={<ErrrorPage />} />     
+    <Route path = "/menu"  element = {<Menu/>}/>   
     </Routes>
 
   )
