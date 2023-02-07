@@ -3,6 +3,13 @@
     align-items: center;
     justify-content: center;
 }
+@mixin btn{
+   
+    border-radius: 5px;
+    border:none;
+    color:white;
+
+}
 
 .menuContainer{
     @include flexBox();
@@ -58,6 +65,7 @@
                         width: 100%;
                         border-radius: 10px;
                         margin-bottom: 10px;
+                        cursor: pointer;
                         & .text{
                            display: flex;
                            align-items: flex-start;
@@ -75,7 +83,7 @@
                             }
                         }
                         & td{
-                            font-size: 1.4rem;
+                            font-size: 1.2rem;
                             padding: 0;                 
                         }
                         & :nth-child(2){
@@ -120,9 +128,20 @@
                 }
                 & .iconTrash{
                     color:brown;
+                    cursor: pointer;
+                }
+                & :nth-child(2){
+                    & button{
+                        @include btn();
+                        padding: 1px 8px;
+                        margin-left: 10px;
+                        margin-right: 10px;
+                        background-color: brown;
+                    }
                 }
                
                }
+
             }
             & .total{
                 display: flex;
@@ -130,10 +149,53 @@
                 justify-content: flex-end;
                 flex-direction: column;
                 margin-top: 20px;
-               & h5 h6{
-                   flex:1;
-               }
+                width: 100%;
+                & .line{
+                    width: 100%;
+                    padding: 10px;
+                    margin-bottom: 10px;
+                    border-bottom: 1px solid #000;
 
+                }
+                & .subtotal{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    width: 100%;
+                    & h5{
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        margin: 0;
+                        
+                    }
+                    & h6{
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        margin: 0;
+                        
+                    }
+                    & span{
+                     display: flex;
+                     justify-content: flex-end;
+                     align-items: center;
+                 }
+                }
+              
+
+            }
+            & .paymentBtn{
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                padding-top: 20px;
+                & .payBtn{
+                    @include btn();
+                    padding: 5px 10px;
+                    background-color: green;
+                }
             }
         }
     }

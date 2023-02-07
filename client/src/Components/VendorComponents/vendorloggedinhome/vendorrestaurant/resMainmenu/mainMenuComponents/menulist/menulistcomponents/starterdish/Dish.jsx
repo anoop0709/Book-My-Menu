@@ -114,7 +114,7 @@ function Starter({collectionName,tabName}) {
     setItemdescription("");
     setItemprice("")
     setItem("")
-    setShow(false)
+    setDeledata(false);
   }
   return (
     <>

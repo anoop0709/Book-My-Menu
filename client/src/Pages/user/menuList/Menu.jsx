@@ -10,28 +10,28 @@ import { faCircleCheck, faTrash } from '@fortawesome/free-solid-svg-icons'
 
 
 function Menu() {
-    //const Restaurants = useSelector((state) => { return state.AllRestaurants.authData });
+    
     const restMenu = useSelector((state) => { return state.Restmenu.authData });
     const [menuItems, setMenuitems] = useState(JSON.parse(localStorage.getItem('menu')));
-    const [select, setSelect] = useState(JSON.parse(localStorage.getItem('menu')));
-    const [checked,setChecked] = useState(JSON.parse(localStorage.getItem('menuname')))
+    const [select, setSelect] = useState([]);
+    const [checked, setChecked] = useState(JSON.parse(localStorage.getItem('menuname')))
     const [selectedmenu, setSelectedmenu] = useState([])
-    let total= 0;
+    let total = 0;
     const menus = ["starter", "sidedish", "maindish", "combos", "dessert", "beverages"]
     const Location = useLocation();
     const { restaurant } = Location.state;
     const dispatch = useDispatch();
-   
+
     console.log(total);
-    const reducerFunction = ()=>{
-        total =  menuItems?.reduce((acc,itemlist)=>{
+    const reducerFunction = () => {
+        total = menuItems?.reduce((acc, itemlist) => {
             console.log(itemlist.itemsMenu.itemPrice);
-           return acc + parseInt(itemlist.itemsMenu.itemPrice)
-     
-         }
-         ,0)
-         console.log(total);
-         return total
+            return acc + parseInt(itemlist.itemsMenu.itemPrice)
+
+        }
+            , 0)
+        console.log(total);
+        return total
     }
 
 
@@ -56,7 +56,7 @@ function Menu() {
                 localStorage.setItem("menu", JSON.stringify(selectedmenu));
                 setMenuitems(JSON.parse(localStorage.getItem('menu')))
                 select.push(itemsMenu.itemName)
-                localStorage.setItem('menuname',JSON.stringify(select));
+                localStorage.setItem('menuname', JSON.stringify(select));
                 setChecked(JSON.parse(localStorage.getItem('menuname')))
             }
         } else {
@@ -65,7 +65,7 @@ function Menu() {
             localStorage.setItem("menu", JSON.stringify(selectedmenu));
             setMenuitems(JSON.parse(localStorage.getItem('menu')))
             select.push(itemsMenu.itemName)
-            localStorage.setItem('menuname',JSON.stringify(select));
+            localStorage.setItem('menuname', JSON.stringify(select));
             setChecked(JSON.parse(localStorage.getItem('menuname')))
 
 
@@ -73,24 +73,79 @@ function Menu() {
 
 
     }
+    const changeQty = (items, value) => {
+        console.log(items, value);
+        if (selectedmenu.length) {
+            if (value == 1) {
+                const array = selectedmenu.filter((item) => {
+                    if (item.itemsMenu.itemName === items.itemsMenu.itemName) {
+                        console.log(88888888);
 
-    const deleteMenuItem = (deleItem) =>{
+                        if (item.qty >= 1) {
+                            item.itemsMenu.itemPrice += parseInt(items.itemsMenu.itemPrice) / item.qty;
+                            console.log(items.itemsMenu.itemPrice, item.qty)
+                            item.qty += 1;
 
+                            localStorage.setItem("menu", JSON.stringify(selectedmenu));
+                            setMenuitems(JSON.parse(localStorage.getItem('menu')))
+                            return item;
+                        }
+
+
+                    }
+                })
+                console.log(array);
+            }
+            if (value == -1) {
+                const Array = selectedmenu.filter((item) => {
+                    if (item.itemsMenu.itemName === items.itemsMenu.itemName) {
+                        console.log(844334433);
+                        if (item.qty > 1) {
+                            item.itemsMenu.itemPrice -= parseInt(items.itemsMenu.itemPrice) / item.qty;
+                            item.qty -= 1;
+                            localStorage.setItem("menu", JSON.stringify(selectedmenu));
+                            setMenuitems(JSON.parse(localStorage.getItem('menu')))
+                            return item;
+                        } else {
+                            const index = selectedmenu.indexOf(item);
+                            selectedmenu.splice(index, 1)
+                            localStorage.setItem("menu", JSON.stringify(selectedmenu));
+                            setMenuitems(JSON.parse(localStorage.getItem('menu')))
+                            const menuIndex = select.indexOf(items.itemsMenu.itemName);
+                            select.splice(menuIndex, 1);
+                            localStorage.setItem('menuname', JSON.stringify(select));
+                            setChecked(JSON.parse(localStorage.getItem('menuname')));
+
+                        }
+                    }
+                })
+            }
+        }
+    }
+
+    const deleteMenuItem = (deleItem) => {
+        const Array = selectedmenu.filter((item) => {
+            if (item.itemsMenu.itemName === deleItem.itemsMenu.itemName) {
+                const index = selectedmenu.indexOf(item);
+                selectedmenu.splice(index, 1)
+                localStorage.setItem("menu", JSON.stringify(selectedmenu));
+                setMenuitems(JSON.parse(localStorage.getItem('menu')))
+                const menuIndex = select.indexOf(deleItem.itemsMenu.itemName);
+                select.splice(menuIndex, 1);
+                localStorage.setItem('menuname', JSON.stringify(select));
+                setChecked(JSON.parse(localStorage.getItem('menuname')));
+            }
+        })
     }
     useEffect(() => {
         dispatch(getrestMenu(restaurant[0].vendorId))
-       
 
-    }, [menuItems,checked]);
 
-    useEffect(()=>{
+    }, [menuItems, checked]);
+
+    useEffect(() => {
         reducerFunction();
-    },[])
-
-    console.log(menuItems);
-    console.log(restMenu);
-    console.log(selectedmenu);
-    console.log(select);
+    }, [])
 
     return (
         <>
@@ -115,11 +170,11 @@ function Menu() {
                                                             <td>{items?.itemDescription}</td>
                                                         </div>
                                                         <td>£ {items?.itemPrice}.00
-                                                        {checked?.map((name)=>(
-                                                            (name===items.itemName) && (
-                                                            <span>
-                                                                <FontAwesomeIcon className="tickIcon" icon={faCircleCheck} />
-                                                            </span>
+                                                        {checked?.map((name) => (
+                                                            (name === items.itemName) && (
+                                                                <span>
+                                                                    <FontAwesomeIcon className="tickIcon" icon={faCircleCheck} />
+                                                                </span>
                                                             )
                                                         ))}
                                                         </td>
@@ -135,32 +190,50 @@ function Menu() {
                     </div>
                     <div className="selectedMenu">
                         <h1>YOUR MENU</h1>
-                        <div className="MenuItems">
-                        <div className="listMenu">
-                                    <p>Dish</p>
-                                    <p>Qty</p>
-                                    <p>Price</p>
+                        {menuItems?.length ? (
+                            <>
+                                <div className="MenuItems">
+
+
+                                    <div className="listMenu">
+                                        <p>Dish</p>
+                                        <p>Qty</p>
+                                        <p>Price</p>
+                                    </div>
                                 </div>
-                        </div>
-                        <div className="MenuItems">
-                            {menuItems?.map((itemlist,index) => (
-                                <div className="listMenu" key={index}>
-                                    <p>{itemlist?.itemsMenu.itemName.toUpperCase()} </p>
-                                    <p>{itemlist?.qty}</p>
-                                    <p>{itemlist?.itemsMenu.itemPrice}.00</p>
-                                    <FontAwesomeIcon className="iconTrash" icon={faTrash} onClick={()=>deleteMenuItem(itemlist)}/>
+                                <div className="MenuItems">
+                                    {menuItems?.map((itemlist, index) => (
+                                        <div className="listMenu" key={index}>
+                                            <p>{itemlist?.itemsMenu.itemName.toUpperCase()} </p>
+                                            <p>
+                                                <button onClick={() => { changeQty(itemlist, -1) }}> - </button>
+                                                {itemlist?.qty}
+                                                <button onClick={() => { changeQty(itemlist, 1) }}> + </button>
+                                            </p>
+
+
+                                            <p>{itemlist?.itemsMenu.itemPrice}.00</p>
+                                            <FontAwesomeIcon className="iconTrash" icon={faTrash} onClick={() => deleteMenuItem(itemlist)} />
+                                        </div>
+                                    ))}
                                 </div>
-                            ))}
-                        </div>
-                        <div className="total">
-                            <h5>Sub Total :£ {reducerFunction()}.00</h5>
-                            <h6>VAT :£ {reducerFunction()*4/100} </h6>
-                            <hr/>
-                            <h5>Total :£ {reducerFunction() + (reducerFunction()*4/100)}</h5>
-                        </div>
+
+
+                                <div className="total">
+                                    <div className="subtotal"><h5>Sub Total :</h5> <span> £ {reducerFunction()} .00 </span></div>
+                                    <div className="subtotal"><h6>VAT :</h6><span> £ {reducerFunction() * 4 / 100}</span>  </div>
+                                   <div className="line"></div>
+                                   <div className="subtotal"> <h5>Total :</h5><span> £ {reducerFunction() + (reducerFunction() * 4 / 100)}</span></div>
+                                </div>
+                                <div className="paymentBtn">
+                                    <button className="payBtn">Payment</button>
+                                </div>
+                            </>
+                        ) : (null)}
                     </div>
+
                 </div>
- 
+
             </section>
         </>
     )

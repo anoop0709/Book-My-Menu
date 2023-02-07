@@ -167,6 +167,8 @@ export const add_Dish = async (req, res) => {
     try {
         let obj = {};
         obj = req.body.data;
+        obj.itemPrice = parseInt(obj.itemPrice)
+        console.log(obj);
         const collectionName = req.body.collectionName;
         let update = { $push: {} };
         update.$push[collectionName] = obj;

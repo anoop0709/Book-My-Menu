@@ -88,6 +88,7 @@
   width: 100%;
   border-radius: 10px;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .menuContainer .menuwrapper .menuItemsdiv .dishList .dishMenu table tbody tr .text {
@@ -120,7 +121,7 @@
 }
 
 .menuContainer .menuwrapper .menuItemsdiv .dishList .dishMenu table tbody tr td {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   padding: 0;
 }
 
@@ -191,6 +192,17 @@
 
 .menuContainer .menuwrapper .selectedMenu .MenuItems .listMenu .iconTrash {
   color: brown;
+  cursor: pointer;
+}
+
+.menuContainer .menuwrapper .selectedMenu .MenuItems .listMenu :nth-child(2) button {
+  border-radius: 5px;
+  border: none;
+  color: white;
+  padding: 1px 8px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: brown;
 }
 
 .menuContainer .menuwrapper .selectedMenu .total {
@@ -208,11 +220,86 @@
       -ms-flex-direction: column;
           flex-direction: column;
   margin-top: 20px;
+  width: 100%;
 }
 
-.menuContainer .menuwrapper .selectedMenu .total h5 h6 {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+.menuContainer .menuwrapper .selectedMenu .total .line {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #000;
+}
+
+.menuContainer .menuwrapper .selectedMenu .total .subtotal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.menuContainer .menuwrapper .selectedMenu .total .subtotal h5 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0;
+}
+
+.menuContainer .menuwrapper .selectedMenu .total .subtotal h6 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0;
+}
+
+.menuContainer .menuwrapper .selectedMenu .total .subtotal span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.menuContainer .menuwrapper .selectedMenu .paymentBtn {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 20px;
+}
+
+.menuContainer .menuwrapper .selectedMenu .paymentBtn .payBtn {
+  border-radius: 5px;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  background-color: green;
 }
 /*# sourceMappingURL=Menu.css.map */
