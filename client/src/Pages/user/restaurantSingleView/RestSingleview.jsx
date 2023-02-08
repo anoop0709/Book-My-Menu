@@ -62,8 +62,7 @@ function RestSingleview() {
                         </div>
                     </div>
                     <div className="datePickbtn">
-                        <button onClick={()=>{Navigate('/menu',{state:{restaurant:restaurant}})}}>VIEW MENU</button>
-                        <button>CHECK AVAILABILITY</button>
+                        <button onClick={()=>{Navigate('/availabledates',{state:{restaurant:restaurant}})}}>CHECK AVAILABILITY</button>
                     </div>
 
                 </div>

@@ -1,6 +1,7 @@
 import VENDOR from "../Models/VendorSchema.js"
 import RESTAURANT from "../Models/RestaurantSchema.js"
 import MENU from "../Models/RestaurantMenuSchema.js"
+import SLOT from "../Models/BookedDates.js"
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
@@ -35,7 +36,10 @@ export const vendor_Register = async (req, res) => {
                 const Vendor = await VENDOR.create({ firstname, lastname, email, phonenumber, password });
                 const vendorId = Vendor._id;
                 await RESTAURANT.create({ restaurantname, address, location, typeofcusine, seatingcapacity, openinghours, closinghours,description,menutype, images, pancard, fssai, gst, vendorId });
+                 const restaurant = await RESTAURANT.findOne({vendorId})
+                 const restaurantId = restaurant._id
                 await MENU.create({ vendorId });
+                await SLOT.create({restaurantId});
                 MailSender(email);
                 return res.status(200).json("waiting for approval")
 

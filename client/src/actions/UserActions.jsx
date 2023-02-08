@@ -94,3 +94,21 @@ export const getrestMenu = (vendorId) => async (dispatch)=>{
         dispatch({type:'MENUERROR',payload:error.response.Data})
     }
 }
+
+export const slotCheck = (id,data,setLoading) => async (dispatch) => {
+    try {
+        console.log(data);
+         const Data = await api.SlotCheck(id,data);
+         console.log(Data);
+        if(Data){
+            dispatch({type:'SLOT',payload:Data.data});
+            setLoading(false);
+           
+        }
+        
+    } catch (error) {
+        console.log(error);
+        dispatch({type:'SLOTERROR',payload:error.response.data})
+        
+    }
+}

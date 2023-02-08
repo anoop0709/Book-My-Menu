@@ -1,14 +1,32 @@
 import USER from "../Models/UserSchema.js"
 import MENU from "../Models/RestaurantMenuSchema.js"
-import BOOKEDDATES from "../Models/BookedDates.js"
+import SLOTS from "../Models/BookedDates.js"
+import RESTAURANT from "../Models/RestaurantSchema.js"
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import {otpMailGenerator} from "../Middleware/OtpGenerator.js"
+import moment from "moment";
 dotenv.config();
 const { JWT_SECRET_KEY } = process.env;
 
 let obj={};
+function getTimeStops(start, end){
+    const startTime = moment(start, 'HH:mm');
+    const endTime = moment(end, 'HH:mm');
+    
+    if( endTime.isBefore(startTime) ){
+      endTime.add(1, 'day');
+    }
+  
+    const timeStops = [];
+  
+    while(startTime <= endTime){
+      timeStops.push(new moment(startTime).format('HH:mm'));
+      startTime.add(60, 'minutes');
+    }
+    return timeStops;
+  }
 
 
 
@@ -166,4 +184,27 @@ export const get_Menu = async (req,res)=>{
     }
 
 }
+ export const get_available_slot = async (req,res) => {
+     try {
+         const RestId = req.params.RestId; 
+         const  data = req.body;
+         const restaurant = await RESTAURANT.findOne({_id:RestId})
+         const bookedDates = await SLOTS.findOne({restaurantId:RestId})
+         const startTime = restaurant.openinghours;
+         const closeTime = restaurant.closinghours;
+         const range = getTimeStops(startTime,closeTime);
+         console.log(range);
 
+         
+         console.log(bookedDates);
+         const restBooked =  bookedDates.bookedDates.filter((item)=>{
+            if(item.date === data.date){
+                return item;
+            }
+         })
+         res.status(200).json({restBooked,range})
+       
+     } catch (error) {
+         console.log(error);
+     }
+ }

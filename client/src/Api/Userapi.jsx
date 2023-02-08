@@ -18,5 +18,6 @@ export const addtoWishlist = (id,fav)=> API.post(`/add_to_wishlist/${id}/${fav}`
 export const deletefromWishlist = (id,fav)=> API.post(`/dele_from_wishlist/${id}/${fav}`);
 export const checkExistingUser = ({email}) => API.post('/check_email',{email});
 export const getRestMenu = (vendorId) => API.post(`/get_menu/${vendorId}`)
+export const SlotCheck = (id,Data) => API.post(`/get_slots/${id}`, Data);
 
 

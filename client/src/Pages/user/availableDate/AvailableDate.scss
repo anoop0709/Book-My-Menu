@@ -1,0 +1,192 @@
+
+@mixin flex {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+}
+@mixin style {
+    width: fit-content;
+    padding:5px 10px;
+    border-radius: 5px;
+    border: none;
+    
+}
+@-webkit-keyframes loading {
+    0% {
+      -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+    }
+  }
+  @keyframes loading {
+    0% {
+      -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+    }
+  }
+@-webkit-keyframes rotate {
+    0% {
+      display: none;
+      background: none;
+      padding: 0px;
+    }
+    100% {
+      -webkit-transform: rotate(-360deg);
+              transform: rotate(-360deg);
+      display: block;
+    }
+  }
+  
+  @keyframes rotate {
+    0% {
+      display: none;
+      background: none;
+      padding: 0px;
+    }
+    100% {
+      -webkit-transform: rotate(-360deg);
+              transform: rotate(-360deg);
+      display: block;
+    }
+  }
+  
+
+.availableContainer{
+    @include flex();
+    justify-content: flex-start;
+    flex-direction: column;
+    height:100vh;
+
+.availableWrapper{
+     @include flex();
+     justify-content:center;
+     flex-direction: column;
+     max-width: 100%;
+     & .datePicker{
+    @include flex();
+    justify-content:center;
+    background-color:rgb(218, 218, 218); 
+    & .restDetails{
+        font-weight: bold;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        color:brown;
+        padding: 20px;
+        & h1{
+            font-size: 1.8rem;
+        }
+        & p{
+            margin: 0;
+        }
+        
+    }
+
+   & .date{
+    @include flex();
+    justify-content:center;
+    gap: 50px;
+    & input{
+        @include style();
+       
+    }
+    & .btn{
+        border: none;
+        & button{
+           @include style();
+           background-color:brown; 
+           color: white;
+        }    }
+    }
+   }
+  & #loaderContainer {
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    opacity: 1;
+    margin-top: 10%;
+    
+  
+  &  p {
+    color: #9356DC;
+    padding: 10px;
+    margin: 10px;
+  }
+  &  #loader {
+    width: 100px;
+    height: 100px;
+    border: 10px solid #000000;
+    border-radius: 50%;
+    border-top: 10px solid #ffffff;
+    animation: loading  linear 1s infinite;
+    position: absolute;
+   
+  }
+}
+  
+    & .availableSlots{
+        @include flex();
+        position: relative;
+        justify-content: center;
+
+        & .availableSlotWrapper{
+            @include flex();
+            justify-content: space-between;
+            flex-wrap: wrap;
+            width: 70%;
+            gap: 30px;
+            
+            & .slotBox{   
+                border-radius: 5px;
+                padding: 20px;
+                background-color: green;
+                color: white;
+                cursor: pointer;
+                & p{
+                     :nth-child(2){
+                        font-size: small;
+                        font-weight: normal;
+                    }
+                }
+                & span{
+                    float: right;
+                    & .check{
+                        font-size: 1.6rem;
+                    }
+
+                }
+            }
+            & .menuPickbtn{
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                padding-top: 20px;
+               gap: 20px;
+                & button{
+                    padding: 5px 10px;
+                    background-color: brown;
+                    color: white;
+                    border:none;
+                    border-radius: 5px;
+                }
+            }
+        }
+    }
+  }
+}
