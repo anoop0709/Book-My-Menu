@@ -9,10 +9,11 @@ function App() {
   return (
  
       <BrowserRouter>
-     
+      
         <UserRoutes />
         <AdminRoutes />
         <VendorRoutes />
+
       </BrowserRouter>
     
   );

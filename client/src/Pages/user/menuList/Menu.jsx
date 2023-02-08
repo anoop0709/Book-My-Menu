@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import "./Menu.css"
 import { useDispatch, useSelector } from 'react-redux'
-import { useLocation } from 'react-router'
+import { useLocation, useNavigate } from 'react-router'
 import { allrestaurant } from '../../../actions/AdminActions'
 import { getrestMenu } from '../../../actions/UserActions'
 import Navbar from '../../../Components/userhomepageComponents/Navbar/Navbar'
@@ -11,7 +11,7 @@ import Footer from '../../../Components/userhomepageComponents/Footer/Footer'
 
 
 function Menu() {
-    
+
     const restMenu = useSelector((state) => { return state.Restmenu.authData });
     const [menuItems, setMenuitems] = useState(JSON.parse(localStorage.getItem('menu')));
     const [select, setSelect] = useState([]);
@@ -20,10 +20,12 @@ function Menu() {
     let total = 0;
     const menus = ["starter", "sidedish", "maindish", "combos", "dessert", "beverages"]
     const Location = useLocation();
-    const { restaurant } = Location.state;
+    const { restaurant, data, time } = Location.state;
+    console.log(restaurant, data, time);
     const dispatch = useDispatch();
-
+    const Navigate = useNavigate();
     console.log(total);
+
     const reducerFunction = () => {
         total = menuItems?.reduce((acc, itemlist) => {
             console.log(itemlist.itemsMenu.itemPrice);
@@ -98,7 +100,7 @@ function Menu() {
                 console.log(array);
             }
             if (value == -1) {
-                const Array = selectedmenu.filter((item) => {
+                selectedmenu.filter((item) => {
                     if (item.itemsMenu.itemName === items.itemsMenu.itemName) {
                         console.log(844334433);
                         if (item.qty > 1) {
@@ -125,7 +127,7 @@ function Menu() {
     }
 
     const deleteMenuItem = (deleItem) => {
-        const Array = selectedmenu.filter((item) => {
+        selectedmenu.filter((item) => {
             if (item.itemsMenu.itemName === deleItem.itemsMenu.itemName) {
                 const index = selectedmenu.indexOf(item);
                 selectedmenu.splice(index, 1)
@@ -138,6 +140,7 @@ function Menu() {
             }
         })
     }
+    
     useEffect(() => {
         dispatch(getrestMenu(restaurant[0].vendorId))
 
@@ -151,10 +154,12 @@ function Menu() {
     return (
         <>
             <Navbar />
+           
             <section className="menuContainer">
                 <div className="image">
                     <img src={restaurant[0]?.images[0]} alt="" />
                 </div>
+               
                 <div className="menuwrapper">
                     <div className="menuItemsdiv">
                         {menus.map((menu) => (
@@ -189,13 +194,11 @@ function Menu() {
                         ))}
 
                     </div>
+                    {menuItems?.length ? (
                     <div className="selectedMenu">
-                        <h1>YOUR MENU</h1>
-                        {menuItems?.length ? (
+                        <h5>YOUR MENU</h5>                
                             <>
                                 <div className="MenuItems">
-
-
                                     <div className="listMenu">
                                         <p>Dish</p>
                                         <p>Qty</p>
@@ -223,20 +226,20 @@ function Menu() {
                                 <div className="total">
                                     <div className="subtotal"><h5>Sub Total :</h5> <span> £ {reducerFunction()} .00 </span></div>
                                     <div className="subtotal"><h6>VAT :</h6><span> £ {reducerFunction() * 4 / 100}</span>  </div>
-                                   <div className="line"></div>
-                                   <div className="subtotal"> <h5>Total :</h5><span> £ {reducerFunction() + (reducerFunction() * 4 / 100)}</span></div>
+                                    <div className="line"></div>
+                                    <div className="subtotal"> <h5>Total :</h5><span> £ {reducerFunction() + (reducerFunction() * 4 / 100)}</span></div>
                                 </div>
                                 <div className="paymentBtn">
-                                    <button className="payBtn">Payment</button>
+                                    <button className="payBtn" onClick={()=>{ Navigate("/paymentpage",{state:{restaurant:restaurant,data:data,time,reducerFunction:reducerFunction()}})}}>Payment</button>
                                 </div>
                             </>
-                        ) : (null)}
+                        
                     </div>
-
+                    ) : (null)}
                 </div>
 
             </section>
-            <Footer/>
+            <Footer />
         </>
     )
 }

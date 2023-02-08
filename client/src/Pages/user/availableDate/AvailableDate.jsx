@@ -6,7 +6,7 @@ import { useLocation, useNavigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { slotCheck } from '../../../actions/UserActions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
 function AvailableDate() {
     const Navigate = useNavigate();
@@ -68,7 +68,7 @@ function AvailableDate() {
                             <input type="date" name="date" required onChange={handleChange} />
                             <input type="number" required placeholder="Number of people" name="number" onChange={handleChange} />
                             <div className="btn">
-                                <button onClick={checkSlot}>Available slots</button>
+                                <button onClick={checkSlot}>Check Available Slots</button>
                             </div>
 
                         </div>
@@ -83,16 +83,16 @@ function AvailableDate() {
                             <div className="availableSlotWrapper">
                                 {Ranges?.map((tm, index) => (
                                     <div className="slotBox" key={index} onClick={() => { setTime(tm) }}>
-                                        <span>{time === tm && <FontAwesomeIcon icon={faCheck} className="check"/>}</span>
+                                        <span>{time === tm && <FontAwesomeIcon icon={faCheckCircle} className="check"/>}</span>
                                         <p>{tm}</p>
                                         <p>1 HOUR WINDOW</p>
                                         <p>Available seats: 40</p>
                                     </div>
                                 ))
                                 }
-                                {Ranges?.length && (
+                                {time && (
                                 <div className="menuPickbtn">
-                                    <button onClick={() => { Navigate('/menu', { state: { restaurant: restaurant } }) }}>SELECT MENU</button>
+                                    <button onClick={() => { Navigate('/menu', { state: { restaurant: restaurant ,data:data,time} }) }}>SELECT MENU</button>
                                 </div>
                                 )}
                             </div>
