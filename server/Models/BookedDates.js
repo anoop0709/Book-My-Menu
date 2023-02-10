@@ -9,9 +9,12 @@ const BookedDates = new mongoose.Schema({
         required:true,
         ref:'Restaurants'
     },
-    bookedDates:{
-        type:Array
-    }
+    bookedDates:[
+        {
+            date:"string",
+            obj:"object"
+        }
+    ]
 
 
 })

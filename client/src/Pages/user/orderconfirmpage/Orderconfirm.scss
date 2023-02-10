@@ -1,0 +1,137 @@
+@mixin flex {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 50px;
+   margin-top: 20px;
+   margin-bottom: 20px;
+    
+}
+@mixin btn{
+   
+    border-radius: 5px;
+    border:none;
+    color:white;
+
+}
+
+.paymentconfirmContainer{
+    @include flex();
+    width: 100%;
+    gap: 20px;
+   
+    & .paymentconfirmWrapper{  
+        @include flex();
+        flex: 2;
+        flex-direction: column;
+        border: 1px solid black;
+        border-radius: 10px;
+        gap: 20px;
+        & .restAndUser{
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%; 
+            padding: 10px;
+            border-bottom: 1px solid black;
+            & .restDetailsBox{
+                & p{
+                    margin-bottom: 2px;
+                }
+            }
+            & .userDetailsBox{
+                & p{
+                    margin-bottom: 2px;
+                }
+            }
+        }
+        & .itemListBox{
+            @include flex();
+            width: 100%;
+            flex-direction: column;
+            & .listMenu{
+                width: 100%;
+               display: flex;
+               justify-content: space-evenly;
+               align-items: flex-start;
+               & p{
+                   width: 100%;
+                   font-weight: bold;
+               }
+            
+            }
+            & .itemDetails{
+               width: 100%;
+               display: flex;
+               justify-content: space-evenly;
+               align-items: flex-start;
+               & p{
+                width: 100%;
+            }
+            }            
+        }
+    }
+    & .paymentBox{
+        @include flex();
+        flex:1;
+        flex-direction: column;
+        border: 1px solid black;
+        border-radius: 10px;
+        gap: 20px;
+        & .total{
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            flex-direction: column;
+            margin-top: 20px;
+            width: 100%;
+            & .line{
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 10px;
+                border-bottom: 1px solid #000;
+
+            }
+            & .subtotal{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                & h5{
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    margin: 0;
+                    
+                }
+                & h6{
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    margin: 0;
+                    
+                }
+                & span{
+                 display: flex;
+                 justify-content: flex-end;
+                 align-items: center;
+             }
+            }
+          
+
+        }
+    
+        & .paymentBtn{
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-top: 20px;
+            & .payBtn{
+                @include btn();
+                padding: 5px 10px;
+                background-color: green;
+            }
+        }
+    }
+}

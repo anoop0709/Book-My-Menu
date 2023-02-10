@@ -143,6 +143,18 @@
         @include flex();
         position: relative;
         justify-content: center;
+        flex-direction: column;
+         & .error{
+           @include flex();
+           margin: 10px;
+           justify-content: center;
+           width: fit-content;
+           border: 1px solid black;
+           color:red;
+           & p{
+             margin-bottom: 0;
+           }
+         }
 
         & .availableSlotWrapper{
             @include flex();

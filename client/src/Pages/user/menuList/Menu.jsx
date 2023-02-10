@@ -230,7 +230,7 @@ function Menu() {
                                     <div className="subtotal"> <h5>Total :</h5><span> £ {reducerFunction() + (reducerFunction() * 4 / 100)}</span></div>
                                 </div>
                                 <div className="paymentBtn">
-                                    <button className="payBtn" onClick={()=>{ Navigate("/paymentpage",{state:{restaurant:restaurant,data:data,time,reducerFunction:reducerFunction()}})}}>Payment</button>
+                                    <button className="payBtn" onClick={()=>{ Navigate("/paymentpage",{state:{restaurant:restaurant,data:data,time,menuItems:menuItems,reducerFunction:reducerFunction()}})}}>Payment</button>
                                 </div>
                             </>
                         
@@ -239,7 +239,7 @@ function Menu() {
                 </div>
 
             </section>
-            <Footer />
+         
         </>
     )
 }
