@@ -19,8 +19,8 @@ const Bookings = new mongoose.Schema({
         type: String,
         required: true
     },
-    TransactionId: {
-        type: String
+    TransactionDetails: {
+        type: Object
     },
     restaurantId: {
         type: ObjectId,
@@ -31,3 +31,6 @@ const Bookings = new mongoose.Schema({
         ref: 'Users'
     }
 })
+const bookings = mongoose.model('bookings',Bookings);
+
+export default bookings;

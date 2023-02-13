@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router'
 import AllRestaurants from '../Components/userhomepageComponents/allRestaurants/AllRestaurants'
 import ErrrorPage from '../Pages/errorpage/ErrorPage'
 import AvailableDate from '../Pages/user/availableDate/AvailableDate'
+import BookingsPage from '../Pages/user/bookingsPage/BookingsPage'
 import Home from '../Pages/user/Home/Home'
 import Login from '../Pages/user/Login/Login'
 import Menu from '../Pages/user/menuList/Menu'
@@ -22,6 +23,9 @@ function UserRoutes() {
     <Route path = "/menu"  element = {<Menu/>}/>   
     <Route path = "/availabledates" element={<AvailableDate/>}/>
     <Route path = "/paymentpage"  element={<Orderconfirm/>}/>
+    <Route path = "/user_bookings" element={<BookingsPage/>}/>
+  
+
     </Routes>
 
   )

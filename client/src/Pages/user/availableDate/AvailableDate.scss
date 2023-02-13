@@ -183,6 +183,26 @@
 
                 }
             }
+            & .slotBox-orange{   
+              border-radius: 5px;
+              padding: 20px;
+              background-color: rgb(236, 157, 68);
+              color: white;
+              cursor: pointer;
+              & p{
+                   :nth-child(2){
+                      font-size: small;
+                      font-weight: normal;
+                  }
+              }
+              & span{
+                  float: right;
+                  & .check{
+                      font-size: 1.6rem;
+                  }
+
+              }
+          }
             & .menuPickbtn{
                 width: 100%;
                 display: flex;

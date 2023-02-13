@@ -10,8 +10,9 @@ import {Restmenu} from "./restaurantMenu"
 import {SingleRestaurant} from "./SingleRestaurant"
 import {UserInfo} from "./UserInfo";
 import {AvailableSlots} from "./AvailableSlots"
+import {UserBooking} from "./userbooking";
 export default combineReducers({
     AuthReducer,AdminAuthReducer,VendorAuthReducer,
     AllUsers,AllVendors, NewVendors,AllRestaurants,
-    Restmenu,SingleRestaurant,UserInfo,AvailableSlots
+    Restmenu,SingleRestaurant,UserInfo,AvailableSlots,UserBooking
 })

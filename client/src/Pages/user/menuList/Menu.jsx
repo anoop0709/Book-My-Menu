@@ -20,20 +20,20 @@ function Menu() {
     let total = 0;
     const menus = ["starter", "sidedish", "maindish", "combos", "dessert", "beverages"]
     const Location = useLocation();
-    const { restaurant, data, time } = Location.state;
-    console.log(restaurant, data, time);
+    const { restaurant, dateobj, time } = Location.state;
+    console.log(restaurant, dateobj, time);
     const dispatch = useDispatch();
     const Navigate = useNavigate();
     console.log(total);
 
     const reducerFunction = () => {
         total = menuItems?.reduce((acc, itemlist) => {
-            console.log(itemlist.itemsMenu.itemPrice);
-            return acc + parseInt(itemlist.itemsMenu.itemPrice)
+            console.log(parseInt(itemlist.itemsMenu.itemPrice));
+            return acc + parseInt(itemlist?.itemsMenu?.itemPrice)
 
         }
             , 0)
-        console.log(total);
+        console.log(typeof (total));
         return total
     }
 
@@ -47,7 +47,9 @@ function Menu() {
                 if (item.itemsMenu.itemName === itemsMenu.itemName) {
                     console.log(88888888);
                     item.qty += 1;
-                    item.itemsMenu.itemPrice += parseInt(itemsMenu.itemPrice);
+                    let price = parseInt(item.itemsMenu.itemPrice)
+                    price += parseInt(itemsMenu.itemPrice);
+                    item.itemsMenu.itemPrice = price;
                     localStorage.setItem("menu", JSON.stringify(selectedmenu));
                     setMenuitems(JSON.parse(localStorage.getItem('menu')))
                     return item;
@@ -85,7 +87,10 @@ function Menu() {
                         console.log(88888888);
 
                         if (item.qty >= 1) {
-                            item.itemsMenu.itemPrice += parseInt(items.itemsMenu.itemPrice) / item.qty;
+                            let price = parseInt(item.itemsMenu.itemPrice)
+                            price += parseInt(items.itemsMenu.itemPrice)/item.qty;
+                            item.itemsMenu.itemPrice = price;
+                            //item.itemsMenu.itemPrice += parseInt(items.itemsMenu.itemPrice) / item.qty;
                             console.log(items.itemsMenu.itemPrice, item.qty)
                             item.qty += 1;
 
@@ -104,7 +109,9 @@ function Menu() {
                     if (item.itemsMenu.itemName === items.itemsMenu.itemName) {
                         console.log(844334433);
                         if (item.qty > 1) {
-                            item.itemsMenu.itemPrice -= parseInt(items.itemsMenu.itemPrice) / item.qty;
+                            let price = parseInt(item.itemsMenu.itemPrice)
+                            price -= parseInt(items.itemsMenu.itemPrice) / item.qty;
+                            item.itemsMenu.itemPrice = price;
                             item.qty -= 1;
                             localStorage.setItem("menu", JSON.stringify(selectedmenu));
                             setMenuitems(JSON.parse(localStorage.getItem('menu')))
@@ -140,7 +147,7 @@ function Menu() {
             }
         })
     }
-    
+
     useEffect(() => {
         dispatch(getrestMenu(restaurant[0].vendorId))
 
@@ -154,12 +161,12 @@ function Menu() {
     return (
         <>
             <Navbar />
-           
+
             <section className="menuContainer">
                 <div className="image">
                     <img src={restaurant[0]?.images[0]} alt="" />
                 </div>
-               
+
                 <div className="menuwrapper">
                     <div className="menuItemsdiv">
                         {menus.map((menu) => (
@@ -195,8 +202,8 @@ function Menu() {
 
                     </div>
                     {menuItems?.length ? (
-                    <div className="selectedMenu">
-                        <h5>YOUR MENU</h5>                
+                        <div className="selectedMenu">
+                            <h5>YOUR MENU</h5>
                             <>
                                 <div className="MenuItems">
                                     <div className="listMenu">
@@ -230,16 +237,16 @@ function Menu() {
                                     <div className="subtotal"> <h5>Total :</h5><span> £ {reducerFunction() + (reducerFunction() * 4 / 100)}</span></div>
                                 </div>
                                 <div className="paymentBtn">
-                                    <button className="payBtn" onClick={()=>{ Navigate("/paymentpage",{state:{restaurant:restaurant,data:data,time,menuItems:menuItems,reducerFunction:reducerFunction()}})}}>Payment</button>
+                                    <button className="payBtn" onClick={() => { Navigate("/paymentpage", { state: { restaurant: restaurant, dateobj: dateobj, time, menuItems: menuItems,reducerFunction:reducerFunction() } }) }}>Payment</button>
                                 </div>
                             </>
-                        
-                    </div>
+
+                        </div>
                     ) : (null)}
                 </div>
 
             </section>
-         
+
         </>
     )
 }

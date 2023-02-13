@@ -3,6 +3,7 @@ import MENU from "../Models/RestaurantMenuSchema.js"
 import SLOTS from "../Models/BookedDates.js"
 import RESTAURANT from "../Models/RestaurantSchema.js"
 import VENDOR from "../Models/VendorSchema.js"
+import BOOKINGS from "../Models/Bookings.js"
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
@@ -219,10 +220,10 @@ export const get_available_slot = async (req, res) => {
                 }
             })
             console.log(restBooked);
-            res.status(200).json({ restBooked, range, vendorPhonenumber })
+            return res.status(200).json({ restBooked, range, vendorPhonenumber });
         } else {
             const restBooked = [];
-            res.status(200).json({ restBooked, range, vendorPhonenumber });
+           return res.status(200).json({ restBooked, range, vendorPhonenumber });
         }
     } catch (error) {
         console.log(error);
@@ -232,28 +233,55 @@ export const get_available_slot = async (req, res) => {
 export const date_Booking = async (req, res) => {
     try {
        
-        const { time, data, restaurantId } = req.body;
+        const { dateobj,time,restaurantId,orderID,menuItems,user,Total,payer,data } = req.body;
         console.log(req.body);
         console.log(restaurantId);
+        console.log(orderID,menuItems,user,Total,payer,data )
+        const userId = user._id;
         const restaurant = await RESTAURANT.findOne({ _id: restaurantId });
-        const bookedRest = await SLOTS.findOne({ restaurantId: restaurantId });
+        const bookedRest = await SLOTS.findOne({ restaurantId: restaurantId })
+        const Order = await BOOKINGS.create({
+            menuItems:menuItems,
+            totalAmount:Total,
+            bookedDate:dateobj,
+            paymentMethod:"paypal",
+            TransactionDetails:data,
+            restaurantId:restaurantId,
+            userId:userId
+        })
         if (bookedRest) {
             if (bookedRest?.bookedDates.length) {
-               const changedObj =  bookedRest.bookedDates.filter((item) => {
-                    if (item.date == data.date) {
-                        const number = item.obj[time] + data.number;
+               const changedObj =  bookedRest.bookedDates.filter(async (item) => {
+                    if (item.date == dateobj.date) {
+                        const number = item.obj[time] + parseInt(dateobj.number);
                         console.log(number);
                         if (item.obj[time] < restaurant.seatingcapacity && number <= restaurant.seatingcapacity) {      
                             item.obj[time] = number;
                            return item;
                         }
-                        throw new Error("No seat available")
+                    }else {
+                        const bookings = {
+                            date: "",
+                            obj: {}
+                        }
+                        const startTime = restaurant.openinghours;
+                        const closeTime = restaurant.closinghours;
+                        const range = getTimeStops(startTime, closeTime);
+                        const rangeObj = convertToObject(range);
+                        rangeObj[time] = parseInt(dateobj.number);
+                        bookings.date = dateobj.date;
+                        bookings.obj = rangeObj;
+                        console.log(bookings);
+                        bookedRest.bookedDates.push(bookings)
+                        await bookedRest.save();
+                        console.log(bookedRest.bookedDates[0]);
+                        return  res.status(200).json({bookedRest,Order});
                     }
                 })        
                 await SLOTS.findOneAndUpdate({ restaurantId: restaurantId }, {$pull: {bookedDates: {_id: changedObj[0]._id}}}, {new: true});
                 const added = await SLOTS.findOneAndUpdate({ restaurantId: restaurantId }, {$push: {bookedDates: changedObj}}, {new: true});
                 await bookedRest.save();    
-                return res.status(200).json(added);
+                return res.status(200).json({added,Order});
             }
             else {
                 const bookings = {
@@ -264,14 +292,14 @@ export const date_Booking = async (req, res) => {
                 const closeTime = restaurant.closinghours;
                 const range = getTimeStops(startTime, closeTime);
                 const rangeObj = convertToObject(range);
-                rangeObj[time] = data.number;
-                bookings.date = data.date;
+                rangeObj[time] = parseInt(dateobj.number);
+                bookings.date = dateobj.date;
                 bookings.obj = rangeObj;
                 console.log(bookings);
                 bookedRest.bookedDates.push(bookings)
                 await bookedRest.save();
                 console.log(bookedRest.bookedDates[0]);
-              return  res.status(200).json(bookedRest);
+              return  res.status(200).json({bookedRest,Order});
             }
 
         } else {
@@ -284,16 +312,17 @@ export const date_Booking = async (req, res) => {
             const closeTime = restaurant.closinghours;
             const range = getTimeStops(startTime, closeTime);
             const rangeObj = convertToObject(range);
-            rangeObj[time] = data.number;
-            bookings.date = data.date;
+            rangeObj[time] = parseInt(dateobj.number);
+            bookings.date = dateobj.date;
             bookings.obj = rangeObj;
             bookedDates.push(bookings);
             console.log(bookedDates);
             console.log(bookings);
-            await SLOTS.create({ bookedDates: bookedDates, restaurantId: restaurantId });
+           const bookedRest =  await SLOTS.create({ bookedDates: bookedDates, restaurantId: restaurantId });
+           return res.status(200).json({bookedRest,Order})
         }
     } catch (error) {
         console.log(error);
-        res.status(401).send(error.message)
+       return res.status(401).send(error.message)
     }
 }

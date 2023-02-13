@@ -17,6 +17,7 @@ function AdminRoutes() {
                 <Route path="/adminhome" element={<AdminHome />} />
                 <Route path="/createadmin" element={<CreateAdmin />} />
                 <Route path="/admindashboard" element={<Main />} />  
+            
             </Route>
         </Routes>
     )

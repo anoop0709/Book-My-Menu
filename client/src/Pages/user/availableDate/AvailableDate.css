@@ -288,6 +288,27 @@
   font-size: 1.6rem;
 }
 
+.availableContainer .availableWrapper .availableSlots .availableSlotWrapper .slotBox-orange {
+  border-radius: 5px;
+  padding: 20px;
+  background-color: #ec9d44;
+  color: white;
+  cursor: pointer;
+}
+
+.availableContainer .availableWrapper .availableSlots .availableSlotWrapper .slotBox-orange p :nth-child(2) {
+  font-size: small;
+  font-weight: normal;
+}
+
+.availableContainer .availableWrapper .availableSlots .availableSlotWrapper .slotBox-orange span {
+  float: right;
+}
+
+.availableContainer .availableWrapper .availableSlots .availableSlotWrapper .slotBox-orange span .check {
+  font-size: 1.6rem;
+}
+
 .availableContainer .availableWrapper .availableSlots .availableSlotWrapper .menuPickbtn {
   width: 100%;
   display: -webkit-box;

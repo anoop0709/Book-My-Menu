@@ -1,5 +1,4 @@
 import * as api from "../Api/Userapi"
-import {useNavigate} from "react-router-dom"
 
 
 
@@ -110,5 +109,18 @@ export const slotCheck = (id,data,setLoading) => async (dispatch) => {
         console.log(error);
         dispatch({type:'SLOTERROR',payload:error.response.data})
         
+    }
+}
+
+export const paypalPay = (dateobj, time,restaurantId,orderID,menuItems,user,Total,payer,data,Navigate) => async (dispatch) => {
+    try {
+        const Data = await api.payPalOrder(dateobj, time,restaurantId,orderID,menuItems,user,Total,payer,data);
+        console.log(Data);
+        if(Data){
+            dispatch({type:'BOOKINGS',payload:Data.data})
+            Navigate('/user_bookings')
+        }
+    } catch (error) {
+        console.log(error);
     }
 }

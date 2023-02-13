@@ -11,10 +11,12 @@ import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 function AvailableDate() {
     const Navigate = useNavigate();
     const slots = useSelector((state) => { return state.AvailableSlots.authData });
+    const today = new Date().toISOString().split('T')[0];
+    console.log(today);
     const [loading, setLoading] = useState(false);
     const [time, setTime] = useState("");
     const [seatavailable, setSeatavailable] = useState(false);
-    const [data, setData] = useState({
+    const [dateobj, setDateobj] = useState({
         date: "",
         number: "",
     });
@@ -24,19 +26,26 @@ function AvailableDate() {
     console.log(restaurant);
     const dispatch = useDispatch();
     const timeSlot = slots?.range?.map((item) => {
-        if (!slots?.restBooked[0].length) {
+        if (!slots?.restBooked[0]?.length) {
             return item
         } else {
-            console.log(slots?.restBooked[0].obj[item]);
-            if (slots?.restBooked[0].obj[item] < restaurant?.seatingcapacity) {
+            console.log(slots?.restBooked[0]?.obj[item]);
+            if (slots?.restBooked[0]?.obj[item] < restaurant?.seatingcapacity) {
                 return item
             }
         }
     })
+    let availableSeats = 0;
     const chooseSlot = (tm) => {
-        const availableSeats = slots?.restBooked[0].obj[tm];
+        console.log(tm);
+       
+        console.log(slots?.restBooked?.length);
+        if(slots?.restBooked?.length){
+            console.log(slots.restBooked[0].obj[tm]);
+            availableSeats = slots.restBooked[0].obj[tm];
+        }
         console.log(availableSeats);
-        const totalSeats = parseInt(data.number) + availableSeats;
+        const totalSeats = parseInt(dateobj.number) + availableSeats;
         console.log(totalSeats);
         if (totalSeats <= restaurant[0]?.seatingcapacity) {
             setTime(tm)
@@ -47,23 +56,23 @@ function AvailableDate() {
         }
     }
 
-    console.log(timeSlot);
+  
     const checkSlot = () => {
         const id = restaurant[0]._id;
-        console.log(data);
-        dispatch(slotCheck(id, data, setLoading))
+        console.log(dateobj);
+        dispatch(slotCheck(id, dateobj, setLoading))
         setLoading(true)
     }
     const handleChange = (e) => {
-        setData({ ...data, [e.target.name]: e.target.value })
+        setDateobj({ ...dateobj, [e.target.name]: e.target.value })
     }
     useEffect(() => {
 
 
     }, [loading])
+   
     console.log(restaurant[0].seatingcapacity);
-    console.log(slots);
-    console.log(data);
+    
     return (
         <>
             <Navbar />
@@ -77,12 +86,11 @@ function AvailableDate() {
                             <p>{restaurant[0].location}</p>
                         </div>
                         <div className="date">
-                            <input type="date" name="date" required onChange={handleChange} />
-                            <input type="number" required placeholder="Number of people" name="number" onChange={handleChange} />
+                            <input type="date" name="date" required min={today} onChange={handleChange} />
+                            <input type="number" required placeholder="Number of people" name="number"  onChange={handleChange} />
                             <div className="btn">
                                 <button onClick={checkSlot}>Check Available Slots</button>
                             </div>
-
                         </div>
                     </div>
                     {loading ? (
@@ -93,11 +101,11 @@ function AvailableDate() {
                     ) : (
                         <div className="availableSlots">
                           {seatavailable &&  <div className="error">
-                              <p>Seats not available for {data.number} people at this time-slot </p>
+                              <p>Seats not available for {dateobj.number} people at this time-slot </p>
                               </div>}
                             <div className="availableSlotWrapper">
                                 {timeSlot?.map((tm, index) => (
-                                    <div className="slotBox" key={index} onClick={() => { chooseSlot(tm) }}>
+                                    <div className={(slots?.restBooked[0]?.obj[tm] < (restaurant.seatingcapacity)) ? "slotbox-orange" : "slotBox"} key={index} onClick={() => { chooseSlot(tm) }}>
                                         <span>
                                             {(time === tm) && <FontAwesomeIcon icon={faCheckCircle} className="check" />}
                                         </span>
@@ -109,7 +117,7 @@ function AvailableDate() {
                                 }
                                 {time && (
                                     <div className="menuPickbtn">
-                                        <button onClick={() => { Navigate('/menu', { state: { restaurant: restaurant, data: data, time } }) }}>SELECT MENU</button>
+                                        <button onClick={() => { Navigate('/menu', { state: { restaurant: restaurant, dateobj: dateobj, time } }) }}>SELECT MENU</button>
                                     </div>
                                 )}
                             </div>

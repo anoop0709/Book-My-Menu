@@ -17,14 +17,7 @@ router.post('/dele_from_wishlist/:id/:restid',dele_from_Wishlist)
 router.post ('/check_email',check_Email);
 router.post ('/get_menu/:vendorId',get_Menu);
 router.post('/get_slots/:RestId',get_available_slot);
-router.post('/book_slot',date_Booking)
-
-
-
-
-//admin
-
-router.get('/')
+router.post('/book_slot',date_Booking);
 
 
 export default router;
