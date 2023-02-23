@@ -1,0 +1,17 @@
+@mixin flex {
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    
+}
+
+.bookingsContainer{
+    @include flex();
+    & .bookingsWrapper{
+        @include flex();
+    }
+    & .bookingRow{
+        @include flex();
+
+    }
+}

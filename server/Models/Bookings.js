@@ -29,6 +29,10 @@ const Bookings = new mongoose.Schema({
     userId:{
         type:ObjectId,
         ref: 'Users'
+    },
+    timeSlot:{
+        type:String,
+        required:true
     }
 })
 const bookings = mongoose.model('bookings',Bookings);

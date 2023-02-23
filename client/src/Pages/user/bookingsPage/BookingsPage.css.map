@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAOA,AAAA,kBAAkB,CAAA;EANd,OAAO,EAAE,IAAI;EACb,WAAW,EAAE,MAAM;EACnB,eAAe,EAAC,MAAM;CAazB;;AATD,AAEI,kBAFc,CAEZ,gBAAgB,CAAA;EARlB,OAAO,EAAE,IAAI;EACb,WAAW,EAAE,MAAM;EACnB,eAAe,EAAC,MAAM;CAQrB;;AAJL,AAKI,kBALc,CAKZ,WAAW,CAAA;EAXb,OAAO,EAAE,IAAI;EACb,WAAW,EAAE,MAAM;EACnB,eAAe,EAAC,MAAM;CAYrB",
+    "sources": [
+        "BookingsPage.scss"
+    ],
+    "names": [],
+    "file": "BookingsPage.css"
+}

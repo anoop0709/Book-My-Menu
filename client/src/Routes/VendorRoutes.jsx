@@ -1,6 +1,5 @@
 import React from 'react'
 import { Route, Routes } from 'react-router'
-import ErrrorPage from '../Pages/errorpage/ErrorPage'
 import Vendordashboard from '../Pages/Vendors/vendorDashBoard/Vendordashboard'
 import Vendorhome from '../Pages/Vendors/Vendorhome/Vendorhome'
 import VendorLogin from '../Pages/Vendors/VendorLogin/VendorLogin'
@@ -15,8 +14,8 @@ function VendorRoutes() {
         <Route path="/vendorLogin"  element={<VendorLogin/>}/>  
         <Route element={<VendorProtectedPage/>}>
           <Route path="/vendordashborad"  element={<Vendordashboard/>}/> 
+          
         </Route> 
-        <Route path = "*" element = {<ErrrorPage/>}/>
     </Routes>
 
   )

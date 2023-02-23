@@ -7,7 +7,7 @@ import { getrestMenu } from '../../../actions/UserActions'
 import Navbar from '../../../Components/userhomepageComponents/Navbar/Navbar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleCheck, faTrash } from '@fortawesome/free-solid-svg-icons'
-import Footer from '../../../Components/userhomepageComponents/Footer/Footer'
+
 
 
 function Menu() {

@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { allrestaurant } from '../../../../actions/AdminActions';
 import { useNavigate } from 'react-router';
 
-function SortingComponent({ cusine }) {
+function SortingComponent({ cusine, setLocation }) {
     const [restTypeofCusine, setResttypeofCusine] = useState([]);
     const Restaurants = useSelector((state) => { return state.AllRestaurants.authData });
     const userId = JSON.parse(localStorage.getItem('profile'))?.userId;
@@ -39,6 +39,7 @@ function SortingComponent({ cusine }) {
             }
         })
         setResttypeofCusine(restList)
+        setLocation("")
     }, [cusine])
 
 
@@ -104,7 +105,7 @@ function SortingComponent({ cusine }) {
 
                                                     )))
                                             ))}
-                                        <FontAwesomeIcon icon={faBars} className="icons" />
+                                        <FontAwesomeIcon icon={faBars} className="icons"  onClick={()=>singleView(rest._id)}/>
                                     </div>
                                     <div className="restText">
                                         <h3>{rest?.restaurantname}</h3>

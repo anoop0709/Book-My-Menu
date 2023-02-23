@@ -237,9 +237,9 @@ export const date_Booking = async (req, res) => {
         console.log(req.body);
         console.log(restaurantId);
         console.log(orderID,menuItems,user,Total,payer,data )
-        const userId = user._id;
+        const userId = user.userId;
         const restaurant = await RESTAURANT.findOne({ _id: restaurantId });
-        const bookedRest = await SLOTS.findOne({ restaurantId: restaurantId })
+        const bookedRest = await SLOTS.findOne({ restaurantId: restaurantId });
         const Order = await BOOKINGS.create({
             menuItems:menuItems,
             totalAmount:Total,
@@ -247,41 +247,49 @@ export const date_Booking = async (req, res) => {
             paymentMethod:"paypal",
             TransactionDetails:data,
             restaurantId:restaurantId,
-            userId:userId
+            userId:userId,
+            timeSlot:time
         })
         if (bookedRest) {
             if (bookedRest?.bookedDates.length) {
+                console.log(1111111);
                const changedObj =  bookedRest.bookedDates.filter(async (item) => {
                     if (item.date == dateobj.date) {
+                        console.log(2222222);
                         const number = item.obj[time] + parseInt(dateobj.number);
                         console.log(number);
                         if (item.obj[time] < restaurant.seatingcapacity && number <= restaurant.seatingcapacity) {      
                             item.obj[time] = number;
                            return item;
                         }
-                    }else {
-                        const bookings = {
-                            date: "",
-                            obj: {}
-                        }
-                        const startTime = restaurant.openinghours;
-                        const closeTime = restaurant.closinghours;
-                        const range = getTimeStops(startTime, closeTime);
-                        const rangeObj = convertToObject(range);
-                        rangeObj[time] = parseInt(dateobj.number);
-                        bookings.date = dateobj.date;
-                        bookings.obj = rangeObj;
-                        console.log(bookings);
-                        bookedRest.bookedDates.push(bookings)
-                        await bookedRest.save();
-                        console.log(bookedRest.bookedDates[0]);
-                        return  res.status(200).json({bookedRest,Order});
                     }
-                })        
-                await SLOTS.findOneAndUpdate({ restaurantId: restaurantId }, {$pull: {bookedDates: {_id: changedObj[0]._id}}}, {new: true});
-                const added = await SLOTS.findOneAndUpdate({ restaurantId: restaurantId }, {$push: {bookedDates: changedObj}}, {new: true});
-                await bookedRest.save();    
-                return res.status(200).json({added,Order});
+                })
+                if(changedObj.length){
+                    await SLOTS.findOneAndUpdate({ restaurantId: restaurantId }, {$pull: {bookedDates: {_id: changedObj[0]._id}}}, {new: true});
+                    const added = await SLOTS.findOneAndUpdate({ restaurantId: restaurantId }, {$push: {bookedDates: changedObj}}, {new: true});
+                    await bookedRest.save();    
+                    console.log(555555);
+                    return res.status(200).json({added,Order});
+                }  else{
+                    const bookings = {
+                        date: "",
+                        obj: {}
+                    }
+                    const startTime = restaurant.openinghours;
+                    const closeTime = restaurant.closinghours;
+                    const range = getTimeStops(startTime, closeTime);
+                    const rangeObj = convertToObject(range);
+                    rangeObj[time] = parseInt(dateobj.number);
+                    bookings.date = dateobj.date;
+                    bookings.obj = rangeObj;
+                    console.log(bookings);
+                    bookedRest.bookedDates.push(bookings)
+                    await bookedRest.save();
+                    console.log(bookedRest.bookedDates[0]);
+                    console.log(6666666);
+                  return  res.status(200).json({bookedRest,Order});
+                }     
+                
             }
             else {
                 const bookings = {
@@ -299,6 +307,7 @@ export const date_Booking = async (req, res) => {
                 bookedRest.bookedDates.push(bookings)
                 await bookedRest.save();
                 console.log(bookedRest.bookedDates[0]);
+                console.log(6666666);
               return  res.status(200).json({bookedRest,Order});
             }
 
@@ -318,6 +327,7 @@ export const date_Booking = async (req, res) => {
             bookedDates.push(bookings);
             console.log(bookedDates);
             console.log(bookings);
+            console.log(77777777);
            const bookedRest =  await SLOTS.create({ bookedDates: bookedDates, restaurantId: restaurantId });
            return res.status(200).json({bookedRest,Order})
         }
