@@ -8,6 +8,109 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  padding: 20px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 10px 0px;
+}
+
+.bookingsContainer .btnHome {
+  border-radius: 5px;
+  margin: 30px 0px;
+  padding: 5px;
+  border: none;
+  background-color: brown;
+  color: white;
+}
+
+.bookingsContainer .confirm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 20px;
+}
+
+.bookingsContainer .confirm h1 {
+  padding: 20px;
+  font-size: xx-large;
+}
+
+.bookingsContainer .confirm .iconCheck {
+  width: 40px;
+  height: 40px;
+  color: green;
+}
+
+.bookingsContainer .itemDetails {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 20px;
+  border: 1px solid black;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 30px;
+}
+
+.bookingsContainer .itemDetails .itemheadingBox {
+  background-color: brown;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.bookingsContainer .itemDetails .itemheadingBox h5 {
+  margin: 0;
+}
+
+.bookingsContainer .itemDetails .itemdataDiv .totald {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  color: black;
+  margin-top: 30px;
+}
+
+.bookingsContainer .itemDetails .itemdataDiv .itemList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 20px;
+}
+
+.bookingsContainer .itemDetails .itemdataDiv .itemList p {
+  padding: 10px;
+  margin: 0;
+  color: black;
 }
 
 .bookingsContainer .bookingsWrapper {
@@ -20,17 +123,52 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  padding: 20px;
+  border: 1px solid black;
 }
 
 .bookingsContainer .bookingRow {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  gap: 100px;
+}
+
+.bookingsContainer .bookingRow .Details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+}
+
+.bookingsContainer .bookingRow .Details .headingBox {
+  background-color: brown;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.bookingsContainer .bookingRow .Details .headingBox h5 {
+  margin: 0;
+  color: white;
+}
+
+.bookingsContainer .bookingRow .Details .dataDiv p {
+  font-size: medium;
+  color: black;
+}
+
+.bookingsContainer .bookingRow .Details .dataDiv p span {
+  color: black;
 }
 /*# sourceMappingURL=BookingsPage.css.map */

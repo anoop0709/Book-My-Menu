@@ -1,15 +1,15 @@
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router'
-import Footer from '../../../Components/userhomepageComponents/Footer/Footer';
-import Navbar from '../../../Components/userhomepageComponents/Navbar/Navbar';
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router";
+import Footer from "../../../Components/userhomepageComponents/Footer/Footer";
+import Navbar from "../../../Components/userhomepageComponents/Navbar/Navbar";
 import "./Orderconfirm.css";
-import {paypalPay} from "../../../actions/UserActions"
+import { paypalPay } from "../../../actions/UserActions";
 import {
   PayPalScriptProvider,
   PayPalButtons,
-  usePayPalScriptReducer
-} from "@paypal/react-paypal-js"
+  usePayPalScriptReducer,
+} from "@paypal/react-paypal-js";
 
 function Orderconfirm() {
   const dispatch = useDispatch();
@@ -18,17 +18,21 @@ function Orderconfirm() {
   const [ErrorMessage, setErrorMessage] = useState("");
   const [orderID, setOrderID] = useState("");
   const Location = useLocation();
-  const slot = useSelector((state) => { return state.AvailableSlots.authData });
+  const slot = useSelector((state) => {
+    return state.AvailableSlots.authData;
+  });
   console.log(slot);
-  const { restaurant, dateobj, time, menuItems, reducerFunction } = Location.state;
-  const user = JSON.parse(localStorage.getItem("profile"))
-  const Total = reducerFunction + (reducerFunction * 4 / 100)
+  const { restaurant, dateobj, time, menuItems, reducerFunction } =
+    Location.state;
+  const user = JSON.parse(localStorage.getItem("profile"));
+  const Total = reducerFunction + (reducerFunction * 4) / 100;
   console.log(restaurant, dateobj, time, menuItems, reducerFunction);
   console.log(time.split(":").join(""));
   const restaurantId = restaurant[0]._id;
 
   const initialOptions = {
-    "client-id": 'AQUGmBoXbdRKjfok_-vo-LPrg-NSlSM8X-CoeUe1kBI6b5IDXcFTVVPmGT3FmYquXLrakjYcs9uo4Xxs',
+    "client-id":
+      "AQUGmBoXbdRKjfok_-vo-LPrg-NSlSM8X-CoeUe1kBI6b5IDXcFTVVPmGT3FmYquXLrakjYcs9uo4Xxs",
     currency: "USD",
     intent: "capture",
   };
@@ -39,7 +43,7 @@ function Orderconfirm() {
         purchase_units: [
           {
             amount: {
-              value:parseInt(Total),
+              value: parseInt(Total),
             },
           },
         ],
@@ -56,8 +60,20 @@ function Orderconfirm() {
       console.log(payer);
       console.log(orderID);
       setSuccess(true);
-      dispatch(paypalPay(dateobj,time,restaurantId,orderID,menuItems,user,Total,payer,data,Navigate))
-
+      dispatch(
+        paypalPay(
+          dateobj,
+          time,
+          restaurantId,
+          orderID,
+          menuItems,
+          user,
+          Total,
+          payer,
+          data,
+          Navigate
+        )
+      );
     });
   };
   //capture likely error
@@ -81,7 +97,10 @@ function Orderconfirm() {
               <p>EMAIL : {user?.Email}</p>
               <p>TEL : {user?.phonenumber}</p>
               <p>BOOKED DATE : {dateobj?.date}</p>
-              <p>TIME : {time} {parseFloat(time.split(":").join("")) > 1200 ? "PM" : "AM"}</p>
+              <p>
+                TIME : {time}{" "}
+                {parseFloat(time.split(":").join("")) > 1200 ? "PM" : "AM"}
+              </p>
               <p>NUMBER OF PEOPLE : {dateobj?.number}</p>
             </div>
           </div>
@@ -92,43 +111,45 @@ function Orderconfirm() {
               <p>Qty</p>
               <p>Price</p>
             </div>
-            {
-              menuItems?.map((item, index) => (
-                <div className="itemDetails" key={index}>
-                  <p>{item.itemsMenu.itemName}</p>
-                  <p>{item.itemsMenu.itemDescription}</p>
-                  <p>{item.qty}</p>
-                  <p>£ {item.itemsMenu.itemPrice} .00</p>
-                </div>
-
-              ))
-            }
+            {menuItems?.map((item, index) => (
+              <div className="itemDetails" key={index}>
+                <p>{item.itemsMenu.itemName}</p>
+                <p>{item.itemsMenu.itemDescription}</p>
+                <p>{item.qty}</p>
+                <p>£ {item.itemsMenu.itemPrice} .00</p>
+              </div>
+            ))}
           </div>
         </div>
         <div className="paymentBox">
           <div className="total">
-            <div className="subtotal"><h5>Sub Total :</h5> <span> £ {reducerFunction} .00 </span></div>
-            <div className="subtotal"><h6>VAT :</h6><span> £ {reducerFunction * 4 / 100}</span>  </div>
+            <div className="subtotal">
+              <h5>Sub Total :</h5> <span> £ {reducerFunction} .00 </span>
+            </div>
+            <div className="subtotal">
+              <h6>VAT :</h6>
+              <span> £ {(reducerFunction * 4) / 100}</span>{" "}
+            </div>
             <div className="line"></div>
-            <div className="subtotal"> <h5>Total :</h5><span> £ {Total}</span></div>
+            <div className="subtotal">
+              {" "}
+              <h5>Total :</h5>
+              <span> £ {Total}</span>
+            </div>
           </div>
           <div className="paymentBtn">
             <PayPalScriptProvider options={initialOptions}>
               <PayPalButtons
-                createOrder={(data,actions)=>createOrder(data,actions)}
-                onApprove={(data,actions)=>onApprove(data,actions)}
-
+                createOrder={(data, actions) => createOrder(data, actions)}
+                onApprove={(data, actions) => onApprove(data, actions)}
               />
             </PayPalScriptProvider>
             {/* <button className="payBtn" onClick={payment}>Pay {Total}</button> */}
           </div>
-
         </div>
-
       </div>
-
     </>
-  )
+  );
 }
 
-export default Orderconfirm
+export default Orderconfirm;

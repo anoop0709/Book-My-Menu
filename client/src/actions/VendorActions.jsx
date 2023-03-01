@@ -97,10 +97,10 @@ export const deleteRestImage = (email,image,index)=> async (dispatch) => {
     }
 }
 
-export const addImage = (images,email)=> async (dispatch) => {
+export const addImage = (email,images)=> async (dispatch) => {
     try {
-        console.log(images,email);
-        const ResData = await aPi.AddImage(images,email);
+        console.log(email,images);
+        const ResData = await aPi.AddImage(email,images);
         console.log(ResData.data);
         ResData && dispatch({type:'SINGLERESTAURANT',payload:ResData.data});
         

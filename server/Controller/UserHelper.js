@@ -40,11 +40,6 @@ const convertToObject = (arr) => {
 
     }, intial)
 }
-const array = ["12", "13", "14", "15"];
-const obj1 = convertToObject(array)
-obj1["12"] = 2
-console.log(obj1["12"]);
-
 
 export const homePage = async (req, res) => {
     try {
@@ -119,9 +114,10 @@ export const user_Signin = async (req, res, next) => {
             if (iscorrectPassword) {
                 const user = User.firstname + " " + User.lastname;
                 const Email = User.email;
+                const phonenumber = User.phonenumber
                 const userId = User._id;
                 const Token = jwt.sign({ email: User.email, id: User._id }, JWT_SECRET_KEY, { expiresIn: "1h" });
-                return res.json({ user, Token, Email, userId });
+                return res.json({ user, Token, Email, userId, phonenumber });
             }
             throw new Error("Incorrect password")
 
@@ -137,7 +133,6 @@ export const get_user_info = async (req, res) => {
     try {
         const userId = req.params.id;
         const user = await USER.findOne({ _id: userId });
-        console.log(user);
         res.status(200).json(user)
 
     } catch (error) {
@@ -253,10 +248,10 @@ export const date_Booking = async (req, res) => {
         if (bookedRest) {
             if (bookedRest?.bookedDates.length) {
                 console.log(1111111);
-               const changedObj =  bookedRest.bookedDates.filter(async (item) => {
-                    if (item.date == dateobj.date) {
+               const changedObj =  bookedRest.bookedDates.filter((item) => {
+                    if (item.date === dateobj.date) {
                         console.log(2222222);
-                        const number = item.obj[time] + parseInt(dateobj.number);
+                        const number = parseInt(item.obj[time]) + parseInt(dateobj.number);
                         console.log(number);
                         if (item.obj[time] < restaurant.seatingcapacity && number <= restaurant.seatingcapacity) {      
                             item.obj[time] = number;
@@ -269,7 +264,7 @@ export const date_Booking = async (req, res) => {
                     const added = await SLOTS.findOneAndUpdate({ restaurantId: restaurantId }, {$push: {bookedDates: changedObj}}, {new: true});
                     await bookedRest.save();    
                     console.log(555555);
-                    return res.status(200).json({added,Order});
+                    return res.status(200).json({Order});
                 }  else{
                     const bookings = {
                         date: "",
@@ -285,9 +280,8 @@ export const date_Booking = async (req, res) => {
                     console.log(bookings);
                     bookedRest.bookedDates.push(bookings)
                     await bookedRest.save();
-                    console.log(bookedRest.bookedDates[0]);
-                    console.log(6666666);
-                  return  res.status(200).json({bookedRest,Order});
+                    console.log(66666661);
+                  return  res.status(200).json({Order});
                 }     
                 
             }
@@ -308,7 +302,7 @@ export const date_Booking = async (req, res) => {
                 await bookedRest.save();
                 console.log(bookedRest.bookedDates[0]);
                 console.log(6666666);
-              return  res.status(200).json({bookedRest,Order});
+              return  res.status(200).json({Order});
             }
 
         } else {
@@ -329,7 +323,7 @@ export const date_Booking = async (req, res) => {
             console.log(bookings);
             console.log(77777777);
            const bookedRest =  await SLOTS.create({ bookedDates: bookedDates, restaurantId: restaurantId });
-           return res.status(200).json({bookedRest,Order})
+           return res.status(200).json({Order})
         }
     } catch (error) {
         console.log(error);

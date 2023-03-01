@@ -1,17 +1,104 @@
 @mixin flex {
-    display: flex;
-    align-items: center;
-    justify-content:center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
     
+}
+@mixin flexStart{
+     display: flex;
+      align-items: start;
+      justify-content: start;
 }
 
 .bookingsContainer{
     @include flex();
-    & .bookingsWrapper{
-        @include flex();
+    flex-direction: column;
+    margin: 10px 0px;
+    & .btnHome{
+        border-radius: 5px;
+        margin: 30px 0px;
+        padding: 5px;
+        border: none;
+        background-color: brown;
+        color: white;
     }
-    & .bookingRow{
+    & .confirm{
         @include flex();
 
+        & h1{
+            padding: 20px;  
+            font-size: xx-large;
+        }  
+            & .iconCheck{
+                width: 40px;
+                height: 40px;
+                color: green;
+            }   
+    }
+    & .itemDetails{
+        @include flex();
+        border: 1px solid black;
+        flex-direction: column;
+        margin-top: 30px;
+        & .itemheadingBox{
+            background-color: brown;
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            & h5{
+                margin: 0;
+            }
+        }
+       & .itemdataDiv{
+        & .totald{
+            display: flex;
+            align-items:flex-end;
+            justify-content: flex-end;
+            color: rgb(0, 0, 0);
+            margin-top: 30px;
+        }
+        & .itemList{
+           display: flex;
+           align-items: center;
+           justify-content: space-between;
+           gap: 20px;
+           & p{
+            padding: 10px;
+            margin: 0;
+            color: rgb(0, 0, 0);
+           }
+        }
+    }
+    }
+    & .bookingsWrapper{
+       @include flex();
+       border: 1px solid black;
+      
+    }
+    & .bookingRow{
+     @include flexStart();
+        gap: 100px;
+        & .Details{
+           @include flexStart();
+           & .headingBox{
+            background-color: brown;
+            padding: 5px;
+            border-radius: 5px;
+            & h5{
+                margin: 0;
+                color: white;
+            }
+           }
+           & .dataDiv p {
+            font-size: medium;
+            color:rgb(0, 0, 0);
+            & span{
+                color:rgb(0, 0, 0);
+            }
+           }
+        }
+        
     }
 }

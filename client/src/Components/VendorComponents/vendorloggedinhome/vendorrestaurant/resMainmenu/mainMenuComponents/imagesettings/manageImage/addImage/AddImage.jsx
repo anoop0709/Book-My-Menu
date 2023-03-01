@@ -50,7 +50,7 @@ function AddImage({vendor}) {
             })
     }
     const saveImage = ()=>{
-        dispatch(addImage(uploadedImages,vendor));
+        dispatch(addImage({email:vendor,images:uploadedImages}));
         setUploadedimages([])
         setFilename([])
         rerender();

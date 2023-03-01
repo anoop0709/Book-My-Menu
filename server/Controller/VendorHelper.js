@@ -129,14 +129,15 @@ export const dele_Rest_Image = async (req, res) => {
 export const add_Image = async (req,res)=>{
     try {
        
-        console.log(req.body);
-        let image = req.body;
+        console.log(req.body,123456)
         const email = req.params.email;
-        console.log(image);
+        const images = req.body.images;
+        console.log(images);        
+        console.log(email);
         const Vendor = await VENDOR.findOne({ email });
-        const vendorId = Vendor._id;
+        const vendorId = Vendor?._id;
         const Restaurant = await RESTAURANT.findOne({ vendorId: vendorId });
-        image?.map((img)=>{
+        images?.map((img)=>{
             Restaurant.images.push(img);
 
         })
