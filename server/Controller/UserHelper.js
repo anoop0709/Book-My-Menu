@@ -330,3 +330,20 @@ export const date_Booking = async (req, res) => {
        return res.status(401).send(error.message)
     }
 }
+
+export const add_new_address = async (req,res)=>{
+    try {
+        const address = req.body.address;
+        const userid = req.body.userid;
+        const user = await USER.findOne({_id:userid});
+        user?.address.push(address);
+        await user.save();
+        const User = await USER.findOne({_id:userid});
+        return res.status(200).json(User)
+       
+        
+    } catch (error) {
+        console.log(error);
+        return res.status(401).send(error.message)
+    }
+} 

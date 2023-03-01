@@ -1,0 +1,40 @@
+@mixin flex{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.profileDetails{
+   @include flex();
+ 
+   & .profileDetailsWrap{
+    @include flex();
+  
+    & .userDetails{
+        @include flex();
+        flex-direction: column;
+        gap: 40px;
+       & h6{
+        background-color: brown;
+        padding: 10px;
+        border-radius: 5px;
+        color:white;
+       }
+       & p{
+        font-size: smaller;
+       }
+       & .btns{
+        @include flex();
+        gap: 30px;
+        & .btnUser{
+            border: none;
+            padding: 2px 5px;
+            border-radius: 5px;
+            background-color: black;
+            color:white;
+        }
+    }
+    }
+   }
+}

@@ -1,0 +1,77 @@
+.profileDetails {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: 100%;
+}
+
+.profileDetails .profileDetailsWrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: 100%;
+}
+
+.profileDetails .profileDetailsWrap .userDetails {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 40px;
+}
+
+.profileDetails .profileDetailsWrap .userDetails h6 {
+  background-color: brown;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+}
+
+.profileDetails .profileDetailsWrap .userDetails p {
+  font-size: smaller;
+}
+
+.profileDetails .profileDetailsWrap .userDetails .btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: 100%;
+  gap: 30px;
+}
+
+.profileDetails .profileDetailsWrap .userDetails .btns .btnUser {
+  border: none;
+  padding: 2px 5px;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+}
+/*# sourceMappingURL=Profile.css.map */

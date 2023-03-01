@@ -8,6 +8,7 @@ import Home from "../Pages/user/Home/Home";
 import Login from "../Pages/user/Login/Login";
 import Menu from "../Pages/user/menuList/Menu";
 import Orderconfirm from "../Pages/user/orderconfirmpage/Orderconfirm";
+import Profilepage from "../Pages/user/profilePage/Profilepage";
 import RestSingleview from "../Pages/user/restaurantSingleView/RestSingleview";
 import Signin from "../Pages/user/SignIn/Signin";
 import UserProtectedPages from "../UserProtectedPages.jsx";
@@ -28,6 +29,7 @@ function UserRoutes() {
         <Route path="/availabledates" element={<AvailableDate />} />
         <Route path="/paymentpage" element={<Orderconfirm />} />
         <Route path="/user_bookings" element={<BookingsPage />} />
+        <Route path = "/settings" element={<Profilepage/>}/>
       </Route>
       {/* <Route path= "*" element={<ErrrorPage/>}/> */}
       

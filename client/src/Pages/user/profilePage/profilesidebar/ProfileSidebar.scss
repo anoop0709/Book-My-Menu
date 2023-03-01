@@ -1,0 +1,41 @@
+
+@mixin flexBox {
+    margin: 0px;
+    display: flex;
+    align-items:flex-start;
+}
+@mixin buttonStyle {
+    cursor: pointer;
+    background-color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: white;
+}
+@mixin hoverEffect{
+    color: white;
+    cursor: pointer;
+    background-color:black;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+.sideListItems{
+    @include flexBox();
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    & .Item{
+        @include flexBox();
+        justify-content: center;
+        cursor: pointer;
+        padding: 5px;
+    }
+        & .Active{
+            @include flexBox();
+            justify-content: center;
+            @include hoverEffect();       
+        }
+       
+}

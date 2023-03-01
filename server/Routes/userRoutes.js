@@ -11,6 +11,7 @@ import {
   get_Menu,
   get_available_slot,
   date_Booking,
+  add_new_address
 } from "../Controller/UserHelper.js";
 import auth from "../Middleware/authMiddleware.js";
 
@@ -25,5 +26,6 @@ router.post("/check_email", check_Email);
 router.post("/get_menu/:vendorId", get_Menu);
 router.post("/get_slots/:RestId", get_available_slot);
 router.post("/book_slot", date_Booking);
+router.post("/add_address",add_new_address)
 
 export default router;

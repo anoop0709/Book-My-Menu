@@ -124,3 +124,16 @@ export const paypalPay = (dateobj, time,restaurantId,orderID,menuItems,user,Tota
         console.log(error);
     }
 }
+
+export const addAddress = (address,userid)=> async (dispatch) =>{
+    try {
+        console.log(address,userid);
+        const user = await api.add_Address(address,userid);
+        dispatch({type:'USER',payload:user})
+        
+    } catch (error) {
+        console.log(error);
+        dispatch({type:'USERERROR',payload:error.response.data})
+        
+    }
+}
