@@ -51,6 +51,7 @@ export const logIn  = (formData,Navigate) => async (dispatch)=>{
 export const get_user_info = (id,Navigate) => async (dispatch)=>{
     try {
         const {data} = await api.userInfo(id);
+        console.log(data);
         dispatch({type:'USER',payload:data})
         
     } catch (error) {
@@ -129,11 +130,44 @@ export const addAddress = (address,userid)=> async (dispatch) =>{
     try {
         console.log(address,userid);
         const user = await api.add_Address(address,userid);
-        dispatch({type:'USER',payload:user})
+        dispatch({type:'USER',payload:user.data})
         
     } catch (error) {
         console.log(error);
         dispatch({type:'USERERROR',payload:error.response.data})
+        
+    }
+}
+export const update_Details = (firstname,lastname,email,phonenumber,userid) => async (dispatch)=>{
+    try {
+        console.log(firstname,lastname,email,phonenumber,userid);
+        const user = await api.update_details(firstname,lastname,email,phonenumber,userid);
+        dispatch({type:'USER',payload:user.data})
+        
+    } catch (error) {
+        console.log(error);
+        dispatch({type:'USERERROR',payload:error.response.data})
+    }
+}
+export const dele_Address = (idx,userid) => async (dispatch) =>{
+    try {
+        console.log(idx,userid);
+        const user = await api.del_Address(idx,userid);
+        dispatch({type:'USER',payload:user.data})
+    } catch (error) {
+        console.log(error);
+        dispatch({type:'USERERROR',payload:error.response.data})
+        
+    }
+}
+export const updatePass = (password,userid) => async (dispatch) => {
+    try {
+
+        console.log(password,userid);
+        const res = await api.update_Pass(password,userid);
+        console.log(res);
+        
+    } catch (error) {
         
     }
 }

@@ -6,6 +6,7 @@ import ProfilePop from "../profilepopup/ProfilePop";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBell, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { get_user_info } from "../../../actions/UserActions";
+import { userInfo } from "../../../Api/Userapi";
 
 function Navbar() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
@@ -14,14 +15,14 @@ function Navbar() {
   const dispatch = useDispatch();
   const Navigate = useNavigate();
   let count = 0;
-  userInfo?.wishlist.map((_) => {
+  userInfo?.wishlist?.map((_) => {
     return count += 1;
   })
   
   useEffect(()=>{
     if (user?.Token) {
       
-    dispatch(get_user_info(user.userId,Navigate))
+    dispatch(get_user_info(user?.userId,Navigate))
     }
   },[user])
 
@@ -43,7 +44,7 @@ function Navbar() {
     Navigate('/login')
   }
   const homePage = () => {
-    Navigate('/')
+    Navigate("/")
   }
  
   return (

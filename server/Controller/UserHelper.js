@@ -133,7 +133,18 @@ export const get_user_info = async (req, res) => {
     try {
         const userId = req.params.id;
         const user = await USER.findOne({ _id: userId });
-        res.status(200).json(user)
+        const User = {
+            _id:user._id,
+            firstname:user.firstname,
+            lastname:user.lastname,
+            email:user.email,
+            phonenumber:user.phonenumber,
+            address:user.address,
+            wishList:user.wishlist,
+            cart:user.cart
+        }
+        console.log(User);
+        res.status(200).json(User)
 
     } catch (error) {
         console.log(error);
@@ -347,3 +358,47 @@ export const add_new_address = async (req,res)=>{
         return res.status(401).send(error.message)
     }
 } 
+export const update_User = async (req,res)=>{
+    try {
+        const {firstname,lastname,email,phonenumber,userid} = req.body;
+        console.log(firstname,lastname,email,phonenumber,userid);
+        const user = await USER.findOneAndUpdate(
+            {_id:userid},
+            {$set:{
+                firstname:firstname,
+                lastname:lastname,
+                email:email,
+                phonenumber:phonenumber
+            }},{new:true});
+            console.log(user);
+        
+    } catch (error) {
+        console.log(error);
+        return res.status(401).send(error.message)
+    }
+}
+export const dele_Address = async (req,res)=>{
+    try {
+        console.log(req.body);
+        const {idx,userid} = req.body;
+        console.log(idx,typeof(userid));
+        const user = await USER.findOne({_id:userid});
+        user.address.splice(idx,1);
+        await user.save();
+        const User = await USER.findOne({_id:userid});
+        return res.status(200).json(User);
+
+        
+    } catch (error) {
+        console.log(error);
+        return res.status(401).send(error.message)
+    }
+}
+export const update_Password = async (req,res)=>{
+    try {
+        console.log(req.body);
+        
+    } catch (error) {
+        
+    }
+}

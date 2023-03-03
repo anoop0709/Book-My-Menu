@@ -11,8 +11,7 @@ function Home() {
   return (
     <div>
       <div className="fixedheader">
-        <Navbar/>
-        
+        <Navbar/> 
       </div>
     <Header/>
     <RestaurantAndEvents/>

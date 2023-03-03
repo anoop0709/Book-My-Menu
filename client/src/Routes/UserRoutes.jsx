@@ -17,7 +17,7 @@ function UserRoutes() {
   return (
     <Routes>
 
-      {/* <Route exact path = "/"  element={<Home/>}/> */}
+      {/* <Route exact path = "/"  element={<Home/>}/>   */}
       <Route path="" element={<Home />} />
       <Route path="/signin" element={<Signin />} />
       <Route path="/login" element={<Login />} />
