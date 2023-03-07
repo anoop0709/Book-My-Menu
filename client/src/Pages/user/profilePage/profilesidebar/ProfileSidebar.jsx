@@ -5,7 +5,7 @@ function ProfileSidebar({setPages}) {
     const [active,setActive] = useState(0);
   return (
     <>
-    <div className="sideListItems">
+    <div className="sidelistItem">
     {
         profileItems.map((item,index)=>(
             <div className={active === index ? "Item Active" : "Item"} key={index} onClick={() => setActive(index)}>

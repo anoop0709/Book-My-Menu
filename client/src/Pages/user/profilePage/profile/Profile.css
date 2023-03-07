@@ -5,10 +5,11 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   width: 100%;
+  gap: 15px;
 }
 
 .profileDetails .profileDetailsWrap {
@@ -18,10 +19,11 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   width: 100%;
+  gap: 15px;
 }
 
 .profileDetails .profileDetailsWrap .userDetails {
@@ -31,22 +33,41 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   width: 100%;
+  gap: 15px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 40px;
+  padding: 10px 160px;
+  background-color: #f8f8f8;
+  border-radius: 5px;
+  -webkit-box-shadow: 1px 1px 5px 0.5px #bebebe;
+          box-shadow: 1px 1px 5px 0.5px #bebebe;
 }
 
-.profileDetails .profileDetailsWrap .userDetails h6 {
+.profileDetails .profileDetailsWrap .userDetails .head {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.profileDetails .profileDetailsWrap .userDetails .head h6 {
   background-color: brown;
   padding: 2px 10px;
   border-radius: 5px;
   color: white;
+  text-align: center;
 }
 
 .profileDetails .profileDetailsWrap .userDetails p {
@@ -60,10 +81,11 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   width: 100%;
+  gap: 15px;
   gap: 30px;
 }
 
@@ -82,24 +104,37 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   width: 100%;
+  gap: 15px;
 }
 
 .profileDetails .profileDetailsWrap .userDetails .user p span {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
-.profileDetails .profileDetailsWrap .userDetails .user p span .icontrash {
+.profileDetails .profileDetailsWrap .userDetails .user p span .addDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.profileDetails .profileDetailsWrap .userDetails .user p span .addDiv .icontrash {
   cursor: pointer;
   color: brown;
 }
 
-.profileDetails .profileDetailsWrap .userDetails .user p span .address {
+.profileDetails .profileDetailsWrap .userDetails .user p span .addDiv .address {
   padding: 0px 10px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -117,12 +152,27 @@
   font-size: medium;
 }
 
-.profileDetails .profileDetailsWrap .userDetails .user p span .address p {
+.profileDetails .profileDetailsWrap .userDetails .user p span .addDiv .address p {
   margin: 0;
   right: 0;
 }
 
-.profileDetails .profileDetailsWrap .userDetails .user p span .address p span {
+.profileDetails .profileDetailsWrap .userDetails .user p span .addDiv .address p span {
   padding: 0px 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.profileDetails .profileDetailsWrap .userDetails .user p .email {
+  background-color: #dfdfdf;
+  padding: 2px 10px;
+  border-radius: 5px;
 }
 /*# sourceMappingURL=Profile.css.map */

@@ -138,10 +138,10 @@ export const addAddress = (address,userid)=> async (dispatch) =>{
         
     }
 }
-export const update_Details = (firstname,lastname,email,phonenumber,userid) => async (dispatch)=>{
+export const update_Details = (firstname,lastname,phonenumber,userid) => async (dispatch)=>{
     try {
-        console.log(firstname,lastname,email,phonenumber,userid);
-        const user = await api.update_details(firstname,lastname,email,phonenumber,userid);
+        console.log(firstname,lastname,phonenumber,userid);
+        const user = await api.update_details(firstname,lastname,phonenumber,userid);
         dispatch({type:'USER',payload:user.data})
         
     } catch (error) {
@@ -164,10 +164,23 @@ export const updatePass = (password,userid) => async (dispatch) => {
     try {
 
         console.log(password,userid);
-        const res = await api.update_Pass(password,userid);
-        console.log(res);
-        
+        const {data} = await api.update_Pass(password,userid);
+        console.log(data);
+        dispatch({type:'PASSWORDSUCCESS',payload:data})
     } catch (error) {
+        console.log(error);
+        dispatch({type:'PASSWORDERROR',payload:error.response.data})
+    }
+}
+export const allUserBookings = (userid) => async (dispatch) =>{
+    try {
+        console.log(userid);
+        const {data} = await api.all_User_Bookings(userid);
+        if(data){
+            dispatch({type:"ALLUSERBOOKINGS", payload:data})
+        }
+    } catch (error) {
+        dispatch({type:"ALLUSERBOOKINGERROR",payload:error.response.data})
         
     }
 }

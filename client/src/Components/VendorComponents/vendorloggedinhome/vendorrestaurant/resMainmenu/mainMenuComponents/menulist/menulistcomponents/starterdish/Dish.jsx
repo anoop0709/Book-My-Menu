@@ -187,7 +187,7 @@ function Starter({collectionName,tabName}) {
           <thead>
             <tr>
               <th scope="col">Index</th>
-              <th scope="col">Starter Dish Name</th>
+              <th scope="col">Dish Name</th>
               <th scope="col">Dish Description</th>
               <th scope="col"> Item Price</th>
               <th scope="col">Edit</th>

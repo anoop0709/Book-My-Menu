@@ -15,7 +15,7 @@ function Navbar() {
   const dispatch = useDispatch();
   const Navigate = useNavigate();
   let count = 0;
-  userInfo?.wishlist?.map((_) => {
+  userInfo?.wishList?.map((_) => {
     return count += 1;
   })
   
@@ -46,6 +46,9 @@ function Navbar() {
   const homePage = () => {
     Navigate("/")
   }
+  const wishlist = ()=>{
+    Navigate('/wishlist')
+  }
  
   return (
     <div>
@@ -56,7 +59,7 @@ function Navbar() {
             <div className="Navitems">
               <div className="wishCount">
               <div className="wish">{count}</div>
-              <FontAwesomeIcon icon={faBell} />
+              <FontAwesomeIcon icon={faBell} onClick={wishlist}/>
               </div>
               <FontAwesomeIcon icon={faCartShopping} />
               <ProfilePop user={user} logout={logout} settings={settings} />

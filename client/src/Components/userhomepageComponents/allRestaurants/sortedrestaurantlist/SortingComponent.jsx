@@ -55,11 +55,11 @@ function SortingComponent({ cusine, setFilteredData }) {
                             <img src={rest?.images[0]} alt="" />
                             <div className="iconsForRest" key={rest._id}>
                                 {
-                                    (userInfo?.wishlist.length === 0 || !userInfo?.wishlist.includes(rest._id) ? (
+                                    (userInfo?.wishList.length === 0 || !userInfo?.wishList.includes(rest._id) ? (
                                         <FontAwesomeIcon icon={faHeart} className="icons" key={rest._id} onClick={() => setColor(rest._id)} />
                                     ) : (
 
-                                        userInfo?.wishlist.map((id) => (
+                                        userInfo?.wishList.map((id) => (
 
                                             id == rest._id && (
                                                 <FontAwesomeIcon icon={faHeart} className="iconfav" key={rest._id} onClick={() => resetColor(rest._id)} />
@@ -94,11 +94,11 @@ function SortingComponent({ cusine, setFilteredData }) {
                                     <img src={rest?.images[0]} alt="" />
                                     <div className="iconsForRest" key={rest?._id}>
                                         {
-                                            (userInfo?.wishlist.length === 0 || !userInfo?.wishlist.includes(rest?._id) ? (
+                                            (userInfo?.wishList.length === 0 || !userInfo?.wishList.includes(rest?._id) ? (
                                                 <FontAwesomeIcon icon={faHeart} className="icons" key={rest?._id} onClick={() => setColor(rest?._id)} />
                                             ) : (
 
-                                                userInfo?.wishlist.map((id) => (
+                                                userInfo?.wishList.map((id) => (
 
                                                     id == rest?._id && (
                                                         <FontAwesomeIcon icon={faHeart} className="iconfav" key={rest?._id} onClick={() => resetColor(rest?._id)} />

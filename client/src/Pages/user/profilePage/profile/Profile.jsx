@@ -7,14 +7,14 @@ import { useNavigate } from "react-router-dom";
 import { addAddress, dele_Address, get_user_info, update_Details } from "../../../../actions/UserActions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-function Profile({user}) {
+function Profile() {
   const dispatch = useDispatch();
   const Navigate = useNavigate();
-  //const user = useSelector((state)=>{return state?.UserInfo.authData});
+  const user = useSelector((state)=>{return state?.UserInfo.authData});
+  const [profile, setProfile] = useState(JSON.parse(localStorage.getItem('profile')));
   console.log(user);
   const [firstname, setFirstname] = useState(user?.firstname);
   const [lastname, setLastname] = useState(user?.lastname);
-  const [email, setEmail] = useState(user?.email);
   const [phonenumber, setPhonenumber] = useState(user?.phonenumber);
   const [show,setShow] = useState(false);
   const [address, setAddress] = useState({
@@ -28,7 +28,7 @@ function Profile({user}) {
   const [update, setUpdate] = useState(false);
 
   const updateDetails = ()=>{
-    dispatch(update_Details({firstname,lastname,email,phonenumber,userid}))
+    dispatch(update_Details({firstname,lastname,phonenumber,userid}))
     setUpdate(false)
   }
   const handleEditClose = ()=>{
@@ -46,19 +46,27 @@ function Profile({user}) {
     dispatch(dele_Address({idx:idx,userid:userid}))
 
   }
-  console.log(firstname,lastname,email,phonenumber);
+  console.log(firstname,lastname,phonenumber);
 
 
   useEffect(() => {
    console.log("profile render");
-  },[user]);
+   if(profile?.Token)
+    dispatch(get_user_info(profile?.userId,Navigate))
+    setFirstname(user?.firstname)
+    setLastname(user?.lastname)
+    setPhonenumber(user?.phonenumber)
+  },[update]);
  
   return (
     <div>
       <div className="profileDetails">
         <div className="profileDetailsWrap">
           <div className="userDetails">
+            <div className="head">
             <h6>USER DETAILS</h6>
+
+            </div>
             <div className="user">
               <p>
                 FIRST NAME :
@@ -80,10 +88,7 @@ function Profile({user}) {
               </p>
               <p>
                 EMAIL :
-                <span
-                  contentEditable="true"
-                  onInput={(e) => {setEmail(e.target.textContent); setUpdate(true);}}
-                >
+                <span className="email">
                   {user?.email}
                 </span>
               </p>
@@ -98,17 +103,18 @@ function Profile({user}) {
               </p>
               <p>
                 ADDRESS : <span >{user?.address?.map((add,index)=>(
-                    <>
+                <div className="addDiv">
                     <div className="address" key={index}> 
                     <p><span>{add?.Housename}</span></p>
                     <p><span>{add?.Streetname}</span></p>
                     <p><span>{add?.City}</span></p>
                     <p><span>{add?.Postcode}</span></p> 
                         
+                    
+                    </div> 
+                    <FontAwesomeIcon className="icontrash" icon={faTrash} onClick={()=>delAddress(index)}/> 
                     </div>
-                     <FontAwesomeIcon className="icontrash" icon={faTrash} onClick={()=>delAddress(index)}/> 
-                     </>
-                ))}</span>
+                    ))}</span>
               </p>
             </div>
             <div className="btns">

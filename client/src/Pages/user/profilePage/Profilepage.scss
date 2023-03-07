@@ -1,44 +1,55 @@
 @mixin flex{
     display: flex;
-    justify-content:center;
-    align-items: center;
+   align-items: center;
    
 }
-*{
-    box-sizing: border-box;
-}
+
 .profileContainer{
     @include flex();
-     margin: 30px 0px;
+    justify-content:center;
+     padding: 50px 0px;
+     width: 100%;
+     box-sizing: border-box;
+     margin: 50px 0px;
+     padding: 50px 0px;
     & .Profilewrapper{
         @include flex();
-        margin: 30px 0px;
-        padding: 20px;
-        gap: 100px;
-        border: 1px solid black;
+        justify-content:center;
         border-radius: 5px;
+        width: 100%;
+        gap: 0px;
+       
         & .Sidelist{
-            border-right: 1px solid black;
-            flex-direction: column;
-            padding: 30px;
-             width:max-content;
-             position: sticky;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+           background-color: rgb(243, 243, 243);
+            border-radius: 5px;
+            flex-direction: column;   
+            box-shadow:1px 1px 5px 0.5px rgb(190, 190, 190);
+            width:20%;         
             & .iconlist{
                margin: 0;
                width:100%;
+               display: flex;
+               align-items: center;
+               justify-content: center;
                 & .Profilepic{
-                    width: 70px;
-                    height: 70px;
-                    color: brown;
-                    padding: 20px;
+                    width: 120px;
+                    height: 120px;
+                    color: rgb(235, 176, 0);
+                 padding: 20px 0px;
                     margin: 0;
                 }
                 
             }
         }
         & .Mainlist{
-         padding: 30px;
-         width: max-content;
+        display: flex;
+        align-items: center;
+        border-radius: 5px;
+        justify-content:center;    
+         width:80%;     
         }
 
     }

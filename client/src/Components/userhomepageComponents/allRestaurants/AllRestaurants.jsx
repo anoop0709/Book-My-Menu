@@ -69,14 +69,14 @@ function AllRestaurants() {
 
   const searchRest = () => {
     const filteredRest = Restaurants?.filter((rest) => {
-      if (rest.location.toLowerCase().includes(location)) {
+      if (rest?.location.toLowerCase().includes(location)) {
         return rest;
       }
     });
     console.log(filteredRest);
     setFilteredData(filteredRest);
   };
-  console.log(filteredData);
+  // console.log(filteredData);
   return (
     <>
       <Navbar />
@@ -101,14 +101,14 @@ function AllRestaurants() {
         <div className="sortwrapper">
           <SortByCusine setCusine={setCusine} setLocation={setLocation} setFilteredData={setFilteredData}/>
         </div>
-        {filteredData.length ? (
-          <div className="allRestwrapper">
+        {filteredData?.length ? (
+           <div className="allRestwrapper">
             {filteredData?.map((rest) => (
               <div className="restcard" key={rest?._id}>
                 <img src={rest?.images[0]} alt="" />
                 <div className="iconsForRest" key={rest?._id}>
-                  {userInfo?.wishlist.length === 0 ||
-                  !userInfo?.wishlist.includes(rest?._id) ? (
+                  {userInfo?.wishList?.length === 0 ||
+                  !userInfo?.wishList?.includes(rest?._id) ? (
                     <FontAwesomeIcon
                       icon={faHeart}
                       className="icons"
@@ -116,7 +116,7 @@ function AllRestaurants() {
                       onClick={() => setColor(rest?._id)}
                     />
                   ) : (
-                    userInfo?.wishlist.map(
+                    userInfo?.wishList?.map(
                       (id) =>
                         id === rest?._id && (
                           <FontAwesomeIcon
@@ -131,7 +131,7 @@ function AllRestaurants() {
                   <FontAwesomeIcon
                     icon={faBars}
                     className="icons"
-                    onClick={() => singleView(rest._id)}
+                    onClick={() => singleView(rest?._id)}
                   />
                 </div>
                 <div className="restText">

@@ -19,15 +19,19 @@ function Profilepage() {
   const dispatch = useDispatch();
   const Navigate = useNavigate();
   const [pages, setPages] = useState("Profile");
- const user = useSelector((state)=>{return state.UserInfo.authData});
-console.log(user);
-useEffect(()=>{
-dispatch(get_user_info(user._id,Navigate))
-},[user])
+//  const user = useSelector((state)=>{return state.UserInfo.authData});
+//  const [profile, setProfile] = useState(JSON.parse(localStorage.getItem('profile')));
+//console.log(user);
+// useEffect(()=>{
+//   if(profile?.Token){
+//     dispatch(get_user_info(profile?.userId,Navigate))
+//   }
+// },[pages])
 
   return (
     <>
       <Navbar />
+      <div className="inpcontainer"></div>
       <div className="profileContainer">
         <div className="Profilewrapper">
           <div className="Sidelist">
@@ -37,9 +41,9 @@ dispatch(get_user_info(user._id,Navigate))
             <ProfileSidebar setPages={setPages} />
           </div>
           <div className="Mainlist">
-            {pages === "Profile" && <Profile user={user}/>}
-            {pages === "Change Password" && <Changepassword user={user}/>}
-            {pages === "Bookings" && <Bookings userId={user}/>}
+            {pages === "Profile" && <Profile/>}
+            {pages === "Change Password" && <Changepassword/>}
+            {pages === "Bookings" && <Bookings/>}
             {pages === "Wishlist" && <Wishlist/>}
           </div>
         </div>

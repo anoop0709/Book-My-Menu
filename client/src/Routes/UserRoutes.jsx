@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router";
+import { Route, Router, Routes, Switch } from "react-router-dom";
 import AllRestaurants from "../Components/userhomepageComponents/allRestaurants/AllRestaurants";
 import ErrrorPage from "../Pages/errorpage/ErrorPage";
 import AvailableDate from "../Pages/user/availableDate/AvailableDate";
@@ -16,8 +16,8 @@ import UserProtectedPages from "../UserProtectedPages.jsx";
 function UserRoutes() {
   return (
     <Routes>
-
-      {/* <Route exact path = "/"  element={<Home/>}/>   */}
+   
+      <Route exact path = "/"  element={<Home/>}/>   
       <Route path="" element={<Home />} />
       <Route path="/signin" element={<Signin />} />
       <Route path="/login" element={<Login />} />
@@ -31,8 +31,9 @@ function UserRoutes() {
         <Route path="/user_bookings" element={<BookingsPage />} />
         <Route path = "/settings" element={<Profilepage/>}/>
       </Route>
-      {/* <Route path= "*" element={<ErrrorPage/>}/> */}
+      {/* <Route exact path= "*" element={<ErrrorPage/>}/>  */}
       
+    
     </Routes>
   );
 }

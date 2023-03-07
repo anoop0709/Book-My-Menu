@@ -32,7 +32,7 @@
     "react-dom": "^18.2.0",
     "react-fontawesome": "^1.7.1",
     "react-redux": "^8.0.5",
-    "react-router-dom": "^6.6.1",
+    "react-router": "^6.8.2",
     "react-scripts": "5.0.1",
     "react-simple-widgets": "^6.7.0",
     "reactjs-popup": "^2.0.5",

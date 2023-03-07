@@ -47,7 +47,7 @@ const userSchema = new mongoose.Schema({
     cart:{
         type:Array
     },
-    wishlist:{
+    wishList:{
         type:Array
 
     }
