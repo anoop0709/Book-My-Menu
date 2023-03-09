@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ProfilePop from "../profilepopup/ProfilePop";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBell, faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { faBell, faCartShopping, faWallet } from "@fortawesome/free-solid-svg-icons";
 import { get_user_info } from "../../../actions/UserActions";
 import { userInfo } from "../../../Api/Userapi";
 
@@ -49,6 +49,9 @@ function Navbar() {
   const wishlist = ()=>{
     Navigate('/wishlist')
   }
+  const wallet = ()=>{
+    Navigate('/wallet')
+  }
  
   return (
     <div>
@@ -59,9 +62,9 @@ function Navbar() {
             <div className="Navitems">
               <div className="wishCount">
               <div className="wish">{count}</div>
-              <FontAwesomeIcon icon={faBell} onClick={wishlist}/>
+              <FontAwesomeIcon className="navicon" icon={faBell} onClick={wishlist}/>
               </div>
-              <FontAwesomeIcon icon={faCartShopping} />
+              <FontAwesomeIcon className="navicon" icon={faWallet} onClick={wallet}/>
               <ProfilePop user={user} logout={logout} settings={settings} />
             </div>
           ) : (

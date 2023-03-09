@@ -1,0 +1,116 @@
+.walletContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.walletContainer .walletWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px 10px;
+  border-radius: 5px;
+  width: 100%;
+  -webkit-box-shadow: 1px 1px 5px 0.5px #bebebe;
+          box-shadow: 1px 1px 5px 0.5px #bebebe;
+}
+
+.walletContainer .walletWrapper .walletRow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 20px;
+  width: 100%;
+  background-color: brown;
+  border-radius: 5px;
+}
+
+.walletContainer .walletWrapper .walletRow .walletItems {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 10px 10px;
+  border-radius: 5px;
+  margin: 20px;
+  color: white;
+}
+
+.walletContainer .walletWrapper .walletRow .walletItems :nth-child(1) {
+  background-color: white;
+  color: brown;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.walletContainer .walletWrapper .walletRow .walletItems :nth-child(2) {
+  font-size: 14px;
+}
+
+.walletContainer .walletWrapper .walletRow .deleBtn .btnDel {
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 20px;
+  margin: 20px;
+}
+
+.walletContainer .walletWrapper .createBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #f8f8f8;
+  border-radius: 5px;
+  -webkit-box-shadow: 1px 1px 5px 0.5px #bebebe;
+          box-shadow: 1px 1px 5px 0.5px #bebebe;
+}
+
+.walletContainer .walletWrapper .createBtn .walletCreate {
+  padding: 20px 30px;
+  background-color: green;
+  border: none;
+  color: white;
+  border-radius: 5px;
+}
+
+.walletContainer .walletWrapper .createBtn .walletCreate .iconplus {
+  font-size: 25px;
+  padding-left: 25px;
+}
+/*# sourceMappingURL=Mywallet.css.map */

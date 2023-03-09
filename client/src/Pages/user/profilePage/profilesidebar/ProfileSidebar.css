@@ -24,8 +24,14 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   cursor: pointer;
-  padding: 5px;
+  padding: 15px;
 }
 
 .sidelistItem .Active {
@@ -37,8 +43,14 @@
       -ms-flex-pack: center;
           justify-content: center;
   color: white;
+  color: white;
   cursor: pointer;
   background-color: brown;
   padding: 5px 10px;
+}
+
+.sidelistItem .iconsidebar {
+  color: brown;
+  padding-right: 10px;
 }
 /*# sourceMappingURL=ProfileSidebar.css.map */

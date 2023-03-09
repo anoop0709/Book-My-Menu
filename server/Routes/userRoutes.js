@@ -15,7 +15,10 @@ import {
   update_User,
   dele_Address,
   update_Password,
-  all_User_Bookings
+  all_User_Bookings,
+  user_wallet,
+  create_Wallet,
+  dele_Wallet
 } from "../Controller/UserHelper.js";
 import auth from "../Middleware/authMiddleware.js";
 
@@ -34,6 +37,9 @@ router.post("/add_address",add_new_address);
 router.post("/dele_address",dele_Address)
 router.post("/update_user",update_User)
 router.post('/update_password',update_Password)
-router.get("/all_user_bookings/:id",all_User_Bookings)
+router.get("/all_user_bookings/:id",all_User_Bookings);
+router.get("/wallet/:id",user_wallet);
+router.post("/wallet",create_Wallet);
+router.delete("/wallet/:id",dele_Wallet)
 
 export default router;

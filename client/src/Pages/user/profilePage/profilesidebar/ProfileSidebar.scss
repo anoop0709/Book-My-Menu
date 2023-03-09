@@ -28,13 +28,21 @@
     & .Item{
         @include flexBox();
         justify-content: center;
+        justify-content: space-between;
+        align-items: center;
         cursor: pointer;
-        padding: 5px;
+        padding: 15px;
     }
         & .Active{
             @include flexBox();
             justify-content: center;
+            color:white;
             @include hoverEffect();       
+        }
+        & .iconsidebar{
+            color: brown;
+            padding-right: 10px;
+
         }
        
 }

@@ -184,3 +184,43 @@ export const allUserBookings = (userid) => async (dispatch) =>{
         
     }
 }
+
+export const walletInfo = (userId) => async (dispatch) =>{
+    try {
+        const {data} = await api.wallet_Info(userId);
+        console.log(data);
+        if(data){
+            dispatch({type:"USERWALLET",payload:data})
+        }
+    } catch (error) {
+        console.log(error);
+        dispatch({type:"WALLETERROR",payload:error.response.data})
+    }
+}
+
+export const createWallet = (walletinfo,userid) => async (dispatch) => {
+    try {
+        console.log(walletinfo,userid);
+        const {data} = await api.create_Wallet(walletinfo,userid)
+        if(data){
+            dispatch({type:"USERWALLET",payload:data})
+        }
+    } catch (error) {
+        console.log(error);
+        dispatch({type:"WALLETERROR",payload:error.response.data})
+        
+    }
+}
+
+export const deleWallet = (userid) => async (dispatch) => {
+    try {
+        const {data} = await api.wallet_Dele(userid);
+        console.log(data);
+        if(data === null){
+            dispatch({type:"USERWALLET",payload:{}})     
+        }
+    } catch (error) {
+        console.log(error);
+        dispatch({type:"WALLETERROR",payload:error.response.data})
+    }
+}

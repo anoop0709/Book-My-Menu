@@ -1,6 +1,6 @@
 @mixin flex{
     display: flex;
-   align-items: center;
+    align-items: flex-start;
    
 }
 
@@ -17,17 +17,16 @@
         justify-content:center;
         border-radius: 5px;
         width: 100%;
-        gap: 0px;
-       
+        gap: 0px; 
         & .Sidelist{
             display: flex;
             align-items: flex-start;
             justify-content: flex-start;
-           background-color: rgb(243, 243, 243);
+            background-color: rgb(243, 243, 243);
             border-radius: 5px;
             flex-direction: column;   
             box-shadow:1px 1px 5px 0.5px rgb(190, 190, 190);
-            width:20%;         
+            width:15%;         
             & .iconlist{
                margin: 0;
                width:100%;
@@ -38,7 +37,7 @@
                     width: 120px;
                     height: 120px;
                     color: rgb(235, 176, 0);
-                 padding: 20px 0px;
+                    padding: 20px 0px;
                     margin: 0;
                 }
                 

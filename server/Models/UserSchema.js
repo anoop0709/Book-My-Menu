@@ -29,7 +29,6 @@ const userSchema = new mongoose.Schema({
     phonenumber:{
         type:Number,
         required:[true,'please enter a phonenumber'],
-    
         minlength:[10,'please enter a valid phonenumber']
     },
     address:{

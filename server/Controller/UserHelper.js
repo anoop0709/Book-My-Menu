@@ -4,6 +4,7 @@ import SLOTS from "../Models/BookedDates.js";
 import RESTAURANT from "../Models/RestaurantSchema.js";
 import VENDOR from "../Models/VendorSchema.js";
 import BOOKINGS from "../Models/Bookings.js";
+import WALLET from "../Models/WalletSchema.js"
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
@@ -91,14 +92,14 @@ export const user_Signup = async (req, res) => {
         await User.save();
         const user = User.firstname + " " + User.lastname;
         const Email = User.email;
-        const phonenumber = User.phonenumber;
+        const phoneNumber = User.phonenumber;
         const userId = User._id;
         const Token = jwt.sign(
           { email: user.email, id: user._id },
           JWT_SECRET_KEY,
           { expiresIn: "1h" }
         );
-        return res.json({ user, Token, Email, userId, phonenumber });
+        return res.json({ user, Token, Email, userId, phoneNumber });
       }
     }
   } catch (error) {
@@ -456,4 +457,40 @@ export const all_User_Bookings = async  (req,res)=>{
         console.log(error);
         return res.status(401).send(error.message);
     }
+}
+
+export const user_wallet = async (req,res) =>{
+    try {
+        const userid = req.params.id;
+        const wallet = await WALLET.findOne({userId:userid});
+        if(wallet){
+            return res.status(200).json(wallet)
+        }
+    } catch (error) {
+        console.log(error);
+        return res.status(401).send(error.message);
+    }
+}
+
+export const create_Wallet = async (req,res) =>{
+    try {
+        const {wallet,userid} = req.body;
+        console.log(wallet,userid);
+        const Wallet = await WALLET.create({accountname:wallet.accountname,cardnumber:wallet.cardnumber,balance:wallet.balance,userId:userid})
+        return res.status(200).json(Wallet)
+    } catch (error) {
+        console.log(error);
+        return res.status(401).send(error.message);
+    }
+}
+
+export const dele_Wallet = async (req,res)=>{
+  try {
+    const userid = req.params.id;
+    const wallet = await WALLET.findOneAndDelete({userId:userid},{new:true});
+        return res.status(200).json(wallet)
+  } catch (error) {
+    console.log(error);
+    return res.status(401).send(error.message);
+  }
 }

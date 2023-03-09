@@ -1,0 +1,73 @@
+@mixin flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.walletContainer{
+    @include flex();
+    width: fit-content;
+    & .walletWrapper{
+        @include flex();
+        padding: 10px 10px;
+         border-radius: 5px;
+         width: 100%;
+          box-shadow: 1px 1px 5px 0.5px rgb(190, 190, 190);
+        & .walletRow{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            width: 100%;
+            background-color: brown;
+            border-radius: 5px;
+            & .walletItems{
+                display: flex;
+                align-items: center;
+                justify-content:center;
+                flex-direction: column;  
+                padding: 10px 10px;
+                border-radius: 5px;
+                margin: 20px;
+                color:white;
+                & :nth-child(1){
+                    background-color: white;
+                    color: brown;
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                }
+                & :nth-child(2){
+                    font-size: 14px;
+                }
+            }
+            & .deleBtn{
+                & .btnDel{
+                    border:none;
+                    color:white;
+                    cursor: pointer;
+                    padding: 20px;
+                    margin: 20px;
+                }
+            }
+        }
+        & .createBtn{
+            @include flex();
+            background-color:rgb(248, 248, 248) ;
+            border-radius: 5px;
+            box-shadow: 1px 1px 5px 0.5px rgb(190, 190, 190);
+            & .walletCreate{
+                padding: 20px 30px;
+                background-color: green;
+                border:none;
+                color: white;
+                border-radius: 5px;
+                 & .iconplus{
+                    font-size: 25px;
+                    padding-left: 25px;
+                 }
+
+            }
+        }
+    }
+
+}

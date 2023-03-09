@@ -13,9 +13,10 @@ import {AvailableSlots} from "./AvailableSlots"
 import {UserBooking} from "./userbooking";
 import { PasswordChange } from "./PasswordChange";
 import { AlluserBookings } from "./AlluserBookings";
+import {WalletInfo} from "./Wallet"
 export default combineReducers({
     AuthReducer,AdminAuthReducer,VendorAuthReducer,
     AllUsers,AllVendors, NewVendors,AllRestaurants,
     Restmenu,SingleRestaurant,UserInfo,AvailableSlots,UserBooking,
-    PasswordChange,AlluserBookings
+    PasswordChange,AlluserBookings,WalletInfo
 });

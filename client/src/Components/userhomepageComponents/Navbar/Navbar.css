@@ -64,6 +64,9 @@ margin-right: 60px;
     top: -20px;
     right: -8px;
 }
+.navicon{
+    cursor: pointer;
+}
 
 @media screen and (min-width:360px) and (max-width:765px) {
     .navWrapper{
