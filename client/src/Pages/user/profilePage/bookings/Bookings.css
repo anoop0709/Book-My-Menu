@@ -87,6 +87,14 @@
   background-color: #ededed;
 }
 
+.BookingsHistoryContainer .BookinghistoryWrapper .bookingList .bookingsRow .bookingrowItemgreen {
+  list-style: none;
+  padding: 20px 10px;
+  color: green;
+  width: 220px;
+  text-align: center;
+}
+
 .BookingsHistoryContainer .BookinghistoryWrapper .bookingList .bookingsRow .bookingrowItem {
   list-style: none;
   padding: 20px 10px;

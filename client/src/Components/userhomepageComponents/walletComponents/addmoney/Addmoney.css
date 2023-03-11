@@ -1,1 +1,141 @@
-/* No CSS *//*# sourceMappingURL=Addmoney.css.map */
+.addMoneyContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 80%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.addMoneyContainer .addmoneyWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 100%;
+}
+
+.addMoneyContainer .addmoneyWrapper .addMoney {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20px;
+  background-color: #f8f8f8;
+  border-radius: 5px;
+  -webkit-box-shadow: 1px 1px 5px 0.5px #bebebe;
+          box-shadow: 1px 1px 5px 0.5px #bebebe;
+  padding: 50px;
+  width: 100%;
+}
+
+.addMoneyContainer .addmoneyWrapper .addMoney label {
+  color: brown;
+  font-size: 14px;
+}
+
+.addMoneyContainer .addmoneyWrapper .addMoney input {
+  padding: 0px 10px;
+  border: 1px solid #1c87c9;
+  border-radius: 5px;
+  max-width: 120px;
+}
+
+.addMoneyContainer .addmoneyWrapper .addMoney .box {
+  width: 120px;
+  height: 30px;
+  border: 1px solid #1c87c9;
+  font-size: 18px;
+  color: #1c87c9;
+  background-color: #eee;
+  border-radius: 5px;
+}
+
+.addMoneyContainer .addmoneyWrapper .addMoney p {
+  color: red;
+  font-size: 10px;
+}
+
+.addMoneyContainer .addmoneyWrapper .addMoney button {
+  border: none;
+  padding: 2px 10px;
+  border-radius: 5px;
+  background-color: #1e8b1c;
+  color: white;
+}
+
+.addMoneyContainer .message {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  padding: 5px 10px;
+  margin: 50px;
+  background-color: #1e8b1c;
+  color: white;
+  border-radius: 5px;
+  gap: 30px;
+}
+
+.addMoneyContainer .message .iconmessage {
+  font-size: 28px;
+  color: white;
+}
+
+.addMoneyContainer .error {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  padding: 5px 10px;
+  margin: 30px;
+  background-color: #f8f8f8;
+  color: brown;
+  -webkit-box-shadow: 1px 1px 5px 0.5px #bebebe;
+          box-shadow: 1px 1px 5px 0.5px #bebebe;
+  border-radius: 5px;
+  gap: 30px;
+}
+
+.addMoneyContainer .error p {
+  margin: 0;
+  font-size: 12px;
+}
+
+.addMoneyContainer .error .iconmessage {
+  font-size: 28px;
+  color: brown;
+}
+/*# sourceMappingURL=Addmoney.css.map */

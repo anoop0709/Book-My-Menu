@@ -12,16 +12,18 @@ import "./Wallet.css"
 import { useDispatch, useSelector } from 'react-redux'
 import { walletInfo } from '../../../actions/UserActions'
 
+
 function Wallet() {
     const [pages, setPages] = useState("My Wallet");
     const wallet = useSelector((state)=>{return state.WalletInfo.authData});
     const user = useSelector((state)=>{return state?.UserInfo.authData});
     const dispatch = useDispatch();
     useEffect(()=>{
-      if(user){
-        dispatch(walletInfo(user?._id))
-      }
-    },[pages])
+    if(user){
+      dispatch(walletInfo(user?._id))
+    }
+      
+    },[user,pages])
     console.log(wallet,"wallet");
   return (
 

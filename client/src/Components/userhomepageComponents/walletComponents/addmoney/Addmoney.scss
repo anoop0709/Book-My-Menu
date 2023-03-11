@@ -1,0 +1,94 @@
+@mixin flex{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.addMoneyContainer{
+    @include flex();
+    width: 80%;
+    flex-direction: column;
+    & .addmoneyWrapper{
+        @include flex();
+        width: 100%;
+       & .addMoney{
+            @include flex();
+            flex-direction: column;
+            gap: 20px;
+            background-color:rgb(248, 248, 248) ;
+            border-radius: 5px;
+            box-shadow:1px 1px 5px 0.5px rgb(190, 190, 190);
+            padding: 50px;
+            width: 100%;
+                & label{
+                    color: brown;
+                    font-size: 14px;
+                }
+                & input{
+                    padding: 0px 10px;
+                    border: 1px solid #1c87c9;
+                    border-radius: 5px;
+                    max-width: 120px;
+                }
+            
+            & .box {
+                width: 120px;
+                height: 30px;
+                border: 1px solid #1c87c9;
+                font-size: 18px;
+                color: #1c87c9;
+                background-color: #eee;
+                border-radius: 5px;
+               
+              }
+              & p{
+                color: red;
+                font-size:10px;
+              }
+              & button{
+                border:none;
+                padding: 2px 10px;
+                border-radius: 5px;
+                background-color: #1e8b1c;
+                color:white;
+              }
+        }
+    }
+    & .message{
+        @include flex();
+        padding: 5px 10px;
+        margin: 50px;
+        background-color: #1e8b1c;
+        color: white;
+        border-radius: 5px;
+        gap: 30px;
+        & .iconmessage{
+            font-size: 28px;
+            color: white;
+        }
+    }
+    & .error{
+        @include flex();
+        padding: 5px 10px;
+        margin: 30px;
+        background-color:rgb(248, 248, 248) ;
+        color: brown;
+        box-shadow:1px 1px 5px 0.5px rgb(190, 190, 190);
+        border-radius: 5px;
+        gap: 30px;
+        & p{
+            margin: 0;
+            font-size: 12px;
+        }
+        & .iconmessage{
+            font-size: 28px;
+            color: brown;
+        }
+    }
+}
+
+
+
+
+
+

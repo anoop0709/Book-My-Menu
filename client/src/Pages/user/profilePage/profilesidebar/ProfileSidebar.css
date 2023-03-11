@@ -49,6 +49,11 @@
   padding: 5px 10px;
 }
 
+.sidelistItem .Active .iconsidebar {
+  color: white;
+  padding-right: 10px;
+}
+
 .sidelistItem .iconsidebar {
   color: brown;
   padding-right: 10px;

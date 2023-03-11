@@ -4,7 +4,7 @@ export const WalletInfo = (state ={authData:{},error:null},action)=>{
             console.log(action.payload);
             return {...state,authData:action.payload};
         case "WALLETERROR" :
-            return {error:action.payload}
+            return {...state,error:action.payload};
         default:
            return state;
     }

@@ -18,7 +18,8 @@ import {
   all_User_Bookings,
   user_wallet,
   create_Wallet,
-  dele_Wallet
+  dele_Wallet,
+  money_Transaction
 } from "../Controller/UserHelper.js";
 import auth from "../Middleware/authMiddleware.js";
 
@@ -41,5 +42,6 @@ router.get("/all_user_bookings/:id",all_User_Bookings);
 router.get("/wallet/:id",user_wallet);
 router.post("/wallet",create_Wallet);
 router.delete("/wallet/:id",dele_Wallet)
+router.post('/money_transaction',money_Transaction)
 
 export default router;

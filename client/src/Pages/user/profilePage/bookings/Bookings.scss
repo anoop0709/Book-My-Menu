@@ -41,6 +41,13 @@
                 box-shadow:1px 1px 5px 0.5px rgb(190, 190, 190);
                 border-radius: 5px;
                 background-color: rgb(237, 237, 237);
+                & .bookingrowItemgreen{
+                    list-style: none;
+                    padding: 20px 10px;
+                    color:green;
+                    width: 220px;
+                    text-align: center;
+                }
                 & .bookingrowItem{
                     list-style: none;
                     padding: 20px 10px;

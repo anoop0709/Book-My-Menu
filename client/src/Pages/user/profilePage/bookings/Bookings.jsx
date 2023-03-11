@@ -68,7 +68,7 @@ function Bookings() {
           <li className="headingItems">TOTAL AMOUNT</li>
          
         </div>
-        <div className="bookingList">
+      <div className="bookingList">
           {userallBookings?.map((details, index) => (
             <div className="bookingsRow" key={index}>
               <li className="bookingrowItem">{details.bookedDate?.date}</li>
@@ -118,7 +118,7 @@ function Bookings() {
           ))}
 
 {showmenu && (
-<Modal show={showmenu} onHide={editClose} centered>
+<Modal show={showmenu} onHide={editClose} centered size="l">
 <Modal.Header closeButton>
   <Modal.Title>Menu</Modal.Title>
 </Modal.Header>
@@ -126,20 +126,23 @@ function Bookings() {
 <Container>
   {
     menu?.map((items,index)=>(
+      <>
       <Row key={index}>
-      <Col xs={2} md={2}>
+      <Col xs={2} md={4}>
        {items.itemsMenu.itemName}
       </Col>
-      <Col xs={2} md={5}>
+      <Col xs={2} md={4}>
        {items.itemsMenu.itemDescription}
       </Col>
-      <Col xs={2} md={2}>
+      <Col xs={2} md={1}>
        {items.qty}
       </Col>
       <Col xs={2} md={3}>
        £ {items.itemsMenu.itemPrice}.00
       </Col>
     </Row>
+    <hr />
+    </>
     ))
   }
    </Container>

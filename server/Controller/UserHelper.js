@@ -10,6 +10,7 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import { otpMailGenerator } from "../Middleware/OtpGenerator.js";
 import moment from "moment";
+import { Error } from "mongoose";
 dotenv.config();
 const { JWT_SECRET_KEY } = process.env;
 
@@ -489,6 +490,36 @@ export const dele_Wallet = async (req,res)=>{
     const userid = req.params.id;
     const wallet = await WALLET.findOneAndDelete({userId:userid},{new:true});
         return res.status(200).json(wallet)
+  } catch (error) {
+    console.log(error);
+    return res.status(401).send(error.message);
+  }
+}
+
+export const money_Transaction = async (req,res)=>{
+  try {
+    console.log(req.body);
+    const {amount,walletid,transactionType} = req.body;
+    const transaction = {
+      amount,
+      transactionType
+    }
+    const wallet = await WALLET.findOne({_id:walletid});
+    wallet.transactions.push(transaction);
+    if(transactionType === "credit"){
+      wallet.balance += amount;
+    }
+    if(transactionType === "debit"){
+      if(wallet.balance > 0 && (wallet.balance - amount) >= 0){
+        wallet.balance -= amount;
+      }else{
+      throw new Error("Insufficient Balance")
+      }
+    }
+    await wallet.save();
+    console.log(wallet);
+    const Wallet = await WALLET.findOne({_id:walletid})
+    return res.status(200).json(Wallet);
   } catch (error) {
     console.log(error);
     return res.status(401).send(error.message);

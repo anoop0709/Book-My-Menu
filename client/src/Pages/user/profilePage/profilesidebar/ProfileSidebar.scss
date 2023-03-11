@@ -37,7 +37,11 @@
             @include flexBox();
             justify-content: center;
             color:white;
-            @include hoverEffect();       
+            @include hoverEffect();  
+            & .iconsidebar{
+                color:white;
+                padding-right: 10px;
+            }     
         }
         & .iconsidebar{
             color: brown;

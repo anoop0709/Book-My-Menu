@@ -166,7 +166,9 @@ export const updatePass = (password,userid) => async (dispatch) => {
         console.log(password,userid);
         const {data} = await api.update_Pass(password,userid);
         console.log(data);
-        dispatch({type:'PASSWORDSUCCESS',payload:data})
+        if(data){
+            dispatch({type:'PASSWORDSUCCESS',payload:data})
+        }
     } catch (error) {
         console.log(error);
         dispatch({type:'PASSWORDERROR',payload:error.response.data})
@@ -221,6 +223,21 @@ export const deleWallet = (userid) => async (dispatch) => {
         }
     } catch (error) {
         console.log(error);
+        dispatch({type:"WALLETERROR",payload:error.response.data})
+    }
+}
+
+export const walletTransaction = ({amount,walletid,transactionType}) => async (dispatch) => {
+    try {
+        console.log(amount,walletid,transactionType);
+         const {data} = await api.wallet_Transaction(amount,walletid,transactionType)
+         if(data){
+            console.log(111111);
+            dispatch({type:"USERWALLET",payload:data})
+        }
+    } catch (error) {
+        console.log(error);
+        console.log(22222);
         dispatch({type:"WALLETERROR",payload:error.response.data})
     }
 }

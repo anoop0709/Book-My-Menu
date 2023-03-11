@@ -27,4 +27,5 @@ export const update_Pass = ({password,userid}) => API.post('/update_password',{p
 export const all_User_Bookings = (userid) => API.get(`/all_user_bookings/${userid}`);
 export const wallet_Info = (userid) => API.get(`/wallet/${userid}`);
 export const create_Wallet = (wallet,userid) => API.post('/wallet',{wallet,userid});
-export const wallet_Dele = (userid) => API.delete(`/wallet/${userid}`)
+export const wallet_Dele = (userid) => API.delete(`/wallet/${userid}`);
+export const wallet_Transaction = (amount,walletid,transactionType) => API.post('/money_transaction',{amount,walletid,transactionType})

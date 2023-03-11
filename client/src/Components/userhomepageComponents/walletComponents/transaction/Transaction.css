@@ -1,1 +1,9 @@
-/* No CSS *//*# sourceMappingURL=Transaction.css.map */
+.btnMore {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: brown;
+  color: white;
+  cursor: pointer;
+}
+/*# sourceMappingURL=Transaction.css.map */
