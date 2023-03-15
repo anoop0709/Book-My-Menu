@@ -52,7 +52,7 @@ export const homePage = async (req, res) => {
 export const check_Email = async (req, res) => {
   try {
     const Email = req.body.email;
-    console.log(req.body);
+    console.log(req.body,8767878);
     const existingUser = await USER.findOne({ email: Email });
     if (existingUser) {
       throw new Error("User already Registered");
@@ -238,22 +238,24 @@ export const get_available_slot = async (req, res) => {
     res.status(401).send(error.message);
   }
 };
+
+
+
 export const date_Booking = async (req, res) => {
   try {
     const {
       dateobj,
       time,
       restaurantId,
-      orderID,
       menuItems,
       user,
       Total,
-      payer,
       data,
+      paymentMethod
     } = req.body;
     console.log(req.body);
     console.log(restaurantId);
-    console.log(orderID, menuItems, user, Total, payer, data);
+    console.log( dateobj,time,menuItems, user, Total, data,paymentMethod);
     const userId = user.userId;
     const restaurant = await RESTAURANT.findOne({ _id: restaurantId });
     const bookedRest = await SLOTS.findOne({ restaurantId: restaurantId });
@@ -261,7 +263,7 @@ export const date_Booking = async (req, res) => {
       menuItems: menuItems,
       totalAmount: Total,
       bookedDate: dateobj,
-      paymentMethod: "paypal",
+      paymentMethod: paymentMethod,
       TransactionDetails: data,
       restaurantId: restaurantId,
       userId: userId,
@@ -363,6 +365,9 @@ export const date_Booking = async (req, res) => {
     return res.status(401).send(error.message);
   }
 };
+
+
+
 
 export const add_new_address = async (req, res) => {
   try {

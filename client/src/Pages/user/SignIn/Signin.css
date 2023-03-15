@@ -8,7 +8,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+   position:absolute;
 }
 .signInWrapper{
     width: 100%;
@@ -29,6 +29,7 @@
     align-items: center;
     border-radius: 5px;
     gap: 20px;
+    height: 600px;
 }
 .imgDiv{
     border-radius: 5px;
@@ -53,16 +54,16 @@
 }
 
 .signInform>p{
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 500;
     margin-top: 10px;
     margin-bottom: 20px;
 }
 
 .signInform>p>span{
-    color:red;
+    color:rgb(0, 208, 255);
     padding-left: 10px;
-    font-size: 20px;
+    font-size: 16px;
     cursor: pointer;
 }
 
@@ -73,13 +74,13 @@
 }
 .formBtn>button{
     float:right;
-    padding: 10px 5px;
+    padding: 2px 5px;
     border-radius: 5px;
     border:none;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 500;
     color:white;
-    background-color: red;
+    background-color: rgb(7, 7, 7);
     cursor: pointer;
 
 }

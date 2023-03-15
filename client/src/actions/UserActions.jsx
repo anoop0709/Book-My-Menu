@@ -113,9 +113,9 @@ export const slotCheck = (id,data,setLoading) => async (dispatch) => {
     }
 }
 
-export const paypalPay = (dateobj, time,restaurantId,orderID,menuItems,user,Total,payer,data,Navigate) => async (dispatch) => {
+export const paypalPay = (dateobj, time,restaurantId,menuItems,user,Total,data,paymentMethod,Navigate) => async (dispatch) => {
     try {
-        const Data = await api.payPalOrder(dateobj, time,restaurantId,orderID,menuItems,user,Total,payer,data);
+        const Data = await api.payPalOrder(dateobj, time,restaurantId,menuItems,user,Total,data,paymentMethod);
         console.log(Data);
         if(Data){
             dispatch({type:'BOOKINGS',payload:Data.data})

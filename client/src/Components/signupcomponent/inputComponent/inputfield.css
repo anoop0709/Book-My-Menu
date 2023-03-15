@@ -13,18 +13,22 @@
 .inputField>input{
     width: 300px;
     outline: none;
-    padding: 15px;
+    padding: 5px;
     border-radius: 5px;
-    border:1px solid gray
+    border:1px solid gray;
     
 }
+.inputField>input::placeholder{
+    font-size: 10px;
+}
+
 .inputField>input:focus{
     border:1px solid rgb(0, 0, 0)
 }
 .inputField>span{
     width: 300px;
-    padding: 5px;
-    font-size: 14px;
+    padding: 2px;
+    font-size: 12px;
     color: red;
     display: none;
 }

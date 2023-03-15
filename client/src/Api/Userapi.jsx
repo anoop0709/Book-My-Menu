@@ -19,7 +19,7 @@ export const deletefromWishlist = (id,fav)=> API.post(`/dele_from_wishlist/${id}
 export const checkExistingUser = ({email}) => API.post('/check_email',{email});
 export const getRestMenu = (vendorId) => API.post(`/get_menu/${vendorId}`)
 export const SlotCheck = (id,Data) => API.post(`/get_slots/${id}`, Data);
-export const payPalOrder = (dateobj,time,restaurantId,orderID,menuItems,user,Total,payer,data) => API.post('/book_slot',{dateobj, time,restaurantId,orderID,menuItems,user,Total,payer,data})
+export const payPalOrder = (dateobj,time,restaurantId,menuItems,user,Total,data,paymentMethod) => API.post('/book_slot',{dateobj, time,restaurantId,menuItems,user,Total,data,paymentMethod})
 export const add_Address = ({address,userid}) => API.post('/add_address',{address,userid})
 export const del_Address = (idx,userid) => API.post('/dele_address',idx,userid)
 export const update_details = ({firstname,lastname,phonenumber,userid}) => API.post('/update_user',{firstname,lastname,phonenumber,userid})

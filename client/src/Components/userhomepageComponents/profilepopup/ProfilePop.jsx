@@ -1,6 +1,7 @@
 import React from 'react'
 import { PopupMenu } from "react-simple-widgets";
 import "./profilePop.css";
+
 function ProfilePop(props) {
   console.log(props);
   return (

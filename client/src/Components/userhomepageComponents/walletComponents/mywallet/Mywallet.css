@@ -30,7 +30,24 @@
           box-shadow: 1px 1px 5px 0.5px #bebebe;
 }
 
-.walletContainer .walletWrapper .walletRow {
+.walletContainer .walletWrapper .rowDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20px;
+}
+
+.walletContainer .walletWrapper .rowDiv .walletRow {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -46,7 +63,7 @@
   border-radius: 5px;
 }
 
-.walletContainer .walletWrapper .walletRow .walletItems {
+.walletContainer .walletWrapper .rowDiv .walletRow .walletItems {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -66,18 +83,18 @@
   color: white;
 }
 
-.walletContainer .walletWrapper .walletRow .walletItems :nth-child(1) {
+.walletContainer .walletWrapper .rowDiv .walletRow .walletItems :nth-child(1) {
   background-color: white;
   color: brown;
   padding: 5px 10px;
   border-radius: 5px;
 }
 
-.walletContainer .walletWrapper .walletRow .walletItems :nth-child(2) {
+.walletContainer .walletWrapper .rowDiv .walletRow .walletItems :nth-child(2) {
   font-size: 14px;
 }
 
-.walletContainer .walletWrapper .walletRow .deleBtn .btnDel {
+.walletContainer .walletWrapper .rowDiv .walletRow .deleBtn .btnDel {
   border: none;
   color: white;
   cursor: pointer;

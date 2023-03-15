@@ -25,7 +25,6 @@ function Login() {
       name: "email",
       placeholder: "Email",
       errMessage: "Should be a valid email",
-      label: "Email",
       required: "true",
       pattern: "^[a-zA-Z0-9.! #$%&'*+/=? ^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
     },
@@ -35,7 +34,6 @@ function Login() {
       name: "password",
       placeholder: "Password",
       errMessage: "Password should be 8-20 characters and include atleast 1 uppercase,1 lowercase,1number and 1 special character",
-      label: "Password",
       required: "true",
       pattern: "^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+*!=])(?=.*[0-9]).*$"
     }
@@ -69,7 +67,7 @@ function Login() {
             <div className="signInform">
               <form onSubmit={handleSubmit}>
               <div className="h1txt">
-                <h3>USER LOGIN</h3>
+                <h5>USER LOGIN</h5>
               </div>
 
                 {Error && (

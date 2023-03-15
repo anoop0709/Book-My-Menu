@@ -6,7 +6,6 @@ import AvailableDate from "../Pages/user/availableDate/AvailableDate";
 import BookingsPage from "../Pages/user/bookingsPage/BookingsPage";
 import Home from "../Pages/user/Home/Home";
 import Login from "../Pages/user/Login/Login";
-import Menu from "../Pages/user/menuList/Menu";
 import Orderconfirm from "../Pages/user/orderconfirmpage/Orderconfirm";
 import Profilepage from "../Pages/user/profilePage/Profilepage";
 import RestSingleview from "../Pages/user/restaurantSingleView/RestSingleview";
@@ -18,20 +17,20 @@ function UserRoutes() {
   return (
     <Routes>
       <Route exact path = "/"  element={<Home/>}/>   
-      <Route path="" element={<Home />} />
-      <Route path="/signin" element={<Signin />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/restaurants" element={<AllRestaurants />} />
-      <Route path="/singleview" element={<RestSingleview />} />
+      <Route exact path="" element={<Home />} />
+      <Route exact path="/signin" element={<Signin />} />
+      <Route exact path="/login" element={<Login />} />
+      <Route exact path="/restaurants" element={<AllRestaurants />} />
+      <Route exact path="/singleview" element={<RestSingleview />} />
       <Route element={<UserProtectedPages />}>
-        <Route path="/menu" element={<Menu />} />
-        <Route path="/availabledates" element={<AvailableDate />} />
-        <Route path="/paymentpage" element={<Orderconfirm />} />
-        <Route path="/user_bookings" element={<BookingsPage />} />
-        <Route path = "/settings" element={<Profilepage/>}/>
-        <Route path = "/wallet" element={<Wallet/>}/>
+        <Route exact path="/availabledates" element={<AvailableDate />} />
+        <Route exact path="/paymentpage" element={<Orderconfirm />} />
+        <Route exact path="/user_bookings" element={<BookingsPage />} />
+        <Route exact path = "/settings" element={<Profilepage/>}/>
+        <Route exact path = "/wishlist" element={<Profilepage pages="Wishlist"/>}/>
+        <Route exact path = "/wallet" element={<Wallet/>}/>
       </Route>
-      {/* <Route exact path= "*" element={<ErrrorPage/>}/>  */}
+     
     </Routes>
   );
 }

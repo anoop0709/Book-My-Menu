@@ -4,7 +4,7 @@ export const UserInfo = (state ={authData:null,error:null},action)=>{
             console.log(action.payload);
             return {...state,authData:action.payload};
         case "USERERROR" :
-            return {error:action.payload}
+            return {...state,error:action.payload}
         default:
            return state;
     }

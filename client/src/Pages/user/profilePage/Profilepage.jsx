@@ -15,10 +15,16 @@ import "./Profilepage.css";
 import ProfileSidebar from "./profilesidebar/ProfileSidebar";
 import Wishlist from "./wishlist/Wishlist";
 
-function Profilepage() {
+function Profilepage(props) {
   const dispatch = useDispatch();
   const Navigate = useNavigate();
   const [pages, setPages] = useState("Profile");
+  useEffect(()=>{
+    if(props.pages){
+      setPages(props.pages)
+    }
+
+  },[props])
   return (
     <>
       <Navbar />
@@ -29,7 +35,7 @@ function Profilepage() {
             <div className="iconlist">
               <FontAwesomeIcon icon={faCircleUser} className="Profilepic" />
             </div>
-            <ProfileSidebar setPages={setPages} />
+            <ProfileSidebar urlpage={props.pages} setPages={setPages} />
           </div>
           <div className="Mainlist">
             {pages === "Profile" && <Profile/>}

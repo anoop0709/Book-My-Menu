@@ -9,7 +9,7 @@ function ErrrorPage() {
       <div className="errorcontainer">
         <div className="errorwrapping">
           <div className="error">
-            <img src={error} alt="" />
+            <img style={{objectFit:"cover",width:"700px"}} src={error} alt="" />
           </div>
 
         </div>

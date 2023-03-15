@@ -34,7 +34,6 @@ function Signin() {
             name: "firstname",
             placeholder: "First Name",
             errMessage: "First name should be 3-16 characters and shouldn't be used any special charcters",
-            label: "First Name",
             required: "true",
             pattern: "^[A-Za-z0-9]{3,16}$"
         },
@@ -44,7 +43,6 @@ function Signin() {
             name: "lastname",
             placeholder: "Last Name",
             errMessage: "Last name should be 3-16 characters and shouldn't be used any special characters",
-            label: "Last Name",
             required: "true",
             pattern: "^[A-Za-z0-9]{3,16}$"
         },
@@ -54,7 +52,6 @@ function Signin() {
             name: "email",
             placeholder: "Email",
             errMessage: "Should be a valid email",
-            label: "Email",
             required: "true",
             pattern: "^[a-zA-Z0-9.! #$%&'*+/=? ^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
 
@@ -65,7 +62,6 @@ function Signin() {
             name: "phonenumber",
             placeholder: "Phone Number",
             errMessage: "Should be 10 digits",
-            label: "Phone Number",
             required: "true",
             pattern: "^[0-9]{10,10}$"
         },
@@ -75,7 +71,6 @@ function Signin() {
             name: "password",
             placeholder: "Password",
             errMessage: "Password should be 8-20 characters and include atleast 1 uppercase,1 lowercase,1number and 1 special character",
-            label: "Password",
             required: "true",
             pattern: "^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+*!=])(?=.*[0-9]).*$"
 
@@ -86,7 +81,6 @@ function Signin() {
             name: "confirmpassword",
             placeholder: "Confirm password",
             errMessage: "Confirm password not match",
-            label: "Confirm Password",
             required: "true",
             pattern: values.password
         }
@@ -127,9 +121,6 @@ function Signin() {
             <Navbar />
            
             {otpPage ? (<Otp values={values} setValues={setValues} user={user}/>):(
-
-                
-
                 <div className="signInContainer">
                 <div className="signInWrapper">
                     <div className="signinbox">
@@ -141,7 +132,7 @@ function Signin() {
                         
                             <form onSubmit={handleSubmit}>
                                 <div className="h1txt">
-                                    <h3>USER SIGNUP</h3>
+                                    <h5>USER SIGNUP</h5>
                                    
                                 </div>
                                 {signuperror && (<div style={{display:"flex",justifyContent:"center"}}><p style={{color:"red", width:"200px",paddingBottom:"10px",right:"30px",marginRight:0}}>{signuperror}</p></div>)}

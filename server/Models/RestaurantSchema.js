@@ -68,6 +68,10 @@ const restaurantSchema = new mongoose.Schema({
     vendorId:{
         type:ObjectId,
         ref:'Vendors'
+    },
+    phonenumber:{
+        type:Number,
+        required:true
     }
 
 })

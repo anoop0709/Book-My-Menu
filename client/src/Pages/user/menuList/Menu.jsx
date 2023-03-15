@@ -10,7 +10,7 @@ import { faCircleCheck, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 function Menu() {
   const restMenu = useSelector((state) => {
-    return state.Restmenu.authData;
+    return state?.Restmenu.authData;
   });
   const [menuItems, setMenuitems] = useState(
     JSON.parse(localStorage.getItem("menu"))
@@ -30,13 +30,13 @@ function Menu() {
     "beverages",
   ];
   const Location = useLocation();
-  const { restaurant, dateobj, time } = Location.state;
-  const dispatch = useDispatch();
+  const { restaurant, dateobj, time } = Location?.state;
   const Navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const reducerFunction = () => {
     total = menuItems?.reduce((acc, itemlist) => {
-      console.log(parseInt(itemlist.itemsMenu.itemPrice));
+      console.log(parseInt(itemlist?.itemsMenu?.itemPrice));
       return acc + parseInt(itemlist?.itemsMenu?.itemPrice);
     }, 0);
     return total;
@@ -136,7 +136,7 @@ function Menu() {
   };
 
   useEffect(() => {
-    dispatch(getrestMenu(restaurant[0].vendorId));
+    dispatch(getrestMenu(restaurant[0]?.vendorId));
   }, [menuItems, checked]);
 
   useEffect(() => {
@@ -154,9 +154,9 @@ function Menu() {
 
         <div className="menuwrapper">
           <div className="menuItemsdiv">
-            {menus.map((menu) => (
+            {menus?.map((menu) => (
               <div className="dishList">
-                <h1>{menu.toUpperCase()}</h1>
+                <h1>{menu?.toUpperCase()}</h1>
                 <div className="dishMenu">
                   <table>
                     <tbody>
@@ -175,7 +175,7 @@ function Menu() {
                             £ {items?.itemPrice}.00
                             {checked?.map(
                               (name) =>
-                                name === items.itemName && (
+                                name === items?.itemName && (
                                   <span>
                                     <FontAwesomeIcon
                                       className="tickIcon"
@@ -207,7 +207,7 @@ function Menu() {
                 <div className="MenuItems">
                   {menuItems?.map((itemlist, index) => (
                     <div className="listMenu" key={index}>
-                      <p>{itemlist?.itemsMenu.itemName.toUpperCase()} </p>
+                      <p>{itemlist?.itemsMenu?.itemName.toUpperCase()} </p>
                       <p>
                         <button
                           onClick={() => {
@@ -228,7 +228,7 @@ function Menu() {
                         </button>
                       </p>
 
-                      <p>{itemlist?.itemsMenu.itemPrice}.00</p>
+                      <p>{itemlist?.itemsMenu?.itemPrice}.00</p>
                       <FontAwesomeIcon
                         className="iconTrash"
                         icon={faTrash}

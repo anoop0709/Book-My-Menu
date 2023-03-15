@@ -35,7 +35,7 @@ export const vendor_Register = async (req, res) => {
                 password = await bcrypt.hash(password, 10);
                 const Vendor = await VENDOR.create({ firstname, lastname, email, phonenumber, password });
                 const vendorId = Vendor._id;
-                await RESTAURANT.create({ restaurantname, address, location, typeofcusine, seatingcapacity, openinghours, closinghours,description,menutype, images, pancard, fssai, gst, vendorId });
+                await RESTAURANT.create({ restaurantname, address, location, typeofcusine, seatingcapacity, openinghours, closinghours,description,menutype, images, pancard, fssai, gst, vendorId, phonenumber });
                  const restaurant = await RESTAURANT.findOne({vendorId})
                  const restaurantId = restaurant._id
                 await MENU.create({ vendorId });

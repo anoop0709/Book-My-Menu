@@ -6,6 +6,8 @@ import { allrestaurant } from "../../../../actions/AdminActions";
 import "./Bookings.css";
 import Button from 'react-bootstrap/Button';
 import {Modal,Toast,Container,Row,Col} from 'react-bootstrap';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 function Bookings() {
   const dispatch = useDispatch();
@@ -98,6 +100,7 @@ function Bookings() {
   <p>Type of Cusine: {restaurant[0].typeofcusine}</p>
   <p>Opening Hours: {restaurant[0].openinghours}</p>
   <p>Closing Hours: {restaurant[0].closinghours}</p>
+  <p>Phone Number: {restaurant[0].phonenumber}</p>
 </div>
 
 </Modal.Body>
@@ -128,18 +131,21 @@ function Bookings() {
     menu?.map((items,index)=>(
       <>
       <Row key={index}>
-      <Col xs={2} md={4}>
+      <Col xs={2} md={3}>
        {items.itemsMenu.itemName}
       </Col>
-      <Col xs={2} md={4}>
+      <Col xs={2} md={3}>
        {items.itemsMenu.itemDescription}
       </Col>
-      <Col xs={2} md={1}>
+      <Col xs={1} md={1}>
        {items.qty}
       </Col>
       <Col xs={2} md={3}>
        £ {items.itemsMenu.itemPrice}.00
       </Col>
+      <Col xs={2} md={1}>
+        <FontAwesomeIcon icon={faEdit}/>
+       </Col>
     </Row>
     <hr />
     </>

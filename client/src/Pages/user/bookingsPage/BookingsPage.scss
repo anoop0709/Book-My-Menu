@@ -41,6 +41,7 @@
         border: 1px solid black;
         flex-direction: column;
         margin-top: 30px;
+        width: 70%;
         & .itemheadingBox{
             background-color: brown;
             color: white;
@@ -52,22 +53,25 @@
             }
         }
        & .itemdataDiv{
+        width: 100%;
         & .totald{
             display: flex;
             align-items:flex-end;
             justify-content: flex-end;
             color: rgb(0, 0, 0);
             margin-top: 30px;
+            
         }
         & .itemList{
            display: flex;
            align-items: center;
-           justify-content: space-between;
+           justify-content:center;
            gap: 20px;
            & p{
             padding: 10px;
             margin: 0;
             color: rgb(0, 0, 0);
+            width: 200px;
            }
         }
     }

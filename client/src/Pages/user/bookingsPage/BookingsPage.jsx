@@ -4,7 +4,7 @@ import "./BookingsPage.css";
 import Navbar from "../../../Components/userhomepageComponents/Navbar/Navbar";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
+import { faCircleCheck, faFaceSmile } from "@fortawesome/free-solid-svg-icons";
 import Footer from "../../../Components/userhomepageComponents/Footer/Footer";
 
 function BookingsPage() {
@@ -42,6 +42,10 @@ function BookingsPage() {
         <div className="confirm">
           <h1>Your Booking Confirmed </h1>
           <FontAwesomeIcon className="iconCheck" icon={faCircleCheck} />
+        </div>
+        <div className="confirm">
+          <h1>Thank you for using our service and have a nice Dinning.. </h1>
+          <FontAwesomeIcon className="iconCheck" icon={faFaceSmile} />
         </div>
         <div className="bookingsWrapper">
           <div className="bookingRow">
@@ -138,8 +142,8 @@ function BookingsPage() {
                 <p>{item.itemsMenu.itemName}</p>
                 <p>{item.itemsMenu.itemDescription}</p>
                 <p>{item.qty}</p>
-                <p>£ {item.itemsMenu.itemPrice}</p>
-              </div>
+                <p>£ {item.itemsMenu.itemPrice}.00</p>          
+              </div>      
             ))}
             <div className="totald">
             <p>

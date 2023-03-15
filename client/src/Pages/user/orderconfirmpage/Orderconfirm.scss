@@ -71,6 +71,8 @@
             }            
         }
     }
+    
+  
     & .paymentBox{
         @include flex();
         flex:1;
@@ -121,16 +123,17 @@
 
         }
     
+    
         & .paymentBtn{
             width: 100%;
             display: flex;
             justify-content: flex-end;
-            align-items: center;
+            flex-direction: column;
             padding-top: 20px;
             & .payBtn{
                 @include btn();
                 padding: 5px 10px;
-                background-color: green;
+                background-color: rgb(55, 53, 107);
             }
         }
     }

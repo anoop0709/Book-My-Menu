@@ -11,12 +11,12 @@ import ErrrorPage from '../Pages/errorpage/ErrorPage'
 function AdminRoutes() {
     return (
         <Routes>
-            <Route path="/admin" element={<AdminLogin />} />
+            <Route exact path="/admin" element={<AdminLogin />} />
           
-            <Route element={<AdminProtectedPages />}>
-                <Route path="/adminhome" element={<AdminHome />} />
-                <Route path="/createadmin" element={<CreateAdmin />} />
-                <Route path="/admindashboard" element={<Main />} />  
+            <Route  element={<AdminProtectedPages />}>
+                <Route exact path="/adminhome" element={<AdminHome />} />
+                <Route exact path="/createadmin" element={<CreateAdmin />} />
+                <Route exact path="/admindashboard" element={<Main />} />  
             
             </Route>
         </Routes>

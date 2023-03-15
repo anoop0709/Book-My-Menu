@@ -11,13 +11,12 @@ function Withdrawmoney() {
   const wallet = useSelector((state) => {
     return state?.WalletInfo;
   });
-  const walletError = useSelector((state) => {
-    return state?.WalletInfo.error;
-  });
-  console.log(wallet, walletError);
+  const bal = wallet?.authData.balance;
   const user = useSelector((state) => {
     return state?.UserInfo.authData;
   });
+  console.log(user);
+  // const [walletError,setWalletError] = useState(wallet?.error);
   const [errormsg,setErrormsg] = useState(false);
   const [money, setMoney] = useState(0);
   const [select, setSelect] = useState("");
@@ -26,38 +25,65 @@ function Withdrawmoney() {
   const [message, setMessage] = useState(false);
   const [loading,setLoading] = useState(false)
   const dispatch = useDispatch();
-  
+  console.log(wallet);
+
+
   useEffect(() => {
-    if(walletError){
-      setErrormsg(true)
-    }
-    console.log(errormsg);
-  },[walletError]);
+     dispatch(walletInfo(user?._id))
+  },[loading]);
+
+
+
   const wallet_Transactions = () => {
     if (money === 0) {
       setMoneyerr(true);
     } else if (select == "") {
       setSelecterr(true);
     } else {
-      dispatch(
-        walletTransaction({
-          amount: money,
-          walletid: select,
-          transactionType: "debit",
-        })
-      )
-      setLoading(true);   
-          if (errormsg === false) {
-            setMessage(true);
-            setTimeout(() => {
-              setMessage(false);
-              setMoney(0);
-              setSelect("");
-            }, 2000);
-          } 
+      setLoading(true)
+      if(bal < money){
+        setLoading(false);
+        setErrormsg(true)
+        console.log(3434343);
+        setTimeout(() => {
+          setErrormsg(false);
+          dispatch({type:"RESETERROR",payload:""});
+           setMoney(0);
+          setSelect("");
+        }, 2000);
+      }else{
+        dispatch(
+          walletTransaction({
+            amount: money,
+            walletid: select,
+            transactionType: "debit",
+          })
+        ) 
+        setLoading(false)
+        setMessage(true);
+        setTimeout(() => {
+          setMessage(false);
+           setMoney(0);
+          setSelect("");
+        }, 2000);
+      }
+     
+      // setTimeout(()=>{
+      //   const err = walletError;
+      //   console.log(err);
+      //   if (err == "") {
+      //     console.log(5555555);
+        
+         
+      //   }else{
+      //     console.log(err);
+          
+        
+      //   } 
+      // },3000)
+          
     }
   };
-
   console.log(typeof money, select,errormsg);
   return (
     <div className="addMoneyContainer">
@@ -108,29 +134,31 @@ function Withdrawmoney() {
           </>
         )}
       </div>
-      {/* <>
+      <>
         {loading && (
           <div className="message">
             <p>Loading...</p>
           </div>
         )}
-      </> */}
+      </>
       <>
-        {errormsg && (
+        {errormsg ? (
           <div className="error">
-            <p>{wallet?.error}</p>
+            <p>Insufficient Balance</p>
             <FontAwesomeIcon className="iconmessage" icon={faCircleXmark} />
           </div>
+        ):(
+          <>
+          {message && (
+            <div className="message">
+              <p>amount of {money} withdrawed succesfully</p>
+              <FontAwesomeIcon className="iconmessage" icon={faCircleCheck} />
+            </div>
+          )}
+        </>
         )}
       </>
-      <>
-        {message && (
-          <div className="message">
-            <p>amount of {money} withdrawed succesfully</p>
-            <FontAwesomeIcon className="iconmessage" icon={faCircleCheck} />
-          </div>
-        )}
-      </>
+     
     </div>
   );
 }

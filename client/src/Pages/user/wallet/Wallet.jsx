@@ -39,7 +39,7 @@ function Wallet() {
             <WalletSidebar setPages={setPages} />
           </div>
           <div className="Mainlist">
-          {pages === "My Wallet" && <Mywallet/>}
+          {pages === "My Wallet" && <Mywallet Wallet={wallet}/>}
           {pages === "Add Money" && <Addmoney/>}
           {pages === "Withdraw Money" && <Withdrawmoney/>}
           {pages === "Transactions" && <Transaction/> }

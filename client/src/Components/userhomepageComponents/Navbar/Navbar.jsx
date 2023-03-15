@@ -18,6 +18,12 @@ function Navbar() {
   userInfo?.wishList?.map((_) => {
     return count += 1;
   })
+  let menuCount = 0;
+  const menu = JSON.parse(localStorage.getItem("menu"));
+  if(menu?.length){
+    menuCount = menuCount+1;
+  }
+
   
   useEffect(()=>{
     if (user?.Token) {
