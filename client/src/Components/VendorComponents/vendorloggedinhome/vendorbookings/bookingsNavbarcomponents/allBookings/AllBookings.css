@@ -1,0 +1,43 @@
+.restList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  gap: 50px;
+  padding: 20px;
+  margin-bottom: 50px;
+}
+
+.restList .restinput {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+}
+
+.restList .restinput input {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.restList button {
+  padding: 3px 8px;
+  border: none;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+}
+/*# sourceMappingURL=AllBookings.css.map */

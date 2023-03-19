@@ -68,10 +68,13 @@ export const vendor_Login = async (req, res) => {
                     const isBlocked = Vendor.isBlocked
                     console.log(789);
                     if (!isBlocked) {
+                        const Restaurant =await RESTAURANT.findOne({vendorId:Vendor._id})
                         const fullName = Vendor.firstname + " " + Vendor.lastname;
                         const Email = Vendor.email;
+                        const vendorId = Vendor._id;
+                        const restId = Restaurant._id;
                         const Token = jwt.sign({ email: Email, id: Vendor._id }, JWT_SECRET_KEY);
-                        return res.json({ fullName, email, Token })
+                        return res.json({ fullName, email, Token, vendorId , restId})
                     }
                     throw new Error("Your Account is Blocked please contact the Customer care");
                 }
@@ -172,7 +175,7 @@ export const add_Dish = async (req, res) => {
     try {
         let obj = {};
         obj = req.body.data;
-        obj.itemPrice = parseInt(obj.itemPrice)
+        obj.itemPrice = parseFloat(obj.itemPrice)
         console.log(obj);
         const collectionName = req.body.collectionName;
         let update = { $push: {} };

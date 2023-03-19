@@ -33,6 +33,10 @@ const Bookings = new mongoose.Schema({
     timeSlot:{
         type:String,
         required:true
+    },
+    cancelled:{
+        type:Boolean,
+        default:false
     }
 })
 const bookings = mongoose.model('bookings',Bookings);

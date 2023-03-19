@@ -26,3 +26,4 @@ export const unBlockVendor = (id) => Api.patch(`/admin/unblock_vendor/${id}`)
 export const getNewVendors = ()=> Api.get('/admin/getnew_vendors');
 export const getAllRestaurant = ()=>Api.get('/admin//all_restaurant');
 export const VerifyVendor = (id)=> Api.patch(`/admin/verify_vendor/${id}`);
+export const AllBookings = () => Api.get('/admin/all_bookings');

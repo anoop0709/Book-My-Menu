@@ -22,6 +22,7 @@ import AdminProtectedPages from "./AdminProtectedPages";
 import AdminHome from "./Pages/admin/AdminHome/AdminHome";
 import CreateAdmin from "./Pages/admin/CreateAdmin/CreateAdmin";
 import Main from "./Pages/admin/DashBoard/Main";
+import Menu from "./Pages/user/menuList/Menu";
 
 function App() {
   return (
@@ -48,24 +49,19 @@ function App() {
           <Route exact path="/paymentpage" element={<Orderconfirm />} />
           <Route exact path="/user_bookings" element={<BookingsPage />} />
           <Route exact path="/settings" element={<Profilepage />} />
-          <Route
-            exact
-            path="/wishlist"
-            element={<Profilepage pages="Wishlist" />}
-          />
+          <Route exact path="/wishlist" element={<Profilepage pages="Wishlist" />}/>
           <Route exact path="/wallet" element={<Wallet />} />
+          <Route exact path="/menu" element={<Menu/>}/>
         </Route>
 
         {/* admin routes */}
 
         <Route exact path="/admin" element={<AdminLogin />} />
-
         <Route element={<AdminProtectedPages />}>
           <Route exact path="/adminhome" element={<AdminHome />} />
           <Route exact path="/createadmin" element={<CreateAdmin />} />
           <Route exact path="/admindashboard" element={<Main />} />
         </Route>
-
 
         {/* error routes */}
 

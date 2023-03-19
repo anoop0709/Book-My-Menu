@@ -90,11 +90,7 @@ function Orderconfirm() {
       localStorage.removeItem("menuname");
     });
   };
-  //capture likely error
-  // const onError = (data, actions) => {
-  //   setErrorMessage("An Error occured with your payment ");
-  // };
-
+  
   const handlePayment = () => {
     if (wallet?.balance > Total) {
       setErrorMessage(false);

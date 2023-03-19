@@ -139,3 +139,14 @@ export const verifyVendor = (id) => async (dispatch)=>{
         console.log(error);
     }
 }
+
+export const allBookings = () => async (dispatch) => {
+    try {
+        const {data} = await Api.AllBookings();
+        dispatch({type:"ALLBOOKINGS",payload:data})
+        
+    } catch (error) {
+        console.log(error);
+        dispatch({type:"ALLBOKKINGERROR",payload:error.message})
+    }
+}
