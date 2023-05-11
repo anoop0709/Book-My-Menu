@@ -12,7 +12,7 @@ import {corsOptions} from "./config/CorsConfig.js"
 
 const app = express();
 
-app.use(express.json())
+
 dotenv.config();
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
