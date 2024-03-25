@@ -6,8 +6,6 @@ I made this project for a Restaurant booking platform , it allows you to choose 
 
 Skills: NODE JS / REACT / JS / HTML / CSS/EXPRESS JS/ SCSS
 
-- 🔭 I’m currently working on this page. 
-
 
 
 
